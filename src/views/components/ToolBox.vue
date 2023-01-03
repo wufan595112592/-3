@@ -21,15 +21,15 @@
         <div class="icon"><span class="iconfont icon-shouqi"></span></div>
         <div class="text">收起</div>
       </li>
-      <li>
+      <li @click="maoScale(1)">
         <div class="icon"><span class="iconfont icon-fangda"></span></div>
         <div class="text">放大</div>
       </li>
-      <li>
+      <li @click="maoScale(2)">
         <div class="icon"><span class="iconfont icon-suoxiao"></span></div>
         <div class="text">缩小</div>
       </li>
-      <li>
+      <li @click="refresh">
         <div class="icon"><span class="iconfont icon-shuaxin"></span></div>
         <div class="text">刷新</div>
       </li>
@@ -41,7 +41,7 @@
         <div class="icon"><span class="iconfont icon-tuichuquanping"></span></div>
         <div class="text">退出</div>
       </li>
-      <li>
+      <li @click="exportImg">
         <div class="icon"><span class="iconfont icon-xiazai"></span></div>
         <div class="text">保存</div>
       </li>
@@ -52,9 +52,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import screenfull from 'screenfull'
-const emit = defineEmits(['screenfullChange'])
+const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg'])
 defineProps(['active'])
-let muban = ref(true)
+let muban = ref(false)
 let wenzi = ref(false)
 let sousuo = ref(false)
 const open = ref(true)
@@ -73,6 +73,15 @@ function fullscreenClick() {
   isFullscreen.value = !isFullscreen.value
   screenfull.toggle()
   emit('screenfullChange', isFullscreen)
+}
+function maoScale(type) {
+  emit('maoScale', type)
+}
+function refresh() {
+  emit('refresh')
+}
+function exportImg() {
+  emit('exportImg')
 }
 </script>
 

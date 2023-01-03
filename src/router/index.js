@@ -1,18 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Relation from '../views/Relation.vue'
+// import Relation from '../views/Relation.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-  {
-      path: '/',
-      name: 'index',
-      component:() => import('../views/index.vue')
-    },
     {
-      path: '/relation',
-      name: 'relation',
-      component: Relation
+      path: '/',
+      name: '',
+      component:() => import('../views/Relation.vue')
     },
     {
       path: '/company-chart',

@@ -15,16 +15,16 @@
 import { reactive, onMounted } from 'vue'
 defineProps(['title', 'active'])
 const navList = reactive([
-  { label: '关系图谱', value: 1, path: '/' },
-  { label: '企业图谱', value: 2, path: '/company-chart' },
-  { label: '股权穿透图', value: 3, path: '/equity-chart' },
-  { label: '股权结构图', value: 4, path: '/structure-chart' },
+  { label: '企业关系图谱', value: 1, path: '/' },
+  { label: '企业构成图谱', value: 2, path: '/company-chart' },
+  { label: '股权穿透图谱', value: 3, path: '/equity-chart' },
+  { label: '股权结构图谱', value: 4, path: '/structure-chart' },
   { label: '企业受益股东', value: 5, path: '/beneficiary-person' },
-  { label: '企业股权分布', value: 6, path: '/beneficiary-org' },
+  // { label: '企业股权分布', value: 6, path: '/beneficiary-org' },
   { label: '关联方认定图', value: 7, path: '/glf' },
   { label: '实际控制人', value: 8, path: '/kzr' },
   { label: '关联关系探查', value: 9, path: '/exploration' },
-  { label: '风险图谱', value: 10, path: '/risk' }
+  // { label: '风险图谱', value: 10, path: '/risk' }
 ])
 </script>
 
@@ -40,7 +40,7 @@ const navList = reactive([
   background: rgba(255,255,255,0.9);
   
   .container{
-    width: 1250px;
+    width: 1040px;
     height:50px;
     margin: 0 auto;
   }
@@ -82,11 +82,16 @@ const navList = reactive([
         display: inline-block;
         background-color: transparent;
       }
-      &.active {
+      &.active{
         a{
           color: #128bed;
           height: 45px;
           border-bottom: 2px solid #128bed;
+        }
+      }
+      &:hover {
+        a{
+          color: #128bed;
         }
       }
     }

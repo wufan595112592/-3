@@ -18,10 +18,7 @@
       <div class="row-panel">
         <div class="key range">持股</div>
         <div class="val range">
-          <a class="btn active">全部</a>
-          <a class="btn">吊销</a>
-          <a class="btn">注销</a>
-          <a class="btn">存续</a>
+          <a-slider id="itxst" :default-value="10" :min="1" :max="100" />
         </div>
       </div>
 
