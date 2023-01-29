@@ -1,15 +1,7 @@
 <!-- 关系图谱 -->
-<script setup>
-	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox.vue'
-	import Legend from './components/Relation/Legend.vue'
-
-	// import { relation } from './components/Relation/index.js'
-</script>
-
 <template>
 	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="1" />
-	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
+	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
 	<Legend />
 	<div style="width: 100%;height: 100%;">
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
@@ -19,25 +11,23 @@
         </div>
 	</div>
 </template>
-<script>
-	import $ from 'jquery'
-	import cytoscape from 'cytoscape'
-	import * as d3 from 'd3'
-	import relativeJson from "@/api/relativeJson.json";
+<script setup>
+import { ref, onMounted } from 'vue'
+import Header from '../components/Header/index.vue'
+import ToolBox from './components/ToolBox.vue'
+import Legend from './components/Relation/Legend.vue'
+import $ from 'jquery'
+import cytoscape from 'cytoscape'
+import * as d3 from 'd3'
+import relativeJson from "@/api/relativeJson.json";
 	var cy;
-
-	export default {
-		components: {
-			Header,
-			ToolBox,
-			Legend
-		},
-		data() {
-			return {
-				screenfull: false
-			}
-		},
-		mounted() {
+// defineComponent([Header, ToolBox, Legend])
+// export default {
+// 	name: 'Relation',
+// 	setup() {
+		let screenfull = ref(false)
+		let textShow = ref(true)
+		function init() {
 			/** 网页当前状态判断 (解决没布局完就切换页面造成点聚集在一起)*/
 			var state, visibilityChange;
 			if (typeof document.hidden !== "undefined") {
@@ -79,7 +69,7 @@
 			/** 解决浏览器标签切换排列问题 */
 			var _isNeedReload = false;
 			var _isGraphLoaded = false;
-			document.addEventListener(visibilityChange, function() {
+			document.addEventListener(visibilityChange, function () {
 				// console.log(document[state]);
 				if (document[state] == 'visible') {
 					if (_isNeedReload) {
@@ -88,7 +78,7 @@
 						_currentKeyNo = "534472fd-7d53-4958-8132-d6a6242423d8";
 						getData(_currentKeyNo);
 					}
-					document.title = 'hidden-not-loaded'
+					// document.title = 'hidden-not-loaded'
 				} else {
 					if (!_isGraphLoaded) {
 						_isNeedReload = true;
@@ -96,13 +86,13 @@
 				}
 			}, false);
 			/** end 解决浏览器标签切换排列问题 */
-			$(document).ready(function() {
+			$(document).ready(function () {
 				// 获取数据
 				_currentKeyNo = "534472fd-7d53-4958-8132-d6a6242423d8";
 				getData(_currentKeyNo);
 
 				// 监听容器的滚动事件
-				document.getElementById("MainCy").addEventListener("wheel", function(e) {
+				document.getElementById("MainCy").addEventListener("wheel", function (e) {
 					// console.log(e.wheelDelta);
 					var type = 1;
 					if (e.wheelDelta > 0) {
@@ -142,7 +132,7 @@
 				console.log(graphData);
 				getD3Position(graphData);
 
-				setTimeout(function() {
+				setTimeout(function () {
 					drawGraph(transformData(graphData));
 				}, 500);
 
@@ -177,9 +167,9 @@
 						}
 						// }
 					}
-					layoutLinks.forEach(function(link, i) {
+					layoutLinks.forEach(function (link, i) {
 						if (link.targetNode.layout.level == 3) {
-							layoutLinks.forEach(function(alink, j) {
+							layoutLinks.forEach(function (alink, j) {
 								if (alink.linkId != link.linkId &&
 									(alink.targetNode.nodeId == link.targetNode.nodeId || alink
 										.sourceNode
@@ -190,7 +180,7 @@
 						}
 
 						if (link.sourceNode.layout.level == 3) {
-							layoutLinks.forEach(function(alink, j) {
+							layoutLinks.forEach(function (alink, j) {
 								if (alink.linkId != link.linkId &&
 									(alink.targetNode.nodeId == link.sourceNode.nodeId || alink
 										.sourceNode
@@ -234,7 +224,7 @@
 
 					// 围绕节点最大数值
 					setSingleLinkNodes(graph.layoutLinks);
-					graph.nodes.forEach(function(node, i) {
+					graph.nodes.forEach(function (node, i) {
 						if (node.layout.singleLinkChildren.length && _maxChildrenLength < node.layout
 							.singleLinkChildren.length) {
 							_maxChildrenLength = node.layout.singleLinkChildren.length
@@ -287,7 +277,7 @@
 					.force('charge', d3.forceManyBody().strength(strength).distanceMax(distanceMax).theta(theta))
 					.force('link', d3.forceLink(graph.layoutLinks).distance(distance))
 					.force('center', d3.forceCenter(width / 2, height / 2))
-					.force('collide', d3.forceCollide().radius(function() {
+					.force('collide', d3.forceCollide().radius(function () {
 						return colideRadius;
 					}))
 				//.on('tick',ticked);
@@ -304,7 +294,7 @@
 					other: []
 				};
 
-				graphData.nodes.forEach(function(node, i) {
+				graphData.nodes.forEach(function (node, i) {
 					switch (node.layout.level) {
 						case 1:
 							layoutNode.level1.push(node);
@@ -348,7 +338,7 @@
 					return isSingle;
 				} // isSingleLink
 
-				links.forEach(function(link, i) {
+				links.forEach(function (link, i) {
 					if (isSingleLink(link.sourceNode.nodeId, links)) {
 						link.targetNode.layout.singleLinkChildren.push(link.sourceNode);
 					}
@@ -360,10 +350,10 @@
 			// 绘制图谱
 			function drawGraph(elements) {
 				_currentKeyNo,
-				_companyRadius = 35,
-				_personRadius = 15,
-				_circleMargin = 10,
-				_circleBorder = 3;
+					_companyRadius = 35,
+					_personRadius = 15,
+					_circleMargin = 10,
+					_circleBorder = 3;
 				cy = cytoscape({
 					container: document.getElementById('MainCy'),
 					motionBlur: false,
@@ -380,7 +370,7 @@
 						nestingFactor: 12,
 						padding: 10,
 						edgeElasticity: 800,
-						stop: function(e) {
+						stop: function (e) {
 							//解决浏览器标签切换排列问题
 							if (document[state] == 'hidden') {
 								_isNeedReload = true;
@@ -388,7 +378,7 @@
 							} else {
 								_isNeedReload = false;
 							}
-							setTimeout(function() {
+							setTimeout(function () {
 								if (document[state] == 'hidden') {
 									_isGraphLoaded = false;
 									console.log('stop _isGraphLoaded=false');
@@ -399,303 +389,296 @@
 						}
 					},
 					style: [{
-							// 节点样式
-							selector: 'node',
-							style: {
-								shape: 'ellipse',
-								width: function(ele) {
-									// 当前节点有图片
-									//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
-									//       return 80;
-									//   }
-									// 有图片
-									//   if(ele.data('hasImage') && ele.data('type') == 'P'){
-									//       return 60;
-									//   }
-									//普通
-									if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
-										return 60;
-									}
-									return 45;
-								},
-								height: function(ele) {
-									//   //当前节点有图片
-									//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
-									//       return 80;
-									//   }
-									//   //有图片
-									//   if(ele.data('hasImage') && ele.data('type') == 'P'){
-									//       return 60;
-									//   }
-									//普通
-									if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
-										return 60;
-									}
-									return 45;
-								},
-								'background-color': function(ele) {
-									return ele.data('color');
-								},
-								'background-fit': 'cover',
-								//   'background-image': function (ele) {
-								//       var hasImage = ele.data('hasImage');
-								//       var keyNo = ele.data('keyNo');
-								//       var type = ele.data('type');
-								//       if(hasImage && type == 'P'){
-								//           return '/proxyimg_'+ keyNo+'.jeg';
-								//       } else {
-								//           return 'none';
-								//       }
-								//   },
-								// 'background-image-crossorigin': 'use-credentials',
-								'border-color': function(ele) {
-									return ele.data("borderColor");
-								},
-								'border-width': function(ele) {
-									return 1
-									//   if(ele.data('hasImage') && ele.data('type') == 'P'){
-									//       return 3;
-									//   } else {
-									//       return 1;
-									//   }
-								},
-								'border-opacity': 1,
-								label: function(ele) {
-									var label = ele.data("name");
-									var length = label.length;
+						// 节点样式
+						selector: 'node',
+						style: {
+							shape: 'ellipse',
+							width: function (ele) {
+								// 当前节点有图片
+								//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
+								//       return 80;
+								//   }
+								// 有图片
+								//   if(ele.data('hasImage') && ele.data('type') == 'P'){
+								//       return 60;
+								//   }
+								//普通
+								if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
+									return 60;
+								}
+								return 45;
+							},
+							height: function (ele) {
+								//   //当前节点有图片
+								//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
+								//       return 80;
+								//   }
+								//   //有图片
+								//   if(ele.data('hasImage') && ele.data('type') == 'P'){
+								//       return 60;
+								//   }
+								//普通
+								if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
+									return 60;
+								}
+								return 45;
+							},
+							'background-color': function (ele) {
+								return ele.data('color');
+							},
+							'background-fit': 'cover',
+							//   'background-image': function (ele) {
+							//       var hasImage = ele.data('hasImage');
+							//       var keyNo = ele.data('keyNo');
+							//       var type = ele.data('type');
+							//       if(hasImage && type == 'P'){
+							//           return '/proxyimg_'+ keyNo+'.jeg';
+							//       } else {
+							//           return 'none';
+							//       }
+							//   },
+							// 'background-image-crossorigin': 'use-credentials',
+							'border-color': function (ele) {
+								return ele.data("borderColor");
+							},
+							'border-width': function (ele) {
+								return 1
+								//   if(ele.data('hasImage') && ele.data('type') == 'P'){
+								//       return 3;
+								//   } else {
+								//       return 1;
+								//   }
+							},
+							'border-opacity': 1,
+							label: function (ele) {
+								var label = ele.data("name");
+								var length = label.length;
 
-									if (length <= 5) { // 4 5 4排列
-										return label;
-									} else if (length >= 5 && length <= 9) {
-										return label.substring(0, length - 5) + '\n' + label.substring(
-											length -
-											5, length);
-									} else if (length >= 9 && length <= 13) {
-										return label.substring(0, 4) + '\n' + label.substring(4, 9) +
-											'\n' +
-											label.substring(9, 13);
-									} else {
-										return label.substring(0, 4) + '\n' + label.substring(4, 9) +
-											'\n' +
-											label.substring(9, 12) + '..';
-									}
-								},
-								'z-index-compare': 'manual',
-								'z-index': 20,
-								color: "#fff",
-								//'padding-top':0,
-								'padding': function(ele) {
-									if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
-										return 3;
-									}
-									return 0;
-								},
-								'font-size': 12,
-								//'min-height':'400px',
-								//'ghost':'yes',
-								//'ghost-offset-x':300,
-								//'font-weight':800,
-								//'min-zoomed-font-size':6,
-								'font-family': 'microsoft yahei',
-								'text-wrap': 'wrap',
-								'text-max-width': 60,
-								'text-halign': 'center',
-								'text-valign': 'center',
-								'overlay-color': '#fff',
-								'overlay-opacity': 0,
-								'background-opacity': 1,
-								'text-background-color': '#000',
-								'text-background-shape': 'roundrectangle',
-								'text-background-opacity': function(ele) {
-									return 0
-									//   if(ele.data('hasImage') && ele.data('type') == 'P'){
-									//       return 0.3;
-									//   } else {
-									//       return 0
-									//   }
-								},
-								'text-background-padding': 0,
-								'text-margin-y': function(ele) {
-									//当前节点有图片
-									//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
-									//       return 23;
-									//   }
-									//   // 有图片
-									//   if(ele.data('hasImage') && ele.data('type') == 'P'){
-									//       return 16;
-									//   }
-									//
-									if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
-										return 4;
-									}
-									return 2;
+								if (length <= 5) { // 4 5 4排列
+									return label;
+								} else if (length >= 5 && length <= 9) {
+									return label.substring(0, length - 5) + '\n' + label.substring(
+										length -
+										5, length);
+								} else if (length >= 9 && length <= 13) {
+									return label.substring(0, 4) + '\n' + label.substring(4, 9) +
+										'\n' +
+										label.substring(9, 13);
+								} else {
+									return label.substring(0, 4) + '\n' + label.substring(4, 9) +
+										'\n' +
+										label.substring(9, 12) + '..';
 								}
 							},
-						},
-						{
-							// 连接线的样式
-							selector: 'edge',
-							style: {
-								'text-rotation': 'autorotate',
-								/*标签方向*/
-								'line-style': function(ele) {
-									return 'solid';
-									/*if(ele.data('data').obj.type == 'INVEST'){
-									    return 'solid';
-									} else {
-									    return 'dashed'
-									}*/
-								},
-								'curve-style': 'bezier',
-								'control-point-step-size': 20,
-								'target-arrow-shape': 'triangle-backcurve',
-								/*箭头样式*/
-								'target-arrow-color': function(ele) {
-									return ele.data("color");
-								},
-								'arrow-scale': 0.5,
-								'line-color': function(ele) {
-									//return '#aaaaaa';
-									return ele.data("color");
-								},
-								label: function(ele) {
-									return ele.data("label");
-								},
-								'text-opacity': 0.8,
-								'font-size': 12,
-								'background-color': function(ele) {
-									return ele.data("color");
-								},
-								'width': 0.3,
-								'color': '#888',
-								'overlay-color': '#fff',
-								'overlay-opacity': 0,
-								'font-family': 'microsoft yahei',
-							}
-						},
-						{
-							"selector": ".autorotate",
-							"style": {
-								"edge-text-rotation": "autorotate"
-							}
-						},
-						//   悬浮节点样式
-						{
-							selector: '.nodeActive',
-							style: {
-								/*'background-color':function (ele) {
-								    if(ele.data("category")==1){
-								        return "#5c8ce4"
-								    }
-								    return "#d97a3a";
-								},*/
-								//'z-index':300,
-								'border-color': function(ele) {
-									return ele.data("color");
-								},
-								'border-width': 10,
-								'border-opacity': 0.5
-							}
-						},
-						{
-							selector: '.edgeShow',
-							style: {
-								'color': '#999',
-								'text-opacity': 1,
-								'font-weight': 400,
-								label: function(ele) {
-									return ele.data("label");
-								},
-								'font-size': 10,
-							}
-						},
-						//   悬浮在线上的样式
-						{
-							selector: '.edgeActive',
-							style: {
-								'arrow-scale': 0.8,
-								'width': 1.5,
-								'color': function(ele) {
-									return ele.data("color");
-								},
-								'text-opacity': 1,
-								'font-size': 12,
-								'text-background-color': '#fff',
-								'text-background-opacity': 0.8,
-								'text-background-padding': 0,
-								'source-text-margin-y': 20,
-								'target-text-margin-y': 20,
-								//'text-margin-y':3,
-								'z-index-compare': 'manual',
-								'z-index': 1,
-								'line-color': function(ele) {
-									return ele.data("color");
-								},
-								'target-arrow-color': function(ele) {
-									return ele.data("color");
-								},
-								label: function(ele) {
-									/*if(ele.data('data').type == 'SH'){
-									    return 'solid';
-									} else {
-									    return 'dashed'
-									}*/
-									return ele.data("label");
+							'z-index-compare': 'manual',
+							'z-index': 20,
+							color: "#fff",
+							//'padding-top':0,
+							'padding': function (ele) {
+								if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
+									return 3;
 								}
+								return 0;
+							},
+							'font-size': 12,
+							//'min-height':'400px',
+							//'ghost':'yes',
+							//'ghost-offset-x':300,
+							//'font-weight':800,
+							//'min-zoomed-font-size':6,
+							'font-family': 'microsoft yahei',
+							'text-wrap': 'wrap',
+							'text-max-width': 60,
+							'text-halign': 'center',
+							'text-valign': 'center',
+							'overlay-color': '#fff',
+							'overlay-opacity': 0,
+							'background-opacity': 1,
+							'text-background-color': '#000',
+							'text-background-shape': 'roundrectangle',
+							'text-background-opacity': function (ele) {
+								return 0
+								//   if(ele.data('hasImage') && ele.data('type') == 'P'){
+								//       return 0.3;
+								//   } else {
+								//       return 0
+								//   }
+							},
+							'text-background-padding': 0,
+							'text-margin-y': function (ele) {
+								//当前节点有图片
+								//   if(ele.data("type") == 'P' && _currentKeyNo == ele.data('keyNo') && ele.data('hasImage')){
+								//       return 23;
+								//   }
+								//   // 有图片
+								//   if(ele.data('hasImage') && ele.data('type') == 'P'){
+								//       return 16;
+								//   }
+								//
+								if (ele.data("type") == 'E' || ele.data("type") == 'UE') {
+									return 4;
+								}
+								return 2;
 							}
+						},
+					},
+					{
+						// 连接线的样式
+						selector: 'edge',
+						style: {
+							/*标签方向*/
+							'line-style': function (ele) {
+								return 'solid';
+								/*if(ele.data('data').obj.type == 'INVEST'){
+										return 'solid';
+								} else {
+										return 'dashed'
+								}*/
+							},
+							'curve-style': 'bezier',
+							'control-point-step-size': 20,
+							'target-arrow-shape': 'triangle',
+							/*箭头样式*/
+							'target-arrow-color': function (ele) {
+								return ele.data("color");
+							},
+							'arrow-scale': 0.5,
+							'line-color': function (ele) {
+								//return '#aaaaaa';
+								return ele.data("color");
+							},
+							label: function (ele) {
+								return textShow.value ? ele.data("label") : ''
+							},
+							'text-opacity': 0.8,
+							'font-size': 12,
+							'background-color': function (ele) {
+								return ele.data("color");
+							},
+							'width': 0.3,
+							'color': '#888',
+							'overlay-color': '#fff',
+							'overlay-opacity': 0,
+							'font-family': 'microsoft yahei',
+						}
+					},
+					//   悬浮节点样式
+					{
+						selector: '.nodeActive',
+						style: {
+							/*'background-color':function (ele) {
+									if(ele.data("category")==1){
+											return "#5c8ce4"
+									}
+									return "#d97a3a";
+							},*/
+							//'z-index':300,
+							'border-color': function (ele) {
+								return ele.data("color");
+							},
+							'border-width': 10,
+							'border-opacity': 0.5
+						}
+					},
+					{
+						selector: '.edgeShow',
+						style: {
+							'color': '#999',
+							'text-opacity': 1,
+							'font-weight': 400,
+							label: function (ele) {
+								return ele.data("label");
+							},
+							'font-size': 10,
+						}
+					},
+					//   悬浮在线上的样式
+					{
+						selector: '.edgeActive',
+						style: {
+							'arrow-scale': 0.8,
+							'width': 1.5,
+							'color': function (ele) {
+								return ele.data("color");
+							},
+							'text-opacity': 1,
+							'font-size': 12,
+							'text-background-color': '#fff',
+							'text-background-opacity': 0.8,
+							'text-background-padding': 3,
+							'source-text-margin-y': 20,
+							'target-text-margin-y': 20,
+							//'text-margin-y':3,
+							'z-index-compare': 'manual',
+							'z-index': 1,
+							'line-color': function (ele) {
+								return ele.data("color");
+							},
+							'target-arrow-color': function (ele) {
+								return ele.data("color");
+							},
+							label: function (ele) {
+								/*if(ele.data('data').type == 'SH'){
+										return 'solid';
+								} else {
+										return 'dashed'
+								}*/
+								return ele.data("label");
+							}
+						}
 
-						},
-						{
-							selector: '.hidetext',
-							style: {
-								'text-opacity': 0,
-								label: function(ele) {
-									return '';
-								}
+					},
+					{
+						selector: '.hidetext',
+						style: {
+							'text-opacity': 0,
+							label: function (ele) {
+								return '';
 							}
-						},
-						{
-							selector: '.dull',
-							style: {
-								'z-index': 1,
-								opacity: 0.2,
-							}
-						},
-						{
-							selector: '.nodeHover',
-							style: {
-								shape: 'ellipse',
-								'background-opacity': 0.9,
-							}
-						},
-						{
-							selector: '.edgeLevel1',
-							style: {
-								label: function(ele) {
-									return ele.data("label");
-								},
-							}
-						},
-						{
-							selector: '.edgeShowText',
-							style: {
-								label: function(ele) {
-									return ele.data("label");
-								},
-							}
-						},
-						{
-							selector: '.lineFixed', // 加载完成后，加载该类，修复线有锯齿的问题
-							style: {
-								'overlay-opacity': 0,
-							}
-						},
+						}
+					},
+					{
+						selector: '.dull',
+						style: {
+							'z-index': 1,
+							opacity: 0.2,
+						}
+					},
+					{
+						selector: '.nodeHover',
+						style: {
+							shape: 'ellipse',
+							'background-opacity': 0.9,
+						}
+					},
+					{
+						selector: '.edgeLevel1',
+						style: {
+							label: function (ele) {
+								return ele.data("label");
+							},
+						}
+					},
+					{
+						selector: '.edgeShowText',
+						style: {
+							label: function (ele) {
+								return ele.data("label");
+							},
+						}
+					},
+					{
+						selector: '.lineFixed', // 加载完成后，加载该类，修复线有锯齿的问题
+						style: {
+							'overlay-opacity': 0,
+						}
+					},
 					],
 				});
 				/**
 				 * 鼠标点击节点后触发
 				 */
-				cy.on('click', 'node', function(evt) {
+				cy.on('click', 'node', function (evt) {
 					console.log(111111)
 					if (evt.target._private.style['z-index'].value == 20) { // 非暗淡状态
 						_isFocus = true;
@@ -739,7 +722,7 @@
 				/**
 				 * 鼠标按下时触发
 				 */
-				cy.on('vmousedown', 'node', function(evt) {
+				cy.on('vmousedown', 'node', function (evt) {
 					var node = evt.target;
 					if (!_isFocus) {
 						highLight([node._private.data.id], cy);
@@ -748,7 +731,7 @@
 				/**
 				 * 鼠标抬起/触摸结束时触发
 				 */
-				cy.on('tapend', 'node', function(evt) {
+				cy.on('tapend', 'node', function (evt) {
 					if (!_isFocus) {
 						cancelHighLight();
 					}
@@ -757,7 +740,7 @@
 				/**
 				 * 鼠标悬停在节点上
 				 */
-				cy.on('mouseover', 'node', function(evt) {
+				cy.on('mouseover', 'node', function (evt) {
 					if (evt.target._private.style['z-index'].value == 20) { // 非暗淡状态
 						$("#Main").css("cursor", "pointer");
 						var node = evt.target;
@@ -771,15 +754,15 @@
 						clearTimeout(showTipsTime);
 						//if(node._private.data.name.length > 13 || (node._private.data.keyNo[0] == 'p' && node._private.data.name.length > 3) || node._private.data.layout.revel > 2){
 						if (node._private.data.name.length > 13 || (node._private.data.keyNo && node._private.data
-								.keyNo[0] == 'p' && node._private.data.name.length > 3)) {
-							showTipsTime = setTimeout(function() {
+							.keyNo[0] == 'p' && node._private.data.name.length > 3)) {
+							showTipsTime = setTimeout(function () {
 								var name = node._private.data.name;
 								// 显示在节点位置
 								/*var tipWidth = name.length * 12 + 16;
 								var x = node._private.data.d3x + 655 - (tipWidth / 2);
 								var y = node._private.data.d3y + 598;
 								if(node._private.data.type == 'P'){
-								    y = node._private.data.d3y + 590;
+										y = node._private.data.d3y + 590;
 								}*/
 
 								// 显示在鼠标位置
@@ -799,11 +782,11 @@
 				/**
 				 * 鼠标移开节点
 				 */
-				cy.on('mouseout', 'node', function(evt) {
+				cy.on('mouseout', 'node', function (evt) {
 					$("#Main").css("cursor", "default");
 
 					// 提示
-					$('.tips').fadeOut(function() {
+					$('.tips').fadeOut(function () {
 						$('.tips').remove();
 					});
 					clearTimeout(showTipsTime);
@@ -826,7 +809,7 @@
 				/**
 				 * 鼠标悬停在连线上
 				 */
-				cy.on('mouseover', 'edge', function(evt) {
+				cy.on('mouseover', 'edge', function (evt) {
 					if (!_isFocus) {
 						var edge = evt.target;
 						// if (moveTimeer) {
@@ -843,7 +826,7 @@
 				/**
 				 * 鼠标离开连线
 				 */
-				cy.on('mouseout', 'edge', function(evt) {
+				cy.on('mouseout', 'edge', function (evt) {
 					if (!_isFocus) {
 						var edge = evt.target;
 						edge.removeClass("edgeActive");
@@ -860,7 +843,7 @@
 				/**
 				 * 鼠标点击连线时触发
 				 */
-				cy.on('click', 'edge', function(evt) {
+				cy.on('click', 'edge', function (evt) {
 					_isFocus = false;
 					activeNode = null;
 					cy.collection("node").removeClass("nodeActive");
@@ -870,7 +853,7 @@
 				/**
 				 * 点击画布，节点全部恢复高亮
 				 */
-				cy.on('click', function(event) {
+				cy.on('click', function (event) {
 					var evtTarget = event.target;
 					if (evtTarget === cy) {
 						_isFocus = false;
@@ -885,7 +868,7 @@
 				/**
 				 * 图谱缩放后触发
 				 */
-				cy.on('zoom', function() {
+				cy.on('zoom', function () {
 					console.log(cy.zoom());
 					if (cy.zoom() < 0.5) {
 						cy.collection("node").addClass("hidetext");
@@ -896,7 +879,7 @@
 					}
 
 					// 加载完成后，加载该类，修复线有锯齿的问题
-					setTimeout(function() {
+					setTimeout(function () {
 						cy.collection("edge").removeClass("lineFixed");
 						cy.collection("edge").addClass("lineFixed");
 					}, 200);
@@ -904,16 +887,16 @@
 				/**
 				 * 图谱被移动/拖拽后触发
 				 */
-				cy.on('pan', function() {
+				cy.on('pan', function () {
 					// 加载完成后，加载该类，修复线有锯齿的问题
-					setTimeout(function() {
+					setTimeout(function () {
 						cy.collection("edge").removeClass("lineFixed");
 						cy.collection("edge").addClass("lineFixed");
 					}, 200);
 				});
 
 				// 定位
-				cy.nodes().positions(function(node, i) {
+				cy.nodes().positions(function (node, i) {
 					// 保持居中
 					if (node._private.data.keyNo == _currentKeyNo) {
 						var position = cy.pan();
@@ -929,7 +912,7 @@
 					};
 				});
 
-				cy.ready(function() {
+				cy.ready(function () {
 
 					if (!$('#TrTxt').hasClass('active')) {
 						$('#TrTxt').click();
@@ -944,7 +927,7 @@
 					//cy.collection("edge").addClass("edgeActive");
 
 					// 加载完成后，加载该类，修复线有锯齿的问题
-					setTimeout(function() {
+					setTimeout(function () {
 						cy.collection("edge").addClass("lineFixed");
 					}, 400);
 
@@ -955,12 +938,12 @@
 					}
 				});
 
-				cy.nodes(function(node) {
+				cy.nodes(function (node) {
 
 					/*
 					// 当前查询节点关系文字显示
 					if(node._private.data.nodeId == _rootNode.nodeId){
-					    node.neighborhood("edge").addClass("edgeLevel1");
+							node.neighborhood("edge").addClass("edgeLevel1");
 					}*/
 				});
 			}
@@ -973,7 +956,7 @@
 
 				for (var i = 0; i < nodeIds.length; i++) {
 					var nodeId = nodeIds[i];
-					cy.nodes(function(node) {
+					cy.nodes(function (node) {
 						var nodeData = node._private.data;
 						if (nodeData.id == nodeId) {
 							node.removeClass('dull');
@@ -1004,7 +987,7 @@
 
 				for (var i = 0; i < nodeIds.length; i++) {
 					var nodeId = nodeIds[i];
-					cy.nodes(function(node) {
+					cy.nodes(function (node) {
 						var nodeData = node._private.data;
 						if (nodeData.id == nodeId) {
 							node.removeClass('dull');
@@ -1017,7 +1000,7 @@
 					});
 				}
 
-				cy.edges(function(edge) {
+				cy.edges(function (edge) {
 					var data = edge._private.data;
 					if (isInNodeIds(data.target) && isInNodeIds(data.source)) {
 						edge.removeClass('dull');
@@ -1094,7 +1077,7 @@
 				els.nodes = [];
 				els.edges = [];
 
-				graphData.links.forEach(function(link, i) {
+				graphData.links.forEach(function (link, i) {
 					var color = getLinkColor(link.data.type);
 					var label = getLinkLabel(link);
 					els.edges.push({
@@ -1106,11 +1089,10 @@
 							source: link.sourceNode.nodeId,
 							target: link.targetNode.nodeId
 						},
-						classes: 'autorotate'
 					});
 				});
 
-				graphData.nodes.forEach(function(node) {
+				graphData.nodes.forEach(function (node) {
 					els.nodes.push({
 						data: {
 							nodeId: node.nodeId,
@@ -1152,69 +1134,69 @@
 					}
 					$('.tp-list').append(str);
 				}
-				$('.tp-list > div > label').click(function() {
+				$('.tp-list > div > label').click(function () {
 					var _parent = $(this).parent();
 					var nodeId = _parent.attr('node_id');
 
 					focusReady(getGraphNode(nodeId, nodes));
 				});
 
-				$('.tp-list > div > input').click(function() {
+				$('.tp-list > div > input').click(function () {
 					/*var _this = $(this);
 					var _parent = $(this).parent();
 					var nodeId = _parent.attr('node_id');
 					var checkedNodeIds = $('.tp-list').attr('node_ids');
 					if(checkedNodeIds){
-					    checkedNodeIds = checkedNodeIds.split(',');
+							checkedNodeIds = checkedNodeIds.split(',');
 					}*/
 					var checkedNodeIds = [];
-					$('.tp-list input:checked').each(function() {
+					$('.tp-list input:checked').each(function () {
 						var _parent = $(this).parent();
 						var nodeId = _parent.attr('node_id');
 						checkedNodeIds.push(nodeId);
 					});
 
 					/*if(_this.is(':checked')){
-					    checkedNodeIds.push(nodeId);
-					    nodes.splice(1,1);
-					    console.log('checked');
+							checkedNodeIds.push(nodeId);
+							nodes.splice(1,1);
+							console.log('checked');
 					} else {
-					    console.log('un checked');
-					    var sub_nodes = []
-					    sub_nodes = nodes.splice(0,1);
-					    console.log(nodes);
-					    console.log(sub_nodes);
-					    graphInit(nodes, links);
+							console.log('un checked');
+							var sub_nodes = []
+							sub_nodes = nodes.splice(0,1);
+							console.log(nodes);
+							console.log(sub_nodes);
+							graphInit(nodes, links);
 					}*/
 					highLight(checkedNodeIds, cy);
 					/*// 需要隐藏的节点及子节点
 					var choosedNode = getGraphNode(nodeId,nodes);
 					var subNodes = getSubNodes(choosedNode,links);
 					subNodes.push(choosedNode);
-
+	
 					// 剩下的节点
 					var lastNodes = [];
 					for(var i = 0; i < nodes.length; i++){
-					    var node = nodes[i];
-					    if(!getGraphNode(node.nodeId,subNodes)){
-					        lastNodes.push(node);
-					    }
+							var node = nodes[i];
+							if(!getGraphNode(node.nodeId,subNodes)){
+									lastNodes.push(node);
+							}
 					}
-
+	
 					// 剩下的连线
 					var lastLinks = filterLinksByNodes(lastNodes,links);
-
+	
 					graphInit(lastNodes, lastLinks);
 					if(_this.is(':checked')){
-					    nodes.splice(1,1);
-					    console.log('checked');
+							nodes.splice(1,1);
+							console.log('checked');
 					} else {
-					    console.log('un checked');
-					    var sub_nodes = []
-					    sub_nodes = nodes.splice(0,1);
-					    console.log(nodes);
-					    console.log(sub_nodes);
-					    graphInit(nodes, links);
+							console.log('un checked');
+							var sub_nodes = []
+							sub_nodes = nodes.splice(0,1);
+							console.log(nodes);
+							console.log(sub_nodes);
+							graphInit(nodes, links);
 					}
 					console.log(nodeId);*/
 				});
@@ -1278,6 +1260,8 @@
 
 				//emplyRevert(graph.links);
 				//mergeLinks(graph.links);
+				console.log(123, graph)
+
 				setLevel(graph.nodes, graph.links);
 				setCategoryColor(graph.nodes, graph.links);
 				return graph;
@@ -1349,6 +1333,7 @@
 				}
 				var level = 1;
 				var nodes = [];
+				console.log(_rootNode, '_rootNode')
 				nodes.push(_rootNode);
 				while (nodes.length) {
 					var nextNodes = [];
@@ -1386,7 +1371,7 @@
 							var otherLink = links[j];
 							if (baseLink.linkId != otherLink.linkId && !otherLink.sameLink.isSetedSameLink) {
 								if ((otherLink.sourceNode.nodeId == nodeId1 && otherLink.targetNode.nodeId ==
-										nodeId2) ||
+									nodeId2) ||
 									(otherLink.sourceNode.nodeId == nodeId2 && otherLink.targetNode.nodeId == nodeId1)
 								) {
 									sameLinks.push(otherLink);
@@ -1417,57 +1402,50 @@
 					}
 				}
 			}
-		},
-		methods: {
-			/**
-			 * 图谱缩放
-			 * type == 1  放大
-			 * type == 2  缩小
-			 */
-			maoScale(type) {
-				console.log(1, type)
-				var rate = 0.2;
-				var scale = cy.zoom();
-				if (type == 1) {
-					scale += rate;
-				} else if (type == 2) {
-					scale -= rate;
-				}
-				cy.zoom({
-					level: scale, // the zoom level
-				});
-            },
-            // 导出png
-            exportImg() {
-                const blobUrl = cy.png({
-                    bg: '#fff',
-                    full: true,
-                    scale: 3
-                })
-                console.log('png', blobUrl)
-                const filename = '企业关系图谱.png';
-                const a = document.createElement('a');
-                a.href = blobUrl;
-                a.download = filename;;
-                a.click();
-                window.URL.revokeObjectURL(blobUrl);
-            },
-			refresh({
-				name = 'preset',
-				randomize = false,
-				animate = true
-			} = {}) {
-				cy.layout({
-					name: name,
-					randomize: randomize,
-					animate: animate,
-				}).run();
-			},
-			screenfullChange(screenfull) {
-				this.screenfull = screenfull
-			}
 		}
-	}
+		// 导出png
+		function exportImg() {
+			const blobUrl = cy.png({
+				bg: '#fff',
+				full: true,
+				scale: 3
+			})
+			console.log('png', blobUrl)
+			const filename = '企业关系图谱.png';
+			const a = document.createElement('a');
+			a.href = blobUrl;
+			a.download = filename;;
+			a.click();
+			window.URL.revokeObjectURL(blobUrl);
+		}
+		function refresh() {
+			cy.layout({
+				name: 'preset',
+				randomize: false,
+				animate: true,
+			}).run();
+		}
+		function screenfullChange(screenfull) {
+			screenfull.value = screenfull
+		}
+		function textShowChange(val) {
+			textShow.value = val
+			console.log(textShow.value, 1)
+			init()
+		}
+		// return {
+		// 	screenfull,
+		// 	init,
+		// 	exportImg,
+		// 	refresh,
+		// 	screenfullChange,
+		// 	textShowChange
+		// },
+			onMounted(() => {
+				init()
+			})
+// 	}
+// }
 </script>
 
 <style scoped>

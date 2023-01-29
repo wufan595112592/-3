@@ -1,25 +1,17 @@
 <template>
   <div class="toolbox">
     <ul class="mao-title breadcrumb">
-      <li :class="muban ? 'active': ''" @click="colorChange('1')">
+      <li :class="show ? 'active': ''" @click="showBox">
         <div class="icon"><span class="iconfont icon-liebiao"></span></div>
-        <div class="text">模板</div>
+        <div class="text">筛选</div>
       </li>
-      <li :class="wenzi ? 'active': ''" @click="textShowChange">
+      <li :class="simple ? 'active': ''" @click="simpleChange">
         <div class="icon"><span class="iconfont icon-zitiyanse"></span></div>
-        <div class="text">文字</div>
+        <div class="text">简称</div>
       </li>
-      <li :class="sousuo ? 'active': ''" @click="colorChange('3')">
+      <li :class="edit ? 'active': ''" @click="editChange">
         <div class="icon"><span class="iconfont icon-sousuo"></span></div>
-        <div class="text">搜索</div>
-      </li>
-      <li v-if="open" @click="openChange">
-        <div class="icon"><span class="iconfont icon-unfolded-s"></span></div>
-        <div class="text">展开</div>
-      </li>
-      <li v-if="!open" @click="openChange">
-        <div class="icon"><span class="iconfont icon-shouqi"></span></div>
-        <div class="text">收起</div>
+        <div class="text">编辑</div>
       </li>
       <li @click="maoScale(1)">
         <div class="icon"><span class="iconfont icon-fangda"></span></div>
@@ -52,22 +44,22 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import screenfull from 'screenfull'
-const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg'])
+const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg','showBox', 'editChange', 'simpleChange'])
 defineProps(['active'])
-let muban = ref(false)
-let wenzi = ref(true)
-let sousuo = ref(false)
-const open = ref(true)
-const isFullscreen = ref(false)
-function textShowChange() {
-  wenzi.value = !wenzi.value
-  emit('textShowChange', wenzi)
+let show = ref(false)
+let simple = ref(false)
+let edit = ref(false)
+let isFullscreen = ref(false)
+function showBox(show) {
+  show.value = !show.value
 }
-function colorChange(type) {
-  type == '1' ? muban.value = !muban.value : type == '2' ? wenzi.value = !wenzi.value : sousuo.value = !sousuo.value
+function simpleChange() {
+  simple.value = !simple.value
+  emit('simpleChange', simple)
 }
-function openChange() {
-  open.value = !open.value
+function editChange() {
+  edit.value = !edit.value
+  emit('editChange', edit)
 }
 function fullscreenClick() {
   if (!screenfull.isEnabled) {

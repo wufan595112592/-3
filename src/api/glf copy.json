@@ -1,0 +1,1974 @@
+{
+    "children": [
+        {
+            "desc": "母公司/控股股东",
+            "relation": 1,
+            "list": [
+                {
+                    "status": "P",
+                    "name": "雷军",
+                    "uid": "02ad6587897a976a793aa72ead924a47",
+                    "data": [
+                        [
+                            {
+                                "reason": "77.8%",
+                                "direct": "out",
+                                "type": "1",
+                                "uid1": "02ad6587897a976a793aa72ead924a47",
+                                "name1": "雷军",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "02ad6587897a976a793aa72ead924a47",
+                        "pname": "雷军",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/02ad6587897a976a793aa72ead924a47.jpg",
+                        "legalPersonCount": 13,
+                        "outInvestmentCount": 50,
+                        "outPositionCount": 47,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 70
+                    }
+                }
+            ],
+            "total": 1,
+            "type": 1,
+            "children": [
+                {
+                    "desc": "受控企业",
+                    "relation": 2,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                            "uid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                        "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "out",
+                                        "type": "1",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "湖北小米长江产业投资基金管理有限公司",
+                                "operNamePid": "",
+                                "regCapi": "1200000 万人民币",
+                                "startDate": "2017-12-07",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金星创业投资有限公司",
+                            "uid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "out",
+                                        "type": "1",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金星创业投资有限公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "247655.7552 万人民币",
+                                "startDate": "2013-12-26",
+                                "industryName": "创业投资基金",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金米投资合伙企业（有限合伙）",
+                            "uid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "62.12%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                        "name1": "天津金米投资合伙企业（有限合伙）",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "out",
+                                        "type": "1",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金米投资合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "天津金星创业投资有限公司",
+                                "operNamePid": "",
+                                "regCapi": "240895.7552 万人民币",
+                                "startDate": "2014-07-16",
+                                "industryName": "证券期货监管服务",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "北京小米电子软件技术有限公司",
+                            "uid": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "90.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                                        "name1": "北京小米电子软件技术有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "out",
+                                        "type": "1",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "北京小米电子软件技术有限公司",
+                                "status": "存续",
+                                "operName": "岳凯",
+                                "operNamePid": "23d913af796409683c563daabaa35a88",
+                                "regCapi": "207100.1956 万人民币",
+                                "startDate": "2014-07-01",
+                                "industryName": "自然科学研究和试验发展",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "四川银米科技有限责任公司",
+                            "uid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "90.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                        "name1": "四川银米科技有限责任公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "out",
+                                        "type": "1",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/5852900bf1e8e5ad38b9a035c54f5806.jpg",
+                                "name": "四川银米科技有限责任公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "200000 万人民币",
+                                "startDate": "2005-10-26",
+                                "industryName": "工程和技术研究和试验发展",
+                                "statusCode": "1"
+                            }
+                        }
+                    ],
+                    "total": 60,
+                    "type": 1,
+                    "children": {},
+                    "direct": "out"
+                }
+            ],
+            "direct": "in"
+        },
+        {
+            "desc": "直接或间接持股5%及以上的自然人",
+            "relation": 6,
+            "list": [
+                {
+                    "status": "P",
+                    "name": "黎万强",
+                    "uid": "007e105cd80818842acd7a512f26a7fe",
+                    "data": [
+                        [
+                            {
+                                "reason": "10.12%",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                "name1": "黎万强",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "007e105cd80818842acd7a512f26a7fe",
+                        "pname": "黎万强",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/007e105cd80818842acd7a512f26a7fe.jpg",
+                        "legalPersonCount": 71,
+                        "outInvestmentCount": 22,
+                        "outPositionCount": 50,
+                        "kgCountData": 0,
+                        "position": "董事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 6
+                    }
+                },
+                {
+                    "status": "P",
+                    "name": "洪锋",
+                    "uid": "084537cd7b157f551256bd0039fcab0f",
+                    "data": [
+                        [
+                            {
+                                "reason": "10.07%",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "084537cd7b157f551256bd0039fcab0f",
+                                "name1": "洪锋",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "084537cd7b157f551256bd0039fcab0f",
+                        "pname": "洪锋",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/084537cd7b157f551256bd0039fcab0f.jpg",
+                        "legalPersonCount": 5,
+                        "outInvestmentCount": 11,
+                        "outPositionCount": 10,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 0
+                    }
+                }
+            ],
+            "total": 2,
+            "type": 2,
+            "children": [
+                {
+                    "desc": "担任董监高法的企业",
+                    "relation": 7,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "四川银米科技有限责任公司",
+                            "uid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "经理",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                        "name1": "四川银米科技有限责任公司",
+                                        "name2": "洪锋",
+                                        "uid2": "084537cd7b157f551256bd0039fcab0f"
+                                    },
+                                    {
+                                        "reason": "10.07%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "084537cd7b157f551256bd0039fcab0f",
+                                        "name1": "洪锋",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/5852900bf1e8e5ad38b9a035c54f5806.jpg",
+                                "name": "四川银米科技有限责任公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "200000 万人民币",
+                                "startDate": "2005-10-26",
+                                "industryName": "工程和技术研究和试验发展",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "重庆小米消费金融有限公司",
+                            "uid": "a34ccf1f-5510-48c7-91bc-495be86a1021",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "法定代表人、董事长",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "a34ccf1f-5510-48c7-91bc-495be86a1021",
+                                        "name1": "重庆小米消费金融有限公司",
+                                        "name2": "洪锋",
+                                        "uid2": "084537cd7b157f551256bd0039fcab0f"
+                                    },
+                                    {
+                                        "reason": "10.07%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "084537cd7b157f551256bd0039fcab0f",
+                                        "name1": "洪锋",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "a34ccf1f-5510-48c7-91bc-495be86a1021",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/13e0ac401ac897d289699da838bc536d.jpg",
+                                "name": "重庆小米消费金融有限公司",
+                                "status": "存续",
+                                "operName": "洪锋",
+                                "operNamePid": "084537cd7b157f551256bd0039fcab0f",
+                                "regCapi": "150000 万人民币",
+                                "startDate": "2020-05-29",
+                                "industryName": "消费金融公司服务",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "重庆融渝科技有限公司",
+                            "uid": "fbe15da5-dd56-457b-9fe7-59788197dea3",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "法定代表人、董事、经理",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "fbe15da5-dd56-457b-9fe7-59788197dea3",
+                                        "name1": "重庆融渝科技有限公司",
+                                        "name2": "洪锋",
+                                        "uid2": "084537cd7b157f551256bd0039fcab0f"
+                                    },
+                                    {
+                                        "reason": "10.07%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "084537cd7b157f551256bd0039fcab0f",
+                                        "name1": "洪锋",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "fbe15da5-dd56-457b-9fe7-59788197dea3",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/beecf39ed5ec81adc05bcdaffcf1c327.jpg",
+                                "name": "重庆融渝科技有限公司",
+                                "status": "存续",
+                                "operName": "洪锋",
+                                "operNamePid": "084537cd7b157f551256bd0039fcab0f",
+                                "regCapi": "6000 万美元",
+                                "startDate": "2015-06-12",
+                                "industryName": "其他未包括金融业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "上海强城星空文化有限公司",
+                            "uid": "e242d546-83be-4f43-9d69-43c7b45f40ba",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "执行董事、法定代表人",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "e242d546-83be-4f43-9d69-43c7b45f40ba",
+                                        "name1": "上海强城星空文化有限公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "e242d546-83be-4f43-9d69-43c7b45f40ba",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "上海强城星空文化有限公司",
+                                "status": "存续",
+                                "operName": "黎万强",
+                                "operNamePid": "007e105cd80818842acd7a512f26a7fe",
+                                "regCapi": "4000 万美元",
+                                "startDate": "2021-05-17",
+                                "industryName": "商务服务业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "捷付睿通股份有限公司",
+                            "uid": "c4931a31-ffc8-413c-b7fd-ce190806246f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "董事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "c4931a31-ffc8-413c-b7fd-ce190806246f",
+                                        "name1": "捷付睿通股份有限公司",
+                                        "name2": "洪锋",
+                                        "uid2": "084537cd7b157f551256bd0039fcab0f"
+                                    },
+                                    {
+                                        "reason": "10.07%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "084537cd7b157f551256bd0039fcab0f",
+                                        "name1": "洪锋",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "c4931a31-ffc8-413c-b7fd-ce190806246f",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/6d338b3656379f9b3a699a61e7ee5141.jpg",
+                                "name": "捷付睿通股份有限公司",
+                                "status": "存续",
+                                "operName": "雷军",
+                                "operNamePid": "02ad6587897a976a793aa72ead924a47",
+                                "regCapi": "10000 万人民币",
+                                "startDate": "2011-01-11",
+                                "industryName": "信息系统集成服务",
+                                "statusCode": "1"
+                            }
+                        }
+                    ],
+                    "total": 94,
+                    "type": 2,
+                    "children": {},
+                    "direct": "out"
+                },
+                {
+                    "desc": "受控企业",
+                    "relation": 8,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "上海不杂艺术有限公司",
+                            "uid": "b1c57ae9-7904-4dd5-a88a-3e25af89335f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "95.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "b1c57ae9-7904-4dd5-a88a-3e25af89335f",
+                                        "name1": "上海不杂艺术有限公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "b1c57ae9-7904-4dd5-a88a-3e25af89335f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "上海不杂艺术有限公司",
+                                "status": "存续",
+                                "operName": "张娟",
+                                "operNamePid": "1cd69b1936493a7fab44a4b9d109fd7b",
+                                "regCapi": "8000 万人民币",
+                                "startDate": "2021-05-14",
+                                "industryName": "商务服务业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "小米影业有限责任公司",
+                            "uid": "f965c7bb-082a-47fc-973d-b760ab0e5076",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "87.92%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "f965c7bb-082a-47fc-973d-b760ab0e5076",
+                                        "name1": "小米影业有限责任公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "f965c7bb-082a-47fc-973d-b760ab0e5076",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "小米影业有限责任公司",
+                                "status": "存续",
+                                "operName": "王川",
+                                "operNamePid": "02c4600cafa91523e0dfbd5320ce9769",
+                                "regCapi": "5000 万人民币",
+                                "startDate": "2016-06-07",
+                                "industryName": "影视节目制作",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津树海管理咨询有限公司",
+                            "uid": "2054a7c3-b2af-4e89-b726-a0e9756a3fc8",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "80.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "2054a7c3-b2af-4e89-b726-a0e9756a3fc8",
+                                        "name1": "天津树海管理咨询有限公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "2054a7c3-b2af-4e89-b726-a0e9756a3fc8",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津树海管理咨询有限公司",
+                                "status": "存续",
+                                "operName": "张娟",
+                                "operNamePid": "0003ce696d3ed95711ccd4adbfc29ced",
+                                "regCapi": "1000 万人民币",
+                                "startDate": "2020-09-23",
+                                "industryName": "社会经济咨询",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "上海山月电子商务有限公司",
+                            "uid": "7d8b173f-9d08-4fac-8e10-12329488e71e",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "100.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "7d8b173f-9d08-4fac-8e10-12329488e71e",
+                                        "name1": "上海山月电子商务有限公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "7d8b173f-9d08-4fac-8e10-12329488e71e",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "上海山月电子商务有限公司",
+                                "status": "存续",
+                                "operName": "黎燕萍",
+                                "operNamePid": "092e6bb604df8838a195ced141c57fa2",
+                                "regCapi": "500 万人民币",
+                                "startDate": "2020-10-23",
+                                "industryName": "其他未列明零售业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "writenoff",
+                            "name": "北京小米影业投资有限公司",
+                            "uid": "97bfd758-076d-4d09-bb45-74d7ad568572",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "87.92%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "97bfd758-076d-4d09-bb45-74d7ad568572",
+                                        "name1": "北京小米影业投资有限公司",
+                                        "name2": "黎万强",
+                                        "uid2": "007e105cd80818842acd7a512f26a7fe"
+                                    },
+                                    {
+                                        "reason": "10.12%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "007e105cd80818842acd7a512f26a7fe",
+                                        "name1": "黎万强",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "97bfd758-076d-4d09-bb45-74d7ad568572",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "北京小米影业投资有限公司",
+                                "status": "注销",
+                                "operName": "CHEW SHOU ZI",
+                                "operNamePid": "023876271deac9fdf1db3e6d52e89c07",
+                                "regCapi": "200 万人民币",
+                                "startDate": "2016-07-19",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "2"
+                            }
+                        }
+                    ],
+                    "total": 6,
+                    "type": 1,
+                    "children": {},
+                    "direct": "out"
+                }
+            ],
+            "direct": "in"
+        },
+        {
+            "desc": "董监高法",
+            "relation": 9,
+            "list": [
+                {
+                    "status": "P",
+                    "name": "雷军",
+                    "uid": "02ad6587897a976a793aa72ead924a47",
+                    "data": [
+                        [
+                            {
+                                "reason": "法定代表人、董事长、经理",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "02ad6587897a976a793aa72ead924a47",
+                                "name1": "雷军",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "02ad6587897a976a793aa72ead924a47",
+                        "pname": "雷军",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/02ad6587897a976a793aa72ead924a47.jpg",
+                        "legalPersonCount": 13,
+                        "outInvestmentCount": 50,
+                        "outPositionCount": 47,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 70
+                    }
+                },
+                {
+                    "status": "P",
+                    "name": "刘芹",
+                    "uid": "0a912ef282dbb18fa443f034775dd2cd",
+                    "data": [
+                        [
+                            {
+                                "reason": "董事",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "0a912ef282dbb18fa443f034775dd2cd",
+                                "name1": "刘芹",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "0a912ef282dbb18fa443f034775dd2cd",
+                        "pname": "刘芹",
+                        "photo": "",
+                        "legalPersonCount": 0,
+                        "outInvestmentCount": 4,
+                        "outPositionCount": 24,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 0
+                    }
+                },
+                {
+                    "status": "P",
+                    "name": "刘德",
+                    "uid": "11201954e9928c752e8c7ac169ee9792",
+                    "data": [
+                        [
+                            {
+                                "reason": "监事",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "11201954e9928c752e8c7ac169ee9792",
+                                "name1": "刘德",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "11201954e9928c752e8c7ac169ee9792",
+                        "pname": "刘德",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/11201954e9928c752e8c7ac169ee9792.jpg",
+                        "legalPersonCount": 9,
+                        "outInvestmentCount": 18,
+                        "outPositionCount": 116,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 7
+                    }
+                },
+                {
+                    "status": "P",
+                    "name": "林斌",
+                    "uid": "208a521520fd675557e4a8920bea3557",
+                    "data": [
+                        [
+                            {
+                                "reason": "董事",
+                                "direct": "out",
+                                "type": "2",
+                                "uid1": "208a521520fd675557e4a8920bea3557",
+                                "name1": "林斌",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "personInfo": {
+                        "pid": "208a521520fd675557e4a8920bea3557",
+                        "pname": "林斌",
+                        "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/208a521520fd675557e4a8920bea3557.jpg",
+                        "legalPersonCount": 1,
+                        "outInvestmentCount": 1,
+                        "outPositionCount": 9,
+                        "kgCountData": 0,
+                        "position": "股东、监事",
+                        "eid": "534472fd-7d53-4958-8132-d6a6242423d8",
+                        "eName": "小米科技有限责任公司",
+                        "kgCount": 1
+                    }
+                }
+            ],
+            "total": 4,
+            "type": 2,
+            "children": [
+                {
+                    "desc": "董监高法的控股企业",
+                    "relation": 10,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                            "uid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                        "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "湖北小米长江产业投资基金管理有限公司",
+                                "operNamePid": "",
+                                "regCapi": "1200000 万人民币",
+                                "startDate": "2017-12-07",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金星创业投资有限公司",
+                            "uid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "77.8%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金星创业投资有限公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "247655.7552 万人民币",
+                                "startDate": "2013-12-26",
+                                "industryName": "创业投资基金",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金米投资合伙企业（有限合伙）",
+                            "uid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "62.12%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                        "name1": "天津金米投资合伙企业（有限合伙）",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金米投资合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "天津金星创业投资有限公司",
+                                "operNamePid": "",
+                                "regCapi": "240895.7552 万人民币",
+                                "startDate": "2014-07-16",
+                                "industryName": "证券期货监管服务",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "北京小米电子软件技术有限公司",
+                            "uid": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "90.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                                        "name1": "北京小米电子软件技术有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "af998c21-82f4-4de5-ac0f-23258ec8e62f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "北京小米电子软件技术有限公司",
+                                "status": "存续",
+                                "operName": "岳凯",
+                                "operNamePid": "23d913af796409683c563daabaa35a88",
+                                "regCapi": "207100.1956 万人民币",
+                                "startDate": "2014-07-01",
+                                "industryName": "自然科学研究和试验发展",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "四川银米科技有限责任公司",
+                            "uid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "90.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                        "name1": "四川银米科技有限责任公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8ee84f74-d12e-41fd-aeee-21cc20958786",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/5852900bf1e8e5ad38b9a035c54f5806.jpg",
+                                "name": "四川银米科技有限责任公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "200000 万人民币",
+                                "startDate": "2005-10-26",
+                                "industryName": "工程和技术研究和试验发展",
+                                "statusCode": "1"
+                            }
+                        }
+                    ],
+                    "total": 67,
+                    "type": 1,
+                    "children": {},
+                    "direct": "out"
+                },
+                {
+                    "desc": "担任董监高法的企业",
+                    "relation": 11,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "小米汽车有限公司",
+                            "uid": "a1a56ca3-0337-4fca-a61c-c1090daba1e1",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "法定代表人、经理、执行董事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "a1a56ca3-0337-4fca-a61c-c1090daba1e1",
+                                        "name1": "小米汽车有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "监事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "a1a56ca3-0337-4fca-a61c-c1090daba1e1",
+                                        "name1": "小米汽车有限公司",
+                                        "name2": "刘德",
+                                        "uid2": "11201954e9928c752e8c7ac169ee9792"
+                                    },
+                                    {
+                                        "reason": "监事",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "11201954e9928c752e8c7ac169ee9792",
+                                        "name1": "刘德",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "a1a56ca3-0337-4fca-a61c-c1090daba1e1",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/c18ba025b0e2b69d5f7852b8871bf6db.jpg",
+                                "name": "小米汽车有限公司",
+                                "status": "存续",
+                                "operName": "雷军",
+                                "operNamePid": "02ad6587897a976a793aa72ead924a47",
+                                "regCapi": "1000000 万人民币",
+                                "startDate": "2021-09-01",
+                                "industryName": "汽车制造业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "四川新网银行股份有限公司",
+                            "uid": "54a944d3-03bb-49b8-9ad0-09231c9b6d6d",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "董事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "54a944d3-03bb-49b8-9ad0-09231c9b6d6d",
+                                        "name1": "四川新网银行股份有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "54a944d3-03bb-49b8-9ad0-09231c9b6d6d",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/3fcd018c05ab7d0766bcebe9e6b7cd1b.jpg",
+                                "name": "四川新网银行股份有限公司",
+                                "status": "存续",
+                                "operName": "江海",
+                                "operNamePid": "122364233c15dc651dc14164db233e6f",
+                                "regCapi": "300000 万人民币",
+                                "startDate": "2016-12-28",
+                                "industryName": "商业银行服务",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "小米商业保理（天津）有限责任公司",
+                            "uid": "b8ec20b4-e0bf-4426-8785-e4b6c38bda40",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "监事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "b8ec20b4-e0bf-4426-8785-e4b6c38bda40",
+                                        "name1": "小米商业保理（天津）有限责任公司",
+                                        "name2": "刘德",
+                                        "uid2": "11201954e9928c752e8c7ac169ee9792"
+                                    },
+                                    {
+                                        "reason": "监事",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "11201954e9928c752e8c7ac169ee9792",
+                                        "name1": "刘德",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "b8ec20b4-e0bf-4426-8785-e4b6c38bda40",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "小米商业保理（天津）有限责任公司",
+                                "status": "存续",
+                                "operName": "岳凯",
+                                "operNamePid": "23d913af796409683c563daabaa35a88",
+                                "regCapi": "38000 万美元",
+                                "startDate": "2018-03-21",
+                                "industryName": "其他未包括金融业",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金星创业投资有限公司",
+                            "uid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "监事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "刘德",
+                                        "uid2": "11201954e9928c752e8c7ac169ee9792"
+                                    },
+                                    {
+                                        "reason": "监事",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "11201954e9928c752e8c7ac169ee9792",
+                                        "name1": "刘德",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金星创业投资有限公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "247655.7552 万人民币",
+                                "startDate": "2013-12-26",
+                                "industryName": "创业投资基金",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天星数科科技有限公司",
+                            "uid": "527baee4-8d0c-4b6a-8eb4-582ae1fc4718",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "董事长",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "527baee4-8d0c-4b6a-8eb4-582ae1fc4718",
+                                        "name1": "天星数科科技有限公司",
+                                        "name2": "雷军",
+                                        "uid2": "02ad6587897a976a793aa72ead924a47"
+                                    },
+                                    {
+                                        "reason": "法定代表人、董事长、经理",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "02ad6587897a976a793aa72ead924a47",
+                                        "name1": "雷军",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "监事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "527baee4-8d0c-4b6a-8eb4-582ae1fc4718",
+                                        "name1": "天星数科科技有限公司",
+                                        "name2": "刘德",
+                                        "uid2": "11201954e9928c752e8c7ac169ee9792"
+                                    },
+                                    {
+                                        "reason": "监事",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "11201954e9928c752e8c7ac169ee9792",
+                                        "name1": "刘德",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "董事",
+                                        "direct": "in",
+                                        "type": "2",
+                                        "uid1": "527baee4-8d0c-4b6a-8eb4-582ae1fc4718",
+                                        "name1": "天星数科科技有限公司",
+                                        "name2": "林斌",
+                                        "uid2": "208a521520fd675557e4a8920bea3557"
+                                    },
+                                    {
+                                        "reason": "董事",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "208a521520fd675557e4a8920bea3557",
+                                        "name1": "林斌",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "527baee4-8d0c-4b6a-8eb4-582ae1fc4718",
+                                "entityType": "0",
+                                "logoUrl": "https://qxb-logo-url-osscache.qixin.com/OriginalUrl/aa48ad7c0034964303380f39c27ca641.jpg",
+                                "name": "天星数科科技有限公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "231363 万人民币",
+                                "startDate": "2013-12-26",
+                                "industryName": "其他技术推广服务",
+                                "statusCode": "1"
+                            }
+                        }
+                    ],
+                    "total": 163,
+                    "type": 2,
+                    "children": {},
+                    "direct": "out"
+                }
+            ],
+            "direct": "in"
+        },
+        {
+            "desc": "子公司",
+            "relation": 12,
+            "list": [
+                {
+                    "status": "live",
+                    "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                    "uid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                    "data": [
+                        [
+                            {
+                                "reason": "",
+                                "direct": "in",
+                                "type": "1",
+                                "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "entInfo": {
+                        "eid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                        "entityType": "0",
+                        "logoUrl": "",
+                        "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                        "status": "存续",
+                        "operName": "湖北小米长江产业投资基金管理有限公司",
+                        "operNamePid": "",
+                        "regCapi": "1200000 万人民币",
+                        "startDate": "2017-12-07",
+                        "industryName": "投资与资产管理",
+                        "statusCode": "1"
+                    }
+                },
+                {
+                    "status": "live",
+                    "name": "天津金星创业投资有限公司",
+                    "uid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                    "data": [
+                        [
+                            {
+                                "reason": "100.0%",
+                                "direct": "in",
+                                "type": "1",
+                                "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                "name1": "天津金星创业投资有限公司",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "entInfo": {
+                        "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                        "entityType": "0",
+                        "logoUrl": "",
+                        "name": "天津金星创业投资有限公司",
+                        "status": "存续",
+                        "operName": "林世伟",
+                        "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                        "regCapi": "247655.7552 万人民币",
+                        "startDate": "2013-12-26",
+                        "industryName": "创业投资基金",
+                        "statusCode": "1"
+                    }
+                },
+                {
+                    "status": "live",
+                    "name": "天津金米投资合伙企业（有限合伙）",
+                    "uid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                    "data": [
+                        [
+                            {
+                                "reason": "79.73%",
+                                "direct": "in",
+                                "type": "1",
+                                "uid1": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                "name1": "天津金米投资合伙企业（有限合伙）",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "entInfo": {
+                        "eid": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                        "entityType": "0",
+                        "logoUrl": "",
+                        "name": "天津金米投资合伙企业（有限合伙）",
+                        "status": "存续",
+                        "operName": "天津金星创业投资有限公司",
+                        "operNamePid": "",
+                        "regCapi": "240895.7552 万人民币",
+                        "startDate": "2014-07-16",
+                        "industryName": "证券期货监管服务",
+                        "statusCode": "1"
+                    }
+                },
+                {
+                    "status": "live",
+                    "name": "武汉壹捌壹零企业管理有限公司",
+                    "uid": "f4140676-3ca7-4dfd-be2b-ddf605156d56",
+                    "data": [
+                        [
+                            {
+                                "reason": "100.0%",
+                                "direct": "in",
+                                "type": "1",
+                                "uid1": "f4140676-3ca7-4dfd-be2b-ddf605156d56",
+                                "name1": "武汉壹捌壹零企业管理有限公司",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "entInfo": {
+                        "eid": "f4140676-3ca7-4dfd-be2b-ddf605156d56",
+                        "entityType": "0",
+                        "logoUrl": "",
+                        "name": "武汉壹捌壹零企业管理有限公司",
+                        "status": "存续",
+                        "operName": "林世伟",
+                        "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                        "regCapi": "200000 万人民币",
+                        "startDate": "2021-11-24",
+                        "industryName": "商务服务业",
+                        "statusCode": "1"
+                    }
+                },
+                {
+                    "status": "live",
+                    "name": "上海籽月企业管理咨询合伙企业（有限合伙）",
+                    "uid": "66bf25ac-d1af-49ca-939f-a057b90b931a",
+                    "data": [
+                        [
+                            {
+                                "reason": "0.4%",
+                                "direct": "in",
+                                "type": "1",
+                                "uid1": "66bf25ac-d1af-49ca-939f-a057b90b931a",
+                                "name1": "上海籽月企业管理咨询合伙企业（有限合伙）",
+                                "name2": "小米科技有限责任公司",
+                                "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                            }
+                        ]
+                    ],
+                    "entInfo": {
+                        "eid": "66bf25ac-d1af-49ca-939f-a057b90b931a",
+                        "entityType": "0",
+                        "logoUrl": "",
+                        "name": "上海籽月企业管理咨询合伙企业（有限合伙）",
+                        "status": "存续",
+                        "operName": "湖北小米长江产业投资基金管理有限公司",
+                        "operNamePid": "",
+                        "regCapi": "104423 万人民币",
+                        "startDate": "2021-06-28",
+                        "industryName": "商务服务业",
+                        "statusCode": "1"
+                    }
+                }
+            ],
+            "total": 37,
+            "type": 1,
+            "children": [
+                {
+                    "desc": "持股10%及以上的企业",
+                    "relation": 13,
+                    "list": [
+                        {
+                            "status": "live",
+                            "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                            "uid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "99.01%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                        "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                        "name2": "湖北嘉月股权投资合伙企业（有限合伙）",
+                                        "uid2": "3ce1a416-e0ef-4a22-9380-40917c938867"
+                                    },
+                                    {
+                                        "reason": "0.79%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "3ce1a416-e0ef-4a22-9380-40917c938867",
+                                        "name1": "湖北嘉月股权投资合伙企业（有限合伙）",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "99.5%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                        "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                        "name2": "上海籽月企业管理咨询合伙企业（有限合伙）",
+                                        "uid2": "66bf25ac-d1af-49ca-939f-a057b90b931a"
+                                    },
+                                    {
+                                        "reason": "0.4%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "66bf25ac-d1af-49ca-939f-a057b90b931a",
+                                        "name1": "上海籽月企业管理咨询合伙企业（有限合伙）",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "37.19%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                        "name1": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                        "name2": "深圳泰德激光技术股份有限公司",
+                                        "uid2": "c52a7048-4882-49d3-84f1-f233bf79a8a8"
+                                    },
+                                    {
+                                        "reason": "",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "c52a7048-4882-49d3-84f1-f233bf79a8a8",
+                                        "name1": "深圳泰德激光技术股份有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "8e3dd1ce-8127-42c6-9db6-642990e98f00",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "湖北小米长江产业基金合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "湖北小米长江产业投资基金管理有限公司",
+                                "operNamePid": "",
+                                "regCapi": "1200000 万人民币",
+                                "startDate": "2017-12-07",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "南昌金开资本管理有限公司",
+                            "uid": "e8b26d29-202c-4aa1-bb64-49636211394d",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "26.6%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "e8b26d29-202c-4aa1-bb64-49636211394d",
+                                        "name1": "南昌金开资本管理有限公司",
+                                        "name2": "南昌黑鲨科技有限公司",
+                                        "uid2": "eaec346a-c713-4376-a62b-7f8a20dbc761"
+                                    },
+                                    {
+                                        "reason": "46.44%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "eaec346a-c713-4376-a62b-7f8a20dbc761",
+                                        "name1": "南昌黑鲨科技有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "e8b26d29-202c-4aa1-bb64-49636211394d",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "南昌金开资本管理有限公司",
+                                "status": "存续",
+                                "operName": "聂磊",
+                                "operNamePid": "a5b039d8d46892ec7981d209b2bc8647",
+                                "regCapi": "300000 万人民币",
+                                "startDate": "2016-12-27",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津金星创业投资有限公司",
+                            "uid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "70.65%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "天津金米投资合伙企业（有限合伙）",
+                                        "uid2": "3520cb4d-6942-4da8-94e1-3bfa410a8b49"
+                                    },
+                                    {
+                                        "reason": "79.73%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                        "name1": "天津金米投资合伙企业（有限合伙）",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "100.0%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "小米产业投资管理有限公司",
+                                        "uid2": "74446062-3f68-470d-8baf-2178c4c17ba4"
+                                    },
+                                    {
+                                        "reason": "100.0%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "74446062-3f68-470d-8baf-2178c4c17ba4",
+                                        "name1": "小米产业投资管理有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "80.1%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "天津未来新视界传媒有限公司",
+                                        "uid2": "dc3c3528-f5a0-4204-bd65-36b8bb0e759a"
+                                    },
+                                    {
+                                        "reason": "80.1%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "dc3c3528-f5a0-4204-bd65-36b8bb0e759a",
+                                        "name1": "天津未来新视界传媒有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "reason": "46.44%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                        "name1": "天津金星创业投资有限公司",
+                                        "name2": "南昌黑鲨科技有限公司",
+                                        "uid2": "eaec346a-c713-4376-a62b-7f8a20dbc761"
+                                    },
+                                    {
+                                        "reason": "46.44%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "eaec346a-c713-4376-a62b-7f8a20dbc761",
+                                        "name1": "南昌黑鲨科技有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "4b89842f-0218-456b-ba5f-5239d8932a5f",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津金星创业投资有限公司",
+                                "status": "存续",
+                                "operName": "林世伟",
+                                "operNamePid": "64df09daa97ef8d87a1eba49f2a55b2a",
+                                "regCapi": "247655.7552 万人民币",
+                                "startDate": "2013-12-26",
+                                "industryName": "创业投资基金",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "天津众米企业管理合伙企业（有限合伙）",
+                            "uid": "0137062b-de37-4aa4-bdd2-3de201670952",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "29.35%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "0137062b-de37-4aa4-bdd2-3de201670952",
+                                        "name1": "天津众米企业管理合伙企业（有限合伙）",
+                                        "name2": "天津金米投资合伙企业（有限合伙）",
+                                        "uid2": "3520cb4d-6942-4da8-94e1-3bfa410a8b49"
+                                    },
+                                    {
+                                        "reason": "79.73%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "3520cb4d-6942-4da8-94e1-3bfa410a8b49",
+                                        "name1": "天津金米投资合伙企业（有限合伙）",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "0137062b-de37-4aa4-bdd2-3de201670952",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "天津众米企业管理合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "天津金星创业投资有限公司",
+                                "operNamePid": "",
+                                "regCapi": "33241 万人民币",
+                                "startDate": "2014-06-27",
+                                "industryName": "组织管理服务",
+                                "statusCode": "1"
+                            }
+                        },
+                        {
+                            "status": "live",
+                            "name": "南京金浦新潮创业投资合伙企业（有限合伙）",
+                            "uid": "c22b22f9-4156-4bf8-a0cb-ed625365d810",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "12.4%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "c22b22f9-4156-4bf8-a0cb-ed625365d810",
+                                        "name1": "南京金浦新潮创业投资合伙企业（有限合伙）",
+                                        "name2": "深圳泰德激光技术股份有限公司",
+                                        "uid2": "c52a7048-4882-49d3-84f1-f233bf79a8a8"
+                                    },
+                                    {
+                                        "reason": "",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "c52a7048-4882-49d3-84f1-f233bf79a8a8",
+                                        "name1": "深圳泰德激光技术股份有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "entInfo": {
+                                "eid": "c22b22f9-4156-4bf8-a0cb-ed625365d810",
+                                "entityType": "0",
+                                "logoUrl": "",
+                                "name": "南京金浦新潮创业投资合伙企业（有限合伙）",
+                                "status": "存续",
+                                "operName": "金浦新潮投资管理（上海）有限公司",
+                                "operNamePid": "",
+                                "regCapi": "30500 万人民币",
+                                "startDate": "2019-07-19",
+                                "industryName": "投资与资产管理",
+                                "statusCode": "1"
+                            }
+                        }
+                    ],
+                    "total": 16,
+                    "type": 2,
+                    "children": {},
+                    "direct": "in"
+                },
+                {
+                    "desc": "持股10%及以上的自然人",
+                    "relation": 14,
+                    "list": [
+                        {
+                            "status": "P",
+                            "name": "周志刚",
+                            "uid": "41dee7fd240b837038d1ff74eed17563",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "13.5%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "41dee7fd240b837038d1ff74eed17563",
+                                        "name1": "周志刚",
+                                        "name2": "西安海导信息技术有限公司",
+                                        "uid2": "09361380-5e44-4417-bec6-3d5339b1265d"
+                                    },
+                                    {
+                                        "reason": "31.89%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "09361380-5e44-4417-bec6-3d5339b1265d",
+                                        "name1": "西安海导信息技术有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "personInfo": {
+                                "pid": "41dee7fd240b837038d1ff74eed17563",
+                                "pname": "周志刚",
+                                "photo": "",
+                                "legalPersonCount": 1,
+                                "outInvestmentCount": 2,
+                                "outPositionCount": 2,
+                                "kgCountData": 0,
+                                "position": "董事",
+                                "eid": "d68813ac-7430-46fb-9513-d7a5fe543c07",
+                                "eName": "深圳绿米联创科技有限公司",
+                                "kgCount": 0
+                            }
+                        },
+                        {
+                            "status": "P",
+                            "name": "柯元旦",
+                            "uid": "7dc020c3cb92e55472592c6a47ec3d32",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "33.0%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "7dc020c3cb92e55472592c6a47ec3d32",
+                                        "name1": "柯元旦",
+                                        "name2": "西安海导信息技术有限公司",
+                                        "uid2": "09361380-5e44-4417-bec6-3d5339b1265d"
+                                    },
+                                    {
+                                        "reason": "31.89%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "09361380-5e44-4417-bec6-3d5339b1265d",
+                                        "name1": "西安海导信息技术有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "personInfo": {
+                                "pid": "7dc020c3cb92e55472592c6a47ec3d32",
+                                "pname": "柯元旦",
+                                "photo": "http://qxb-img.oss-cn-hangzhou.aliyuncs.com/wm_head_icon/7dc020c3cb92e55472592c6a47ec3d32.jpg",
+                                "legalPersonCount": 2,
+                                "outInvestmentCount": 2,
+                                "outPositionCount": 2,
+                                "kgCountData": 0,
+                                "position": "董事",
+                                "eid": "d68813ac-7430-46fb-9513-d7a5fe543c07",
+                                "eName": "深圳绿米联创科技有限公司",
+                                "kgCount": 1
+                            }
+                        },
+                        {
+                            "status": "P",
+                            "name": "方明",
+                            "uid": "c1126e6aec52d83df72665c1bf3ae6ff",
+                            "data": [
+                                [
+                                    {
+                                        "reason": "13.5%",
+                                        "direct": "out",
+                                        "type": "2",
+                                        "uid1": "c1126e6aec52d83df72665c1bf3ae6ff",
+                                        "name1": "方明",
+                                        "name2": "西安海导信息技术有限公司",
+                                        "uid2": "09361380-5e44-4417-bec6-3d5339b1265d"
+                                    },
+                                    {
+                                        "reason": "31.89%",
+                                        "direct": "in",
+                                        "type": "1",
+                                        "uid1": "09361380-5e44-4417-bec6-3d5339b1265d",
+                                        "name1": "西安海导信息技术有限公司",
+                                        "name2": "小米科技有限责任公司",
+                                        "uid2": "534472fd-7d53-4958-8132-d6a6242423d8"
+                                    }
+                                ]
+                            ],
+                            "personInfo": {
+                                "pid": "c1126e6aec52d83df72665c1bf3ae6ff",
+                                "pname": "方明",
+                                "photo": "",
+                                "legalPersonCount": 0,
+                                "outInvestmentCount": 1,
+                                "outPositionCount": 1,
+                                "kgCountData": 0,
+                                "position": "董事",
+                                "eid": "d68813ac-7430-46fb-9513-d7a5fe543c07",
+                                "eName": "深圳绿米联创科技有限公司",
+                                "kgCount": 0
+                            }
+                        }
+                    ],
+                    "total": 3,
+                    "type": 2,
+                    "children": {},
+                    "direct": "in"
+                }
+            ],
+            "direct": "out"
+        }
+    ],
+    "shStockCount": 11,
+    "szStockCount": 10,
+    "uid": "534472fd-7d53-4958-8132-d6a6242423d8",
+    "name": "小米科技有限责任公司"
+}

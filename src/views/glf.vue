@@ -1,154 +1,97 @@
-<!-- 关联方认定图 -->
-<script setup>
-import cytoscape from 'cytoscape'
-import Header from '../components/Header/index.vue'
-</script>
-
+<!-- 股权穿透图 -->
 <template>
   <Header title="小米科技有限责任公司" :active="7" />
-  <div class="box">
-    <div id="MainCy" style="width: 100%;height: 100%;"></div>
-  </div>
+	<!-- <ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" /> -->
+	<ToolBox />
+
+  <div id="mountNode" style="width: 100%;height: 100%;"></div>
 </template>
 <script>
-  export default {
-    components: {
-      Header
-    },
-    mounted() {
-      var cy = cytoscape({
-        container: document.getElementById('MainCy'),
-        layout: {
-          name: 'grid',
-          rows: 2,
-          cols: 2
-        },
-        minZoom: 0.5,
-        maxZoom: 2,
-        style: [
-          {
-            selector: 'node',
-            style: {
-                'content': 'data(name)',
-                'background-color': '#3549fc',
-            }
-          },
-          {
-            selector: 'edge',
-            style: {
-              'content': 'data(relationship)',
-              'curve-style': 'bezier', 
-              'line-color': '#1db1b1',
-            }
-          },
-        ],
-        elements: {
-          nodes: [
-            {
-              data: {
-                id: 'a',
-                name: 'aaa'
-              }
-            },
-            {
-              data: {
-                id: 'j',
-                name: 'Jerry'
-              }
-            },
-            {
-              data: {
-                id: 'e',
-                name: 'Elaine'
-              }
-            },
-            {
-              data: {
-                id: 'k',
-                name: 'Kramer'
-              }
-            },
-            {
-              data: {
-                id: 'g',
-                name: 'George'
-              }
-            },
-          ],
-          edges: [
-            {
-              data: {
-                source: 'a',
-                target: 'k',
-                relationship: '12'
-              }
-            },
-            {
-              data: {
-                source: 'a',
-                target: 'e',
-                relationship: '12'
-              }
-            },
-            {
-              data: {
-                source: 'a',
-                target: 'j',
-                relationship: '12'
-              }
-            },
-            {
-              data: {
-                source: 'e',
-                target: 'k',
-                relationship: '1'
-              }
-            },
-            {
-              data: {
-                source: 'k',
-                target: 'e',
-                relationship: '2'
-              }
-            },
-            {
-              data: {
-                source: 'k',
-                target: 'j',
-                relationship: '3'
-              }
-            },
-            {
-              data: {
-                source: 'k',
-                target: 'g',
-                relationship: '4'
-              }
-            },
-            {
-              data: {
-                source: 'e',
-                target: 'j',
-                relationship: '5'
-              }
-            },
-          ]
-        }
-      });
-      cy.nodes().on('click', (evt) => {
-        console.log(evt)
-      });
-      cy.edges().on('click', (evt) => {
-        console.log(evt)
-      });
-    },
+import Header from '../components/Header/index.vue'
+import ToolBox from './components/ToolBox.vue'
+import { drawing } from './components/Glf/index.js'
+import { D3Mixin } from '@/mixin/D3Mixin'
+
+export default {
+  components: {
+    Header,
+    ToolBox
+  },
+  mixins: [D3Mixin],
+  data() {
+    return {
+    };
+  },
+  mounted() {
+    window.addEventListener('resize', function () {
+      const svg = document.getElementById('svg')
+      svg.setAttribute('height', window.innerHeight)
+    })
+    drawing()
   }
+};
 </script>
 
-<style scoped>
-.box{
-  width: 100vw;
-  height: 100vh;
-  background-color: #cbe8ff;
+<style lang="scss" scoped>
+.downwardNode text,
+.upwardNode text {
+  font: 10px sans-serif;
+}
+
+.downwardLink {
+  fill: none;
+  stroke-width: 1px;
+  /* opacity: 0.5; */
+}
+
+.upwardLink {
+  fill: none;
+  stroke-width: 1px;
+  /* opacity: 0.5; */
+}
+::v-deep .downLine {
+  stroke: #128bed;
+  stroke-dasharray: 6, 2;
+  stroke-dashoffset: 20;
+  animation: 1s down-lines infinite linear;
+  z-index: 999;
+  opacity: 1;
+  stroke-width: 2px;
+}
+::v-deep .upLine {
+  stroke: #128bed;
+  stroke-dasharray: 6, 2;
+  stroke-dashoffset: 20;
+  animation: 1s up-lines infinite linear;
+  z-index: 999;
+  opacity: 1;
+  stroke-width: 2px;
+}
+@keyframes down-lines {
+  0% {
+    stroke-dashoffset: 10;
+  }
+
+  100% {
+    stroke-dashoffset: -10;
+  }
+}
+@keyframes up-lines {
+  0% {
+    stroke-dashoffset: -10;
+  }
+
+  100% {
+    stroke-dashoffset: 10;
+  }
+}
+::v-deep .isExpand {
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+::v-deep .linkname {
+  text-anchor: middle;
 }
 </style>
+

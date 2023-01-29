@@ -1,0 +1,319 @@
+{
+    "data": {
+        "short_name": "北京麻六记餐饮管",
+        "p_trees": [
+            {
+                "short_name": "宋娜",
+                "level": "1",
+                "isKey": true,
+                "amount": "512.0",
+                "has_problem": "0",
+                "percent": "0.64",
+                "pid": "77bd1a4a4459cafe587269a271c2261a",
+                "sh_type": "工商股东",
+                "children": [],
+                "eid": "",
+                "identifier": "2",
+                "name": "宋娜",
+                "type": "P"
+            },
+            {
+                "short_name": "北京食通达科技发",
+                "level": "1",
+                "amount": "288.0",
+                "has_problem": "0",
+                "percent": "0.36",
+                "sh_type": "工商股东",
+                "children": [
+                    {
+                        "short_name": "菲特兰装饰设计",
+                        "level": "2",
+                        "amount": "640.0",
+                        "has_problem": "0",
+                        "percent": "0.64",
+                        "sh_type": "工商股东",
+                        "children": [
+                            {
+                                "short_name": "汪玺",
+                                "level": "3",
+                                "amount": "9.9",
+                                "has_problem": "0",
+                                "percent": "0.99",
+                                "pid": "1421feeaf56724cdf537590b6e4f12e5",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "5",
+                                "name": "汪玺",
+                                "type": "P"
+                            },
+                            {
+                                "short_name": "安勇",
+                                "level": "3",
+                                "amount": "0.1",
+                                "has_problem": "0",
+                                "percent": "0.01",
+                                "pid": "0d33371f31e7ce4734f75c575daf1a0b",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "6",
+                                "name": "安勇",
+                                "type": "P"
+                            }
+                        ],
+                        "eid": "50aeb7cb-8e99-4def-b1d8-b17fbdd0d41b",
+                        "identifier": "4",
+                        "name": "北京菲特兰装饰设计有限公司",
+                        "type": "E"
+                    },
+                    {
+                        "short_name": "MSA CHINA FUND II L.P",
+                        "level": "2",
+                        "amount": "200.0",
+                        "has_problem": "0",
+                        "percent": "0.2",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "b3baec3812d0a3e83e96dbc492c74802",
+                        "identifier": "7",
+                        "name": "MSA CHINA FUND II L.P",
+                        "type": "UE"
+                    },
+                    {
+                        "short_name": "五鼎通达（上海）",
+                        "level": "2",
+                        "amount": "160.0",
+                        "has_problem": "0",
+                        "percent": "0.16",
+                        "sh_type": "工商股东",
+                        "children": [
+                            {
+                                "short_name": "安勇",
+                                "level": "3",
+                                "amount": "6.25",
+                                "has_problem": "0",
+                                "percent": "0.625",
+                                "pid": "0d33371f31e7ce4734f75c575daf1a0b",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "9",
+                                "name": "安勇",
+                                "type": "P"
+                            },
+                            {
+                                "short_name": "杨洋",
+                                "level": "3",
+                                "amount": "1.25",
+                                "has_problem": "0",
+                                "percent": "0.125",
+                                "pid": "05c5376b47c1d675119af0eb39fa0ec9",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "10",
+                                "name": "杨洋",
+                                "type": "P"
+                            },
+                            {
+                                "short_name": "李萍",
+                                "level": "3",
+                                "amount": "1.25",
+                                "has_problem": "0",
+                                "percent": "0.125",
+                                "pid": "d222321e2f8e59a3d7dbc0e782fec491",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "11",
+                                "name": "李萍",
+                                "type": "P"
+                            },
+                            {
+                                "short_name": "钱秀琴",
+                                "level": "3",
+                                "amount": "0.625",
+                                "has_problem": "0",
+                                "percent": "0.0625",
+                                "pid": "ae318e35f6e54b6bfefccf1c913e2564",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "12",
+                                "name": "钱秀琴",
+                                "type": "P"
+                            },
+                            {
+                                "short_name": "田金鹭",
+                                "level": "3",
+                                "amount": "0.625",
+                                "has_problem": "0",
+                                "percent": "0.0625",
+                                "pid": "1b37d55ec0623cda2b0f5bf173b060a7",
+                                "sh_type": "工商股东",
+                                "children": [],
+                                "eid": "",
+                                "identifier": "13",
+                                "name": "田金鹭",
+                                "type": "P"
+                            }
+                        ],
+                        "eid": "bb713bd6-6999-4335-8b18-1e4e4cd92276",
+                        "identifier": "8",
+                        "name": "五鼎通达（上海）食品科技中心（有限合伙）",
+                        "type": "E"
+                    }
+                ],
+                "eid": "6b38d70c-e01d-4548-92e6-0c3df677ac80",
+                "identifier": "3",
+                "name": "北京食通达科技发展有限公司",
+                "type": "E"
+            }
+        ],
+        "c_count": 10,
+        "c_trees": [
+            {
+                "short_name": "青岛曜石麻六记酒",
+                "level": "1",
+                "amount": "100.0",
+                "has_problem": "0",
+                "percent": "1.0",
+                "sh_type": "工商股东",
+                "children": [],
+                "eid": "dbc5122c-d56f-4fab-aa05-e8dfa8eae46f",
+                "identifier": "15",
+                "name": "青岛曜石麻六记酒店管理有限公司",
+                "type": "E"
+            },
+            {
+                "short_name": "成都麻六记餐饮管",
+                "level": "1",
+                "amount": "100.0",
+                "has_problem": "0",
+                "percent": "1.0",
+                "sh_type": "工商股东",
+                "children": [],
+                "eid": "fc60ec15-db71-4252-b31d-1e4d3354669d",
+                "identifier": "16",
+                "name": "成都麻六记餐饮管理有限公司",
+                "type": "E"
+            },
+            {
+                "short_name": "太原麻六记酒店管",
+                "level": "1",
+                "amount": "100.0",
+                "has_problem": "0",
+                "percent": "1.0",
+                "sh_type": "工商股东",
+                "children": [],
+                "eid": "63d94664-fd80-40fd-93a0-e695631c9ebd",
+                "identifier": "17",
+                "name": "太原麻六记酒店管理有限公司",
+                "type": "E"
+            },
+            {
+                "short_name": "北京麻六记酒店管",
+                "level": "1",
+                "amount": "100.0",
+                "has_problem": "0",
+                "percent": "1.0",
+                "sh_type": "工商股东",
+                "children": [
+                    {
+                        "short_name": "北京亦庄麻六记酒",
+                        "level": "2",
+                        "amount": "100.0",
+                        "has_problem": "0",
+                        "percent": "1.0",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "4e0b5c24-bba4-4bee-a056-53d83d6264a0",
+                        "identifier": "19",
+                        "name": "北京亦庄麻六记酒店管理有限公司",
+                        "type": "E"
+                    },
+                    {
+                        "short_name": "北京乐堤港麻六记",
+                        "level": "2",
+                        "amount": "100.0",
+                        "has_problem": "0",
+                        "percent": "1.0",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "7f258c98-c68c-4916-9af5-26b74f3c1e92",
+                        "identifier": "20",
+                        "name": "北京乐堤港麻六记酒店管理有限公司",
+                        "type": "E"
+                    },
+                    {
+                        "short_name": "北京银泰麻六记酒",
+                        "level": "2",
+                        "amount": "55.0",
+                        "has_problem": "0",
+                        "percent": "0.55",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "3fb166e6-b780-4963-b1a4-0ffe94185d6b",
+                        "identifier": "21",
+                        "name": "北京银泰麻六记酒店管理有限公司",
+                        "type": "E"
+                    },
+                    {
+                        "short_name": "北京西直门麻六记",
+                        "level": "2",
+                        "amount": "55.0",
+                        "has_problem": "0",
+                        "percent": "0.55",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "106dafe9-9c1a-485e-8580-76d87c7a8750",
+                        "identifier": "22",
+                        "name": "北京西直门麻六记酒店管理有限公司",
+                        "type": "E"
+                    }
+                ],
+                "eid": "980ff820-9473-40ba-b105-998ceec35823",
+                "identifier": "18",
+                "name": "北京麻六记酒店管理有限公司",
+                "type": "E"
+            },
+            {
+                "short_name": "上海麻六记餐饮管",
+                "level": "1",
+                "amount": "100.0",
+                "has_problem": "0",
+                "percent": "1.0",
+                "sh_type": "工商股东",
+                "children": [
+                    {
+                        "short_name": "上海守味麻六记餐",
+                        "level": "2",
+                        "amount": "100.0",
+                        "has_problem": "0",
+                        "percent": "1.0",
+                        "sh_type": "工商股东",
+                        "children": [],
+                        "eid": "0fd17482-1465-11ed-8e23-83cf331ae46e",
+                        "identifier": "24",
+                        "name": "上海守味麻六记餐饮管理有限公司",
+                        "type": "E"
+                    }
+                ],
+                "eid": "21dfeb49-c277-4931-9717-a945735ad14b",
+                "identifier": "23",
+                "name": "上海麻六记餐饮管理有限公司",
+                "type": "E"
+            }
+        ],
+        "eid": "f6114a80-0f5b-4059-83f1-65dd0bdc6397",
+        "p_count": 11,
+        "has_problem": "0",
+        "identifier": "1",
+        "name": "北京麻六记餐饮管理有限公司",
+        "type": "E"
+    },
+    "sign": "86f52c7430fe4797a01909365f28bb7f",
+    "status": "200",
+    "message": "操作成功"
+}

@@ -13,6 +13,7 @@ import companyJson from "@/api/companyJson.json";
 
 import $ from 'jquery'
 import * as d3 from "d3";
+
 let svg;
 let dirRight;
 let forUpward;
@@ -1068,15 +1069,15 @@ export default {
 </script>
 
 <style>
-  .tree04 {
-    background: #fff;
-    touch-action: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    font-family: "PingFangSC-Regular", "PingFangSC-Light", "PingFang SC",
-      sans-serif, "Microsoft YaHei";
-  }
+.tree04 {
+  background: #fff;
+  touch-action: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  font-family: "PingFangSC-Regular", "PingFangSC-Light", "PingFang SC",
+    sans-serif, "Microsoft YaHei";
+}
 </style>

@@ -20,11 +20,9 @@ const navList = reactive([
   { label: '股权穿透图谱', value: 3, path: '/equity-chart' },
   { label: '股权结构图谱', value: 4, path: '/structure-chart' },
   { label: '企业受益股东', value: 5, path: '/beneficiary-person' },
-  // { label: '企业股权分布', value: 6, path: '/beneficiary-org' },
   { label: '关联方认定图', value: 7, path: '/glf' },
   { label: '实际控制人', value: 8, path: '/kzr' },
   { label: '关联关系探查', value: 9, path: '/exploration' },
-  // { label: '风险图谱', value: 10, path: '/risk' }
 ])
 </script>
 
@@ -40,7 +38,7 @@ const navList = reactive([
   background: rgba(255,255,255,0.9);
   
   .container{
-    width: 1040px;
+    width: 1060px;
     height:50px;
     margin: 0 auto;
   }
