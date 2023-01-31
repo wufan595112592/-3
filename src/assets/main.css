@@ -122,7 +122,11 @@ a,
 .el-table--scrollable-y .el-table__body-wrapper {
   overflow-y: hidden;
 }
-
+.btn-default {
+  border: 1px solid #d6d6d6 !important;
+  color: #333 !important;
+  background-color: #fff !important;
+}
 /* 
 @media (min-width: 1024px) {
   body {

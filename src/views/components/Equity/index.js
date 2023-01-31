@@ -1,10 +1,13 @@
 import d3 from './d3.min.js'
 import EquityJson from '@/api/EquityJson.json'
+import deepcopy from 'deepcopy'
+
 // 是否全称
 let shortNameShow = false
 // 是否显示编辑按钮
 let editShow = false
 
+var zoom,treeG
 /* 如果需要将页面的整体高度拉伸
  *（折线的高度拉伸，公司长方体的块也的Y距也需要调整及所有标签Y轴都需要调整，
  * 始终保证折线的端点在长方形的中心点）
@@ -12,29 +15,51 @@ let editShow = false
 
 // json数据结构改变
 
-const rootData = {
+var rootData = {
 	downward: {
 		"direction": "downward",
 		"name": "origin",
-		"children": EquityJson.data.c_trees
+		"children": deepcopy(EquityJson.data.c_trees)
 	},
 	upward: {
 		"direction": "upward",
 		"name": "origin",
-		"children": EquityJson.data.p_trees
+		"children": deepcopy(EquityJson.data.p_trees)
 	}
 }
-const rootName = EquityJson.data.name;
+var rootName = EquityJson.data.name;
 
 let width = 0
 let height = 0
 var _this = this;
 var rootRectWidth = 0; //根节点rect的宽度
-var downwardLength = 0,
-	upwardLength = 0;
 var forUpward = true
 
+// 数据重置
+function resizeData() {
+	shortNameShow = false
+	editShow = false
+	// 重新获取json数据
+	rootData = {
+		downward: {
+			"direction": "downward",
+			"name": "origin",
+			"children": deepcopy(EquityJson.data.c_trees)
+		},
+		upward: {
+			"direction": "upward",
+			"name": "origin",
+			"children": deepcopy(EquityJson.data.p_trees)
+		}
+	}
+ 	rootName = EquityJson.data.name
+}
+
 export function drawing() {
+	if (d3.select('#svg')) {
+		d3.select('#svg').remove();
+		resizeData()
+	}
 	width = document.getElementById('mountNode').scrollWidth
 	height = document.getElementById('mountNode').scrollHeight
 	var d3GenerationChart = new treeChart(d3);
@@ -51,12 +76,21 @@ export function simpleChange1(val) {
 		d3.selectAll(".short-text-g").attr('visibility', 'hidden');
 	}
 }
+// 编辑
+export function editChange1(val) {
+	editShow = val
+	if (editShow) {
+		d3.selectAll(".edit").attr('visibility', 'visible');
+	} else {
+		d3.selectAll(".edit").attr('visibility', 'hidden');
+	}
+}
 
 	// 缩放
 export function zoomClick(type) {
-	var clicked = d3.event.target,
-		direction = 1,
-		factor = 0.2,
+	// var clicked = d3.event.target,
+		var direction = 1,
+		factor = 0.3,
 		target_zoom = 1,
 		center = [width / 2, height / 2],
 		extent = zoom.scaleExtent(),
@@ -69,7 +103,7 @@ export function zoomClick(type) {
 			k: zoom.scale()
 		};
 
-	d3.event.preventDefault();
+	// d3.event.preventDefault();
 	direction = type === 1 ? 1 : -1;
 
 	target_zoom = Number(zoom.scale() + factor * direction).toFixed(1)
@@ -89,18 +123,15 @@ export function zoomClick(type) {
 
 	view.x += center[0] - l[0];
 	view.y += center[1] - l[1];
+	// var d3GenerationChart = new treeChart(d3);
+	// d3GenerationChart.drawChart();
 	interpolateZoom([view.x, view.y], view.k);
 }
-export function editChange1(val) {
-	editShow = val
-	if (editShow) {
-		d3.selectAll(".edit").attr('visibility', 'visible');
-	} else {
-		d3.selectAll(".edit").attr('visibility', 'hidden');
-	}
-}
 
-	// 重置刷新
+// 重置刷新
+export function refresh() {
+	drawing()
+}
 	// d3.select("#reset").on("click", function(d) {
 	// 	interpolateZoom([0, 0], 1);
 	// });
@@ -117,7 +148,11 @@ export function editChange1(val) {
 					redraw();
 				};
 			});
-	}
+}
+function redraw() {
+	treeG.attr('transform', 'translate(' + zoom.translate() + ')' +
+		' scale(' + zoom.scale() + ')');
+}
 
 var treeChart = function(d3Object) {
 	this.d3 = d3Object;
@@ -132,10 +167,6 @@ treeChart.prototype.drawChart = function() {
 		self.treeData[direction] = rootData[direction];
 	});
 	rootRectWidth = rootName.length * 15;
-	//获得upward第一级节点的个数
-	upwardLength = rootData.upward.children.length;
-	//获得downward第一级节点的个数
-	downwardLength = rootData.downward.children.length;
 	self.graphTree(self.getTreeConfig());
 };
 treeChart.prototype.getTreeConfig = function() {
@@ -162,17 +193,18 @@ treeChart.prototype.graphTree = function(config) {
 		return ("M" + s.x + "," + (s.y) + "L" + s.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y));
 		// return ("M" + s.x + "," + (s.y + 20) + "L" + s.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y + 20));
 	};
-	var zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
+	zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
 	var svg = d3.select('#mountNode')
 		.append('svg')
 		.attr('id', 'svg')
-		.attr('width', config.chartWidth)
-		.attr('height', config.chartHeight)
+		.attr('width', '100%')
+		.attr('height', '100%')
+		.attr('viewBox', '0 0 ' + config.chartWidth + ' ' + config.chartHeight)
 		.attr('xmlns', 'http://www.w3.org/2000/svg')
 		// .on('mousedown', disableRightClick)
 		.call(zoom)
 		.on('dblclick.zoom', null);
-	var treeG = svg.append('g')
+	treeG = svg.append('g')
 		.attr('class', 'gbox')
 		.attr('transform', 'translate(0,0)');
 
@@ -938,10 +970,7 @@ treeChart.prototype.graphTree = function(config) {
 		}
 	}
 
-	function redraw() {
-		treeG.attr('transform', 'translate(' + zoom.translate() + ')' +
-			' scale(' + zoom.scale() + ')');
-	}
+	
 
 	function disableRightClick() {
 		// stop zoom

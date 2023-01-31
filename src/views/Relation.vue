@@ -11,7 +11,7 @@
         </div>
 	</div>
 </template>
-<script setup>
+<script>
 import { ref, onMounted } from 'vue'
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/ToolBox.vue'
@@ -20,10 +20,13 @@ import $ from 'jquery'
 import cytoscape from 'cytoscape'
 import * as d3 from 'd3'
 import relativeJson from "@/api/relativeJson.json";
-	var cy;
-// defineComponent([Header, ToolBox, Legend])
-// export default {
-// 	name: 'Relation',
+var cy;
+// export default {		
+// 	components: {
+// 		Header,
+// 		ToolBox,
+// 		Legend
+//   },
 // 	setup() {
 		let screenfull = ref(false)
 		let textShow = ref(true)
@@ -1433,19 +1436,20 @@ import relativeJson from "@/api/relativeJson.json";
 			console.log(textShow.value, 1)
 			init()
 		}
-		// return {
-		// 	screenfull,
-		// 	init,
-		// 	exportImg,
-		// 	refresh,
-		// 	screenfullChange,
-		// 	textShowChange
-		// },
-			onMounted(() => {
-				init()
-			})
+// 		return {
+// 			screenfull,
+// 			init,
+// 			exportImg,
+// 			refresh,
+// 			screenfullChange,
+// 			textShowChange
+// 		},
+// 			onMounted(() => {
+// 				init()
+// 			})
 // 	}
 // }
+
 </script>
 
 <style scoped>

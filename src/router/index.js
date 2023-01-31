@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: '',
-      component:() => import('../views/Relation.vue')
+      component:() => import('../views/Relation1.vue')
     },
     {
       path: '/company-chart',
