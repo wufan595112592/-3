@@ -1,25 +1,26 @@
 <!-- 关系图谱 -->
-<script setup>
-	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox.vue'
-	import Legend from './components/Relation/Legend.vue'
-
-	// import { relation } from './components/Relation/index.js'
-</script>
-
 <template>
 	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="1" />
 	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
 	<Legend />
+	
+	<!-- <RelationDetail v-if="DetailShow" @close="close" /> -->
 	<div style="width: 100%;height: 100%;">
+		{{ DetailShow }}
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
 		<div id="MainD3" scale="1" class="no-padding tp-container">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
 			</svg>
-        </div>
+    </div>
 	</div>
 </template>
 <script>
+	import Header from '../components/Header/index.vue'
+	import ToolBox from './components/ToolBox.vue'
+	import Legend from './components/Relation/Legend.vue'
+	import RelationDetail from './components/RelationDetail.vue'
+
+	// import { relation } from './components/Relation/index.js'
 	import $ from 'jquery'
 	import cytoscape from 'cytoscape'
 	import * as d3 from 'd3'
@@ -31,11 +32,13 @@
 		components: {
 			Header,
 			ToolBox,
-			Legend
+			Legend,
+			RelationDetail
 		},
 		data() {
 			return {
 				screenfull: false,
+				DetailShow: true
 			}
 		},
 		mounted() {
@@ -1414,7 +1417,12 @@
 				}
 			}
 		},
-		methods: {
+	methods: {
+			// 关闭左侧信息弹框
+		close() {
+			console.log(11)
+				this.DetailShow = false
+			},
 			/**
 			 * 图谱缩放
 			 * type == 1  放大

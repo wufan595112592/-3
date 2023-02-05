@@ -154,11 +154,13 @@ function redraw() {
 		' scale(' + zoom.scale() + ')');
 }
 
+// 上下两棵树
 var treeChart = function(d3Object) {
 	this.d3 = d3Object;
 	this.directions = ['upward', 'downward'];
 };
 
+// 分辨绘制
 treeChart.prototype.drawChart = function() {
 	// First get tree data for both directions.
 	this.treeData = {};
@@ -169,6 +171,7 @@ treeChart.prototype.drawChart = function() {
 	rootRectWidth = rootName.length * 15;
 	self.graphTree(self.getTreeConfig());
 };
+// 基础配置
 treeChart.prototype.getTreeConfig = function() {
 	var treeConfig = {};
 	treeConfig.chartWidth = width
@@ -179,6 +182,8 @@ treeChart.prototype.getTreeConfig = function() {
 	treeConfig.duration = 500; //动画时间
 	return treeConfig;
 };
+
+// 绘图
 treeChart.prototype.graphTree = function(config) {
 	var self = this;
 	var d3 = this.d3;

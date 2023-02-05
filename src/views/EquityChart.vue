@@ -1,12 +1,11 @@
 <!-- 股权穿透图 -->
 <template>
   <Header title="小米科技有限责任公司" :active="3" />
-	<!-- <ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
     <ToolBox v-if="show" ref="toolBoxRef" @maoScale="maoScale" @simpleChange="simpleChange" @editChange="editChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
     <!-- <DetailContent /> -->
-    <RelationDetail />
+    <!-- <RelationDetail v-if="Detailshow" @close="close" /> -->
   </div>
 </template>
 <script>
@@ -27,9 +26,13 @@ export default {
   },
   setup() {
     let show = ref(true)
+    let Detailshow = ref(true)
     const toolBoxRef = ref(null)
     const exportImg = () => {
       downloadImpByChart('股权穿透图谱', '北京马六级餐饮')
+    }
+    const close = () => {
+      Detailshow.value = false
     }
     const simpleChange = (val) => {
       simpleChange1(val.value)
@@ -55,6 +58,8 @@ export default {
     }
     onMounted(drawing)
     return {
+      Detailshow,
+      close,
       show,
       toolBoxRef,
       simpleChange,

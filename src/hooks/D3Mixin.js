@@ -27,7 +27,7 @@ export default function() {
     }
   }
   const downloadImpByChart = (chartName, rootName, zoomClassName = '') => {
-    //得到svg的真实大小    
+    //得到svg的真实大小
     let box = document.querySelector('svg').getBBox(),
       x = box.x,
       y = box.y,

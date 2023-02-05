@@ -30,16 +30,6 @@ const router = createRouter({
       component: () => import('../views/Exploration.vue')
     },
     {
-      path: '/exploration1',
-      name: 'exploration1',
-      component: () => import('../views/Exploration1.vue')
-    },
-    {
-      path: '/exploration2',
-      name: 'exploration2',
-      component: () => import('../views/Exploration2.vue')
-    },
-    {
       path: '/glf',
       name: 'glf',
       component: () => import('../views/glf.vue')

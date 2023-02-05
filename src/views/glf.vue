@@ -8,7 +8,8 @@
 </template>
 <script>
 import Header from '../components/Header/index.vue'
-import ToolBox from './components/ToolBox.vue'
+import ToolBox from './components/Glf/ToolBox.vue'
+// import ToolBox from './components/ToolBox.vue'
 import { drawing } from './components/Glf/index.js'
 // import { D3Mixin } from '@/hooks/D3Mixin'
 

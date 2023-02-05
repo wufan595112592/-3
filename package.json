@@ -20,6 +20,7 @@
     "node-sass": "^8.0.0",
     "sass-loader": "^13.2.0",
     "screenfull": "^6.0.2",
+    "vant": "^4.0.9",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.2"
