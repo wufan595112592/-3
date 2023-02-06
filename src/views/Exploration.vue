@@ -15,7 +15,6 @@
   </div>
 </template>
 <script>
-import dagreD3 from "dagre-d3";
 import * as d3 from "d3";
 // import relativeJson from "@/api/relativeJson.json";
 import relativeJson from "@/api/ExplorationJson.json";
