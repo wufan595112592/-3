@@ -14,13 +14,10 @@
 </template>
 
 <script setup>
-import { ref, reactive  } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { ref, reactive } from 'vue'
+import { RouterLink, RouterView} from 'vue-router'
 
 defineProps(['title'])
-
-const activeIndex = ref(1);
-
 const navList = reactive([
   { label: '企业关系图谱', value: 1, path: '/' },
   { label: '企业构成图谱', value: 2, path: '/company-chart' },
@@ -31,6 +28,8 @@ const navList = reactive([
   { label: '实际控制人', value: 8, path: '/kzr' },
   { label: '关联关系探查', value: 9, path: '/exploration' },
 ])
+
+const activeIndex = ref( navList.find( a=> a.path === location.pathname).value );
 
 
 function active(value) {
