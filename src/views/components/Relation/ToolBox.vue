@@ -90,14 +90,7 @@
         <button id="FocusBt" type="submit" class="btn-search btn btn-primary focusDisable btn-icon btn-top" :class="inputVal ? '' : 'disable'" style="height: 32px;">聚焦</button>
       </div>
 
-      <div class="tp-list">
-        <div v-for="(item, index) in list" :key="item.id" class="list-item">
-          <span class="item" :class="item.isCheck ? 'active' : ''"></span>
-          <span class="app-auto-logo" style="width: 32px; height: 32px;">
-            <img src="https://image.qcc.com/logo/9cce0780ab7644008b73bc2120479d31.jpg?x-oss-process=style/logo_200" :alt="item.name" style="width: 32px; height: 32px; border: 1px solid rgb(238, 238, 238); border-radius: 4px;"></span>
-            <span class="name">{{ index + 1 }}. {{ item.name }}</span>
-          </div>
-      </div>
+      <div class="tp-list"></div>
     </div>
   </div>
 </template>
@@ -106,10 +99,6 @@
 import { ref, defineExpose } from 'vue'
 const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg','showBox', 'textShowChange'])
 defineProps(['active'])
-let list = ref([])
-list.value = [
-  { id: 1, name: '小米科技有限责任公司', img: '', isCheck: true, }
-]
 let inputVal = ref('')
 let show = ref(false)
 let text = ref(true)
@@ -391,49 +380,6 @@ defineExpose({ textShowChange })
       height: 190px;
       overflow-y: auto;
       position: relative;
-      .list-item {
-        padding: 8px 15px;
-        cursor: pointer;
-        .item {
-          position: relative;
-          top: 3px;
-          display: inline-block;
-          width: 14px;
-          height: 14px;
-          background: url('@/assets/checkbox.png') 14px 14px;
-          background-position: -14px 0;
-          background-size: cover;
-          margin-right: 5px;
-          &.active {
-            background-position: 0 0;
-          }
-        }
-        .app-auto-logo {
-          display: inline-block;
-          background-size: contain;
-          background-position: center center;
-          background-repeat: no-repeat;
-          position: relative;
-          width: 32px;
-          height: 32px;
-          img{
-            width: 32px;
-            height: 32px;
-            border: 1px solid rgb(238, 238, 238);
-            border-radius: 4px;
-            object-fit: contain;
-          }
-        }
-        .name {
-          margin-left: 5px;
-          width: 86%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          float: right;
-          line-height: 32px;
-        }
-      }
     }
   }
   .RangeLabel {
