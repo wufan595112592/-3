@@ -1,14 +1,19 @@
 <!-- 企业图谱 -->
 <template>
-  <Header title="小米科技有限责任公司" :active="2" />
+  <!-- <Header title="小米科技有限责任公司" :active="2" /> -->
   <div class="tree04">
     <div class="seeTree-page" id="app">
       <div id="treeRoot"></div>
     </div>
+    <ToolBox  />
+
   </div>
 </template>
 <script>
 import Header from '../components/Header/index.vue'
+import ToolBox from './components/ToolBox/index.vue'
+import Buttons from './components/ToolBox/buttons.js'
+
 import companyJson from "@/api/companyJson.json";
 
 import $ from 'jquery'
@@ -25,10 +30,11 @@ let circlewidth3;
 let margin1 = { top: 50, right: 20, bottom: -20, left: 0 };
 export default {
   components: {
-    Header
+    Header,
+    ToolBox
   },
   data() {
-    return {
+    return {      
       container: null, //容器svg>g
       duration: 500, //动画持续时间
       scaleRange: [0.2, 2], //container缩放范围

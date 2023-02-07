@@ -5,15 +5,22 @@
         <li><a href='/' target="_">{{title}}</a></li>
       </ul>
       <ul id="navTab" class="mao-nav clearfix">
-        <li v-for="item in navList" :key="item.value" :class="active === item.value ? 'active': ''"><a :href='item.path'>{{item.label}}</a></li>
+        <li v-for="item in navList" :key="item.value" :class="activeIndex === item.value ? 'active': ''">
+          <router-link @click="active(item.value)" :to="item.path">{{item.label}}</router-link>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue'
-defineProps(['title', 'active'])
+import { ref, reactive  } from 'vue'
+import { RouterLink, RouterView } from 'vue-router'
+
+defineProps(['title'])
+
+const activeIndex = ref(1);
+
 const navList = reactive([
   { label: '企业关系图谱', value: 1, path: '/' },
   { label: '企业构成图谱', value: 2, path: '/company-chart' },
@@ -24,7 +31,14 @@ const navList = reactive([
   { label: '实际控制人', value: 8, path: '/kzr' },
   { label: '关联关系探查', value: 9, path: '/exploration' },
 ])
+
+
+function active(value) {
+  activeIndex.value = value
+  
+}
 </script>
+
 
 <style lang="scss" scoped>
 .mao-head{
@@ -74,7 +88,10 @@ const navList = reactive([
       height: 50px;
       float: left;
       padding-right: 0;
+      
+
       a {
+        cursor: pointer;
         line-height: 50px;
         color: #3c4144;
         display: inline-block;

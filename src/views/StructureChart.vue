@@ -1,6 +1,6 @@
 <!-- 股权结构图 -->
 <template>
-  <Header title="小米科技有限责任公司" :active="4" />
+  <!-- <Header title="小米科技有限责任公司" :active="4" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
 		<div class="box" style="width: 100%;height: 100%;">
 			<div id="MainCy" style="width: 100%;height: 100vh;overflow-x: hidden;overflow-y: auto;"></div>

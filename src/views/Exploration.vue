@@ -1,14 +1,14 @@
 <!-- 关系图谱 -->
 <script setup>
 	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox.vue'
+	import ToolBox from './components/ToolBox/index.vue'
 	import Legend from './components/Relation/Legend.vue'
 
 	// import { relation } from './components/Relation/index.js'
 </script>
 
 <template>
-	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="9" />
+	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="9" /> -->
 	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
 	<Legend />
 <div class="cy" style="width:90%;height:90vh;margin:5vh auto">

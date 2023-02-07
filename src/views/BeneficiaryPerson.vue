@@ -1,13 +1,13 @@
 <!-- 实际控制人 -->
 <script setup>
 	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox.vue'
+	import ToolBox from './components/ToolBox/index.vue'
 
 	// import { relation } from './components/Relation/index.js'
 </script>
 
 <template>
-	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="5" />
+	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="5" /> -->
 	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
 	<div style="width: 100%;height: 100%;">
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>

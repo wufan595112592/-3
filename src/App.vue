@@ -1,5 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import {ref} from 'vue'
+import { RouterView } from 'vue-router'
+import Header from '@/components/Header/index.vue'
+
+const title = ref('小米科技有限责任公司')
+
+
 </script>
 
 <template>
@@ -15,9 +21,10 @@ import { RouterLink, RouterView } from 'vue-router'
       </nav>
     </div>
   </header> -->
-
+  <Header :title="title" />
   <RouterView />
 </template>
+
 
 <style scoped>
 

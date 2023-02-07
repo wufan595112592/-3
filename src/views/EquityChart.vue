@@ -1,6 +1,6 @@
 <!-- 股权穿透图 -->
 <template>
-  <Header title="小米科技有限责任公司" :active="3" />
+  <!-- <Header title="小米科技有限责任公司" :active="3" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
     <ToolBox v-if="show" ref="toolBoxRef" @maoScale="maoScale" @simpleChange="simpleChange" @editChange="editChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
