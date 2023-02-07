@@ -1129,12 +1129,12 @@ function selPanelUpdateList(nodes, links, isShowCheckbox) {
 		var keyNo = node.data.uid;
 		var str = '';
 		if (isShowCheckbox) {
-			str = '<div class="checkbox" node_id="' + node.nodeId + '" keyno="' + keyNo +
-				'"> <input checked type="checkbox"><label> ' + index + '.' + name + '</label> </div>';
+			str = '<div class="list-item" node_id="' + node.nodeId + '" keyno="' + keyNo +
+				'" style="padding: 8px 15px;cursor: pointer;"> <input checked type="checkbox"><label> ' + index + '. ' + name + '</label> </div>';
 			//            var str = '<div class="checkbox" node_id="'+ node.nodeId +'" keyno="'+ keyNo +'"> <label> ' + index + '.' + name + '</label> </div>';
 		} else {
-			str = '<div class="checkbox" node_id="' + node.nodeId + '" keyno="' + keyNo + '"><label> ' +
-				index + '.' + name + '</label> </div>';
+			str = '<div class="list-item" node_id="' + node.nodeId + '" keyno="' + keyNo + '" style="padding: 8px 15px;cursor: pointer;"><label> ' +
+				index + '. ' + name + '</label> </div>';
 		}
 		$('.tp-list').append(str);
 	}

@@ -52,10 +52,59 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.box {
 		width: 100vw;
 		height: 100vh;
 		background-color: #cbe8ff;
 	}
+	
+    .tp-list {
+      height: 190px;
+      overflow-y: auto;
+      position: relative;
+      .list-item {
+        padding: 8px 15px;
+        cursor: pointer;
+        .item {
+          position: relative;
+          top: 3px;
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          background: url('@/assets/checkbox.png') 14px 14px;
+          background-position: -14px 0;
+          background-size: cover;
+          margin-right: 5px;
+          &.active {
+            background-position: 0 0;
+          }
+        }
+        .app-auto-logo {
+          display: inline-block;
+          background-size: contain;
+          background-position: center center;
+          background-repeat: no-repeat;
+          position: relative;
+          width: 32px;
+          height: 32px;
+          img{
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgb(238, 238, 238);
+            border-radius: 4px;
+            object-fit: contain;
+          }
+        }
+        .name {
+          margin-left: 5px;
+          width: 86%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          float: right;
+          line-height: 32px;
+        }
+      }
+    }
 </style>
