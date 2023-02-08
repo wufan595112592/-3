@@ -2,17 +2,23 @@
 <template>
   <!-- <Header title="小米科技有限责任公司" :active="2" /> -->
   <div class="tree04">
-    <div class="seeTree-page" id="app">
-      <div id="treeRoot"></div>
-    </div>
-    <ToolBox  />
+    <div id="treeRoot"></div>
+    <CompanyFilter v-model:visiable="isShowTemplate"/>
+    <ToolBox
+        v-model:isShowTemplate="isShowTemplate"
+        :buttonGroup="buttons"
+        @maoScale="zoomClick($event)"
+        @refresh="refresh"
+        @exportImg="exportImg"/>
 
   </div>
 </template>
 <script>
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/ToolBox/index.vue'
+import CompanyFilter from "@/views/components/CompanyChart/CompanyFilter.vue";
 import Buttons from './components/ToolBox/buttons.js'
+import {zoomClick} from "@/views/components/Equity";
 
 import companyJson from "@/api/companyJson.json";
 
@@ -20,6 +26,7 @@ import $ from 'jquery'
 import * as d3 from "d3";
 
 let svg;
+let zoom;
 let dirRight;
 let forUpward;
 let leng;
@@ -27,22 +34,31 @@ let toggle = true;
 let circlewidth1;
 let circlewidth2;
 let circlewidth3;
-let margin1 = { top: 50, right: 20, bottom: -20, left: 0 };
+let margin1 = {top: 50, right: 20, bottom: -20, left: 100};
+let curTransform = {
+  x: 0,
+  y: 0,
+  k: 1
+}
+
 export default {
   components: {
     Header,
-    ToolBox
+    ToolBox,
+    CompanyFilter
   },
   data() {
-    return {      
+    return {
+      buttons: Buttons.TEMPLATE | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE,
+      isShowTemplate: false,
       container: null, //容器svg>g
       duration: 500, //动画持续时间
       scaleRange: [0.2, 2], //container缩放范围
       direction: ["r", "l"], //分为左右2个方向
       centralPoint: [0, 0], //画布中心点坐标x,y
-      root: { r: {}, l: {} }, //左右2块数据源
+      root: {r: {}, l: {}}, //左右2块数据源
       rootNodeLength: 0, //根节点名称长度
-      rootName: ["昆仑数智", ""], //根节点名称
+      rootName: [""], //根节点名称
       textSpace: 15, //多行文字间距
       themeColor: "#2196F3", //主色
       nodeSize: [50, 100], //节点间距(高/水平)
@@ -54,51 +70,53 @@ export default {
       treeData: [],
     };
   },
-  created() {},
+  created() {
+
+  },
   mounted() {
     this.getData();
   },
   computed: {
     treeMap() {
       return d3
-        .tree()
-        .nodeSize(this.nodeSize)
-        .separation((a, b) => {
-          let result =
-            a.parent === b.parent && !a.children && !b.children ? 1 : 2;
-          return result;
-        });
+          .tree()
+          .nodeSize(this.nodeSize)
+          .separation((a, b) => {
+            let result =
+                a.parent === b.parent && !a.children && !b.children ? 1 : 2;
+            return result;
+          });
     },
   },
   watch: {},
   methods: {
     getData() {
       //companyJson  是调用真实接口的数据
-      this.rootName = [companyJson.data.rootName, ""];
-      let data = companyJson.data;
+      const data = this.convertToHierarchy(companyJson.data);
       let left = data.l;
       let right = data.r;
+      this.rootName = [data.rootName, ""];
       let mynodes;
-      for (var i = 0; i < left.children.length; i++) {
-        if (left.children[i].children.length > 2) {
+      for (let i = 0; i < left.children.length; i++) {
+        if (left.children[i].children.length > 5) {
           mynodes = left.children[i].children;
-          left.children[i].children = left.children[i].children.slice(0, 2);
-          left.children[i].children[2] = {
-            name: "更多",
+          left.children[i].children = left.children[i].children.slice(0, 5);
+          left.children[i].children[5] = {
+            name: "展开",
             type: -1,
-            val: mynodes.length - 2,
+            val: mynodes.length - 5,
             childrend: mynodes.slice(0, mynodes.length),
           };
         }
       }
-      for (var i = 0; i < right.children.length; i++) {
-        if (right.children[i].children.length > 2) {
+      for (let i = 0; i < right.children.length; i++) {
+        if (right.children[i].children.length > 5) {
           mynodes = right.children[i].children;
-          right.children[i].children = right.children[i].children.slice(0, 2);
-          right.children[i].children[2] = {
-            name: "更多",
+          right.children[i].children = right.children[i].children.slice(0, 5);
+          right.children[i].children[5] = {
+            name: "展开",
             type: -1,
-            val: mynodes.length - 2,
+            val: mynodes.length - 5,
             childrend: mynodes.slice(0, mynodes.length),
           };
         }
@@ -108,30 +126,66 @@ export default {
       //     }
       // })
     },
+    convertToHierarchy(data) {
+      return {
+        rootName: data.info.name,
+        l: {
+          name: 'origin',
+          children: [
+            {
+              name: '对外投资',
+              nodeType: 0,
+              children: data.node_info.investments
+            }
+          ]
+        },
+        r: {
+          name: 'origin',
+          children: [
+            {
+              name: '股东',
+              nodeType: 0,
+              children: data.node_info.partners
+            },
+            {
+              name: '高管',
+              nodeType: 0,
+              children: data.node_info.employees
+            },
+            {
+              name: '历史股东',
+              nodeType: 0,
+              children: data.node_info.history_partners
+            }
+          ]
+        }
+      }
+    },
     uuid() {
       function s4() {
         return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
+            .toString(16)
+            .substring(1);
       }
+
       return (
-        s4() +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        "-" +
-        s4() +
-        s4() +
-        s4()
+          s4() +
+          s4() +
+          "-" +
+          s4() +
+          "-" +
+          s4() +
+          "-" +
+          s4() +
+          "-" +
+          s4() +
+          s4() +
+          s4()
       );
     },
     //初始化
     treeInit(data) {
-      const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+      const margin = {top: 0, right: 0, bottom: 0, left: 0};
       let treeWidth = d3.select("#treeRoot")._parents[0].clientWidth;
       let treeHeight = d3.select("#treeRoot")._parents[0].clientHeight;
       // const treeWidth = document.body.clientWidth - margin.left - margin.right; //tree容器宽
@@ -145,54 +199,93 @@ export default {
 
       //svg标签
       svg = d3
-        .select("#treeRoot")
-        .append("svg")
-        .attr("class", "tree-svg")
-        .attr("xmlns", "http://www.w3.org/2000/svg")
-        .attr("width", treeWidth)
-        .attr("height", treeHeight)
-        .attr("font-size", this.fontSize)
-        .attr("fill", "#555");
+          .select("#treeRoot")
+          .append("svg")
+          .attr("class", "tree-svg")
+          .attr("xmlns", "http://www.w3.org/2000/svg")
+          .attr("width", treeWidth)
+          .attr("height", treeHeight)
+          .attr("font-size", this.fontSize)
+          .attr("fill", "#555");
 
       //g标签
       this.container = svg
-        .append("g")
-        .attr("class", "container1")
-        .attr(
-          "transform",
-          "translate(" + margin1.left + "," + margin1.top + ")scale(0.8)"
-        );
+          .append("g")
+          .attr("class", "container1")
+          .attr("transform-origin", "center")
+          .attr(
+              "transform",
+              "translate(" + (margin1.left + margin1.right) / 2 + "," + margin1.top + ")scale(0.8)"
+          );
 
       //画出根节点
       this.drawRoot();
       //指定缩放范围
-      const zoom = d3
-        .zoom()
-        .scaleExtent(this.scaleRange)
-        .on("zoom", this.zoomFn);
+      zoom = d3
+          .zoom()
+          .scaleExtent(this.scaleRange)
+          .on("zoom", this.zoomFn);
       //动画持续时间
       this.container
-        .transition()
-        .duration(this.duration)
-        .call(zoom.transform, d3.zoomIdentity);
+          .transition()
+          .duration(this.duration)
+          .call(zoom.transform, d3.zoomIdentity);
       svg.call(zoom);
       //数据处理
       // console.log(data, "数据处理");
       this.dealData(data);
     },
-
+    //数据处理
+    dealData(data) {
+      this.direction.forEach((item) => {
+        this.root[item] = d3.hierarchy(data[item]);
+        this.root[item].x0 = this.centralPoint[0]; //根节点x坐标
+        this.root[item].y0 = this.centralPoint[1]; //根节点Y坐标
+        this.porData(this.root[item], item);
+      });
+    },
+    //遍历
+    porData(obj, item) {
+      obj.descendants().forEach((d) => {
+        d._children = d.children;
+        d.id = item + this.uuid();
+      });
+      this.update(obj, item);
+    },
+    zoomClick(type) {
+      let c1 = curTransform.k;
+      let c2 = Number((c1 + 0.2 * type).toFixed(1));
+      curTransform.k = c2;
+      let that = this;
+      return d3
+          .transition()
+          .duration(350)
+          .tween("zoom", function () {
+            var i = d3.interpolate(c1, c2);
+            return function (t) {
+              that.container.attr(
+                  "transform",
+                  "translate(" +
+                  (curTransform.x / 2) +
+                  "," +
+                  (curTransform.y / 2) +
+                  ")scale(" +
+                  i(t) * 0.8 +
+                  ")"
+              )
+            };
+          });
+    },
     zoomFn() {
-      var weizhi = document.getElementsByClassName("container1")[0];
-      weizhi.style.transform = ""; //偏移位置
-      let zoom = d3.event.transform;
+      curTransform = d3.event.transform;
       return this.container.attr(
-        "transform",
-        "translate(" +
-          (Number(zoom.x) + Number(margin1.left)) +
+          "transform",
+          "translate(" +
+          (curTransform.x / 2) +
           "," +
-          (zoom.y + margin1.top) +
+          (curTransform.y / 2) +
           ")scale(" +
-          zoom.k * 0.8 +
+          curTransform.k * 0.8 +
           ")"
       );
     },
@@ -243,7 +336,7 @@ export default {
         setHeight(appendLeaf, 0);
       }
 
-      if (source.data.name == "更多") {
+      if (source.data.name == "展开") {
         source.parent.descendants().forEach((d) => {
           d._children = d.children;
           d.id = direction + this.uuid();
@@ -257,122 +350,82 @@ export default {
       this.update(d, direction);
     },
     getNode(d, direction, source, type) {
-      let mynodes;
-      // 注释ly---start
-      // if (!d.data.isNextNode && d.data.type != -1) {
-      //   return;
-      // }
-      // 注释ly---end
-      // console.log("重组数据");
-      if (d.data.name == "更多") {
-        var num = d.data.val / 5;
-        if (num <= 5) {
-          var arr = d.data.childrend;
+      if (d.data.name === "展开") {
+        let arr;
+        if (d.data.val <= 5) {
+          arr = d.data.childrend;
         } else {
-          var arr = d.data.childrend.slice(0, d.parent.children.length + 4);
+          arr = d.data.childrend.slice(0, d.parent.children.length + 4);
           arr[d.parent.children.length + 4] = {
-            nodeName: "更多",
+            name: arr.length === 10 ? "搜索" : "展开",
             type: -1,
-            val: d.data.childrend.length - d.parent.children.length + 4,
+            val: d.data.val - 5,
             childrend: d.data.childrend,
           };
         }
-        var appendData = {
-          children: arr,
-        };
-        this.DataReor(d.parent, direction, source, appendData);
+
+        this.DataReor(d.parent, direction, source, {
+          children: arr
+        });
       } else if (type == 1) {
-        var appendData = {
+        this.DataReor(d, direction, source, {
           children: [],
-        };
-        this.DataReor(d, direction, source, appendData);
+        });
       } else {
-        //请求数据
-        // console.log(d.data, "请求数据参数 update");
-        $("#loading,.shaow").show();
-        let data = [];
-        $("#loading,.shaow").hide();
-        if (data.length == 0) {
-          html =
-            '<div class="tk"><p style="font-size: 14px;color: #359ffb">' +
-            d.data.name +
-            "</p><span>暂无数据</span></div>";
-          $(".shaow").show();
-          $("body").append(html);
-          return;
-        }
-        mynodes = data;
+        let mynodes = data;
         if (data.length > 10) {
           data = data.slice(0, 10);
           data[11] = {
-            name: "更多",
+            name: "搜索",
             type: -1,
             val: mynodes.length - 10,
             childrend: mynodes.slice(0, mynodes.length),
           };
         }
-        var appendData = {
+        this.DataReor(d, direction, source, {
           children: data,
-        };
-        this.DataReor(d, direction, source, appendData);
+        });
       }
-    },
-    //数据处理
-    dealData(data) {
-      this.direction.forEach((item) => {
-        this.root[item] = d3.hierarchy(data[item]);
-        this.root[item].x0 = this.centralPoint[0]; //根节点x坐标
-        this.root[item].y0 = this.centralPoint[1]; //根节点Y坐标
-        this.porData(this.root[item], item);
-      });
-    },
-    //遍历
-    porData(obj, item) {
-      obj.descendants().forEach((d) => {
-        d._children = d.children;
-        d.id = item + this.uuid();
-      });
-      this.update(obj, item);
     },
     //画根节点
     drawRoot() {
       const title = this.container
-        .append("g")
-        .attr("id", "rootTitle")
-        .attr(
-          "transform",
-          `translate(${this.centralPoint[1]},${this.centralPoint[0]})`
-        );
+          .append("g")
+          .attr("id", "rootTitle")
+          .attr(
+              "transform",
+              `translate(${this.centralPoint[1]},${this.centralPoint[0]})`
+          );
       title
-        .append("svg:rect")
-        .attr("class", "rootTitle")
-        .attr("y", 0)
-        .attr("x", -this.rootNodeLength / 2)
-        .attr("width", this.rootNodeLength)
-        .attr("height", 0)
-        .attr("rx", 5) //圆角
-        .style("fill", this.themeColor);
+          .append("svg:rect")
+          .attr("class", "rootTitle")
+          .attr("y", 0)
+          .attr("x", -this.rootNodeLength / 2)
+          .attr("width", this.rootNodeLength)
+          .attr("height", 0)
+          .attr("rx", 5) //圆角
+          .style("fill", this.themeColor);
       this.rootName.forEach((name, index) => {
         title
-          .append("text")
-          .attr("fill", "white")
-          .attr("y", function () {
-            return 5;
-          })
-          .attr("text-anchor", "middle")
-          .style("font-size", function () {
-            if (index == 1) {
-              return "10px";
-            } else {
-              return "15px";
-            }
-          })
-          .text(name);
+            .append("text")
+            .attr("fill", "white")
+            .attr("y", function () {
+              return 5;
+            })
+            .attr("text-anchor", "middle")
+            .style("font-size", function () {
+              if (index == 1) {
+                return "10px";
+              } else {
+                return "15px";
+              }
+            })
+            .text(name);
 
         let lineHeight = (index + 2) * this.textSpace;
         d3.select("#rootTitle rect")
-          .attr("height", lineHeight)
-          .attr("y", -lineHeight / 2);
+            .attr("height", lineHeight)
+            .attr("y", -lineHeight / 2);
       });
     },
     seat(newArr, dirRight, data) {
@@ -386,8 +439,8 @@ export default {
     },
     testLength(data, dirRight) {
       var level = [],
-        width1,
-        width2;
+          width1,
+          width2;
 
       for (var i = 0; i < data.length; i++) {
         var newArr = new Array();
@@ -395,39 +448,39 @@ export default {
         for (var j = 0; j < data[i].length; j++) {
           if (data[i][j].data.attName) {
             svg
-              .append("text")
-              .style("font-size", this.fontSize)
-              .text((d) => "(" + data[i][j].data.attName + ")")
-              .attr("class", "test")
-              .attr("width", function (d) {
-                width3 = d3.select(this.getComputedTextLength())._groups[0][0];
-                console.log(width3,"width3");
-              });
+                .append("text")
+                .style("font-size", this.fontSize)
+                .text((d) => "(" + data[i][j].data.attName + ")")
+                .attr("class", "test")
+                .attr("width", function (d) {
+                  return d3.select(this.getComputedTextLength())._groups[0][0];
+                  // console.log(width3,"width3");
+                });
           }
-          if (data[i][j].data.ratio) {
+          if (data[i][j].data.percent) {
             svg
-              .append("text")
-              .style("font-size", this.fontSize)
-              .text(function (d) {
-                const len = data[i][j].data.name.length;
-                if (len > 20) {
-                  return data[i][j].data.name.substring(0, 20) + "...";
-                } else {
-                  return data[i][j].data.name;
-                }
-              })
-              .attr("class", "test")
-              .attr("width", function (d) {
-                width1 = d3.select(this.getComputedTextLength())._groups[0][0];
-              });
+                .append("text")
+                .style("font-size", this.fontSize)
+                .text(function (d) {
+                  const len = data[i][j].data.name.length;
+                  if (len > 20) {
+                    return data[i][j].data.name.substring(0, 20) + "...";
+                  } else {
+                    return data[i][j].data.name;
+                  }
+                })
+                .attr("class", "test")
+                .attr("width", function (d) {
+                  width1 = d3.select(this.getComputedTextLength())._groups[0][0];
+                });
             svg
-              .append("text")
-              .style("font-size", this.fontSize)
-              .text((d) => data[i][j].data.ratio)
-              .attr("class", "test")
-              .attr("width", function (d) {
-                width2 = d3.select(this.getComputedTextLength())._groups[0][0];
-              });
+                .append("text")
+                .style("font-size", this.fontSize)
+                .text((d) => data[i][j].data.percent)
+                .attr("class", "test")
+                .attr("width", function (d) {
+                  width2 = d3.select(this.getComputedTextLength())._groups[0][0];
+                });
 
             $(".test").remove();
             if (data[i][j].data.attName) {
@@ -445,27 +498,27 @@ export default {
             }
           } else {
             svg
-              .append("text")
-              .style("font-size", this.fontSize)
-              .text(function (d) {
-                if (data[i][j].data.name) {
-                  const len = data[i][j].data.name.length;
-                  if (len > 20) {
-                    return data[i][j].data.name.substring(0, 20) + "...";
-                  } else {
-                    return data[i][j].data.name;
+                .append("text")
+                .style("font-size", this.fontSize)
+                .text(function (d) {
+                  if (data[i][j].data.name) {
+                    const len = data[i][j].data.name.length;
+                    if (len > 20) {
+                      return data[i][j].data.name.substring(0, 20) + "...";
+                    } else {
+                      return data[i][j].data.name;
+                    }
                   }
-                }
-              })
-              .attr("class", "test")
-              .attr("width", function (d) {
-                width1 = d3.select(this.getComputedTextLength())._groups[0];
+                })
+                .attr("class", "test")
+                .attr("width", function (d) {
+                  width1 = d3.select(this.getComputedTextLength())._groups[0];
 
-                newArr.push(Number(width1) + 100);
-                data.width1 = d3.select(
-                  this.getComputedTextLength()
-                )._groups[0];
-              });
+                  newArr.push(Number(width1) + 100);
+                  data.width1 = d3.select(
+                      this.getComputedTextLength()
+                  )._groups[0];
+                });
             $(".test").remove();
           }
         }
@@ -474,7 +527,6 @@ export default {
 
       this.seat(level, dirRight, data);
     },
-
     //开始绘图
     update(source, direction) {
       // console.log(source, direction, "update");
@@ -506,43 +558,45 @@ export default {
 
       //根据class名称获取左或者右的g节点，达到分块更新
       const node = this.container
-        .selectAll(`g.${className}`)
-        .data(nodes, (d) => d.id);
+          .selectAll(`g.${className}`)
+          .data(nodes, (d) => d.id);
       //新增节点，tree会根据数据内的children扩展相关节点
       const nodeEnter = node
-        .enter()
-        .append("g")
-        .attr("id", (d) => `g${d.id}`)
-        .attr("class", className)
-        .attr("transform", (d) => `translate(${source.y0},${source.x0})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0)
-        .on("click", function (d) {
-          d3.select(this)
-            .selectAll(".node-circle .node-circle-vertical")
-            .transition()
-            .duration(that.duration)
-            .attr("stroke-width", function (d) {
-              if (d.children) {
-                return 1;
-              } else {
-                return 0;
-              }
-            });
+          .enter()
+          .append("g")
+          .attr("id", (d) => `g${d.id}`)
+          .attr("class", className)
+          .attr("transform", (d) => `translate(${source.y0},${source.x0})`)
+          .attr("fill-opacity", 0)
+          .attr("stroke-opacity", 0)
+          .on("click", function (d) {
+            d3.select(this)
+                .selectAll(".node-circle .node-circle-vertical")
+                .transition()
+                .duration(that.duration)
+                .attr("stroke-width", function (d) {
+                  if (d.children) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                });
 
-          if (d.data.name == "更多") {
-            return that.clickNode(d, direction, source);
-          } else if (d.depth !== 0) {
-            return that.clickNode(d, direction, source);
-          }
-        });
+            if (d.data.name == "展开") {
+              return that.clickNode(d, direction, source);
+            } else if (d.depth !== 0) {
+              return that.clickNode(d, direction, source);
+            }
+          });
+
       nodeEnter.each((d) => {
+
         if (d.depth > 0) {
           this.drawText(`g${d.id}`, dirRight);
           if (d.data.attName) {
             this.drawCodeText(`g${d.id}`, dirRight);
           }
-          if (d.data.ratio) {
+          if (d.data.percent) {
             this.drawTsText(`g${d.id}`, dirRight);
           }
 
@@ -553,7 +607,7 @@ export default {
         if (d.depth > 0) {
           const width = Math.min(d.data.name.length * 14, this.rectMinWidth);
           let right = dirRight > 0;
-          let xDistance = right ? width : -width;
+          // let xDistance = right ? width : -width;
           this.drawCircle(`g${d.id}`, dirRight, source, direction);
           this.drawSign(`g${d.id}`, dirRight); //画标记
         }
@@ -567,79 +621,79 @@ export default {
 
       // 更新节点：节点enter和exit时都会触发tree更新
       const nodeUpdate = node
-        .merge(nodeEnter)
-        .transition()
-        .duration(this.duration)
-        .attr("transform", function (d) {
-          if (d.data && d.data.isNextNode) {
-            d3.select(this)
-              .selectAll(".node-circle .node-circle-vertical")
-              .transition()
-              .duration(this.duration)
-              .attr("stroke-width", function (d) {
-                if (d.children) {
-                  return 0;
-                } else {
-                  return 1;
-                }
-              });
-          }
+          .merge(nodeEnter)
+          .transition()
+          .duration(this.duration)
+          .attr("transform", function (d) {
+            if (d.data && d.data.isNextNode) {
+              d3.select(this)
+                  .selectAll(".node-circle .node-circle-vertical")
+                  .transition()
+                  .duration(this.duration)
+                  .attr("stroke-width", function (d) {
+                    if (d.children) {
+                      return 0;
+                    } else {
+                      return 1;
+                    }
+                  });
+            }
 
-          var index = 0;
+            var index = 0;
 
-          return "translate(" + d.y + "," + d.x + ")";
-        })
-        .attr("fill-opacity", 1)
-        .attr("stroke-opacity", 1);
+            return "translate(" + d.y + "," + d.x + ")";
+          })
+          .attr("fill-opacity", 1)
+          .attr("stroke-opacity", 1);
 
       // 移除节点:tree移除掉数据内不包含的节点(即，children = false)
       const nodeExit = node
-        .exit()
-        .transition()
-        .duration(this.duration)
-        .remove()
-        .attr("transform", (d) => `translate(${source.y},${source.x})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0);
+          .exit()
+          .transition()
+          .duration(this.duration)
+          .remove()
+          .attr("transform", (d) => `translate(${source.y},${source.x})`)
+          .attr("fill-opacity", 0)
+          .attr("stroke-opacity", 0);
 
       // Update the links 根据 className来实现分块更新
       const link = this.container
-        .selectAll(`path.${className}`)
-        .data(links, (d) => d.target.id);
+          .selectAll(`path.${className}`)
+          .data(links, (d) => d.target.id);
 
       // Enter any new links at the parent's previous position.
       //insert是在g标签前面插入，防止连接线挡住G节点内容
       const linkEnter = link
-        .enter()
-        .insert("path", "g")
-        .attr("class", className)
-        .attr("d", (d) => {
-          const o = { x: source.x0, y: source.y0 };
+          .enter()
+          .insert("path", "g")
+          .attr("class", className)
+          .attr("d", (d) => {
+            const o = {x: source.x0, y: source.y0};
 
-          return this.diagonal({ source: o, target: o });
-        })
-        .attr("fill", "none")
-        .attr("stroke-width", 0.5)
-        .attr("stroke", "#D8D8D8");
+            return this.diagonal({source: o, target: o});
+          })
+          .attr("fill", "none")
+          .attr("stroke-width", 0.5)
+          .attr("stroke", "#D8D8D8");
 
       // Transition links to their new position.
       link
-        .merge(linkEnter)
-        .transition()
-        .duration(this.duration)
-        .attr("d", this.diagonal);
+          .merge(linkEnter)
+          .transition()
+          .duration(this.duration)
+          .attr("d", this.diagonal);
 
       // Transition exiting nodes to the parent's new position.
       link
-        .exit()
-        .transition()
-        .duration(this.duration)
-        .remove()
-        .attr("d", (d) => {
-          const o = { x: source.x, y: source.y };
+          .exit()
+          .transition()
+          .duration(this.duration)
+          .remove()
+          .attr("d", (d) => {
+            const o = {x: source.x, y: source.y};
 
-          return this.diagonal({ source: o, target: o });
-        });
+            return this.diagonal({source: o, target: o});
+          });
 
       // Stash the old positions for transition.
       this.root[direction].eachBefore((d) => {
@@ -648,47 +702,47 @@ export default {
       });
     },
     //画连接线
-    diagonal({ source, target }) {
+    diagonal({source, target}) {
       let s = source,
-        d = target;
+          d = target;
 
       if (forUpward) {
         return (
-          "M" +
-          s.y +
-          "," +
-          s.x +
-          "L" +
-          (s.y + (d.y - s.y) - 20) +
-          "," +
-          s.x +
-          "L" +
-          (s.y + (d.y - s.y) - 20) +
-          "," +
-          d.x +
-          "L" +
-          d.y +
-          "," +
-          d.x
+            "M" +
+            s.y +
+            "," +
+            s.x +
+            "L" +
+            (s.y + (d.y - s.y) - 20) +
+            "," +
+            s.x +
+            "L" +
+            (s.y + (d.y - s.y) - 20) +
+            "," +
+            d.x +
+            "L" +
+            d.y +
+            "," +
+            d.x
         );
       } else {
         return (
-          "M" +
-          s.y +
-          "," +
-          s.x +
-          "L" +
-          (s.y + (d.y - s.y) + 20) +
-          "," +
-          s.x +
-          "L" +
-          (s.y + (d.y - s.y) + 20) +
-          "," +
-          d.x +
-          "L" +
-          d.y +
-          "," +
-          d.x
+            "M" +
+            s.y +
+            "," +
+            s.x +
+            "L" +
+            (s.y + (d.y - s.y) + 20) +
+            "," +
+            s.x +
+            "L" +
+            (s.y + (d.y - s.y) + 20) +
+            "," +
+            d.x +
+            "L" +
+            d.y +
+            "," +
+            d.x
         );
       }
     },
@@ -696,318 +750,303 @@ export default {
     //画箭头
     marker(id, dirRight) {
       let gMark = d3
-        .select(`#${id}`)
-        .append("g")
-        .attr(
-          "transform",
-          dirRight > 0 ? "translate(-20,0)" : "translate(12,0)"
-        );
+          .select(`#${id}`)
+          .append("g")
+          .attr(
+              "transform",
+              dirRight > 0 ? "translate(-20,0)" : "translate(12,0)"
+          );
       return gMark
-        .insert("path", "text")
+          .insert("path", "text")
 
-        .attr("d", function (d) {
-          if (d.data.nodeType == 0 && dirRight > 0) {
-            return "M0,0L0,3L9,0L0,-3Z";
-          } else if (d.data.nodeType == 0 && dirRight < 0) {
-            return "M0,0L9,-3L9,3Z";
-          }
-        })
-        .style("fill", (d) => this.getRectStorke(d.data.name));
+          .attr("d", function (d) {
+            if (d.data.nodeType == 0 && dirRight > 0) {
+              return "M0,0L0,3L9,0L0,-3Z";
+            } else if (d.data.nodeType == 0 && dirRight < 0) {
+              return "M0,0L9,-3L9,3Z";
+            }
+          })
+          .style("fill", (d) => this.getRectStorke(d.data.name));
     },
 
     //华标记
     drawSign(id, dirRight) {
       return d3
-        .select(`#${id}`)
-        .insert("circle", "text")
-        .attr("cx", dirRight > 0 ? -5 : 5)
-        .attr("y", -2.5)
-        .attr("r", function (d) {
-          if (d.data.nodeType == 0) {
-            return 4;
-          }
-        })
-        .style("fill", (d) => this.getRectStorke(d.data.name));
+          .select(`#${id}`)
+          .insert("circle", "text")
+          .attr("cx", dirRight > 0 ? -5 : 5)
+          .attr("y", -2.5)
+          .attr("r", function (d) {
+            if (d.data.nodeType == 0) {
+              return 4;
+            }
+          })
+          .style("fill", (d) => this.getRectStorke(d.data.name));
     },
     //画文本
     drawText(id, dirRight) {
       let that = this;
       dirRight = dirRight > 0; //右为1，左为-1
       return d3
-        .select(`#${id}`)
-        .append("text")
-        .attr("y", function (d) {
-          if (d.data.ratio) {
-            return that.textPadding - 8;
-          } else {
-            return that.textPadding;
-          }
-        })
-        .attr("x", (d) => (dirRight ? that.textPadding : -that.textPadding))
-        .attr("text-anchor", dirRight ? "start" : "end")
-        .style("font-size", that.fontSize)
-        .text(function (d) {
-          const len = d.data.name.length;
-          if (len > 20) {
-            return d.data.name.substring(0, 20) + "...";
-          } else {
-            return d.data.name;
-          }
-        })
-        .attr("fill", function (d) {
-          if (d.data.nodeType == -1) {
-            return "rgb(33, 150, 243)";
-          } else if (d.data.nodeType == 0 || d.data.attName) {
-            return "#000";
-          } else {
-            return "#333";
-          }
-        })
+          .select(`#${id}`)
+          .append("text")
+          .attr("y", function (d) {
+            if (d.data.percent) {
+              return that.textPadding - 8;
+            } else {
+              return that.textPadding;
+            }
+          })
+          .attr("x", (d) => (dirRight ? that.textPadding : -that.textPadding))
+          .attr("text-anchor", dirRight ? "start" : "end")
+          .style("font-size", that.fontSize)
+          .text(function (d) {
+            const len = d.data.name.length;
+            if (len > 20) {
+              return d.data.name.substring(0, 20) + "...";
+            } else {
+              return d.data.name;
+            }
+          })
+          .attr("fill", function (d) {
+            if (d.data.nodeType == -1) {
+              return "rgb(33, 150, 243)";
+            } else if (d.data.nodeType == 0 || d.data.attName) {
+              return "#000";
+            } else {
+              return "#333";
+            }
+          })
 
-        .attr("width", function (d) {
-          circlewidth1 = d3.select(this.getComputedTextLength())._groups[0][0];
-          return d3.select(this.getComputedTextLength())._groups[0][0];
-        });
+          .attr("width", function (d) {
+            circlewidth1 = d3.select(this.getComputedTextLength())._groups[0][0];
+            return d3.select(this.getComputedTextLength())._groups[0][0];
+          });
     },
     //画子文本
     drawTsText(id, dirRight) {
 
       let that = this;
       return d3
-        .select(`#${id} text`)
-        .append("tspan")
-        .attr("fill", (d) => (d.data.attName ? "#fff" : "#999"))
-        .attr("y", function (d) {
-          if (d.data.ratio) {
-            return that.textPadding + 8;
-          }
-        })
-        .attr("x", function (d) {
-          if (dirRight > 0) {
-            return that.textPadding;
-          } else {
-            return -5;
-          }
-        })
-        .style("font-size", "11px")
-        .text(function (d) {
-          return d.data.ratio;
-        })
+          .select(`#${id} text`)
+          .append("tspan")
+          .attr("fill", (d) => (d.data.attName ? "#fff" : "#F9B023"))
+          .attr("y", function (d) {
+            if (d.data.percent) {
+              return that.textPadding + 8;
+            }
+          })
+          .attr("x", function (d) {
+            if (dirRight > 0) {
+              return that.textPadding;
+            } else {
+              return -5;
+            }
+          })
+          .style("font-size", "11px")
+          .style("color", "#F9B023")
+          .text(function (d) {
+            return d.data.percent;
+          })
 
-        .attr("width", function (d) {
-          circlewidth2 = d3.select(this.getComputedTextLength())._groups[0][0];
-          return d3.select(this.getComputedTextLength())._groups[0][0];
-        });
+          .attr("width", function (d) {
+            circlewidth2 = d3.select(this.getComputedTextLength())._groups[0][0];
+            return d3.select(this.getComputedTextLength())._groups[0][0];
+          });
     },
     //画股票代码
     drawCodeText(id, dirRight) {
 
       return d3
-        .select(`#${id} text`)
-        .append("tspan")
-        .attr("fill", (d) => "#fff")
-        .attr("y", function (d) {
-          if (d.data.ratio) {
-            return this.textPadding + 8;
-          }
-        })
-        .style("font-size", "11px")
-        .attr("x", function (d) {
-          if (dirRight > 0) {
-            return this.textPadding;
-          } else {
-            return -5;
-          }
-        })
-        .text(function (d) {
-          return d.data.attName + " ";
-        })
+          .select(`#${id} text`)
+          .append("tspan")
+          .attr("fill", (d) => "#fff")
+          .attr("y", function (d) {
+            if (d.data.percent) {
+              return this.textPadding + 8;
+            }
+          })
+          .style("font-size", "11px")
+          .attr("x", function (d) {
+            if (dirRight > 0) {
+              return this.textPadding;
+            } else {
+              return -5;
+            }
+          })
+          .text(function (d) {
+            return d.data.attName + " ";
+          })
 
-        .attr("width", function (d) {
-          circlewidth3 = d3.select(this.getComputedTextLength())._groups[0][0];
-          return d3.select(this.getComputedTextLength())._groups[0][0];
-        });
+          .attr("width", function (d) {
+            circlewidth3 = d3.select(this.getComputedTextLength())._groups[0][0];
+            return d3.select(this.getComputedTextLength())._groups[0][0];
+          });
     },
     //节点数量
     drawLength(id) {
 
       return d3
-        .select(`#${id} text`)
-        .append("tspan")
-        .attr("fill", (d) => "#999")
-        .text(function (d) {
-          if (d.data.type == -1) {
-            return " (" + d.data.val + ")";
-          }
-          return " [" + d.data.ratio + "]";
-        })
-        .attr("fill", "rgb(33, 150, 243)")
-        .attr("width", function (d) {
-          return d3.select(this.getComputedTextLength())._groups[0];
-        });
+          .select(`#${id} text`)
+          .append("tspan")
+          .attr("fill", (d) => "#999")
+          .text(function (d) {
+            if (d.data.type == -1) {
+              return " (" + d.data.val + ")";
+            }
+            return " [" + d.data.percent + "]";
+          })
+          .attr("fill", "rgb(33, 150, 243)")
+          .attr("width", function (d) {
+            return d3.select(this.getComputedTextLength())._groups[0];
+          });
     },
     //画方框阴影
     drawFilter(id) {
 
       return d3
-        .select(`#${id}`)
-        .insert("defs", "rect")
-        .append("filter")
-        .attr("id", `f${id}`)
-        .attr("x", 0)
-        .attr("y", 0)
-        .append("feGaussianBlur")
-        .attr("in", "SourceGraphic")
-        .attr("stdDeviation", "5");
+          .select(`#${id}`)
+          .insert("defs", "rect")
+          .append("filter")
+          .attr("id", `f${id}`)
+          .attr("x", 0)
+          .attr("y", 0)
+          .append("feGaussianBlur")
+          .attr("in", "SourceGraphic")
+          .attr("stdDeviation", "5");
     },
 
     //画方框
     drawRect(id, dirRight) {
 
       let that = this;
-      let realw = document.getElementById(id).getBBox().width + 25; //获取g实际宽度后，设置rect宽度
+      let realw = document.getElementById(id).getBBox().width + 25 + 20; //获取g实际宽度后，设置rect宽度
       if (document.getElementById(id).getBBox().width > 400) {
         realw = 400;
       }
 
       return d3
-        .select(`#${id}`)
-        .insert("rect", "text")
-        .attr("x", function (d) {
-          if (dirRight < 0) {
-            return -realw;
-          } else {
-            0;
-          }
-        })
-        .attr("y", function (d) {
-          if (d.data.ratio) {
-            return -that.textSpace + that.textPadding - 11;
-          } else {
-            return -that.textSpace + that.textPadding - 4;
-          }
-        })
-        .attr("width", function (d) {
-          // if (d.data.isNextNode) {//判断是否有下级节点
-          //     return realw
-          // } else {
-          //     return realw - 15
-          // }
-          return realw;
-        })
-        .attr("height", function (d) {
-          if (d.data.ratio) {
-            return that.textSpace + that.textPadding + 22;
-          } else {
+          .select(`#${id}`)
+          .insert("rect", "text")
+          .attr("x", function (d) {
+            if (dirRight < 0) {
+              return -realw;
+            } else {
+              0;
+            }
+          })
+          .attr("y", function (d) {
+            if (d.data.percent) {
+              return -that.textSpace + that.textPadding - 11;
+            } else {
+              return -that.textSpace + that.textPadding - 4;
+            }
+          })
+          .attr("width", function (d) {
+            // if (d.data.isNextNode) {//判断是否有下级节点
+            //     return realw
+            // } else {
+            //     return realw - 15
+            // }
+            return realw;
+          })
+          .attr("height", function (d) {
+            if (d.data.percent) {
+              return that.textSpace + that.textPadding + 22;
+            } else {
+              return that.textSpace + that.textPadding + 8;
+            }
             return that.textSpace + that.textPadding + 8;
-          }
-        })
-        .attr("stroke-width", (d) =>
-          d.data.nodeType == 0 || d.data.type == -1 || d.data.attName ? 0 : 0.5
-        )
-        .attr("rx", 2) //圆角
+          })
+          .attr("stroke-width", (d) =>
+              d.data.nodeType == 0 || d.data.type == -1 || d.data.attName ? 0 : 0.5
+          )
+          .attr("rx", 2) //圆角
 
-        .style("stroke", (d) =>
-          d.data.nodeType == -1 ? "" : that.getRectStorke(d.parent.data.name)
-        )
-        .style("fill", function (d) {
-          if (d.data.nodeType == -1) {
-            return "rgb(241, 241, 241)";
-          } else if (d.data.nodeType == 0) {
-            return that.getRectStorke(d.data.name);
-          } else if (d.data.attName) {
-            return "rgb(33, 150, 243)";
-          } else {
-            return "#fff";
-          }
-        });
+          .style("stroke", (d) =>
+              d.data.nodeType == -1 ? "" : that.getRectStorke(d.parent.data.name)
+          )
+          .style("fill", function (d) {
+            if (d.data.nodeType == -1) {
+              return "rgb(241, 241, 241)";
+            } else if (d.data.nodeType == 0) {
+              return that.getRectStorke(d.data.name);
+            } else if (d.data.attName) {
+              return "rgb(33, 150, 243)";
+            } else {
+              return "#fff";
+            }
+          });
     },
 
     //画circle
     drawCircle(id, dirRight, source, direction) {
 
       let gMark = d3
-        .select(`#${id}`)
-        .append("g")
-        .attr("class", "node-circle")
-        .attr("stroke", "rgb(153, 153, 153)")
-        .attr("transform", function (d) {
-          if (d.data.ratio) {
-            if (circlewidth1 > circlewidth2) {
-              leng = Number(circlewidth1) + 15;
-            } else {
-              leng = Number(circlewidth2) + 15;
-            }
+          .select(`#${id}`)
+          .append("g")
+          .attr("class", "node-circle")
+          .attr("stroke", "rgb(153, 153, 153)")
+          .attr("transform", function (d) {
+            if (d.data.percent) {
+              if (circlewidth1 > circlewidth2) {
+                leng = Number(circlewidth1) + 15;
+              } else {
+                leng = Number(circlewidth2) + 15;
+              }
 
-            //leng = Number(circlewidth1) + Number(circlewidth2) + 25;
-            if (leng > 390) {
-              leng = 390;
-            }
-            if (dirRight == 1) {
-              return "translate(" + leng + ",0)";
+              //leng = Number(circlewidth1) + Number(circlewidth2) + 25;
+              if (leng > 390) {
+                leng = 390;
+              }
+              if (dirRight == 1) {
+                return "translate(" + leng + ",0)";
+              } else {
+                return "translate(" + -leng + ",0)";
+              }
             } else {
-              return "translate(" + -leng + ",0)";
+              leng = Number(circlewidth1) + 15;
+              if (dirRight == 1) {
+                return "translate(" + leng + ",0)";
+              } else {
+                return "translate(" + -leng + ",0)";
+              }
             }
-          } else {
-            leng = Number(circlewidth1) + 15;
-            if (dirRight == 1) {
-              return "translate(" + leng + ",0)";
-            } else {
-              return "translate(" + -leng + ",0)";
-            }
-          }
-        })
-        // .attr('stroke-width', d => d.data.isNextNode ? 1 : 0);   判断是否有下级节点
-        .attr("stroke-width", (d) => (d.data.type == "-1" ? 0 : 1));
+          })
+          // .attr('stroke-width', d => d.data.isNextNode ? 1 : 0);   判断是否有下级节点
+          .attr("stroke-width", (d) => (d.data.type == "-1" ? 0 : 1));
 
       gMark
-        .append("circle")
-        .attr("fill", "none")
-        .attr("r", function (d) {
-          if (d.data.type == "-1") {
-            return 0;
-          }
-          return 5;
-        }) //根节点不设置圆圈
-        .attr("fill", "#ffffff");
+          .append("circle")
+          .attr("fill", "none")
+          .attr("r", function (d) {
+            if (d.data.type == "-1") {
+              return 0;
+            }
+            return 5;
+          }) //根节点不设置圆圈
+          .attr("fill", "#ffffff");
       let padding = this.circleR - 2;
 
       gMark.append("path").attr("d", `m -${padding} 0 l ${2 * padding} 0`); //横线
 
       gMark
-        .append("path") //竖线，根据展开/收缩动态控制显示
-        .attr("d", `m 0 -${padding} l 0 ${2 * padding}`)
-        .attr("stroke-width", function (d) {
-          if (d.data.type == "-1") {
-            return 0;
-          }
-          return 1;
-        })
-        .attr("class", "node-circle-vertical");
+          .append("path") //竖线，根据展开/收缩动态控制显示
+          .attr("d", `m 0 -${padding} l 0 ${2 * padding}`)
+          .attr("stroke-width", function (d) {
+            if (d.data.type == "-1") {
+              return 0;
+            }
+            return 1;
+          })
+          .attr("class", "node-circle-vertical");
       return gMark;
     },
 
-    //点击某个节点
-    // clickNode(d, direction, source) {
-    //   if (d.children) {
-    //     d._children = d.children;
-    //     d.children = null;
-    //     this.getNode(d, direction, source, 1);
-    //   } else {
-    //     d.children = d._children;
-    //     d._children = [];
-    //     this.getNode(d, direction, source); //原注
-    //   }
-    //   if (d.data.name == "更多") {
-    //     this.getNode(d, direction, source);
-    //     return;
-    //   }
-    //   this.update(d, direction); //原注
-    // },
 
     expand(d, direction, source) {
 
-      if (d.data.name == "更多") {
+      if (d.data.name == "展开") {
         this.getNode(d, direction, source);
         return;
       }
@@ -1032,15 +1071,14 @@ export default {
     },
 
     //点击某个节点ly
-     clickNode(d, direction, source) {
-       if (d.children || d.children) {
-         this.collapse(d, direction, 1);
-       } else {
-         this.expand(d, direction, source);
-       }
-     },
+    clickNode(d, direction, source) {
+      if (d.children || d.children) {
+        this.collapse(d, direction, 1);
+      } else {
+        this.expand(d, direction, source);
+      }
+    },
     getTsTextColor(name) {
-
       switch (name) {
         case "股东":
           return "darkgray";
@@ -1070,8 +1108,16 @@ export default {
     isNull(val) {
       return val ? val : "";
     },
-  },
-};
+    refresh() {
+      d3.select('#treeRoot').remove();
+      this.getData();
+    },
+    exportImg() {
+
+    }
+  }
+}
+
 </script>
 
 <style>
@@ -1084,6 +1130,6 @@ export default {
   max-width: 100%;
   overflow: hidden;
   font-family: "PingFangSC-Regular", "PingFangSC-Light", "PingFang SC",
-    sans-serif, "Microsoft YaHei";
+  sans-serif, "Microsoft YaHei";
 }
 </style>

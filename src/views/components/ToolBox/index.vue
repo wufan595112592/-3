@@ -11,8 +11,8 @@
         <div class="text">简称</div>
       </li>
 
-      <li v-if="hasButon(Buttons.TEMPLATE)" :class="simple ? 'active': ''" @click="openTemplate(true)">
-        <div class="icon"><span class="iconfont icon-zitiyanse"></span></div>
+      <li v-if="hasButon(Buttons.TEMPLATE)" :class="isShowTemplate ? 'active': ''" @click="openTemplate(true)">
+        <div class="icon"><span class="iconfont icon-liebiao"></span></div>
         <div class="text">模板</div>
       </li>
 
@@ -24,7 +24,7 @@
         <div class="icon"><span class="iconfont icon-fangda"></span></div>
         <div class="text">放大</div>
       </li>
-      <li v-if="hasButon(Buttons.ZOOMOUT)" @click="maoScale(2)">
+      <li v-if="hasButon(Buttons.ZOOMOUT)" @click="maoScale(-1)">
         <div class="icon"><span class="iconfont icon-suoxiao"></span></div>
         <div class="text">缩小</div>
       </li>
@@ -58,9 +58,11 @@ import { useStore } from 'vuex'
 import Buttons from './buttons';
 
 const store = useStore();
-const emit = defineEmits(['maoScale', 'refresh', 'exportImg','update:isShowFilter', 'editChange', 'simpleChange', 'openTemplate'])
+const emit = defineEmits(['maoScale', 'refresh', 'exportImg',
+  'update:isShowFilter','update:isShowTemplate', 'editChange', 'simpleChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
+    isShowTemplate: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -125,8 +127,7 @@ function exportImg() {
 }
 
 function openTemplate() {
-   emit('openTemplate')
-   emit('openTemplate')
+   emit('update:isShowTemplate', !props.isShowTemplate)
 }
 
 // defineExpose({ simpleChange, editChange })

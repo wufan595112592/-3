@@ -1,6 +1,7 @@
 <!-- 关系图谱 -->
 <template>
-  <ToolBox v-model:isShowFilter="isShowFilter" :buttonGroup="buttons"
+  <ToolBox v-model:isShowFilter="isShowFilter"
+           :buttonGroup="buttons"
            @maoScale="maoScale"
            @refresh="refresh"
            @exportImg="exportImg"/>
@@ -70,7 +71,7 @@ export default {
     /**
      * 图谱缩放
      * type == 1  放大
-     * type == 2  缩小
+     * type == -1  缩小
      */
     maoScale(type) {
       Painter.maoScale(type);

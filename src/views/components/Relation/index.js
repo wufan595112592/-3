@@ -1259,13 +1259,8 @@ function getD3Position(graph) {
 }
 
 function maoScale(type) {
-  var rate = 0.2;
   var scale = cy.zoom();
-  if (type == 1) {
-    scale += rate;
-  } else if (type == 2) {
-    scale -= rate;
-  }
+  scale += 0.2 * type;
   cy.zoom({
     level: scale, // the zoom level
   });
