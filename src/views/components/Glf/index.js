@@ -29,6 +29,74 @@ var rootRectWidth = 0; //根节点rect的宽度
 var downwardLength = 0,
 	upwardLength = 0;
 var forUpward = true
+var zoom, treeG
+	// 缩放
+export function zoomClick(type) {
+	// var clicked = d3.event.target,
+		var direction = 1,
+		factor = 0.3,
+		target_zoom = 1,
+		center = [width / 2, height / 2],
+		extent = zoom.scaleExtent(),
+		translate = zoom.translate(),
+		translate0 = [],
+		l = [],
+		view = {
+			x: translate[0],
+			y: translate[1],
+			k: zoom.scale()
+		};
+
+	// d3.event.preventDefault();
+	direction = type === 1 ? 1 : -1;
+
+	target_zoom = Number(zoom.scale() + factor * direction).toFixed(1)
+
+	if (target_zoom === extent[0] || target_zoom === extent[1]) {
+		return false
+	}
+	if (target_zoom < extent[0]) {
+		target_zoom = extent[0]
+	}
+	if (target_zoom > extent[1]) {
+		target_zoom = extent[1]
+	}
+	translate0 = [(center[0] - view.x) / view.k, (center[1] - view.y) / view.k];
+	view.k = target_zoom;
+	l = [translate0[0] * view.k + view.x, translate0[1] * view.k + view.y];
+
+	view.x += center[0] - l[0];
+	view.y += center[1] - l[1];
+	// var d3GenerationChart = new treeChart(d3);
+	// d3GenerationChart.drawChart();
+	interpolateZoom([view.x, view.y], view.k);
+}
+function interpolateZoom(translate, scale) {
+	return d3
+		.transition()
+		.duration(350)
+		.tween("zoom", function() {
+			var iTranslate = d3.interpolate(zoom.translate(), translate),
+				iScale = d3.interpolate(zoom.scale(), scale);
+			return function(t) {
+				zoom.scale(iScale(t)).translate(iTranslate(t));
+				redraw();
+			};
+		});
+}
+function redraw() {
+	treeG.attr('transform', 'translate(' + zoom.translate() + ')' +
+		' scale(' + zoom.scale() + ')');
+}
+
+
+export function refreshDom() {
+	d3.select('svg').remove();   //删除整个SVG
+	d3.select('svg')
+		.selectAll('*')
+		.remove();
+	drawing()
+}
 
 export function drawing() {
 	width = document.getElementById('mountNode').scrollWidth
@@ -80,7 +148,7 @@ treeChart.prototype.graphTree = function(config) {
 		return ("M" + s.x + "," + (s.y) + "L" + s.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y));
 		// return ("M" + s.x + "," + (s.y + 20) + "L" + s.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y + 20));
 	};
-	var zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
+	zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
 	var svg = d3.select('#mountNode')
 		.append('svg')
 		.attr('id', 'svg')
@@ -90,7 +158,7 @@ treeChart.prototype.graphTree = function(config) {
 		// .on('mousedown', disableRightClick)
 		.call(zoom)
 		.on('dblclick.zoom', null);
-	var treeG = svg.append('g')
+	treeG = svg.append('g')
 		.attr('class', 'gbox')
 		.attr('transform', 'translate(0,0)');
 
