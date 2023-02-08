@@ -1,6 +1,6 @@
 <!-- 实际控制人 -->
 <template>
-	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="8" />
+	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="8" /> -->
 	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
 	<div style="width: 100%;height: 100%;">
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
@@ -12,7 +12,7 @@
 </template>
 <script>
 	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox.vue'
+	import ToolBox from './components/ToolBox/index.vue'
 	import { init } from "./components/Kzr/index";
 	import { onMounted  } from 'vue';
 	export default {

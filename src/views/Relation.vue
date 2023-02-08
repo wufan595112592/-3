@@ -1,6 +1,6 @@
 <!-- 关系图谱 -->
 <template>
-	<Header title="小米科技有限责任公司" :active="1" />
+	<!-- <Header title="小米科技有限责任公司" :active="1" /> -->
 	
 	<div id="borrow" style="width: 100%;height: 100%;background: #fff;">
 		<Legend />

@@ -2,7 +2,7 @@
   <div class="toolbox">
     <ul class="mao-title breadcrumb">      
 
-      <li v-if="hasButon(Buttons.FILTER)" :class="show ? 'active': ''" @click="showBox(true)">
+      <li v-if="hasButon(Buttons.FILTER)" :class="isShowFilter ? 'active': ''" @click="showFilter">
         <div class="icon"><span class="iconfont icon-liebiao"></span></div>
         <div class="text">筛选</div>
       </li>
@@ -54,11 +54,11 @@
 
 <script setup>
 import { ref, defineExpose  } from 'vue'
-import  Buttons from './buttons';
+import Buttons from './buttons';
 
-const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg','showBox', 'editChange', 'simpleChange', 'openTemplate'])
+const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg','update:isShowFilter', 'editChange', 'simpleChange', 'openTemplate'])
 const props = defineProps({
-    active: Boolean,
+    isShowFilter: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -72,7 +72,6 @@ const props = defineProps({
 })
 
 
-let show = ref(false)
 let simple = ref(false)
 let edit = ref(false)
 let isFullscreen = ref(false)
@@ -88,27 +87,12 @@ function hasButon(type) {
   return (props.buttonGroup & type) === type;
 }
 
-function stateChange(value, bool = false) {
-  if (bool) {
-    state.value[value] = !state.value[value]
-  } else {
-    state.value = [bool, bool]
-  }
-}
-function shareFormatter(value) {
-  shareholding.value = value
+
+
+function showFilter() {
+    emit('update:isShowFilter', !props.isShowFilter)
 }
 
-function investFormatter(value) {
-  investment.value = value
-}
-function showBox(bool = false) {
-  if (bool) {
-    show.value = !show.value
-  } else {
-    show.value = bool
-  }
-}
 function simpleChange(bool = false) {
   if (bool) {
     simple.value = !simple.value
@@ -125,6 +109,7 @@ function editChange(bool = false) {
     edit.value = bool
   }
 }
+
 function fullscreenClick() {
   emit('screenfullChange')
 }

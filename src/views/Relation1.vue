@@ -1,7 +1,7 @@
 <!-- 关系图谱 -->
 <template>
 	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="1" /> -->
-	<ToolBox :buttonGroup="buttons" @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
+	<ToolBox v-model:isShowFilter="isShowFilter" :buttonGroup="buttons" @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
 	<RelationFilter v-model:visiable="isShowFilter" @stateChange="filterStateChange"/>
 	<Legend />
 	

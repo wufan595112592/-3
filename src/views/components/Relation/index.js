@@ -33,6 +33,8 @@ var _currentKeyNo,
   _circleBorder = 3,
   _layoutNode = {},
   _isFocus = false;
+let relationMap = new Map();
+
 var _maxChildrenLength = 0;
 /** 解决浏览器标签切换排列问题 */
 var _isNeedReload = false;
@@ -426,6 +428,7 @@ function drawGraph(elements) {
         cy.collection("edge").removeClass("edgeActive");
       } else {
         var nodeData = node._private.data;
+
         if (nodeData.type == "E" || nodeData.type == "UE") {
           showDetail2(nodeData.keyNo, "company_muhou3");
           cy.collection("node").addClass("nodeDull");
@@ -475,7 +478,7 @@ function drawGraph(elements) {
   cy.on("mouseover", "node", function (evt) {
     if (evt.target._private.style["z-index"].value == 20) {
       // 非暗淡状态
-      $("#Main").css("cursor", "pointer");
+      // $("#Main").css("cursor", "pointer");
       var node = evt.target;
       node.addClass("nodeHover");
       if (!_isFocus) {
@@ -525,12 +528,12 @@ function drawGraph(elements) {
    * 鼠标移开节点
    */
   cy.on("mouseout", "node", function (evt) {
-    $("#Main").css("cursor", "default");
+    //$("#Main").css("cursor", "default");
 
     // 提示
-    $(".tips").fadeOut(function () {
-      $(".tips").remove();
-    });
+    // $(".tips").fadeOut(function () {
+    //   $(".tips").remove();
+    // });
     clearTimeout(showTipsTime);
     var node = evt.target;
     node.removeClass("nodeHover");
@@ -774,16 +777,19 @@ function transformData(graphData) {
   graphData.links.forEach(function (link, i) {
     var color = getLinkColor(link.data.type);
     var label = getLinkLabel(link);
+    const linkId = link.sourceNode.nodeId + "" + link.targetNode.nodeId;
     els.edges.push({
       data: {
         data: link.data,
         color: color,
-        id: link.linkId,
+        id: linkId, //link.linkId,
         label: label,
         source: link.sourceNode.nodeId,
         target: link.targetNode.nodeId,
+        properties: link.properties,
       },
     });
+    relationMap.set(linkId, link);
   });
 
   graphData.nodes.forEach(function (node) {
@@ -806,6 +812,8 @@ function transformData(graphData) {
       },
     });
   });
+
+  getLayoutNode(graphData);
   return els;
 }
 
@@ -1021,7 +1029,7 @@ function setCategoryColor(nodes, links) {
 
 // 图谱、筛选面板更新
 function domUpdate(graphData) {
-  console.log(graphData);
+  // console.log(graphData);
   getD3Position(graphData);
 
   setTimeout(function () {
@@ -1071,8 +1079,6 @@ function getLayoutNode(graphData) {
 
 // ---------------------------- domUpdate 调用的方法 ---- Begin
 function getD3Position(graph) {
-  getLayoutNode(graph);
-
   function filterLinks1(graph) {
     // 筛选用于布局的links
     var layoutLinks = [];
@@ -1246,7 +1252,8 @@ function maoScale(type) {
     level: scale, // the zoom level
   });
 }
-export function init(id) {
+
+function init(id) {
   domId = id;
   /** 网页当前状态判断 (解决没布局完就切换页面造成点聚集在一起)*/
 
@@ -1317,7 +1324,7 @@ function exportImg() {
 /**
  * 白灰色遮罩
  */
-function setMask(id) {
+function deactiveElements(id) {
   cy.collection("node").removeClass("nodeActive");
   cy.collection("edge").removeClass("edgeActive");
   cy.collection("node").addClass("dull");
@@ -1330,12 +1337,18 @@ function setMask(id) {
 function activeNodeById(id) {
   const node = cy.filter('[id = "' + id + '"]')[0];
   node.removeClass("dull");
-  //node.addClass('nodeActive');
-  node.neighborhood("edge").removeClass("dull");
-  node.neighborhood("edge").addClass("edgeActive");
-  node.neighborhood("edge").connectedNodes().removeClass("dull");
-  //node.neighborhood("edge").connectedNodes().addClass("nodeActive");
 }
+
+/**
+ * 激活连线
+ * @param {*} id 
+ */
+function activeEdgeById(id) {
+  const node = cy.filter('[id = "' + id + '"]')[0];
+  node.removeClass("dull");
+  node.addClass("edgeActive");
+}
+
 
 /**
  * 过滤
@@ -1343,35 +1356,134 @@ function activeNodeById(id) {
  * @param {} state
  */
 function filter(state) {
+  _isFocus = true;
   // 设置白灰色遮罩
-  setMask();
-  // 高亮节点
-  let rootNodeId = relativeData.nodes.filter((a) => a.uid === _currentKeyNo)[0]
-    .id;
-  // 激活根节点
-  activeNodeById(rootNodeId);
+  deactiveElements();
 
-  for (let i = 0; i < relativeData.links.length; i++) {
-    let id;
-    const item = relativeData.links[i];
-    // 层级
-    if (state.layer == 1) {
-      break;
-    } else if (state.layer == 2) {
-      if (item.sourceId !== rootNodeId) {
-        break;
+  // 第一层
+  if (state.layer >= 1) {
+    const layer2Node = [];
+
+    for (let i = 0; i < _layoutNode.level1.length; i++) {
+      const sourceNode = _layoutNode.level1[i];
+      if (!validateCompany(state, sourceNode)) {
+        continue;
       }
-      id = item.targetId;
+      activeNodeById(sourceNode.id);
+
+      for (let j = 0; j < _layoutNode.level2.length; j++) {
+        const targetNode = _layoutNode.level2[j];
+        if (!validateCompany(state, targetNode)) {
+          continue;
+        }
+        let linkId = sourceNode.id + "" + targetNode.id;
+        let relation = relationMap.get(linkId);
+        if (!relation) {
+          linkId = targetNode.id + "" + sourceNode.id;
+          relation = relationMap.get(linkId);
+        }
+
+        if (relation && validate(state, relation)) {
+          activeNodeById(targetNode.id);
+          activeEdgeById(linkId);
+          layer2Node.push(targetNode);
+        }
+      }
     }
 
-    // 状态
-    // 持股
-    // 关系
+    // 第二层
+    if (state.layer == 2) {
+      for (let i = 0; i < layer2Node.length; i++) {
+        const sourceNode = layer2Node[i];
+        if (!validateCompany(state, sourceNode)) {
+          continue;
+        }
+        activeNodeById(sourceNode.id);
 
-    activeNodeById(id);
+        for (let j = 0; j < _layoutNode.level3.length; j++) {
+          const targetNode = _layoutNode.level3[j];
+          if (!validateCompany(state, targetNode)) {
+            continue;
+          }
+          let linkId = sourceNode.id + "" + targetNode.id;
+          let relation = relationMap.get(linkId);
+          if (!relation) {
+            linkId = targetNode.id + "" + sourceNode.id;
+            relation = relationMap.get(linkId);
+          }
+
+          if (relation && validate(state, relation)) {
+            activeNodeById(targetNode.id);
+            activeEdgeById(linkId);
+          }
+        }
+      }
+    }
+  }
+
+  // 企业状态
+  function validateCompany(state, node) {
+    // TODO
+    // 关系
+    if (state.status == 0) {
+      // 全部
+      return true;
+    }
+
+    if (state.status == 1) {
+      // 吊销
+      return true;
+    }
+
+    if (state.status == 2) {
+      // 注销
+      return true;
+    }
+
+    if (state.status == 3) {
+      // 存续
+      return true;
+    }
+
+    return true;
+  }
+
+  // 持股比例   关系
+  function validate(state, relation) {
+    // 持股
+    let relationPercent = (relation.data.properties.relationPercent || 0) * 100;
+    if (relationPercent < state.shareholding) {
+      return false;
+    }
+    // 关系
+    if (state.relation == 0) {
+      // 全部
+      return true;
+    }
+
+    if (state.relation == 1) {
+      // 直接投资
+      return relation.data.type === "LR";
+    }
+
+    if (state.relation == 2) {
+      // 股东投资
+      return relation.data.type === "SH";
+    }
+
+    if (state.relation == 3) {
+      // 董监高法投资
+      return relation.data.type === "EXEC";
+    }
+
+    return true;
   }
 }
 
+/**
+ * 刷新
+ * @param {} param0 
+ */
 function refresh({ name = "preset", randomize = false, animate = true } = {}) {
   cy.layout({
     name: name,
@@ -1379,6 +1491,9 @@ function refresh({ name = "preset", randomize = false, animate = true } = {}) {
     animate: animate,
   }).run();
 }
+
+
+
 
 export default {
   init,

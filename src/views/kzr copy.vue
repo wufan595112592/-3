@@ -7,7 +7,7 @@
 </script>
 
 <template>
-	<Header v-if="!screenfull" title="小米科技有限责任公司" :active="8" />
+	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="8" /> -->
 	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
 	<div style="width: 100%;height: 100%;">
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
