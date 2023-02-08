@@ -164,8 +164,8 @@ import {
   onMounted
 } from "vue";
 
+defineProps({  visiable: false });
 const emit = defineEmits(['update:visiable', 'stateChange']);
-const props = defineProps({  visiable: false });
 const formState = reactive({
   layer: 2,
   status: 0,

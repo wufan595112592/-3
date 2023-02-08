@@ -1,13 +1,11 @@
 <!-- 关系图谱 -->
 <template>
-	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="1" /> -->
-	<ToolBox v-model:isShowFilter="isShowFilter" :buttonGroup="buttons" @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
+	<ToolBox v-model:isShowFilter="isShowFilter" :buttonGroup="buttons" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" @textShowChange="textShowChange" />
 	<RelationFilter v-model:visiable="isShowFilter" @stateChange="filterStateChange"/>
 	<Legend />
 	
 	<!-- <RelationDetail v-if="DetailShow" @close="close" /> -->
 	<div style="width: 100%;height: 100%;">
-		{{ DetailShow }}
 		<div id="MainCy" style="width: 100%;height: 100%;"></div>
 		<!-- <div id="MainD3" scale="1" class="no-padding tp-container">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
@@ -42,7 +40,6 @@
 		data() {
 			return {
 				buttons: Buttons.FILTER | Buttons.ABBREVIATE | Buttons.EDIT | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE,
-				screenfull: false,
 				DetailShow: true,
 				isShowFilter: true
 			}
@@ -85,11 +82,8 @@
 				animate,
 				} )
 			},
-			screenfullChange(screenfull) {
-				this.screenfull = screenfull
-			},
 			textShowChange(val) {
-				textShow = val
+				// textShow = val
 				getData()
 			},
 			//

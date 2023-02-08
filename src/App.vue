@@ -1,10 +1,12 @@
 <script setup>
-import {ref} from 'vue'
+import {ref, computed } from 'vue'
 import { RouterView } from 'vue-router'
+import { useStore } from 'vuex' ;
 import Header from '@/components/Header/index.vue'
 
 const title = ref('小米科技有限责任公司')
-
+const store = useStore();
+const isFullScreen = computed(() => store.state.isFullScreen)
 
 </script>
 
@@ -21,7 +23,7 @@ const title = ref('小米科技有限责任公司')
       </nav>
     </div>
   </header> -->
-  <Header :title="title" />
+  <Header v-if="!isFullScreen" :title="title" />
   <RouterView />
 </template>
 

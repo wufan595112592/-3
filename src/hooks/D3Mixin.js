@@ -2,7 +2,7 @@
  * 全屏 toggleFullScreen
  * 保存 downloadImpByChart
  */
-let isFullscreen = true
+let _isFullscreen = true
 export default function() {
   const downloadSvgFn = (svg, width, height, chartName, rootName) => {
     var serializer = new XMLSerializer()
@@ -77,7 +77,7 @@ export default function() {
     }
     return isFull
   }
-  const FullScreen = (el) => {
+  const FullScreen = (isFullscreen, el = document.documentElement) => {
     if (isFullscreen) {
       //退出全屏
       if (document.exitFullscreen) {
@@ -99,14 +99,13 @@ export default function() {
         //改变平面图在google浏览器上面的样式问题
         el.webkitRequestFullscreen()
       } else if (el.msRequestFullscreen) {
-        isFullscreen = true
         el.msRequestFullscreen()
       }
     }
   }
-  const toggleFullScreen = (e) => {
-    isFullscreen = !isFullscreen
-    FullScreen(document.getElementById('borrow'))
+  const toggleFullScreen = (el = 'app') => {
+    _isFullscreen = !_isFullscreen
+    FullScreen(_isFullscreen, document.getElementById(el) )
   }
   return { toggleFullScreen, downloadImpByChart, FullScreen, downloadSvgFn }
 }

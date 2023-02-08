@@ -33,11 +33,11 @@
         <div class="text">刷新</div>
       </li>
       <template v-if="hasButon(Buttons.FULLSCREEN)">
-        <li v-if="!isFullscreen" @click="fullscreenClick(true)">
+        <li v-if="!isFullscreen" @click="toggleFullScreen">
         <div class="icon"><span class="iconfont icon-quanping"></span></div>
         <div class="text">全屏</div>
       </li>
-      <li v-if="isFullscreen" @click="fullscreenClick(true)">
+      <li v-if="isFullscreen" @click="toggleFullScreen">
         <div class="icon"><span class="iconfont icon-tuichuquanping"></span></div>
         <div class="text">退出</div>
       </li>
@@ -53,10 +53,12 @@
 </template>
 
 <script setup>
-import { ref, defineExpose  } from 'vue'
+import { ref, defineExpose, computed  } from 'vue'
+import { useStore } from 'vuex'
 import Buttons from './buttons';
 
-const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg','update:isShowFilter', 'editChange', 'simpleChange', 'openTemplate'])
+const store = useStore();
+const emit = defineEmits(['maoScale', 'refresh', 'exportImg','update:isShowFilter', 'editChange', 'simpleChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
     buttonGroup: {
@@ -74,9 +76,8 @@ const props = defineProps({
 
 let simple = ref(false)
 let edit = ref(false)
-let isFullscreen = ref(false)
+let isFullscreen = computed(() => store.state.isFullScreen)
 let shareholding = ref(0)
-let investment = ref(0)
 const state = ref([])
 state.value = [true, true]
 
@@ -86,7 +87,6 @@ state.value = [true, true]
 function hasButon(type) {  
   return (props.buttonGroup & type) === type;
 }
-
 
 
 function showFilter() {
@@ -110,9 +110,10 @@ function editChange(bool = false) {
   }
 }
 
-function fullscreenClick() {
-  emit('screenfullChange')
+function toggleFullScreen(value) {
+  store.commit('toggleFullScreen', value)
 }
+
 function maoScale(type) {
   emit('maoScale', type)
 }
@@ -125,10 +126,12 @@ function exportImg() {
 
 function openTemplate() {
    emit('openTemplate')
+   emit('openTemplate')
 }
 
-defineExpose({ simpleChange, editChange })
+// defineExpose({ simpleChange, editChange })
 </script>
+
 <style lang="scss" scoped>
 .toolbox{
   position: absolute;
