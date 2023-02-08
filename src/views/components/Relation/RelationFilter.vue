@@ -12,6 +12,7 @@
     <div class="equity-filter-body">
       <a-form>
         <a-form-item label="层级">
+          <span class="ant-btn2" :class="formState.layer == 0 ? 'active' : ''" @click="stateChange(0, 'layer')">全部</span>
           <span class="ant-btn2" :class="formState.layer == 1 ? 'active' : ''" @click="stateChange(1, 'layer')">一层</span>
           <span class="ant-btn2" :class="formState.layer == 2 ? 'active' : ''" @click="stateChange(2, 'layer')">二层</span>
         </a-form-item>
@@ -161,13 +162,14 @@ import {
   reactive,
   defineProps,
   defineEmits,
+  defineExpose,
   onMounted
 } from "vue";
 
 defineProps({  visiable: false });
 const emit = defineEmits(['update:visiable', 'stateChange']);
 const formState = reactive({
-  layer: 2,
+  layer: 0,
   status: 0,
   shareholding: 0,
   relation: 0,
@@ -181,6 +183,7 @@ const formState = reactive({
 function closeWindow() {
   emit("update:visiable", false);
 }
+
 /**
  * 
  */
@@ -188,6 +191,19 @@ function stateChange(value, field) {
   formState[field] = value;
   emit('stateChange', formState)
 }
+
+/**
+ * 重置状态
+ */
+function resetState() {
+  formState.layer = 0;
+  formState.status = 0;
+  formState.shareholding = 0;
+  formState.relation = 0;
+}
+defineExpose({
+  resetState
+})
 </script>
 
 

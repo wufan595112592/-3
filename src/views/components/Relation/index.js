@@ -11,6 +11,8 @@ var _rootData, _rootNode; //原始数据转换成的graph数据,根节点数据
 var hidden, state, visibilityChange;
 // 用于保存ajax请求的数据
 let relativeData;
+// 过滤条件是否改变
+let _isFilterConditionChange = false;
 
 const _COLOR = {
   node: {
@@ -89,6 +91,7 @@ function drawGraph(elements) {
     zoomingEnabled: true, //是否可缩放，改为false图谱的位置会靠左不居中
     userZoomingEnabled: false, //是否允许用户事件(例如鼠标轮、按下缩放)缩放图形.缩放的编程更改不受此选项的影响  -- 这里改为false,然后通过自定义事件来控制图谱的缩放
     layout: {
+      zoom: 1,
       name: "preset",
       componentSpacing: 40,
       nestingFactor: 12,
@@ -415,6 +418,10 @@ function drawGraph(elements) {
    * 鼠标点击节点后触发
    */
   cy.on("click", "node", function (evt) {
+    // 筛选条件改变屏蔽其他点击事件
+    if(_isFilterConditionChange) {
+      return;
+    }
     if (evt.target._private.style["z-index"].value == 20) {
       // 非暗淡状态
       _isFocus = true;
@@ -587,6 +594,10 @@ function drawGraph(elements) {
    * 鼠标点击连线时触发
    */
   cy.on("click", "edge", function (evt) {
+    // 筛选条件改变屏蔽其他点击事件
+    if(_isFilterConditionChange) {
+      return;
+    }
     _isFocus = false;
     activeNode = null;
     cy.collection("node").removeClass("nodeActive");
@@ -596,6 +607,13 @@ function drawGraph(elements) {
    * 点击画布，节点全部恢复高亮
    */
   cy.on("click", function (event) {
+    if( typeof events.backgroudClick ==='function' ) {
+      events.backgroudClick.call(cy);
+    }
+    // 筛选条件改变屏蔽其他点击事件
+    if(_isFilterConditionChange) {
+      return;
+    }
     var evtTarget = event.target;
     if (evtTarget === cy) {
       _isFocus = false;
@@ -653,9 +671,9 @@ function drawGraph(elements) {
   });
 
   cy.ready(function () {
-    cy.zoom({
-      level: 1, // the zoom level
-    });
+    // cy.zoom({
+    //   level: 1, // the zoom level
+    // });
 
     // 加载完成后，加载该类，修复线有锯齿的问题
     setTimeout(function () {
@@ -1341,7 +1359,7 @@ function activeNodeById(id) {
 
 /**
  * 激活连线
- * @param {*} id 
+ * @param {*} id
  */
 function activeEdgeById(id) {
   const node = cy.filter('[id = "' + id + '"]')[0];
@@ -1356,23 +1374,34 @@ function activeEdgeById(id) {
  * @param {} state
  */
 function filter(state) {
-  _isFocus = true;
+  // 检查筛选条件是否改变
+  if(state.layer == 0 && state.status == 0 &&state.relation == 0 &&state.shareholding == 0 ) {
+    _isFocus = false;
+    _isFilterConditionChange = false;
+
+    cancelHighLight();
+    return;
+  } else {
+    _isFocus = true;
+    _isFilterConditionChange = true;
+  }
   // 设置白灰色遮罩
   deactiveElements();
 
-  // 第一层
-  if (state.layer >= 1) {
-    const layer2Node = [];
+  // 按层数激活
+  recursiveActive( 1,  state.layer == 0 ? 4 : state.layer , _layoutNode.level1 ,  _layoutNode.level2);
 
-    for (let i = 0; i < _layoutNode.level1.length; i++) {
-      const sourceNode = _layoutNode.level1[i];
+  function recursiveActive(layer, maxLayer, parentLayerNode, childrenLayerNode) {
+    if(layer > maxLayer) return;
+     const temp = [];
+    for (let i = 0; i < parentLayerNode.length; i++) {
+      const sourceNode = parentLayerNode[i];
       if (!validateCompany(state, sourceNode)) {
         continue;
       }
       activeNodeById(sourceNode.id);
-
-      for (let j = 0; j < _layoutNode.level2.length; j++) {
-        const targetNode = _layoutNode.level2[j];
+      for (let j = 0; j <  childrenLayerNode.length; j++) {
+        const targetNode = childrenLayerNode[j];
         if (!validateCompany(state, targetNode)) {
           continue;
         }
@@ -1386,39 +1415,13 @@ function filter(state) {
         if (relation && validate(state, relation)) {
           activeNodeById(targetNode.id);
           activeEdgeById(linkId);
-          layer2Node.push(targetNode);
+          temp.push(targetNode);
         }
       }
     }
 
-    // 第二层
-    if (state.layer == 2) {
-      for (let i = 0; i < layer2Node.length; i++) {
-        const sourceNode = layer2Node[i];
-        if (!validateCompany(state, sourceNode)) {
-          continue;
-        }
-        activeNodeById(sourceNode.id);
-
-        for (let j = 0; j < _layoutNode.level3.length; j++) {
-          const targetNode = _layoutNode.level3[j];
-          if (!validateCompany(state, targetNode)) {
-            continue;
-          }
-          let linkId = sourceNode.id + "" + targetNode.id;
-          let relation = relationMap.get(linkId);
-          if (!relation) {
-            linkId = targetNode.id + "" + sourceNode.id;
-            relation = relationMap.get(linkId);
-          }
-
-          if (relation && validate(state, relation)) {
-            activeNodeById(targetNode.id);
-            activeEdgeById(linkId);
-          }
-        }
-      }
-    }
+    ++layer;
+    recursiveActive(layer, maxLayer, temp, _layoutNode['level' + (layer + 1)]);
   }
 
   // 企业状态
@@ -1432,17 +1435,17 @@ function filter(state) {
 
     if (state.status == 1) {
       // 吊销
-      return true;
+      return false;
     }
 
     if (state.status == 2) {
       // 注销
-      return true;
+      return false;
     }
 
     if (state.status == 3) {
       // 存续
-      return true;
+      return false;
     }
 
     return true;
@@ -1482,16 +1485,27 @@ function filter(state) {
 
 /**
  * 刷新
- * @param {} param0 
+ * @param {} param0
  */
 function refresh({ name = "preset", randomize = false, animate = true } = {}) {
-  cy.layout({
+
+   cy.layout({
     name: name,
     randomize: randomize,
     animate: animate,
-  }).run();
+    zoom: 1,
+    pan: cy._private.pan
+  }) .run()
 }
 
+let events = {
+  nodeClick: null,
+  egdeClick:  null,
+  backgroudClick:null,
+}
+function register(opts) {
+    Object.assign(events, opts);
+}
 
 
 
@@ -1502,4 +1516,5 @@ export default {
   getData,
   exportImg,
   filter,
+  register
 };
