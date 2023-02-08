@@ -29,7 +29,7 @@ var rootRectWidth = 0; //根节点rect的宽度
 var downwardLength = 0,
 	upwardLength = 0;
 var forUpward = true
-var zoom, svg
+var zoom, treeG
 	// 缩放
 export function zoomClick(type) {
 	// var clicked = d3.event.target,
@@ -85,9 +85,19 @@ function interpolateZoom(translate, scale) {
 		});
 }
 function redraw() {
-	svg.attr('transform', 'translate(' + zoom.translate() + ')' +
+	treeG.attr('transform', 'translate(' + zoom.translate() + ')' +
 		' scale(' + zoom.scale() + ')');
 }
+
+
+export function refreshDom() {
+	d3.select('svg').remove();   //删除整个SVG
+	d3.select('svg')
+		.selectAll('*')
+		.remove();
+	drawing()
+}
+
 export function drawing() {
 	width = document.getElementById('mountNode').scrollWidth
 	height = document.getElementById('mountNode').scrollHeight
@@ -139,7 +149,7 @@ treeChart.prototype.graphTree = function(config) {
 		// return ("M" + s.x + "," + (s.y + 20) + "L" + s.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y + 20));
 	};
 	zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
-	svg = d3.select('#mountNode')
+	var svg = d3.select('#mountNode')
 		.append('svg')
 		.attr('id', 'svg')
 		.attr('width', config.chartWidth)
@@ -148,7 +158,7 @@ treeChart.prototype.graphTree = function(config) {
 		// .on('mousedown', disableRightClick)
 		.call(zoom)
 		.on('dblclick.zoom', null);
-	var treeG = svg.append('g')
+	treeG = svg.append('g')
 		.attr('class', 'gbox')
 		.attr('transform', 'translate(0,0)');
 

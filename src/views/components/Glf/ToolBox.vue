@@ -45,7 +45,7 @@
 					class="ma_search-input form-control headerKey">
 				<label :class="isOpen ? 'active' : ''">
 					<span class="label-span" @click="openAll">
-						<span style="margin-right:9px">{{ isOpen ? '全部收起' : '全部展开' }}</span>
+						<span>{{ isOpen ? '全部收起' : '全部展开' }}</span>
 						<span class="iconfont" :class="isOpen ? 'icon-top' : 'icon-bottom'"></span>
 					</span>
 				</label>

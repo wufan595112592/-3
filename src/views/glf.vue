@@ -14,7 +14,7 @@
 <script>
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/Glf/ToolBox.vue'
-import { drawing, zoomClick } from './components/Glf/index.js'
+import { drawing, zoomClick, refreshDom } from './components/Glf/index.js'
 import { ref, onMounted } from 'vue';
 import D3Mixin from '@/hooks/D3Mixin'
 let { toggleFullScreen, downloadImpByChart } = D3Mixin()
@@ -46,8 +46,7 @@ export default {
 		}
 		// 刷新
 		const refresh = () => {
-			toolBoxRef.value.openAll()
-      drawing()
+      refreshDom()
 		}
 		// 全屏退出
     const screenfullChange = () => {
