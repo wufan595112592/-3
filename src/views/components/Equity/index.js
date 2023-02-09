@@ -1,5 +1,4 @@
 import d3 from './d3.min.js'
-import EquityJson from '@/api/EquityJson.json'
 import deepcopy from 'deepcopy'
 
 // 是否全称
@@ -15,50 +14,54 @@ var zoom,treeG
 
 // json数据结构改变
 
-var rootData = {
-	downward: {
-		"direction": "downward",
-		"name": "origin",
-		"children": deepcopy(EquityJson.data.c_trees)
-	},
-	upward: {
-		"direction": "upward",
-		"name": "origin",
-		"children": deepcopy(EquityJson.data.p_trees)
-	}
-}
-var rootName = EquityJson.data.name;
-
+var rootData ,rootName;
 let width = 0
 let height = 0
 var _this = this;
 var rootRectWidth = 0; //根节点rect的宽度
 var forUpward = true
 
+let eventOpts = {
+	nodeHover: null,
+	nodeOut: null
+}
+
+export function register(opts) {
+	Object.assign(eventOpts, opts)
+}
+
 // 数据重置
-function resizeData() {
+function resizeData(data) {
 	shortNameShow = false
 	editShow = false
 	// 重新获取json数据
-	rootData = {
+	init(data);
+}
+// 初始化
+export function init(data) {
+	 rootData = {
 		downward: {
 			"direction": "downward",
 			"name": "origin",
-			"children": deepcopy(EquityJson.data.c_trees)
+			"data": data.root,
+			"children": deepcopy(data.c_trees)
 		},
 		upward: {
 			"direction": "upward",
 			"name": "origin",
-			"children": deepcopy(EquityJson.data.p_trees)
+			"data": data.root,
+			"children": deepcopy(data.p_trees)
 		}
 	}
- 	rootName = EquityJson.data.name
+	 rootName = data.root.name;
 }
 
-export function drawing() {
+export function drawing(data) {
 	if (d3.select('#svg')) {
 		d3.select('#svg').remove();
-		resizeData()
+		resizeData(data)
+	} else {
+		init(data);
 	}
 	width = document.getElementById('mountNode').scrollWidth
 	height = document.getElementById('mountNode').scrollHeight
@@ -129,8 +132,8 @@ export function zoomClick(type) {
 }
 
 // 重置刷新
-export function refresh() {
-	drawing()
+export function refresh(data) {
+	drawing(data)
 }
 	// d3.select("#reset").on("click", function(d) {
 	// 	interpolateZoom([0, 0], 1);
@@ -278,6 +281,7 @@ treeChart.prototype.graphTree = function(config) {
 		const rectG = nodeEnter.append("g")
 		// 公司或股东长方形样式
 		const rect = rectG.append("svg:rect")
+			.attr("id", d => d.id)
 			.attr("x", function(d) {
 				return d.name == 'origin' ? -(rootRectWidth / 2) : -90;
 			})
@@ -337,7 +341,7 @@ treeChart.prototype.graphTree = function(config) {
 			.attr("fill", "#333")
 			.text(function(d) {
 				if (d.name == "origin") {
-					return rootName;
+					return d.data.name;
 				}
 				if (d.repeated) {
 					return "[Recurring] " + d.name;
@@ -354,7 +358,7 @@ treeChart.prototype.graphTree = function(config) {
 				'cursor': "pointer"
 			})
 			.on('click', Change_modal)
-			.append('svg:title').text(d => d.name)
+			.append('svg:title').text(d => d.name == 'origin' ? d.data.name : d.name)
 
 		// 公司名称文本第二行  全称
 		textG.append("text")
@@ -384,7 +388,11 @@ treeChart.prototype.graphTree = function(config) {
 			})
 			.attr("text-anchor", "middle")
 			.text(function(d) {
-				return d.name.length > 20 ? d.name.substr(10, 10) + '...' : d.name.substr(10, d.name.length);
+				let name = d.name;
+				if(name == "origin") {
+					name = d.data.name;
+				} 
+				return name.length > 20 ? name.substr(10, 10) + '...' : name.substr(10, name.length);
 			})
 			.style({
 				'fill': "#333", // 第二行字体颜色
@@ -432,7 +440,7 @@ treeChart.prototype.graphTree = function(config) {
 				"font-size": 14,
 				'cursor': "pointer",
 			})
-			.append('svg:title').text(d => d.name)
+			.append('svg:title').text(d => d.name == 'origin' ? d.data.name : d.name)
 		
 		// 最终受益人红色背景框 isKey
 		const personTopRect = rectG.append("svg:rect")
@@ -510,7 +518,7 @@ treeChart.prototype.graphTree = function(config) {
 		// 注销红色标签文字
 		rectG.append("text")
 			.attr("x", "70")
-			.attr("dy", function(d) {
+			.attr("dy", function(d) {				
 				return (d.name == 'origin') ? '.35em' : forUpward ? '-27' : '-37';
 			})
 			.attr("text-anchor", "middle")
@@ -533,7 +541,8 @@ treeChart.prototype.graphTree = function(config) {
 			.style("font-size", 10)
 			.text(function(d) {
 				if (d.percent != "0" && d.percent != "") {
-					return d.name == "origin" ? "" : parseInt(parseFloat(d.percent) * 100) + '%';
+					return d.name == "origin" ? "" : d.percent;
+					//return d.name == "origin" ? "" : parseInt(parseFloat(d.percent) * 100) + '%';
 				}
 			})
 			.on("mouseenter", nodeOut)
@@ -744,8 +753,10 @@ treeChart.prototype.graphTree = function(config) {
 			d.y0 = d.y;
 		});
 
+		let hoverTimer;
 		//添加动态关系线
-		function nodeHover(d, i) {
+		function nodeHover(d, i) {			
+			typeof eventOpts.nodeHover === 'function' && eventOpts.nodeHover(d);
 			if (d.name != "origin") {
 				if (d.parent.direction == "downward") {
 					var links = d3.selectAll(".downwardLink")[0];
@@ -833,6 +844,7 @@ treeChart.prototype.graphTree = function(config) {
 		}
 
 		function nodeOut(d, i) {
+			typeof eventOpts.nodeOut === 'function' && eventOpts.nodeOut.call(d);
 			if (d.name != "origin") {
 				if (d.parent.direction == "downward") {
 					var links = d3.selectAll(".downwardLink")[0];

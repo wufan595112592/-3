@@ -44,6 +44,8 @@ let curTransform = {
   k: 1
 }
 
+let rootNode = { data:{}, r: {}, l: {}}; //左右2块数据源
+
 export default {
   components: {
     Header,
@@ -105,7 +107,7 @@ export default {
       const data = this.convertToHierarchy(companyJson.data);
       let left = data.l;
       let right = data.r;
-      this.root.data = data.root;
+      rootNode.data = data.root;
       this.rootName = [data.rootName, ""];
       let mynodes;
       for (let i = 0; i < left.children.length; i++) {
@@ -266,11 +268,11 @@ export default {
     //数据处理
     dealData(data) {
       this.direction.forEach((item) => {
-        this.root[item] = d3.hierarchy(data[item]);
-        this.root[item]._children = this.root[item].children;
-        this.root[item].x0 = this.centralPoint[0]; //根节点x坐标
-        this.root[item].y0 = this.centralPoint[1]; //根节点Y坐标
-        this.porData(this.root[item], item);
+        rootNode[item] = d3.hierarchy(data[item]);
+        rootNode[item]._children = rootNode[item].children;
+        rootNode[item].x0 = this.centralPoint[0]; //根节点x坐标
+        rootNode[item].y0 = this.centralPoint[1]; //根节点Y坐标
+        this.porData(rootNode[item], item);
       });
     },
     //遍历
@@ -431,6 +433,7 @@ export default {
           .on('mouseover', function (e) { 
               let dom =  document.getElementById('rootTitle');
               let rect = dom.getBoundingClientRect();
+              hoverTimer && clearTimeout(hoverTimer);
               hoverTimer = setTimeout(function () {
                 that.isShowDetail = true;
                 that.detailPosition = {
@@ -582,7 +585,7 @@ export default {
       dirRight = direction === "r" ? 1 : -1; //方向为右/左
       forUpward = direction == "r";
       let className = `${direction}gNode`;      
-      let tree = this.treeMap(this.root[direction]);
+      let tree = this.treeMap(rootNode[direction]);
       let nodes = tree.descendants();
       let links = tree.links();
       var data = [];
@@ -629,8 +632,6 @@ export default {
                     return 0;
                   }
                 });
-                debugger
-
             if (d.data.name == "展开") {
               return that.clickNode(d, direction, source);
             } else if (d.depth !== 0) {
@@ -745,7 +746,7 @@ export default {
           });
 
       // Stash the old positions for transition.
-      this.root[direction].eachBefore((d) => {
+      rootNode[direction].eachBefore((d) => {
         d.x0 = d.x;
         d.y0 = d.y;
       });
@@ -1195,7 +1196,7 @@ export default {
       });
     },
     filterRoot(direction, filter) {
-      let d = this.root[direction];
+      let d = rootNode[direction];
       if (d._children) {       
          let children = d._children.filter(a => filter(a));
         d.children = children.length > 0 ? children:null;
