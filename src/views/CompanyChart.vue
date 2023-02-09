@@ -3,7 +3,7 @@
   <!-- <Header title="小米科技有限责任公司" :active="2" /> -->
   <div class="tree04">
     <div id="treeRoot"></div>
-    <CompanyFilter v-model:visiable="isShowTemplate"/>
+    <ChartFilter v-model:visiable="isShowTemplate" @stateChange="filterStateChange($event)"/>
     <ToolBox
         v-model:isShowTemplate="isShowTemplate"
         :buttonGroup="buttons"
@@ -12,7 +12,7 @@
         @exportImg="exportImg"/>
 
         <transition name="v">
-          <CharDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></CharDetail>
+          <ChartDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></ChartDetail>
         </transition>
   </div>
  
@@ -20,8 +20,8 @@
 <script>
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/ToolBox/index.vue'
-import CompanyFilter from "@/views/components/CompanyChart/CompanyFilter.vue";
-import CharDetail from './components/CompanyChart/CharDetail.vue';
+import ChartFilter from "@/views/components/CompanyChart/ChartFilter.vue";
+import ChartDetail from './components/CompanyChart/ChartDetail.vue';
 import Buttons from './components/ToolBox/buttons.js'
 import companyJson from "@/api/companyJson.json";
 import $ from 'jquery'
@@ -48,8 +48,8 @@ export default {
   components: {
     Header,
     ToolBox,
-    CompanyFilter,
-    CharDetail
+    ChartFilter,
+    ChartDetail
   },
   data() {
     return {
@@ -87,7 +87,7 @@ export default {
     this.getData();
   },
   computed: {
-    treeMap() {
+    treeMap() {      
       return d3
           .tree()
           .nodeSize(this.nodeSize)
@@ -145,6 +145,7 @@ export default {
           name: 'origin',
           children: [
             {
+              id: "g_dwtz",
               name: '对外投资',
               nodeType: 0,
               children: data.node_info.investments
@@ -155,6 +156,7 @@ export default {
           name: 'origin',
           children: [
             {
+              id: "g_gd",
               name: '股东',
               nodeType: 0,
               children: data.node_info.partners.map(a => { 
@@ -164,6 +166,7 @@ export default {
                })
             },
             {
+              id: "g_gg",
               name: '高管',
               nodeType: 0,
               children: data.node_info.employees.map(a => { 
@@ -173,6 +176,7 @@ export default {
                })
             },
             {
+              id: "g_lsgd",
               name: '历史股东',
               nodeType: 0,
               children: data.node_info.history_partners.map(a => { 
@@ -263,6 +267,7 @@ export default {
     dealData(data) {
       this.direction.forEach((item) => {
         this.root[item] = d3.hierarchy(data[item]);
+        this.root[item]._children = this.root[item].children;
         this.root[item].x0 = this.centralPoint[0]; //根节点x坐标
         this.root[item].y0 = this.centralPoint[1]; //根节点Y坐标
         this.porData(this.root[item], item);
@@ -272,7 +277,7 @@ export default {
     porData(obj, item) {
       obj.descendants().forEach((d) => {
         d._children = d.children;
-        d.id = item + this.uuid();
+        d.id =  d.data.id ?  d.data.id : (item + this.uuid());        
       });
       this.update(obj, item);
     },
@@ -571,12 +576,12 @@ export default {
       this.seat(level, dirRight, data);
     },
     //开始绘图
-    update(source, direction) {
+    update(source, direction) {      
       // console.log(source, direction, "update");
       let that = this;
       dirRight = direction === "r" ? 1 : -1; //方向为右/左
       forUpward = direction == "r";
-      let className = `${direction}gNode`;
+      let className = `${direction}gNode`;      
       let tree = this.treeMap(this.root[direction]);
       let nodes = tree.descendants();
       let links = tree.links();
@@ -624,6 +629,7 @@ export default {
                     return 0;
                   }
                 });
+                debugger
 
             if (d.data.name == "展开") {
               return that.clickNode(d, direction, source);
@@ -789,7 +795,6 @@ export default {
         );
       }
     },
-
     //画箭头
     marker(id, dirRight) {
       let gMark = d3
@@ -811,7 +816,6 @@ export default {
           })
           .style("fill", (d) => this.getRectStorke(d.data.name));
     },
-
     //华标记
     drawSign(id, dirRight) {
       return d3
@@ -958,7 +962,6 @@ export default {
           .attr("in", "SourceGraphic")
           .attr("stdDeviation", "5");
     },
-
     //画方框
     drawRect(id, dirRight) {
 
@@ -1043,7 +1046,6 @@ export default {
             }
           });
     },
-
     //画circle
     drawCircle(id, dirRight, source, direction) {
 
@@ -1107,10 +1109,8 @@ export default {
           .attr("class", "node-circle-vertical");
       return gMark;
     },
-
-
     expand(d, direction, source) {
-
+      this.isShowTemplate = false;
       if (d.data.name == "展开") {
         this.getNode(d, direction, source);
         return;
@@ -1122,22 +1122,19 @@ export default {
         this.update(d, direction);
       }
     },
-
-    collapse(d, direction, obj) {
-
+    collapse(d, direction, obj) {      
+      this.isShowTemplate = false;
       if (d.children) {
         d._children = d.children;
         d.children = null;
-        console.log(d._children, "_children");
       }
       if (obj == 1) {
         this.update(d, direction);
       }
     },
-
     //点击某个节点ly
     clickNode(d, direction, source) {
-      if (d.children || d.children) {
+      if (d.children) {
         this.collapse(d, direction, 1);
       } else {
         this.expand(d, direction, source);
@@ -1170,8 +1167,43 @@ export default {
           return "rgb(133, 165, 255)";
       }
     },
+    // 筛选
+    filterStateChange(e) { 
+      // 左     
+      this.filterRoot('l', function(a) {
+            //   对外投资  
+            if(a.id === 'g_dwtz') {
+              return e.checkedList2.has(3);
+             }   
+             return true;
+      });
+      // 右
+      this.filterRoot('r', function(a) {
+            // 股东  
+            if(a.id === 'g_gd') {
+              return e.checkedList2.has(2);
+             }   
+             // 高管
+             if(a.id === 'g_gg') {
+              return e.checkedList1.has(3);
+             }   
+             // 高管
+             if(a.id === 'g_lsgd') {
+              return e.checkedList2.has(7);
+             }   
+             return true;
+      });
+    },
+    filterRoot(direction, filter) {
+      let d = this.root[direction];
+      if (d._children) {       
+         let children = d._children.filter(a => filter(a));
+        d.children = children.length > 0 ? children:null;
+      }
+      this.update(d, direction);
+    },
     refresh() {
-      d3.selectAll('svg').remove();
+      d3.select('#treeRoot svg').remove();
       this.getData();
     },
     exportImg() {
