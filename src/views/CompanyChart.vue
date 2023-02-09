@@ -11,26 +11,29 @@
         @refresh="refresh"
         @exportImg="exportImg"/>
 
+        <transition name="v">
+          <CharDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></CharDetail>
+        </transition>
   </div>
+ 
 </template>
 <script>
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/ToolBox/index.vue'
 import CompanyFilter from "@/views/components/CompanyChart/CompanyFilter.vue";
+import CharDetail from './components/CompanyChart/CharDetail.vue';
 import Buttons from './components/ToolBox/buttons.js'
-import {zoomClick} from "@/views/components/Equity";
-
 import companyJson from "@/api/companyJson.json";
-
 import $ from 'jquery'
 import * as d3 from "d3";
+import D3Mixin from '@/hooks/D3Mixin'
+
+let {downloadImpByChart} = D3Mixin()
 
 let svg;
-let zoom;
 let dirRight;
 let forUpward;
 let leng;
-let toggle = true;
 let circlewidth1;
 let circlewidth2;
 let circlewidth3;
@@ -45,7 +48,8 @@ export default {
   components: {
     Header,
     ToolBox,
-    CompanyFilter
+    CompanyFilter,
+    CharDetail
   },
   data() {
     return {
@@ -56,7 +60,7 @@ export default {
       scaleRange: [0.2, 2], //container缩放范围
       direction: ["r", "l"], //分为左右2个方向
       centralPoint: [0, 0], //画布中心点坐标x,y
-      root: {r: {}, l: {}}, //左右2块数据源
+      root: { data:{}, r: {}, l: {}}, //左右2块数据源
       rootNodeLength: 0, //根节点名称长度
       rootName: [""], //根节点名称
       textSpace: 15, //多行文字间距
@@ -68,6 +72,12 @@ export default {
       circleR: 5, //圆圈半径
       dirRight: "",
       treeData: [],
+      isShowDetail: false,
+      detailPosition: {
+        top: 0,
+        left: 0
+      },
+      detailData: {}
     };
   },
   created() {
@@ -95,6 +105,7 @@ export default {
       const data = this.convertToHierarchy(companyJson.data);
       let left = data.l;
       let right = data.r;
+      this.root.data = data.root;
       this.rootName = [data.rootName, ""];
       let mynodes;
       for (let i = 0; i < left.children.length; i++) {
@@ -128,6 +139,7 @@ export default {
     },
     convertToHierarchy(data) {
       return {
+        root: data.info,
         rootName: data.info.name,
         l: {
           name: 'origin',
@@ -145,17 +157,28 @@ export default {
             {
               name: '股东',
               nodeType: 0,
-              children: data.node_info.partners
+              children: data.node_info.partners.map(a => { 
+                a.type = 'employee';
+                a.company = data.info.name;
+                return a
+               })
             },
             {
               name: '高管',
               nodeType: 0,
-              children: data.node_info.employees
+              children: data.node_info.employees.map(a => { 
+                a.type = 'employee';
+                a.company = data.info.name;
+                return a
+               })
             },
             {
               name: '历史股东',
               nodeType: 0,
-              children: data.node_info.history_partners
+              children: data.node_info.history_partners.map(a => { 
+                a.type = 'employee'
+                return a
+               })
             }
           ]
         }
@@ -201,6 +224,7 @@ export default {
       svg = d3
           .select("#treeRoot")
           .append("svg")
+          .attr("id", "svg")
           .attr("class", "tree-svg")
           .attr("xmlns", "http://www.w3.org/2000/svg")
           .attr("width", treeWidth)
@@ -221,7 +245,7 @@ export default {
       //画出根节点
       this.drawRoot();
       //指定缩放范围
-      zoom = d3
+      const zoom = d3
           .zoom()
           .scaleExtent(this.scaleRange)
           .on("zoom", this.zoomFn);
@@ -389,6 +413,8 @@ export default {
     },
     //画根节点
     drawRoot() {
+      let hoverTimer;
+      let that = this;
       const title = this.container
           .append("g")
           .attr("id", "rootTitle")
@@ -396,6 +422,23 @@ export default {
               "transform",
               `translate(${this.centralPoint[1]},${this.centralPoint[0]})`
           );
+          d3.select(`#rootTitle`)
+          .on('mouseover', function (e) { 
+              let dom =  document.getElementById('rootTitle');
+              let rect = dom.getBoundingClientRect();
+              hoverTimer = setTimeout(function () {
+                that.isShowDetail = true;
+                that.detailPosition = {
+                  top: rect.top - 130,
+                  left:  rect.right ,
+                }
+                that.detailData = that.root.data;
+              }, 500);          
+          })
+          .on('mouseout', function () {
+            hoverTimer && clearTimeout(hoverTimer);
+            that.isShowDetail = false;
+          });
       title
           .append("svg:rect")
           .attr("class", "rootTitle")
@@ -920,13 +963,35 @@ export default {
     drawRect(id, dirRight) {
 
       let that = this;
-      let realw = document.getElementById(id).getBBox().width + 25 + 20; //获取g实际宽度后，设置rect宽度
+      let hoverTimer;
+
+      let realw = document.getElementById(id).getBBox().width + 25 ; //获取g实际宽度后，设置rect宽度
       if (document.getElementById(id).getBBox().width > 400) {
         realw = 400;
       }
 
-      return d3
-          .select(`#${id}`)
+      const g = d3.select(`#${id}`).on('mouseover', function (e) { 
+        
+            if(e.data.nodeType!=0) {
+              let dom =  document.getElementById(id);
+              let rect = dom.getBoundingClientRect();          
+            
+              hoverTimer = setTimeout(function () {
+                that.isShowDetail = true;
+                that.detailPosition = {
+                  top: rect.top - 130,
+                  left:  rect.right ,
+                }
+                that.detailData = e.data;
+              }, 500);
+            }
+            
+          }).on('mouseout', function () {
+            hoverTimer && clearTimeout(hoverTimer);
+            that.isShowDetail = false;
+          });
+
+      return g
           .insert("rect", "text")
           .attr("x", function (d) {
             if (dirRight < 0) {
@@ -1105,23 +1170,21 @@ export default {
           return "rgb(133, 165, 255)";
       }
     },
-    isNull(val) {
-      return val ? val : "";
-    },
     refresh() {
-      d3.select('#treeRoot').remove();
+      d3.selectAll('svg').remove();
       this.getData();
     },
     exportImg() {
-
+      downloadImpByChart('企业构成图', this.rootName[0])
     }
   }
 }
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .tree04 {
+  position: relative;
   background: #fff;
   touch-action: none;
   padding: 0;
@@ -1130,6 +1193,22 @@ export default {
   max-width: 100%;
   overflow: hidden;
   font-family: "PingFangSC-Regular", "PingFangSC-Light", "PingFang SC",
-  sans-serif, "Microsoft YaHei";
+  sans-serif, "Microsoft YaHei";    
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+/* 离开和进入过程中的样式 */
+.v-enter-active,
+.v-leave-active {
+  /* 添加过渡动画 */
+  transition: opacity 0.6s ease;
+}
+/* 进入之后和离开之前的样式 */
+.v-enter-to,
+.v-leave-from {
+  opacity: 1;
 }
 </style>
