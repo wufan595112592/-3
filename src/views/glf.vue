@@ -1,7 +1,6 @@
 <!-- 关联方认定 -->
 <template>
   <!-- <Header title="小米科技有限责任公司" :active="7" /> -->
-	<!-- <ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
 	  <ToolBox @maoScale="maoScale" @searchChange="searchChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
@@ -14,7 +13,7 @@
 <script>
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/Glf/ToolBox.vue'
-import { drawing, zoomClick, refreshDom } from './components/Glf/index.js'
+import Painter from '@/views/components/Glf/index.js'; 
 import { ref, onMounted } from 'vue';
 import D3Mixin from '@/hooks/D3Mixin'
 let { toggleFullScreen, downloadImpByChart } = D3Mixin()
@@ -38,7 +37,7 @@ export default {
 		}
 		// 缩放
 		const maoScale = (type) => {
-			zoomClick(type)
+			Painter.zoomClick(type)
 		}
 		// 图片导出
 		const exportImg = () => {
@@ -46,7 +45,7 @@ export default {
 		}
 		// 刷新
 		const refresh = () => {
-      refreshDom()
+      Painter.refresh()
 		}
 		// 全屏退出
     const screenfullChange = () => {
@@ -56,9 +55,10 @@ export default {
     const init = () => {
       window.addEventListener('resize', function () {
         const svg = document.getElementById('svg')
+        svg.setAttribute('width', window.innerWidth)
         svg.setAttribute('height', window.innerHeight)
       })
-      drawing()
+      Painter.drawing()
     }
     onMounted(init)
     return { wrapList, currentTab, toolBoxRef, leftTab, searchChange, exportImg, refresh, screenfullChange, maoScale}

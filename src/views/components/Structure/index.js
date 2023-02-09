@@ -60,19 +60,16 @@ structureJson = json.data.equity_structure
 var width,height, zoom, svg
 
 	// 缩放
-export function zoomClick(type) {
+function zoomClick(type) {
  	type == 1 ? zoom.scaleBy(svg, 1.2) : zoom.scaleBy(svg, 0.8)
 }
-function resizeData() {
-	width = 0
-	height = 0
-	zoom = null
-	svg = null
-}
-export function drawing(bool = true) { 
+/**
+ * 绘制图形
+ * @param {} bool 控制显示全部展开还是全部收起
+ */
+function drawing(bool = true) { 
 	if (d3.select('#svg')) {
 		d3.select('#svg').remove();
-		resizeData()
 	}
 	// 基础配置
 		var i = 0,
@@ -531,3 +528,8 @@ export function drawing(bool = true) {
 				}
 		}
 }
+
+export default {
+  zoomClick,
+  drawing
+};
