@@ -30,8 +30,11 @@ var downwardLength = 0,
 	upwardLength = 0;
 var forUpward = true
 var zoom, treeG
-	// 缩放
-export function zoomClick(type) {
+/**
+ * 缩放
+ * @param {} type
+ */
+function zoomClick(type) {
 	// var clicked = d3.event.target,
 		var direction = 1,
 		factor = 0.3,
@@ -89,16 +92,16 @@ function redraw() {
 		' scale(' + zoom.scale() + ')');
 }
 
-
-export function refreshDom() {
+/**
+ * 刷新
+ */
+function refresh() {
 	d3.select('svg').remove();   //删除整个SVG
-	d3.select('svg')
-		.selectAll('*')
-		.remove();
+	d3.select('svg').selectAll('*').remove();
 	drawing()
 }
 
-export function drawing() {
+function drawing() {
 	width = document.getElementById('mountNode').scrollWidth
 	height = document.getElementById('mountNode').scrollHeight
 	var d3GenerationChart = new treeChart(d3);
@@ -817,3 +820,10 @@ treeChart.prototype.graphTree = function(config) {
 			d3.ascending(a.id, b.id);
 	}
 };
+
+export default {
+  drawing,
+  zoomClick,
+  refresh,
+};
+

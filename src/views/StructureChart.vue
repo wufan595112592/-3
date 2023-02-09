@@ -3,7 +3,7 @@
   <!-- <Header title="小米科技有限责任公司" :active="4" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
 		<div class="box" style="width: 100%;height: 100%;">
-			<div id="MainCy" style="width: 100%;height: 100vh;overflow-x: hidden;overflow-y: auto;"></div>
+			<div id="MainCy" style="width: 100%;height: 100vh;overflow: hidden;"></div>
 		</div>
 		<ToolBox ref="toolBoxRef" @maoScale="maoScale" @openAll="openAll" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
 		<Collapse @clickTab="clickTab" />
@@ -15,7 +15,7 @@
 import Header from '../components/Header/index.vue'
 import ToolBox from './components/Structure/ToolBox.vue'
 import Collapse from './components/Structure/Collapse.vue'
-import { drawing, zoomClick } from './components/Structure/index.js'
+import Painter from './components/Structure/index.js'
 import { ref, onMounted } from 'vue'
 import D3Mixin from '@/hooks/D3Mixin'
 let { toggleFullScreen, downloadImpByChart } = D3Mixin()
@@ -31,11 +31,11 @@ export default {
 		const toolBoxRef = ref(null)
 		// 缩放
 		const maoScale = (type) => {
-			zoomClick(type)
+			Painter.zoomClick(type)
 		}
 		// 展开收起
 		const openAll = () => {
-      drawing(isOpen.value)
+      Painter.drawing(isOpen.value)
 			isOpen.value = !isOpen.value
 		}
 		// 图片导出
@@ -46,7 +46,7 @@ export default {
 		const refresh = () => {
 			toolBoxRef.value.openAll()
 			isOpen.value = false
-      drawing()
+      Painter.drawing()
 		}
 		// 全屏退出
     const screenfullChange = () => {
@@ -56,7 +56,16 @@ export default {
 		const clickTab = () => {
 			isOpen.value = false
 		}
-		onMounted(drawing)
+		// 初始化
+    const init = () => {
+      window.addEventListener('resize', function () {
+        const svg = document.getElementById('svg')
+        svg.setAttribute('width', window.innerWidth)
+        svg.setAttribute('height', window.innerHeight)
+      })
+      Painter.drawing()
+    }
+		onMounted(init)
 		return { isOpen, toolBoxRef, exportImg, refresh, screenfullChange, maoScale, openAll, clickTab }
 	}
 }
