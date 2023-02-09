@@ -1258,12 +1258,35 @@ function getD3Position(graph) {
   //.on('tick',ticked);
 }
 
+let zoomCompleted = true;
 function maoScale(type) {
-  var scale = cy.zoom();
-  scale += 0.2 * type;
-  cy.zoom({
-    level: scale, // the zoom level
-  });
+  // 防缩放抖动
+  // 缩放动画未完成前不允许再次缩放
+  if(!zoomCompleted) {
+    return;
+  }
+  zoomCompleted = false;
+  let c1 = cy.zoom();
+  let c2 = c1 + 0.2 * type;
+  dynamicZoom(c1, c2);
+
+  function dynamicZoom(c1, c2) {
+    d3 .transition()
+    .duration(700)
+    .tween("zoom", function () {
+      var i = d3.interpolate(c1, c2);
+      return function (t) {
+        let scale =  i(t);
+        if(scale == c2) {
+          zoomCompleted = true;
+        }
+        cy.zoom({
+          level: scale, // the zoom level
+        });
+      };
+    });
+  }
+  
 }
 
 function init(id) {
@@ -1306,7 +1329,7 @@ function init(id) {
 
   // 监听容器的滚动事件
   document.getElementById(domId).addEventListener("wheel", function (e) {
-    maoScale(e.wheelDelta > 0 ? 1 : 2);
+    maoScale(e.wheelDelta > 0 ? 1 : -1);
   });
 }
 
