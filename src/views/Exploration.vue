@@ -1,239 +1,330 @@
-<!-- 关系图谱 -->
-<script setup>
-	import Header from '../components/Header/index.vue'
-	import ToolBox from './components/ToolBox/index.vue'
-	import Legend from './components/Relation/Legend.vue'
-
-	// import { relation } from './components/Relation/index.js'
-</script>
-
 <template>
-	<!-- <Header v-if="!screenfull" title="小米科技有限责任公司" :active="9" /> -->
-	<ToolBox @screenfullChange="screenfullChange" @maoScale="maoScale" @refresh="refresh" @exportImg="exportImg" />
-	<Legend />
-<div class="cy" style="width:90%;height:90vh;margin:5vh auto">
+  <div>
+    <div id="root" class=""></div>
+    <ToolBox
+        v-model:isShowTemplate="isShowTemplate"
+        :buttonGroup="buttons"
+        @maoScale="maoScale"
+        @refresh="refresh"
+        @exportImg="exportImg"/>
   </div>
 </template>
-<script>
+
+<script setup>
+import {onMounted} from "vue";
 import * as d3 from "d3";
-// import relativeJson from "@/api/relativeJson.json";
-import relativeJson from "@/api/ExplorationJson.json";
-	import cytoscape from 'cytoscape'
-	
-	var cy;
+import ToolBox from './components/ToolBox/index.vue'
+import ExplorationJson from "@/api/ExplorationJson2.json";
+import D3Mixin from '@/hooks/D3Mixin'
 
-export default {
-  components: {
-    Header,
-    ToolBox,
-    Legend
-  },
-  data() {
-    return {
+let {downloadImpByChart} = D3Mixin()
+let topPostion = { x:0, y: 0};
+const rect = getClientRect();
+const jsonData = ExplorationJson.data;
+let curTransform = {
+  x: 0,
+  y: 0,
+  k: 1
+}
+
+function convertToDrawData(data) {
+  const nodes = new Map();
+  const topNodeId = data.shortestPathIds[0];
+  const bottomNodeId =  data.shortestPathIds[1];
+  const layer = data.longestPathIds.length;
+  const margin = 200;
+  let baseX = rect.center.left;
+  let baseY = rect.center.top - ( (layer - 1)  * margin / 2 ) ;
+  let index = 1;
+
+  topPostion = { x:baseX, y:baseY};
+  data.nodes.forEach(item => {
+    let x,y;
+    if(item.id === topNodeId) {
+       x = baseX;
+       y = baseY;
+    } else if(item.id === bottomNodeId) {
+      x = baseX;
+      y = baseY + margin * (layer-1);
+    } else {
+      x = rect.center.left - (data.nodes.length / 2  - index - data.nodes.length % 2) * 100
+      y = baseY + margin;
+      index++;
+
     }
-  },
-  created() {
 
-  },
-  mounted() {
-    const cy = cytoscape({
-      container: document.querySelector('.cy'),
-
-      boxSelectionEnabled: false,
-      autounselectify: true,
-      style: [
-        {
-          selector: "node",
-          style: {
-            height: 80,
-            width: 80,
-            "background-fit": "cover",
-            "border-color": "#000",
-            "border-width": 3,
-            "border-opacity": 0.5
-          }
-        },
-        {
-          selector: ".eating",
-          style: {
-            "border-color": "red"
-          }
-        },
-        {
-          selector: ".eater",
-          style: {
-            "border-width": 9
-          }
-        },
-        {
-          selector: "edge",
-          style: {
-            content: "data(name)",
-            "curve-style": "bezier",
-            width: 6,
-            "target-arrow-shape": "triangle",
-            "line-color": "#ffaaaa",
-            "target-arrow-color": "#ffaaaa"
-          }
-        },
-        {
-          selector: "#bird",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg"
-          }
-        },
-        {
-          selector: "#bird2",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg"
-          }
-        },
-        {
-          selector: "#bird3",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/7272/7633179468_3e19e45a0c_b.jpg"
-          }
-        },
-        {
-          selector: "#cat",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/1261/1413379559_412a540d29_b.jpg"
-          }
-        },
-        {
-          selector: "#ladybug",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/3063/2751740612_af11fb090b_b.jpg"
-          }
-        },
-        {
-          selector: "#aphid",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/8316/8003798443_32d01257c8_b.jpg"
-          }
-        },
-        {
-          selector: "#rose",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/5109/5817854163_eaccd688f5_b.jpg"
-          }
-        },
-        {
-          selector: "#grasshopper",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/6098/6224655456_f4c3c98589_b.jpg"
-          }
-        },
-        {
-          selector: "#plant",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/3866/14420309584_78bf471658_b.jpg"
-          }
-        },
-        {
-          selector: "#wheat",
-          style: {
-            "background-image":
-              "https://live.staticflickr.com/2660/3715569167_7e978e8319_b.jpg"
-          }
-        },
-        {
-          selector: ".autorotate",
-          style: {
-            content: "data(label)",
-            "text-rotation": "autorotate",
-          }
-        },
-        {
-          selector: "#ar-src,#ar-tgt",
-          style: {
-            content: "data(name)",
-            "font-size": "12px",
-            "text-valign": "center",
-            "text-halign": "center"
-          }
-        }
-      ],
-
-      elements: {
-        nodes: [
-          { data: { id: "cat" } },
-          { data: { id: "bird" } },
-          { data: { id: "bird2" } },
-          { data: { id: "bird3" } },
-          { data: { id: "ladybug" } },
-          { data: { id: "aphid" } },
-          { data: { id: "rose" } },
-          { data: { id: "grasshopper" } },
-          { data: { id: "plant" } },
-          { data: { id: "wheat" } },
-          { data: { id: "ar-src", name: "ar-src" } },
-          { data: { id: "ar-tgt", name: "ar-tgt" } }
-        ],
-        edges: [
-          {
-            data: { source: "ar-src", target: "ar-tgt", label: "autorotate" },
-            classes: "autorotate"
-          },
-          { data: { source: "cat", target: "bird" } },
-          { data: { source: "bird", target: "ladybug" } },
-          { data: { source: "bird", target: "grasshopper" } },
-          { data: { source: "grasshopper", target: "plant" } },
-          { data: { source: "grasshopper", target: "wheat" } },
-          { data: { source: "ladybug", target: "aphid" } },
-          { data: { source: "aphid", target: "rose" } },
-          { data: { source: "aphid", target: "bird2" } },
-          { data: { source: "bird2", target: "bird3" } },
-          { data: { source: "bird3", target: "rose" } },
-          { data: { source: "plant", target: "rose" } },
-          { data: { source: "wheat", target: "rose" } },
-
-        ]
-      },
-
-      layout: {
-        name: "breadthfirst",
-        directed: true,
-        padding: 10,
-      }
+    nodes.set(item.id, {
+      id: item.id,
+      eid: item.eid,
+      isKey: item.isKey,
+      name: item.name,
+      text: item.name,
+      type: item.type,
+      x,
+      y
     });
+  });
 
-  },
-  methods: {
+  return {
+    nodes,
+    links: data.links
+  };
+}
 
+/**
+ * 画图
+ * @param data
+ */
+function draw(data) {
+  const zoom = d3.zoom().scaleExtent([0.5, 2])
+      .on('zoom', zoomFn);
+  const root = drawRootSvg("#root");
+  const svg = drawViewBox(root);
+
+  const node = svg.selectAll("g")
+                  .data(
+                      Array.from(data.nodes.values()));
+  const path = svg.selectAll("path")
+      .data(data.links);
+  // 箭头
+  drawArrow(svg).transition().duration(500)
+      .attr("fill-opacity", 1);
+  // 生成线条
+  drawPath(path).transition()
+      .duration(500)
+      .attr("transform", function (d) {
+        return "translate(" + d.x + "," + d.y + ")";
+      })
+      .attr("fill-opacity", 1)
+      .attr("stroke-opacity", 1);
+  // 生成节点
+  drawNodes(node)
+      .transition()
+      .duration(500)
+      .attr("transform", function (d) {
+        return "translate(" + d.x + "," + d.y + ")";
+      })
+      .attr("fill-opacity", 1)
+      .attr("stroke-opacity", 1);
+
+
+  /**
+   *
+   */
+  function getColor(d) {
+    if(d.isKey) {
+      return "#F86403";
+
+    }
+    switch (d.type) {
+      case "P":
+        return "#FE485E";
+      case "E":
+      default:
+        return "#178BED";
+    }
+  }
+
+  /**
+   *
+   * @param {*} el
+   */
+  function drawRootSvg(el) {
+    return (
+        d3
+            .select(el)
+            .append("svg")
+            .attr("id", "svg")
+            .attr("width", "100vw")
+            .attr("height", "100vh")
+            .attr("viewBox", "0 0 " + rect.with + " " + rect.height)
+            .attr("xmlns", "http://www.w3.org/2000/svg")
+            // .on('mousedown', disableRightClick)
+            .call(zoom)
+            .on("dblclick.zoom", null)
+    );
+  }
+  /**
+   *
+   * @param {*} svg
+   */
+  function drawViewBox(svg) {
+    return (
+        svg.append("g")
+            .attr("id", "container")
+            .attr("class", "gbox")
+            .attr("transform-origin", "center")
+            .attr("transform", "translate(0,0)")
+            .attr("scale", 1)
+    );
+  }
+  /**
+   *
+   * @param svg
+   */
+  function drawNodes(svg) {
+    const g = svg.enter().append('g')
+        .attr('id', d => `g_${d.id}`)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0)
+        .attr("transform", d => `translate(${topPostion.x},${topPostion.y})`)
+    drawCircle(g);
+    drawText(g);
+
+    return g;
+  }
+
+  /**
+   *
+   * @param svg
+   */
+  function drawText(svg) {
+     svg.append('text')
+        .style("fill", "#fff")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .attr("width", 100)
+        .text(function (d){
+          let x = d.text.substr(0, 3);
+          const gNode = d3.select("#g_"+ d.id);
+          if(d.text.length > 6) {
+            drawTextWithContent(gNode, x, 0 ,-15);
+            x = d.text.substr(3, 6);
+            drawTextWithContent(gNode, x, 0 ,0);
+            x = d.text.substr(9, 3);
+            drawTextWithContent(gNode, x + '...', 0 ,15);
+          } else {
+            return d.text
+          }
+        });
+  }
+
+  function drawTextWithContent(svg, content, x, y) {
+    svg.append("text")
+        .attr("x", x)
+        .attr("y", y)
+        .style("fill", "#fff")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text(content)
+  }
+
+  /**
+   *
+   * @param {*} svg
+   */
+  function drawCircle(svg) {
+    svg
+        .append("circle")
+        .attr("class", "circle")
+        .attr("r", 30)
+        .style("fill", (d) => getColor(d));
+  }
+
+  function drawPath(svg) {
+      return svg.enter()
+          .append('path')
+          .attr("id", d => (d.source+''+d.target))
+          .attr("class", "upwardLink")
+          .attr("fill", "none")
+          .attr("fill-opacity", "0.5")
+          .attr("stroke-width", 1)
+          .attr("stroke", "#E7E7E7")
+          .attr("marker-end", 'url(#arrow)')
+          .attr('d', d => {
+            const source = data.nodes.get(d.source);
+            const target = data.nodes.get(d.target);
+            return `M${source.x} ${source.y} L${target.x} ${target.y}`;
+          });
+  }
+
+  function drawArrow(svg) {
+    return svg
+        .append("marker")
+        .attr("id", "arrow")
+        .attr("markerUnits", "strokeWidth") //设置为strokeWidth箭头会随着线的粗细发生变化
+        .attr("markerUnits", "userSpaceOnUse")
+        // .attr("viewBox", "0 -5 10 10") //坐标系的区域
+        .attr("refX", 38) //箭头坐标
+        .attr("refY", 4)
+        .attr("markerWidth", 8) //标识的大小
+        .attr("markerHeight", 8)
+        .attr("orient", "auto") //绘制方向，可设定为：auto（自动确认方向）和 角度值
+      //  .attr("stroke-width", 6) //箭头宽度
+        .append("path")
+        .attr("d", "M0 0 L0 8 L8 4 Z") //箭头的路径
+        .attr("fill", "#E7E7E7")
+        .attr("fill-opacity", 0); //箭头颜色
   }
 }
+
+function getClientRect() {
+  return {
+    with: window.innerWidth,
+    height: window.innerHeight,
+    center: {
+      left: window.innerWidth / 2,
+      top: window.innerHeight / 2,
+    },
+  };
+}
+const zoomFn = (x, y, k) => {
+  curTransform = d3.event.transform;
+  return d3.select('#container').attr(
+      "transform",
+      "translate(" +
+      curTransform.x / 2 +
+      "," +
+      curTransform.y / 2 +
+      ")scale(" +
+      curTransform.k * 1 +
+      ")"
+  );
+};
+/**
+ * 保存图片
+ */
+const exportImg = () => {
+  downloadImpByChart('关联关系探查', '小米');
+}
+/**
+ * 刷新
+ */
+const refresh = () => {
+  d3.select('#root svg').remove();
+  draw(d);
+}
+/**
+ * 缩放
+ * @param type
+ * @returns {*}
+ */
+const maoScale = (type) => {
+  let c1 = curTransform.k;
+  let c2 = Number((c1 + 0.2 * type).toFixed(1));
+  curTransform.k = c2;
+  return d3
+      .transition()
+      .duration(350)
+      .tween("zoom", function () {
+        var i = d3.interpolate(c1, c2);
+        return function (t) {
+          d3.select('#container').attr(
+              "transform",
+              "translate(" +
+              (curTransform.x / 2) +
+              "," +
+              (curTransform.y / 2) +
+              ")scale(" +
+              i(t) * 1 +
+              ")"
+          )
+        };
+      });
+}
+
+let d = convertToDrawData(jsonData)
+onMounted(() => {
+  draw(d)
+});
 </script>
-
-<style scoped>
-	.box {
-		width: 100vw;
-		height: 100vh;
-		background-color: #cbe8ff;
-	}
-    .tooltip {
-      position: absolute;
-      font-size: 12px;
-      text-align: center;
-      background-color: white;
-      border-radius: 3px;
-      box-shadow: rgb(174, 174, 174) 0px 0px 10px;
-      cursor: pointer;
-      display: inline-block;
-      padding: 10px;
-    }
-
-    .tooltip>div {
-      padding: 10px;
-    }
-
-</style>

@@ -1197,7 +1197,6 @@ export default {
     },
     filterRoot(direction, filter) {
       let d = rootNode[direction];
-      // debugger
       if(!d._originChildren) {
         d._originChildren = d.children || d._children ;
       }

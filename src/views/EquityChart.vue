@@ -2,7 +2,6 @@
 <template>
   <!-- <Header title="小米科技有限责任公司" :active="3" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
-    {{ isShowFilter }}
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
     <ToolBox
         v-model:isShowFilter="isShowFilter"
