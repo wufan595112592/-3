@@ -1,11 +1,11 @@
 <template>
-<!-- 实体节点 -->
-<div class="ant-modal-root" style="display:none">
-  <div tabindex="-1" role="dialog" aria-labelledby="rcDialogTitle0" class="ant-modal-wrapmain">
+<div class="ant-modal-root" :class="{ hide: !currentNode }">
+  <!-- 实体节点 -->
+  <div v-if="currentNode && currentNode.type !== 'P'" tabindex="-1" role="dialog" aria-labelledby="rcDialogTitle0" class="ant-modal-wrapmain">
     <div role="document" class="ant-modal">
       <div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden;"></div>
       <div class="ant-modal-content">
-        <button type="button" aria-label="Close" class="ant-modal-close" @close="close">
+        <button type="button" aria-label="Close" class="ant-modal-close" @click="closeWindow()">
           <span class="ant-modal-close-x">
             <i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon">
               <svg viewBox="64 64 896 896" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" class="">
@@ -19,7 +19,7 @@
           <div class="ant-modal-title">
             <div class="company-header-info">
               <div class="company-header-info-name">
-                <span>北京点睛无限科技有限责任公司</span>
+                <span>{{ currentNode.name }}</span>
                 <span class="company-hearer-info-state">存续（在营、开业、在册）</span>
                 <span class="ant-modal-add">
                   <i aria-label="icon: add" class="anticon anticon-add ant-modal-add-icon">
@@ -78,14 +78,12 @@
       </div>
     </div>
   </div>
-</div>
-<!-- 自然人节点 -->
-<div class="ant-modal-root">
-  <div tabindex="-1" role="dialog" aria-labelledby="rcDialogTitle0" class="ant-modal-wrapmain">
+  <!-- 自然人节点 -->
+  <div v-else-if="currentNode && currentNode.type == 'P'" tabindex="-1" role="dialog" aria-labelledby="rcDialogTitle0" class="ant-modal-wrapmain">
     <div role="document" class="ant-modal">
       <div tabindex="0" aria-hidden="true" style="width: 0px; height: 0px; overflow: hidden;"></div>
       <div class="ant-modal-content">
-        <button type="button" aria-label="Close" class="ant-modal-close" @close="close">
+        <button type="button" aria-label="Close" class="ant-modal-close" @click="closeWindow()">
           <span class="ant-modal-close-x">
             <i aria-label="icon: close" class="anticon anticon-close ant-modal-close-icon">
               <svg viewBox="64 64 896 896" data-icon="close" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" class="">
@@ -94,11 +92,11 @@
             </i>
           </span>
         </button>
-        <div class="ant-modal-header">雷军</div>
+        <div class="ant-modal-header">{{ currentNode.name }}</div>
         <div class="ant-modal-header">
           <div class="ant-modal-title">
             <div class="person-header-logo clearfix">
-                <span class="large-logo enterprise">雷</span>
+                <span class="large-logo enterprise">{{ currentNode.name[0] }}</span>
             </div>
             <div class="person-header-info">
               <div class="person-header-info-item">
@@ -143,28 +141,29 @@
 </div>
 </template>
 
-<script>
-import { defineComponent, ref, defineEmits } from 'vue';
-
-export default defineComponent({
-  setup() {
-    const emit = defineEmits(['close'])
-    const activeName = ref('1')
-    const close = () => {
-      console.log(2)
-      emit('close')
-    };
-    return {
-      dataSource: [
-          {
-            key: '1',
-            name: '胡彦斌',
-            shareRatio: 32,
-            company: '小米影业有限责任公司',
-            ziben: '1500万元人民币',
-            state: '存续',
-            zhiwei: '负责人'
-          },
+<script setup>
+import {
+  ref,
+  reactive,
+  computed,
+  defineProps,
+  defineEmits,
+  defineExpose,
+  onMounted
+} from "vue";
+import store from "../../../store";
+const currentNode = computed(() => store.state.currentNode)
+const activeName = ref('1')
+const dataSource = reactive([
+  {
+    key: '1',
+    name: '胡彦斌',
+    shareRatio: 32,
+    company: '小米影业有限责任公司',
+    ziben: '1500万元人民币',
+    state: '存续',
+    zhiwei: '负责人'
+  },
           {
             key: '2',
             name: '胡彦祖',
@@ -201,9 +200,9 @@ export default defineComponent({
             state: '存续',
             zhiwei: '负责人'
           }
-        ],
+        ]);
 
-        columns: [
+       const columns = reactive([
           {
             title: '姓名/企业名称',
             dataIndex: 'name',
@@ -214,9 +213,9 @@ export default defineComponent({
             dataIndex: 'shareRatio',
             key: 'shareRatio',
           },
-      ],
+      ])
       // 担任法人、股东
-      legalPersonHeader: [
+      const legalPersonHeader = reactive([
         {
           title: '企业名称',
           dataIndex: 'company',
@@ -232,10 +231,10 @@ export default defineComponent({
           dataIndex: 'state',
           key: 'state',
         },
-      ],
+      ])
       
       // 担任高管
-      seniorExecutiveHeader: [
+      const seniorExecutiveHeader = reactive([
         {
           title: '企业名称',
           dataIndex: 'company',
@@ -251,17 +250,25 @@ export default defineComponent({
           dataIndex: 'zhiwei',
           key: 'zhiwei',
         },
-      ],
-      activeName,
-      close
-    };
-  },
-});
+      ])
+      
+/**
+ * 关闭
+ */
+function closeWindow() {
+  store.commit('setCurrentNode', null)
+}
 </script>
 <style lang="scss" scoped>
 ::v-deep .ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-tbody > tr > td.ant-table-cell-row-hover{
   background: #e6f5ff;
 
+}
+.ant-modal-root {
+  user-select: none;
+   &.hide {
+    display: none;
+  }
 }
 .ant-modal-wrapmain{
   position: fixed;
@@ -411,6 +418,7 @@ export default defineComponent({
     font-size: 12px;
     display: inline-block;
     line-height: 16px;
+    cursor: pointer;
   }
 }
 .clearfix:before {

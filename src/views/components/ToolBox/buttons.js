@@ -9,7 +9,8 @@
         ZOOMIN : 32,  // 放大
         REFRESH: 64,  // 刷新
         FULLSCREEN: 128,  //全屏幕
-        SAVE: 256 // 全屏
+        SAVE: 256, // 全屏
+        WRITTENWORDS: 512 // 文字
        
 });
 // buttons.ALl = buttons.FILTER | 

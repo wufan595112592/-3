@@ -7,8 +7,7 @@ const router = createRouter({
     {
       path: '/',
       name: '',
-      //component:() => import('../views/Relation1.vue')
-      component:() => import('../views/Relation1.vue')
+      component:() => import('../views/Relation.vue')
     },
     {
       path: '/company-chart',
