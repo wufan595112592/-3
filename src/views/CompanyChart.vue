@@ -438,7 +438,7 @@ export default {
                 that.isShowDetail = true;
                 that.detailPosition = {
                   top: rect.top - 130,
-                  left:  rect.right ,
+                  left: rect.left < ((window.innerWidth - rect.width) / 2) ? rect.right : (rect.left - 300) 
                 }
                 that.detailData = rootNode.data;
               }, 500);          
@@ -658,7 +658,9 @@ export default {
           const width = Math.min(d.data.name.length * 14, this.rectMinWidth);
           let right = dirRight > 0;
           // let xDistance = right ? width : -width;
-          this.drawCircle(`g${d.id}`, dirRight, source, direction);
+          if(d._children) {
+            this.drawCircle(`g${d.id}`, dirRight, source, direction);
+          }
           this.drawSign(`g${d.id}`, dirRight); //画标记
         }
 
@@ -974,17 +976,15 @@ export default {
         realw = 400;
       }
 
-      const g = d3.select(`#${id}`).on('mouseover', function (e) { 
-        
+      const g = d3.select(`#${id}`).on('mouseover', function (e) {        
             if(e.data.nodeType!=0) {
               let dom =  document.getElementById(id);
-              let rect = dom.getBoundingClientRect();          
-            
+              let rect = dom.getBoundingClientRect();  
               hoverTimer = setTimeout(function () {
                 that.isShowDetail = true;
                 that.detailPosition = {
                   top: rect.top - 130,
-                  left:  rect.right ,
+                  left: rect.left < ((window.innerWidth - rect.width) / 2) ? rect.right : (rect.left - 300) 
                 }
                 that.detailData = e.data;
               }, 500);
@@ -1197,10 +1197,14 @@ export default {
     },
     filterRoot(direction, filter) {
       let d = rootNode[direction];
-      if (d._children) {       
-         let children = d._children.filter(a => filter(a));
-        d.children = children.length > 0 ? children:null;
+      // debugger
+      if(!d._originChildren) {
+        d._originChildren = d.children || d._children ;
       }
+
+      const children = d._originChildren.filter(a => filter(a));
+      d._children = children.length > 0 ? children:null;	
+      d.children = children.length > 0 ? children:null;	
       this.update(d, direction);
     },
     refresh() {

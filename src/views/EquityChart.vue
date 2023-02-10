@@ -205,7 +205,7 @@ export default {
             
             detailPosition.value = {
               top: rect.top - 130,
-              left:  rect.right ,
+              left: rect.left < ((window.innerWidth - rect.width) / 2) ? rect.right : (rect.left - 300) 
             }
           }, 500);
         },

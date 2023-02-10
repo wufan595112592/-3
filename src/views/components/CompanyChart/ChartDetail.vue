@@ -69,7 +69,7 @@ defineProps(["data", "position"]);
   .company {
     display: flex;
     flex-flow: column;
-    width: 250px;
+    width: 300px;
     height: 135px;
 
     .top {
