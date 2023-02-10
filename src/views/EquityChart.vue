@@ -2,26 +2,36 @@
 <template>
   <!-- <Header title="小米科技有限责任公司" :active="3" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
+    {{ isShowFilter }}
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
-    <ToolBox v-if="show" ref="toolBoxRef" @maoScale="maoScale" @simpleChange="simpleChange" @editChange="editChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
+    <ToolBox
+        v-model:isShowFilter="isShowFilter"
+        :buttonGroup="buttons"
+        @editChange="editChange"
+        @maoScale="maoScale"
+        @refresh="refresh"
+        @exportImg="exportImg"/>
+
     <!-- <DetailContent /> -->
     <!-- <RelationDetail v-if="Detailshow" @close="close" /> -->
-    <transition name="v">
+        <transition name="v">
           <ChartDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></ChartDetail>
         </transition>
+        <EquityChartFilter ref="eqFilter" v-model:visiable="isShowFilter" @stateChange="filterStateChange" />
   </div>
 </template>
 <script>
 import Header from '../components/Header/index.vue'
-import ToolBox from './components/Equity/ToolBox.vue'
+import ToolBox from './components/ToolBox/index.vue'
+import EquityChartFilter from './components/Equity/EquityChartFilter.vue'
 import DetailContent from './components/DetailContent.vue'
 import RelationDetail from './components/RelationDetail.vue'
 import ChartDetail from './components/CompanyChart/ChartDetail.vue';
-import { drawing, simpleChange1, zoomClick, editChange1, init, register } from './components/Equity/index.js'
+import { drawing, simpleChange1, zoomClick, editChange1, updateByFilter, register } from './components/Equity/index.js'
 import D3Mixin from '@/hooks/D3Mixin'
 import { ref, onMounted } from 'vue'
 import EquityJson from '@/api/EquityJson.json'
-
+import Buttons from './components/ToolBox/buttons.js'
 let { toggleFullScreen, downloadImpByChart } = D3Mixin()
 export default {
   components: {
@@ -29,22 +39,24 @@ export default {
     ToolBox,
     DetailContent,
     RelationDetail,
-    ChartDetail
+    ChartDetail,
+    EquityChartFilter
   },
   setup() {
-    let show = ref(true)
-    let isShowDetail = ref(false)
-    let detailData = ref({});
-    let detailPosition = ref({
+    const isShowFilter = ref(false);
+    const buttons = ref(Buttons.FILTER | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE);
+    const isShowDetail = ref(false)
+    const detailData = ref({});
+    const detailPosition = ref({
         top: 0,
         left: 0
      });
-    const toolBoxRef = ref(null)
+    const eqFilter = ref();
     const exportImg = () => {
-      downloadImpByChart('股权穿透图谱', '北京马六级餐饮')
+      downloadImpByChart('股权穿透图谱', EquityJson.data.enterprise.name)
     }
     const close = () => {
-      Detailshow.value = false
+      // Detailshow.value = false
     }
     const simpleChange = (val) => {
       simpleChange1(val.value)
@@ -55,24 +67,15 @@ export default {
     const editChange = (val) => {
       editChange1(val.value)
     }
-    const refresh = () => {
-      toolBoxRef.value.simpleChange()
-      toolBoxRef.value.editChange()
-      toolBoxRef.value.showBox()
-      show.value = false
-      setTimeout(function () {
-        show.value = true
-      }, 2)
-      drawing()
+    const refresh = () => {     
+      eqFilter.value.resetState();
+      drawing(jsonData)
     }
     const screenfullChange = () => {
       toggleFullScreen()
     }
 
-    
-
-
-    let x = ['' ,'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+    const x = ['' ,'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
     const convertToHierarchy = (data) => {
       function uuid() {
       function s4() {
@@ -121,7 +124,7 @@ export default {
                   //  "eid": "",
                    // "identifier": "2",
                     "name": item.name,
-                    "type": "E"
+                    "type": item.stock_type.indexOf('法人')>=0 ? "P" : "E"
                   });
             })
 
@@ -129,8 +132,9 @@ export default {
         }
 
         let c_trees = [], p_trees = [];
-        let s = [null, new Map(),new Map(),new Map(),new Map(),new Map(),new Map(),new Map(),new Map(),new Map(),new Map()];
+        let s = [null];
         for(let i = 1 ;i < 11;i ++) {
+          s.push(new Map());
           data['stock_holder_' + x[i]].forEach(item => {
             s[i].set(item.name, item);
           });
@@ -143,12 +147,35 @@ export default {
           root: data.enterprise,
           c_trees,
           p_trees,
+          // rawMap: s 
         }
     }
 
-    onMounted(() => {
-      let hoverTimer;      
+    let jsonData = convertToHierarchy(EquityJson.data);
 
+    /**
+     * 筛选
+     * @param {   } state 
+     */
+    const filterStateChange = (state) => {
+      updateByFilter(data => {
+        let result = true;
+         // 存续
+        // 其他
+        result =  (state.status[0] && data.status == '存续') ||
+          (state.status[1] && data.status !== '存续');
+       
+        // 持股
+        const percent = parseInt ((data.percent || data.percent != '-') ? data.percent : 0) ;       
+        result = result && (percent > state.shareholding );
+        // 对外投资比例
+        // TODO 
+        return result && (state.investment == 0)
+      })
+    }
+
+    onMounted(() => {
+      let hoverTimer;
       register({
         nodeHover: function(e) {
           let dom =  document.getElementById(e.id);
@@ -164,13 +191,15 @@ export default {
               name: e.data.name,
               oper_name: e.data.oper_name,
               reg_capi: e.data.regist_capi,
-              start_date: e.data.start_date
+              start_date: e.data.start_date,
+              status: e.data.status
               }
             } else {
               detailData.value = {
               short_name: e.short_name,
               name: e.name,
-              oper_name: e.oper_name
+              oper_name: e.oper_name,
+              status: e.status
               }
             }
             
@@ -185,23 +214,24 @@ export default {
           isShowDetail.value = false;
         }
       })
-
-      drawing(convertToHierarchy(EquityJson.data));
+      drawing(jsonData);
     })
 
     return {
+      isShowFilter,
       isShowDetail,
       close,
-      show,
-      toolBoxRef,
+      eqFilter,
       simpleChange,
       maoScale,
       editChange,
       refresh,
       exportImg,
       screenfullChange,
+      filterStateChange,
       detailData,
-      detailPosition
+      detailPosition,
+      buttons
     }
   }
 };

@@ -11,7 +11,7 @@
       </div>
       <div class="bottom">
         <div class="label">
-          <span class="cunxu">存续</span>
+          <span v-if="data.status" class="cunxu">{{  data.status }}</span>
           <span class="xiaowei">小微企业</span>
         </div>
         <div>

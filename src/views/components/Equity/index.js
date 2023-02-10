@@ -17,10 +17,10 @@ var zoom,treeG
 var rootData ,rootName;
 let width = 0
 let height = 0
+let d3GenerationChart
 var _this = this;
 var rootRectWidth = 0; //根节点rect的宽度
 var forUpward = true
-
 let eventOpts = {
 	nodeHover: null,
 	nodeOut: null
@@ -65,8 +65,41 @@ export function drawing(data) {
 	}
 	width = document.getElementById('mountNode').scrollWidth
 	height = document.getElementById('mountNode').scrollHeight
-	var d3GenerationChart = new treeChart(d3);
+	d3GenerationChart = new treeChart(d3);
 	d3GenerationChart.drawChart();
+}
+
+/**
+ * 
+ * @param {*} filter 
+ */
+export function updateByFilter (filter) {
+
+	// 过滤节点
+	function filterNodes(d, originData) { 
+
+		if(!d._originChildren) {
+			d._originChildren = d.children || d._children;
+		}
+		const children = d._originChildren.filter(a => {
+			if(filter(a)) {
+				filterNodes(a, originData);
+				return true;
+			} 
+			return false;
+		});
+
+		if(d._children) {
+			d._children = children.length > 0 ? children:null;	
+		} else{
+			d.children = children.length > 0 ? children:null;	
+		}
+		d3GenerationChart.update(d, originData, treeG);
+	  }
+
+	  d3GenerationChart.directions.forEach(function(direction) {
+	  	filterNodes(rootData[direction], rootData[direction]);	
+	  });	
 }
 // 简称 全称切换
 export function simpleChange1(val) {
@@ -217,16 +250,8 @@ treeChart.prototype.graphTree = function(config) {
 		.attr('transform', 'translate(0,0)');
 
 
-	for (var d in this.directions) {
-		var direction = this.directions[d];
-		var data = self.treeData[direction];
-		data.x0 = config.centralWidth;
-		data.y0 = config.centralHeight;
-		data.children.forEach(collapse);
-		update(data, data, treeG);
-	}
-
-	function update(source, originalData, g) {
+	
+	self.update = function(source, originalData, g) {
 		var direction = originalData["direction"];
 		forUpward = direction == "upward";
 		var node_class = direction + "Node";
@@ -753,9 +778,8 @@ treeChart.prototype.graphTree = function(config) {
 			d.y0 = d.y;
 		});
 
-		let hoverTimer;
 		//添加动态关系线
-		function nodeHover(d, i) {			
+		function nodeHover(d, i) {		
 			typeof eventOpts.nodeHover === 'function' && eventOpts.nodeHover(d);
 			if (d.name != "origin") {
 				if (d.parent.direction == "downward") {
@@ -889,7 +913,7 @@ treeChart.prototype.graphTree = function(config) {
 				d._children = d.children;
 				d.children = null;
 				d3.select(this).text('+')
-				update(d, originalData, g);
+				self.update(d, originalData, g);
 			} else {
 				if (d._children && d._children.length > 0) {
 					d.children = d._children;
@@ -898,7 +922,7 @@ treeChart.prototype.graphTree = function(config) {
 						d.children.forEach(expand);
 					}
 					d3.select(this).text('-')
-					update(d, originalData, g);
+					self.update(d, originalData, g);
 					simpleChange1(shortNameShow)
 					editChange1(editShow)
 				} else {
@@ -964,10 +988,11 @@ treeChart.prototype.graphTree = function(config) {
 						return (item.id === undefined || item.id !== id)
 					})
 				}
-				const filtredData = filterId([originalData], d.id)
-				update(d, filtredData[0], g);
+				const filtredData = filterId([originalData], d.id)				
+				self.update(d, filtredData[0], g);
 			}
 		}
+
 	}
 
 	function expand(d) {
@@ -1004,4 +1029,15 @@ treeChart.prototype.graphTree = function(config) {
 			d3.ascending(a.name, b.name) ||
 			d3.ascending(a.id, b.id);
 	}
+
+	for (var d in this.directions) {
+		var direction = this.directions[d];
+		var data = self.treeData[direction];
+		data.x0 = config.centralWidth;
+		data.y0 = config.centralHeight;
+		data.children.forEach(collapse);
+		self.update(data, data, treeG);
+	}
+
 };
+

@@ -440,7 +440,7 @@ export default {
                   top: rect.top - 130,
                   left:  rect.right ,
                 }
-                that.detailData = that.root.data;
+                that.detailData = rootNode.data;
               }, 500);          
           })
           .on('mouseout', function () {

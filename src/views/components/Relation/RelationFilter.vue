@@ -24,7 +24,6 @@
         </a-form-item>
         <a-form-item label="持股">
           <a-slider
-            :tooltipVisible="false"
             :default-value="0"
             :min="0"
             :max="100"
@@ -163,7 +162,8 @@ import {
   defineProps,
   defineEmits,
   defineExpose,
-  onMounted
+  onMounted,
+  toRaw
 } from "vue";
 
 defineProps({  visiable: Boolean });
@@ -189,7 +189,7 @@ function closeWindow() {
  */
 function stateChange(value, field) {
   formState[field] = value;
-  emit('stateChange', formState)
+  emit('stateChange', toRaw(formState))
 }
 
 /**
