@@ -2,16 +2,23 @@ import { createStore } from 'vuex'
 import D3Mixin from '@/hooks/D3Mixin'
 let { FullScreen } = D3Mixin()
 
-export default createStore ({
+const store = createStore ({
   state: {
-    isFullScreen: false
+    isFullScreen: false,
+    currentNode: null
   },
   mutations: {
     toggleFullScreen(state) {
       FullScreen(state.isFullScreen);
       state.isFullScreen = !state.isFullScreen;
+    },
+    setCurrentNode(state, node) {
+      state.currentNode = node
     }
   },
-  actions: {},
+  actions: {
+  },
   modules: {}
 })
+
+export default store

@@ -25,7 +25,7 @@ import Header from '../components/Header/index.vue'
 import ToolBox from './components/ToolBox/index.vue'
 import EquityChartFilter from './components/Equity/EquityChartFilter.vue'
 import DetailContent from './components/DetailContent.vue'
-import RelationDetail from './components/RelationDetail.vue'
+import RelationDetail from '@/views/components/Relation/RelationDetail.vue'
 import ChartDetail from './components/CompanyChart/ChartDetail.vue';
 import { drawing, simpleChange1, zoomClick, editChange1, updateByFilter, register } from './components/Equity/index.js'
 import D3Mixin from '@/hooks/D3Mixin'

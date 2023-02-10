@@ -1,11 +1,10 @@
 import * as d3 from "d3";
 import $ from "jquery";
 import cytoscape from "cytoscape";
-
+import store from "../../../store";
 // 声明变量
 var domId;
 var cy;
-var textShow = true;
 var activeNode;
 var _rootData, _rootNode; //原始数据转换成的graph数据,根节点数据
 var hidden, state, visibilityChange;
@@ -88,8 +87,8 @@ function drawGraph(elements) {
     elements: elements,
     minZoom: 0.4,
     maxZoom: 5,
-    zoomingEnabled: true, //是否可缩放，改为false图谱的位置会靠左不居中
-    userZoomingEnabled: false, //是否允许用户事件(例如鼠标轮、按下缩放)缩放图形.缩放的编程更改不受此选项的影响  -- 这里改为false,然后通过自定义事件来控制图谱的缩放
+    // zoomingEnabled: true, //是否可缩放，改为false图谱的位置会靠左不居中
+    // userZoomingEnabled: false, //是否允许用户事件(例如鼠标轮、按下缩放)缩放图形.缩放的编程更改不受此选项的影响  -- 这里改为false,然后通过自定义事件来控制图谱的缩放
     layout: {
       zoom: 1,
       name: "preset",
@@ -288,7 +287,7 @@ function drawGraph(elements) {
             return ele.data("color");
           },
           label: function (ele) {
-            return textShow ? ele.data("label") : "";
+            return ele.data("label");
           },
           "text-opacity": 0.8,
           "font-size": 12,
@@ -428,19 +427,19 @@ function drawGraph(elements) {
       var node = evt.target;
 
       highLight([node._private.data.id], cy);
-
+      // 显示节点信息
       if (node.hasClass("nodeActive")) {
+        store.commit('setCurrentNode', null)
         activeNode = null;
         node.removeClass("nodeActive");
         cy.collection("edge").removeClass("edgeActive");
       } else {
         var nodeData = node._private.data;
-
         if (nodeData.type == "E" || nodeData.type == "UE") {
-          showDetail2(nodeData.keyNo, "company_muhou3");
+          showDetail(nodeData.keyNo, 'url', 'company', nodeData);
           cy.collection("node").addClass("nodeDull");
         } else {
-          showDetail2(nodeData.keyNo, "company_muhou3", "person");
+          showDetail(nodeData.keyNo,  'url', 'person', nodeData);
           cy.collection("node").addClass("nodeDull");
         }
 
@@ -478,7 +477,6 @@ function drawGraph(elements) {
       cancelHighLight();
     }
   });
-  var showTipsTime = null;
   /**
    * 鼠标悬停在节点上
    */
@@ -493,42 +491,6 @@ function drawGraph(elements) {
         cy.collection("edge").removeClass("edgeActive");
         node.neighborhood("edge").addClass("edgeActive");
       }
-      // 提示
-      clearTimeout(showTipsTime);
-      //if(node._private.data.name.length > 13 || (node._private.data.keyNo[0] == 'p' && node._private.data.name.length > 3) || node._private.data.layout.revel > 2){
-      if (
-        node._private.data.name.length > 13 ||
-        (node._private.data.keyNo &&
-          node._private.data.keyNo[0] == "p" &&
-          node._private.data.name.length > 3)
-      ) {
-        showTipsTime = setTimeout(function () {
-          var name = node._private.data.name;
-          // 显示在节点位置
-          /*var tipWidth = name.length * 12 + 16;
-								var x = node._private.data.d3x + 655 - (tipWidth / 2);
-								var y = node._private.data.d3y + 598;
-								if(node._private.data.type == 'P'){
-								    y = node._private.data.d3y + 590;
-								}*/
-
-          // 显示在鼠标位置
-          var event = evt.originalEvent || window.event;
-          var x = event.clientX + 10;
-          var y = event.clientY + 10;
-
-          var html =
-            "<div class='tips' style='font-size:12px;background:white;box-shadow:0px 0px 3px #999;border-radius:1px;opacity:1;padding:1px;padding-left:8px;padding-right:8px;display:none;position: absolute;left:" +
-            x +
-            "px;top:" +
-            y +
-            "px;'>" +
-            name +
-            "</div>";
-          $("body").append($(html));
-          $(".tips").fadeIn();
-        }, 600);
-      }
     }
   });
   /**
@@ -536,12 +498,6 @@ function drawGraph(elements) {
    */
   cy.on("mouseout", "node", function (evt) {
     //$("#Main").css("cursor", "default");
-
-    // 提示
-    // $(".tips").fadeOut(function () {
-    //   $(".tips").remove();
-    // });
-    clearTimeout(showTipsTime);
     var node = evt.target;
     node.removeClass("nodeHover");
     if (!_isFocus) {
@@ -627,7 +583,6 @@ function drawGraph(elements) {
    * 图谱缩放后触发
    */
   cy.on("zoom", function () {
-    console.log(cy.zoom());
     if (cy.zoom() < 0.5) {
       cy.collection("node").addClass("hidetext");
       cy.collection("edge").addClass("hidetext");
@@ -835,8 +790,8 @@ function transformData(graphData) {
   return els;
 }
 
-function showDetail2(keyNo, tupuUrl, type) {
-  console.log(keyNo);
+function showDetail(keyNo, tupuUrl, type, data) {
+  store.commit('setCurrentNode', data)
 }
 
 // ---------------------------- domUpdate 调用的方法 ---- End
@@ -893,7 +848,6 @@ function getRootData(list) {
 
   //emplyRevert(graph.links);
   //mergeLinks(graph.links);
-  console.log(123, graph);
 
   setLevel(graph.nodes, graph.links);
   setCategoryColor(graph.nodes, graph.links);
@@ -969,7 +923,7 @@ function setLevel(svg_nodes, svg_links) {
   }
   var level = 1;
   var nodes = [];
-  console.log(_rootNode, "_rootNode");
+  // console.log(_rootNode, "_rootNode");
   nodes.push(_rootNode);
   while (nodes.length) {
     var nextNodes = [];
@@ -1272,7 +1226,7 @@ function maoScale(type) {
 
   function dynamicZoom(c1, c2) {
     d3 .transition()
-    .duration(700)
+    .duration(500)
     .tween("zoom", function () {
       var i = d3.interpolate(c1, c2);
       return function (t) {
@@ -1281,7 +1235,7 @@ function maoScale(type) {
           zoomCompleted = true;
         }
         cy.zoom({
-          level: scale, // the zoom level
+          level: scale
         });
       };
     });
@@ -1331,6 +1285,11 @@ function init(id) {
   document.getElementById(domId).addEventListener("wheel", function (e) {
     maoScale(e.wheelDelta > 0 ? 1 : -1);
   });
+}
+
+// 文字的显隐
+function wordsChange(newVal) {
+  newVal ? cy.collection("edge").removeClass("hidetext") : cy.collection("edge").addClass("hidetext")
 }
 
 function getData(relativeJson, currentKeyNo) {
@@ -1385,6 +1344,10 @@ function activeEdgeById(id) {
   node.addClass("edgeActive");
 }
 
+// 获取节点信息
+function nodeDetail(keyNo, data) {
+  return data
+}
 
 /**
  * 过滤
@@ -1534,5 +1497,6 @@ export default {
   getData,
   exportImg,
   filter,
-  register
+  register,
+  wordsChange
 };

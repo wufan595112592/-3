@@ -15,6 +15,11 @@
         <div class="icon"><span class="iconfont icon-liebiao"></span></div>
         <div class="text">模板</div>
       </li>
+      
+      <li v-if="hasButon(Buttons.WRITTENWORDS)" :class="isShowWords ? 'active': ''" @click="wordsFilter">
+        <div class="icon"><span class="iconfont icon-zitiyanse"></span></div>
+        <div class="text">文字</div>
+      </li>
 
       <li v-if="hasButon(Buttons.EDIT)" :class="edit ? 'active': ''" @click="editChange(true)">
         <div class="icon"><span class="iconfont icon-sousuo"></span></div>
@@ -54,15 +59,15 @@
 
 <script setup>
 import { ref, defineExpose, computed  } from 'vue'
-import { useStore } from 'vuex'
 import Buttons from './buttons';
+import store from "../../../store";
 
-const store = useStore();
 const emit = defineEmits(['maoScale', 'refresh', 'exportImg',
-  'update:isShowFilter','update:isShowTemplate', 'editChange', 'simpleChange', 'openTemplate'])
+  'update:isShowFilter','update:isShowTemplate','update:isShowWords', 'editChange', 'simpleChange', 'wordsChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
     isShowTemplate: Boolean,
+    isShowWords: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -94,6 +99,10 @@ function hasButon(type) {
 function showFilter() {
     emit('update:isShowFilter', !props.isShowFilter)
 }
+function wordsFilter() {
+    emit('update:isShowWords', !props.isShowWords)
+}
+
 
 function simpleChange(bool = false) {
   if (bool) {
@@ -103,6 +112,7 @@ function simpleChange(bool = false) {
     simple.value = bool
   }
 }
+
 function editChange(bool = false) {
   if (bool) {
     edit.value = !edit.value
