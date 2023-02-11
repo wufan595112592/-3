@@ -27,6 +27,7 @@
             :default-value="0"
             :min="0"
             :max="100"
+            v-model:value="formState.shareholding"
             @afterChange="stateChange($event, 'shareholding')"
           />
           <span class="range-value value-0">0</span>
@@ -46,108 +47,37 @@
 
     <div class="list">
       <div class="ma_search-group input-group">
-        <a-input class="input" placeholder="请输入您想查询的公司/个人" />
-        <a-button class="button">聚焦</a-button>
+        <a-input class="input" v-model:value="currentSearchText" placeholder="请输入您想查询的公司/个人" >
+          <template #suffix>
+            <span v-if="currentSearchText" class="close-btn"  @click="clearSearchText">×</span>
+          </template>
+        </a-input>
+        <a-button type="primary" :disabled="!currentSelectedId" @click="focusSelected">{{ searchButtonText }}</a-button>
       </div>
       <div>
-        <div class="ma_items-container">
-          <div class="ma_item">
-            <div class="ma_item-top">
-              <a-checkbox v-model:checked="checked">1</a-checkbox>
-              <img
-                alt="company"
-                src="https://image.qcc.com/logo/fa902aeb2eab4ef9b9fcd1ef109ec54a.jpg?x-oss-process=style/logo_120"
-                onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'"
-              />
-              <!---->
-              <a
-                href="https://www.qcc.com/firm/fa902aeb2eab4ef9b9fcd1ef109ec54a.html"
-                target="_blank"
-                class="ma_name"
-              >
-                <span>重庆小米创业投资有限公司</span>
-              </a>
-              <!---->
-              <span class="ma_tag ntag text-success tooltip-br">存续</span>
-            </div>
-            <!---->
-            <!---->
-          </div>
+        
+          <div class="ma_items-container">
+              
+<div v-for="(item,index) in list" :key="item.id" class="ma_item">
+  <div class="ma_item-top">
+    <a-checkbox @change="checkboxChange" :value="item.id" v-model:checked="item.checked"></a-checkbox>
+    <img
+      alt="company"
+      src="https://image.qcc.com/logo/fa902aeb2eab4ef9b9fcd1ef109ec54a.jpg?x-oss-process=style/logo_120"
+      onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'"
+    />
+    <!---->
+    <div class="block" @click="selected(item)">
+      <span class="ma_name">{{index+1}}. {{ item.name }}</span>
+      <!---->
+      <span v-if="item.status" class="ma_tag ntag text-success tooltip-br">{{ item.status }}</span>
+    </div>
+  </div>
+</div>
 
-          <div class="ma_item">
-            <div class="ma_item-top">
-              <a-checkbox v-model:checked="checked">1</a-checkbox>
-              <img
-                alt="company"
-                src="https://image.qcc.com/logo/fa902aeb2eab4ef9b9fcd1ef109ec54a.jpg?x-oss-process=style/logo_120"
-                onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'"
-              />
-              <!---->
-              <a
-                href="https://www.qcc.com/firm/fa902aeb2eab4ef9b9fcd1ef109ec54a.html"
-                target="_blank"
-                class="ma_name"
-              >
-                <span>重庆小米创业投资有限公司</span>
-              </a>
-              <!---->
-              <span class="ma_tag ntag text-success tooltip-br">存续</span>
-            </div>
-            <!---->
-            <!---->
           </div>
-
-          <div class="ma_item">
-            <div class="ma_item-top">
-              <a-checkbox v-model:checked="checked">1</a-checkbox>
-              <img
-                alt="company"
-                src="https://image.qcc.com/logo/fa902aeb2eab4ef9b9fcd1ef109ec54a.jpg?x-oss-process=style/logo_120"
-                onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'"
-              />
-              <!---->
-              <a
-                href="https://www.qcc.com/firm/fa902aeb2eab4ef9b9fcd1ef109ec54a.html"
-                target="_blank"
-                class="ma_name"
-              >
-                <span>重庆小米创业投资有限公司</span>
-              </a>
-              <!---->
-              <span class="ma_tag ntag text-success tooltip-br">存续</span>
-            </div>
-            <!---->
-            <!---->
-          </div>
-
-          <div class="ma_item">
-            <div class="ma_item-top">
-              <a-checkbox v-model:checked="checked">2</a-checkbox>
-              <img
-                alt="company"
-                src="https://image.qcc.com/auto/1ea557c511d6c06423d0519a364ae0a5.jpg?x-oss-process=style/logo_120"
-                onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'"
-              />
-              <!---->
-              <a
-                href="https://www.qcc.com/firm/1ea557c511d6c06423d0519a364ae0a5.html"
-                target="_blank"
-                class="ma_name"
-              >
-                <span>天津众米企业管理合伙企业（有限合伙）</span>
-              </a>
-              <!---->
-              <span>
-                <span class="ma_tag ntag text-success tooltip-br">存续</span>
-              </span>
-              <span class="ma_arrow pull-right text-muted">
-                <i class="fa fa-fw fa-angle-down text"></i>
-              </span>
-            </div>
-          </div>
-
-          <!---->
-        </div>
+        
+        
       </div>
       <!---->
       <!---->
@@ -162,20 +92,64 @@ import {
   defineProps,
   defineEmits,
   defineExpose,
-  onMounted,
-  toRaw
+  toRaw,
+  computed
 } from "vue";
 
-defineProps({  visiable: Boolean });
-const emit = defineEmits(['update:visiable', 'stateChange']);
+const props = defineProps({
+  visiable: Boolean,
+  data: Array
+});
+const emit = defineEmits(['update:visiable', 'stateChange', 'focusSelected', 'resetState', 'checkboxChange']);
 const formState = reactive({
   layer: 0,
   status: 0,
   shareholding: 0,
   relation: 0,
 });
+const currentSearchText = ref('');
+const currentSelectedId = ref(0);
+const searchButtonText = ref('聚焦')
 
 
+const list = computed(() => {
+    return !currentSearchText.value ?
+    props.data : 
+    props.data.filter(a => a.name.indexOf(currentSearchText.value) >=0)
+})
+
+function selected(item) {
+  _resetState()
+  currentSearchText.value = item.name
+  currentSelectedId.value = item.id 
+}
+
+
+function clearSearchText() {
+  currentSearchText.value = ''
+  currentSelectedId.value = 0
+  searchButtonText.value = '聚焦';
+}
+
+/**
+ * 
+ */
+function checkboxChange(e) {
+  _resetState()
+  emit('checkboxChange', )
+}
+
+/**
+ * 聚焦
+ */
+function focusSelected() {
+  if( searchButtonText.value === '取消') {
+    clearSearchText()
+  } else {
+    searchButtonText.value = '取消';
+  } 
+  emit('focusSelected', toRaw(currentSelectedId.value))
+}
 
 /**
  * 关闭
@@ -201,6 +175,12 @@ function resetState() {
   formState.shareholding = 0;
   formState.relation = 0;
 }
+
+function _resetState() {
+  resetState()
+  emit('resetState')
+}
+
 defineExpose({
   resetState
 })
@@ -296,19 +276,24 @@ defineExpose({
   height: 600px;
   border-top: 10px solid #eee;
 
+  .close-btn {
+      cursor: pointer;
+      // color: #bbb;
+    }
+
   .ma_search-group {
     display: flex;
     justify-content: space-between;
     padding: 20px 20px 0;
 
     .input {
-      width: 350px;
+      width: 380px;
     }
 
-    .button {
-      background: #ccc;
-      color: #fff;
-    }
+    // .button {
+    //   background: #ccc;
+    //   color: #fff;
+    // }
   }
 
   .ma_items-container {
@@ -316,11 +301,26 @@ defineExpose({
     overflow-y: auto;
   }
   .ma_item {
+    cursor: pointer;
+    color: #333333;
+
+    &:hover {
+      background-color: #F3F9FD;
+      color: #128BED;
+    }
+
     .ma_item-top {
       display: flex;
       align-items: center;
-      padding: 14px 15px;
+      padding: 0 15px;
       height: 60px;
+
+      .block {
+        display: flex;
+        align-items: center;
+        width: 400px;
+        height: 100%;
+      }
 
       img {
         width: 30px;
@@ -333,7 +333,6 @@ defineExpose({
       }
       .ma_name {
         font-size: 14px;
-        color: #333333;
         max-width: 300px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -381,9 +380,15 @@ defineExpose({
     font-weight: normal;
     background: none;
     .close-btn {
+      cursor: pointer;
       font-size: 36px;
       // color: #bbb;
     }
+  }
+}
+:deep {
+  .ant-checkbox-wrapper {
+    margin-right: 10px;
   }
 }
 </style>

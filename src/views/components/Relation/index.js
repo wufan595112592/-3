@@ -28,10 +28,6 @@ const _COLOR = {
 };
 
 var _currentKeyNo,
-  _companyRadius = 35,
-  _personRadius = 15,
-  _circleMargin = 10,
-  _circleBorder = 3,
   _layoutNode = {},
   _isFocus = false;
 let relationMap = new Map();
@@ -74,11 +70,6 @@ function setSingleLinkNodes(links) {
 
 // 绘制图谱
 function drawGraph(elements) {
-  _currentKeyNo,
-    (_companyRadius = 35),
-    (_personRadius = 15),
-    (_circleMargin = 10),
-    (_circleBorder = 3);
   cy = cytoscape({
     container: document.getElementById("MainCy"),
     motionBlur: false,
@@ -418,9 +409,9 @@ function drawGraph(elements) {
    */
   cy.on("click", "node", function (evt) {
     // 筛选条件改变屏蔽其他点击事件
-    if(_isFilterConditionChange) {
-      return;
-    }
+    // if(_isFilterConditionChange) {
+    //   return;
+    // }
     if (evt.target._private.style["z-index"].value == 20) {
       // 非暗淡状态
       _isFocus = true;
@@ -551,9 +542,9 @@ function drawGraph(elements) {
    */
   cy.on("click", "edge", function (evt) {
     // 筛选条件改变屏蔽其他点击事件
-    if(_isFilterConditionChange) {
-      return;
-    }
+    // if(_isFilterConditionChange) {
+    //   return;
+    // }
     _isFocus = false;
     activeNode = null;
     cy.collection("node").removeClass("nodeActive");
@@ -564,12 +555,15 @@ function drawGraph(elements) {
    */
   cy.on("click", function (event) {
     if( typeof events.backgroudClick ==='function' ) {
-      events.backgroudClick.call(cy);
+      const result = events.backgroudClick.call(cy);
+      if(result) {
+        return;
+      }
     }
     // 筛选条件改变屏蔽其他点击事件
-    if(_isFilterConditionChange) {
-      return;
-    }
+    // if(_isFilterConditionChange) {
+    //   return;
+    // }
     var evtTarget = event.target;
     if (evtTarget === cy) {
       _isFocus = false;
@@ -751,6 +745,7 @@ function transformData(graphData) {
     var color = getLinkColor(link.data.type);
     var label = getLinkLabel(link);
     const linkId = link.sourceNode.nodeId + "" + link.targetNode.nodeId;
+    link.linkId = linkId;
     els.edges.push({
       data: {
         data: link.data,
@@ -1375,6 +1370,7 @@ function filter(state) {
   function recursiveActive(layer, maxLayer, parentLayerNode, childrenLayerNode) {
     if(layer > maxLayer) return;
      const temp = [];
+
     for (let i = 0; i < parentLayerNode.length; i++) {
       const sourceNode = parentLayerNode[i];
       if (!validateCompany(state, sourceNode)) {
@@ -1386,16 +1382,11 @@ function filter(state) {
         if (!validateCompany(state, targetNode)) {
           continue;
         }
-        let linkId = sourceNode.id + "" + targetNode.id;
-        let relation = relationMap.get(linkId);
-        if (!relation) {
-          linkId = targetNode.id + "" + sourceNode.id;
-          relation = relationMap.get(linkId);
-        }
 
-        if (relation && validate(state, relation)) {
+        const relation = getRelation(layer, state,sourceNode,targetNode );
+        if (relation && validateShareholding(state, relation)) {
           activeNodeById(targetNode.id);
-          activeEdgeById(linkId);
+          activeEdgeById(relation.linkId);
           temp.push(targetNode);
         }
       }
@@ -1403,6 +1394,45 @@ function filter(state) {
 
     ++layer;
     recursiveActive(layer, maxLayer, temp, _layoutNode['level' + (layer + 1)]);
+  }
+
+
+  function getRelation(level, state, source, target) {
+
+    function _tryGetRelation(source, target) {
+      let relation = relationMap.get(`${source.id }${target.id}`);
+      if(!relation) {
+        relation = relationMap.get(`${target.id }${source.id}`);
+      }
+      return relation;
+    }
+
+    // 全部
+    if(state.relation === 0) {
+      return _tryGetRelation(source, target);
+    }
+     // 直接投资
+    if (state.relation === 1) {
+      const relation = relationMap.get(`${source.id }${target.id}`);
+      if(!relation) {
+        return  null;
+      }
+      return relation.data.type === "SH" ? relation: null;
+    }
+    // 股东投资
+    // 董监高法投资
+    if (state.relation === 2 || state.relation == 3) {
+      let relation;
+      if(level === 1) {
+        const relation = relationMap.get(`${target.id }${source.id}`);
+        return target.data.type === 'P' ? relation : null;
+      }
+      if(!relation) {
+        relation = relationMap.get(`${source.id }${target.id}`);
+      }
+      return relation;
+    }
+    return null;
   }
 
   // 企业状态
@@ -1433,35 +1463,58 @@ function filter(state) {
   }
 
   // 持股比例   关系
-  function validate(state, relation) {
+  function validateShareholding(state, relation) {
     // 持股
     let relationPercent = (relation.data.properties.relationPercent || 0) * 100;
-    if (relationPercent < state.shareholding) {
-      return false;
-    }
-    // 关系
-    if (state.relation == 0) {
-      // 全部
-      return true;
-    }
-
-    if (state.relation == 1) {
-      // 直接投资
-      return relation.data.type === "LR";
-    }
-
-    if (state.relation == 2) {
-      // 股东投资
-      return relation.data.type === "SH";
-    }
-
-    if (state.relation == 3) {
-      // 董监高法投资
-      return relation.data.type === "EXEC";
-    }
-
-    return true;
+    return relationPercent > state.shareholding;
   }
+}
+
+export function cancelAllHighLight() {
+    _isFocus = false;
+    activeNode = null;
+    store.commit('setCurrentNode', null)
+    cancelHighLight();
+}
+
+export function allLinkHighLight() {
+  _isFocus = true;
+ // _isFilterConditionChange = true;
+  cy.edges().addClass('edgeActive');
+}
+
+/**
+ * 聚焦节点
+ */
+export function focusSelected(id) {
+
+  if(id == 0) {   
+    cancelAllHighLight();
+    return
+  }
+
+  // 非暗淡状态
+  _isFocus = true;
+  const node = cy.filter('[id = "' + id + '"]')[0];
+
+  highLight([id], cy);
+  // 显示节点信息
+  var nodeData = node._private.data;
+    if (nodeData.type == "E" || nodeData.type == "UE") {
+      showDetail(nodeData.keyNo, 'url', 'company', nodeData);
+      cy.collection("node").addClass("nodeDull");
+    } else {
+      showDetail(nodeData.keyNo,  'url', 'person', nodeData);
+      cy.collection("node").addClass("nodeDull");
+    }
+
+    activeNode = node;
+    cy.collection("node").removeClass("nodeActive");
+    cy.collection("edge").removeClass("edgeActive");
+  //  node.addClass("nodeActive");
+    node.neighborhood("edge").removeClass("opacity");
+    node.neighborhood("edge").addClass("edgeActive");
+    node.neighborhood("edge").connectedNodes().removeClass("opacity");
 }
 
 /**
@@ -1469,7 +1522,6 @@ function filter(state) {
  * @param {} param0
  */
 function refresh({ name = "preset", randomize = false, animate = true } = {}) {
-
    cy.layout({
     name: name,
     randomize: randomize,
@@ -1498,5 +1550,8 @@ export default {
   exportImg,
   filter,
   register,
-  wordsChange
+  wordsChange,
+  focusSelected,
+  allLinkHighLight,
+  cancelAllHighLight
 };

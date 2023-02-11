@@ -6,7 +6,7 @@
            @maoScale="maoScale"
            @refresh="refresh"
            @exportImg="exportImg"/>
-  <RelationFilter ref="filter" v-model:visiable="isShowFilter" @stateChange="filterStateChange"/>
+  <RelationFilter ref="filter" :data="list" v-model:visiable="isShowFilter" @resetState="resetFilterState" @focusSelected="focusSelected" @stateChange="filterStateChange"/>
   <Legend/>
   <RelationDetail ref="detail" @stateChange="filterStateChange" />
   <div style="width: 100%;height: 100%;">
@@ -45,8 +45,9 @@ export default {
     return {
       buttons: Buttons.FILTER | Buttons.WRITTENWORDS | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE,
       DetailShow: true,
-      isShowFilter: false,
-      isShowWords: true
+      isShowFilter: true,
+      isShowWords: true,
+      list: []
     }
   },
   watch: {
@@ -61,13 +62,16 @@ export default {
     Painter.init('MainCy');
     Painter.register({
       backgroudClick: () => {
-        this.isShowFilter = false;
+        const preStatus =   this.isShowFilter ;
+        this.isShowFilter = false;          
+        return preStatus;
       }
     })
     this.getData(relativeJson.data);
   },
   methods: {
     getData(data) {
+      this.list = data.nodes.map(a => Object.assign(a, { checked: true }))
       Painter.getData(data, "534472fd-7d53-4958-8132-d6a6242423d8");
     },
     /**
@@ -82,6 +86,10 @@ export default {
     exportImg() {
       Painter.exportImg();
     },
+    resetFilterState() {
+        Painter.cancelAllHighLight();
+        Painter.allLinkHighLight();
+    },
     refresh() {
       this.isShowFilter = false;
       this.isShowWords = true;
@@ -94,7 +102,9 @@ export default {
       //   animate,
       // })
     },
-    //
+    focusSelected(id){
+        Painter.focusSelected(id)
+    },
     filterStateChange(event) {
       Painter.filter(event);
     }
