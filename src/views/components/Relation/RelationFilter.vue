@@ -178,7 +178,13 @@ function resetState() {
 
 function _resetState() {
   resetState()
-  emit('resetState')
+  const checked = new Set();
+  props.data.forEach(a => {
+    checked.add(a.id)
+  });
+  emit('resetState', Object.assign(toRaw(formState), {
+      checked
+  }))
 }
 
 defineExpose({

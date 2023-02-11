@@ -8,6 +8,9 @@
            @exportImg="exportImg"/>
   <RelationFilter ref="filter" :data="list" v-model:visiable="isShowFilter" @resetState="resetFilterState" @focusSelected="focusSelected" @stateChange="filterStateChange"/>
   <Legend/>
+  <transition name="v">
+    <ChartDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></ChartDetail>
+  </transition>
   <RelationDetail ref="detail" @stateChange="filterStateChange" />
   <div style="width: 100%;height: 100%;">
     <div id="MainCy" style="width: 100%;height: 100%;"></div>
@@ -23,6 +26,7 @@ import ToolBox from './components/ToolBox/index.vue'
 import Legend from './components/Relation/Legend.vue'
 import RelationDetail from '@/views/components/Relation/RelationDetail.vue'
 import RelationFilter from '@/views/components/Relation/RelationFilter.vue';
+import ChartDetail from './components/CompanyChart/ChartDetail.vue';
 
 // import { relation } from './components/Relation/index.js'
 import $ from 'jquery'
@@ -39,15 +43,21 @@ export default {
     ToolBox,
     Legend,
     RelationDetail,
-    RelationFilter
+    RelationFilter,
+    ChartDetail
   },
   data() {
     return {
       buttons: Buttons.FILTER | Buttons.WRITTENWORDS | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE,
-      DetailShow: true,
-      isShowFilter: true,
+      isShowDetail: false,
+      isShowFilter: false,
       isShowWords: true,
-      list: []
+      list: [],
+      detailPosition: {
+        top: 0,
+        left: 0
+      },
+      detailData: {}
     }
   },
   watch: {
@@ -59,13 +69,39 @@ export default {
     // HTTP 请求
   },
   mounted() {
+    let hoverTimer, that = this;
+
     Painter.init('MainCy');
     Painter.register({
       backgroudClick: () => {
         const preStatus =   this.isShowFilter ;
         this.isShowFilter = false;          
         return preStatus;
-      }
+      },
+      nodeHover: function(e) {
+       
+          hoverTimer && clearTimeout(hoverTimer);
+          hoverTimer = setTimeout(() => {
+            const data = e.target._private.data
+
+
+            that.isShowDetail = true;
+            that.detailData = {
+              short_name: data.name,
+              name: data.name,
+              oper_name: '-',
+              status:  '-',
+            }
+            that.detailPosition = {
+              top: e.position.y ,
+              left: e.position.x 
+            }
+          }, 500);
+        },
+	      nodeOut: () => {
+          hoverTimer && clearTimeout(hoverTimer);
+          that.isShowDetail = false;
+        }
     })
     this.getData(relativeJson.data);
   },
@@ -86,9 +122,9 @@ export default {
     exportImg() {
       Painter.exportImg();
     },
-    resetFilterState() {
+    resetFilterState(event) {
         Painter.cancelAllHighLight();
-        Painter.allLinkHighLight();
+        Painter.allLinkHighLight(event.checked);
     },
     refresh() {
       this.isShowFilter = false;
@@ -117,5 +153,20 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: #cbe8ff;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+/* 离开和进入过程中的样式 */
+.v-enter-active,
+.v-leave-active {
+  /* 添加过渡动画 */
+  transition: opacity 0.6s ease;
+}
+/* 进入之后和离开之前的样式 */
+.v-enter-to,
+.v-leave-from {
+  opacity: 1;
 }
 </style>

@@ -70,6 +70,7 @@ function setSingleLinkNodes(links) {
 
 // 绘制图谱
 function drawGraph(elements) {
+  
   cy = cytoscape({
     container: document.getElementById("MainCy"),
     motionBlur: false,
@@ -472,6 +473,10 @@ function drawGraph(elements) {
    * 鼠标悬停在节点上
    */
   cy.on("mouseover", "node", function (evt) {
+  
+    if(typeof events.nodeHover === 'function') {
+        events.nodeHover.call(cy, evt);
+    }
     if (evt.target._private.style["z-index"].value == 20) {
       // 非暗淡状态
       // $("#Main").css("cursor", "pointer");
@@ -488,6 +493,10 @@ function drawGraph(elements) {
    * 鼠标移开节点
    */
   cy.on("mouseout", "node", function (evt) {
+    if(typeof events.nodeOut === 'function') {
+      events.nodeOut.call(cy, evt);
+    }
+
     //$("#Main").css("cursor", "default");
     var node = evt.target;
     node.removeClass("nodeHover");
@@ -1001,7 +1010,7 @@ function domUpdate(graphData) {
 
   setTimeout(function () {
     drawGraph(transformData(graphData));
-  }, 500);
+  }, 150);
 
   // selPanelUpdateList(graphData.nodes, graphData.links, true);
 }
@@ -1365,7 +1374,7 @@ function filter(state) {
   deactiveElements();
 
   // 按层数激活
-  recursiveActive( 1,  state.layer == 0 ? 4 : state.layer , _layoutNode.level1 ,  _layoutNode.level2);
+  recursiveActive( 1,  !state.layer  ? 4 : state.layer , _layoutNode.level1 ,  _layoutNode.level2);
 
   function recursiveActive(layer, maxLayer, parentLayerNode, childrenLayerNode) {
     if(layer > maxLayer) return;
@@ -1477,10 +1486,20 @@ export function cancelAllHighLight() {
     cancelHighLight();
 }
 
-export function allLinkHighLight() {
+export function allLinkHighLight(include) {
   _isFocus = true;
  // _isFilterConditionChange = true;
-  cy.edges().addClass('edgeActive');
+  //cy.edges().addClass('edgeActive');
+  if(!include) {
+    cy.edges().addClass('edgeActive');
+  } else {
+    cy.edges(function (edge) {
+      var data = edge._private.data;
+      if (include.has(data.data.targetId) || include.has(data.data.sourceId)) {
+        edge.addClass("edgeActive");
+      }
+    });
+  }  
 }
 
 /**
@@ -1533,6 +1552,8 @@ function refresh({ name = "preset", randomize = false, animate = true } = {}) {
 
 let events = {
   nodeClick: null,
+  nodeHover: null,
+	nodeOut: null,
   egdeClick:  null,
   backgroudClick:null,
 }

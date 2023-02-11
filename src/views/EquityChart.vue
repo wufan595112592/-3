@@ -166,7 +166,7 @@ export default {
        
         // 持股
         const percent = parseInt ((data.percent || data.percent != '-') ? data.percent : 0) ;       
-        result = result && (percent > state.shareholding );
+        result = result && (percent >= state.shareholding );
         // 对外投资比例
         // TODO 
         return result && (state.investment == 0)

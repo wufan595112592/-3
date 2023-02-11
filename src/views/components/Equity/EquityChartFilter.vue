@@ -13,8 +13,7 @@
         <div class="section-header">
           企业登记状态
           <div class="header-option">
-            <input type="checkbox">
-            是否显示企业状态
+            <a-checkbox :checked="formState.isShowStatus" @change="stateChange(!formState.isShowStatus,'isShowStatus')">是否显示企业状态</a-checkbox>
           </div>
         </div> 
         <div class="main">
@@ -57,6 +56,7 @@ const formState = reactive({
   status: [true,true],
   shareholding: 0,
   investment: 0,
+  isShowStatus: false
 });
 
 /**
@@ -73,6 +73,7 @@ function closeWindow() {
   formState.status = [true,true];
   formState.shareholding = 0;
   formState.investment = 0;
+  formState.isShowStatus = false;
 }
 function stateChange(value, field, index) {
   if(field === 'status') {
