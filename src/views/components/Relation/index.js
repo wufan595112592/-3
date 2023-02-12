@@ -559,6 +559,24 @@ function drawGraph(elements) {
     cy.collection("node").removeClass("nodeActive");
     cancelHighLight();
   });
+  cy.on('mouseover', (e) => {
+    typeof events.backgroudHover ==='function' && events.backgroudHover(e);    
+  });
+  cy.on('mouseout', (e) => {
+    typeof events.backgroudOut ==='function' && events.backgroudOut(e);    
+  });
+
+ // document.querySelectorAll('canvas').forEach(ele => {
+  //   ele.addEventListener('mouseenter', (e) => {
+  //     typeof events.backgroudHover ==='function' && events.backgroudHover(e);    
+  //   });
+  // })
+  // document.querySelectorAll('canvas').forEach(ele => {
+  //   ele.addEventListener('mouseover', (e) => {
+  //     typeof events.backgroudOut ==='function' && events.backgroudOut(e);    
+  //   });
+  // })
+
   /**
    * 点击画布，节点全部恢复高亮
    */
@@ -1556,6 +1574,8 @@ let events = {
 	nodeOut: null,
   egdeClick:  null,
   backgroudClick:null,
+  backgroudHover: null,
+  backgroudOut: null
 }
 function register(opts) {
     Object.assign(events, opts);

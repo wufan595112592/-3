@@ -226,6 +226,7 @@ export default {
       //根节点字符所占宽度
       this.rootNodeLength = this.rootName[0].length * this.fontSize + 50;
 
+      let bgHoverTimer;
       //svg标签
       svg = d3
           .select("#treeRoot")
@@ -236,7 +237,18 @@ export default {
           .attr("width", treeWidth)
           .attr("height", treeHeight)
           .attr("font-size", this.fontSize)
-          .attr("fill", "#555");
+          .attr("fill", "#555")
+          .on('mouseover', () => {          
+            if( this.isShowDetail) {
+              bgHoverTimer && clearTimeout(bgHoverTimer)
+              bgHoverTimer = setTimeout(() => {
+              this.isShowDetail = false;
+            }, 300);
+            }
+          })
+          .on('mouseout', () => {
+              bgHoverTimer && clearTimeout(bgHoverTimer)
+          })
 
       //g标签
       this.container = svg
@@ -445,7 +457,7 @@ export default {
           })
           .on('mouseout', function () {
             hoverTimer && clearTimeout(hoverTimer);
-            that.isShowDetail = false;
+           // that.isShowDetail = false;
           });
       title
           .append("svg:rect")
@@ -976,7 +988,7 @@ export default {
         realw = 400;
       }
 
-      const g = d3.select(`#${id}`).on('mouseover', function (e) {        
+      const g = d3.select(`#${id}`).on('mouseover', function (e) {     
             if(e.data.nodeType!=0) {
               let dom =  document.getElementById(id);
               let rect = dom.getBoundingClientRect();  
@@ -992,7 +1004,7 @@ export default {
             
           }).on('mouseout', function () {
             hoverTimer && clearTimeout(hoverTimer);
-            that.isShowDetail = false;
+            // that.isShowDetail = false;
           });
 
       return g

@@ -7,7 +7,7 @@
     <div v-if="data.type !== 'employee'" class="company">
       <div class="top">
         <div class="avatar">{{ data.short_name }}</div>
-        <div class="name">{{ data.name }}</div>
+        <a target="_blank" href="http://www.baidu.com"><div class="name">{{ data.name }}</div></a>
       </div>
       <div class="bottom">
         <div class="label">
@@ -31,7 +31,7 @@
         <div class="avatar"></div>
         <div class="base">
           <div class="name blue ">{{ data.name }}</div>
-          <div>企业：<span class="blue ">{{ data.company  }}</span></div>
+          <div>企业：<a target="_blank" href="http://www.baidu.com"><span class="blue ">{{ data.company  }}</span></a></div>
           <div>职位：<span class="black ">{{ data.title || '-' }}</span></div>
         </div>
       </div>
@@ -93,7 +93,7 @@ defineProps(["data", "position"]);
         display: flex;
         align-items: center;
         padding: 0 5px;
-        width: 170px;
+        width: 250px;
         vertical-align: middle;
         font-weight: bold;
         color: #2196f3;

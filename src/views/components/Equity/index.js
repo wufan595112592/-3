@@ -23,7 +23,9 @@ var rootRectWidth = 0; //根节点rect的宽度
 var forUpward = true
 let eventOpts = {
 	nodeHover: null,
-	nodeOut: null
+	nodeOut: null,
+	backgroundHover: null,
+	backgroundOut: null
 }
 
 export function register(opts) {
@@ -236,6 +238,13 @@ treeChart.prototype.graphTree = function(config) {
 	};
 	zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
 	var svg = d3.select('#mountNode')
+	
+	.on("mouseover", (e) => {
+		typeof eventOpts.backgroundHover == 'function' && eventOpts.backgroundHover(e)
+   })
+   .on("mouseout", (e) => {
+	   typeof eventOpts.backgroundOut == 'function' && eventOpts.backgroundOut(e)
+   })
 		.append('svg')
 		.attr('id', 'svg')
 		.attr('width', '100%')
@@ -244,7 +253,7 @@ treeChart.prototype.graphTree = function(config) {
 		.attr('xmlns', 'http://www.w3.org/2000/svg')
 		// .on('mousedown', disableRightClick)
 		.call(zoom)
-		.on('dblclick.zoom', null);
+		.on('dblclick.zoom', null)
 	treeG = svg.append('g')
 		.attr('class', 'gbox')
 		.attr('transform', 'translate(0,0)');

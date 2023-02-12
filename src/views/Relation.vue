@@ -69,22 +69,30 @@ export default {
     // HTTP 请求
   },
   mounted() {
-    let hoverTimer, that = this;
+    let hoverTimer, bgHoverTimer, that = this;
 
     Painter.init('MainCy');
     Painter.register({
+      backgroudHover: () => {
+        if( that.isShowDetail) {
+              bgHoverTimer && clearTimeout(bgHoverTimer)
+              bgHoverTimer = setTimeout(() => {
+              that.isShowDetail = false;
+            }, 300);
+          }
+      },
+      backgroudOut: () => {
+        bgHoverTimer && clearTimeout(bgHoverTimer)
+      },
       backgroudClick: () => {
         const preStatus =   this.isShowFilter ;
         this.isShowFilter = false;          
         return preStatus;
       },
-      nodeHover: function(e) {
-       
+      nodeHover: function(e) {       
           hoverTimer && clearTimeout(hoverTimer);
           hoverTimer = setTimeout(() => {
             const data = e.target._private.data
-
-
             that.isShowDetail = true;
             that.detailData = {
               short_name: data.name,
@@ -100,7 +108,7 @@ export default {
         },
 	      nodeOut: () => {
           hoverTimer && clearTimeout(hoverTimer);
-          that.isShowDetail = false;
+          // that.isShowDetail = false;
         }
     })
     this.getData(relativeJson.data);

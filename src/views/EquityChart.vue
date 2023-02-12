@@ -174,12 +174,23 @@ export default {
     }
 
     onMounted(() => {
-      let hoverTimer;
+      let hoverTimer, bgHoverTimer;
       register({
-        nodeHover: function(e) {
+        backgroundHover() {
+            if(isShowDetail.value) {
+              bgHoverTimer && clearTimeout(bgHoverTimer)
+
+              bgHoverTimer = setTimeout(() => {
+              isShowDetail.value = false;
+            }, 300);
+          }
+        },
+        backgroundOut() {          
+          bgHoverTimer && clearTimeout(bgHoverTimer)
+        },
+        nodeHover: function(e) {   
           let dom =  document.getElementById(e.id);
           let rect = dom.getBoundingClientRect();
-
           hoverTimer && clearTimeout(hoverTimer);
           hoverTimer = setTimeout(() => {
             isShowDetail.value = true;
@@ -210,7 +221,7 @@ export default {
         },
 	      nodeOut: () => {
           hoverTimer && clearTimeout(hoverTimer);
-          isShowDetail.value = false;
+          // isShowDetail.value = false;
         }
       })
       drawing(jsonData);
