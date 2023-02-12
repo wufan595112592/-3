@@ -148,7 +148,12 @@ treeChart.prototype.graphTree = function(config) {
 	var diagonal = function(obj) {
 		var s = obj.d.source;
 		var t = obj.d.target;
-		return ("M" + s.x + "," + (s.y) + "L" + s.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y));
+		console.log(s,t)
+		return (
+			("M" + s.x + "," + (s.y) 
+			+ "L" + s.x + "," + (s.y + (t.y - s.y) / 2) 
+			+ "L" + t.x + "," + (s.y + (t.y - s.y) / 2) 
+			+ "L" + t.x + "," + (t.y)));
 		// return ("M" + s.x + "," + (s.y + 20) + "L" + s.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (s.y + 20 + (t.y - s.y) / 2) + "L" + t.x + "," + (t.y + 20));
 	};
 	zoom = d3.behavior.zoom().scaleExtent([0.5, 2]).on('zoom', redraw);
@@ -170,6 +175,17 @@ treeChart.prototype.graphTree = function(config) {
 		interpolateZoom([0, 0], 1);
 	});
 
+	d3.select("#zoomIn").on("click", zoomClick);
+	d3.select("#zoomOut").on("click", zoomClick);
+	for (var d in this.directions) {
+		var direction = this.directions[d];
+		var data = self.treeData[direction];
+		data.x0 = config.centralWidth;
+		data.y0 = config.centralHeight;
+		data.children.forEach(expand);
+		update(data, data, treeG);
+	}
+
 	function interpolateZoom(translate, scale) {
 		return d3
 			.transition()
@@ -183,7 +199,6 @@ treeChart.prototype.graphTree = function(config) {
 				};
 			});
 	}
-
 	// 缩放
 	function zoomClick() {
 		var clicked = d3.event.target,
@@ -224,46 +239,61 @@ treeChart.prototype.graphTree = function(config) {
 
 		interpolateZoom([view.x, view.y], view.k);
 	}
-	d3.select("#zoomIn").on("click", zoomClick);
-	d3.select("#zoomOut").on("click", zoomClick);
-	for (var d in this.directions) {
-		var direction = this.directions[d];
-		var data = self.treeData[direction];
-		data.x0 = config.centralWidth;
-		data.y0 = config.centralHeight;
-		data.children.forEach(collapse);
-		update(data, data, treeG);
-	}
 
 	function update(source, originalData, g) {
 		var direction = originalData["direction"];
 		forUpward = direction == "upward";
 		var node_class = direction + "Node";
 		var link_class = direction + "Link";
-		var downwardSign = forUpward ? -1 : 1;
+		var downwardSign = forUpward ? -1: 1;
 		var nodeSpace = 320;
 		// var tree = d3.layout.tree().sort(sortByDate).nodeSize([nodeSpace, 0]);
 		var tree = d3.layout.tree().nodeSize([nodeSpace, 0]);
 		var nodes = tree.nodes(originalData);
 		var links = tree.links(nodes);
 		var offsetX = -config.centralWidth;
+
 		nodes.forEach(function(d) {
-			d.y = downwardSign * (d.depth * linkLength) + config.centralHeight;
+			if(d.depth > 1 ) {		
+				if(forUpward) {
+					d.y = d.parent.y - 180 -  25 * (d.Collection.length > 5 ? 5 + 2 : d.Collection.length + 2)
+				} else {
+					d.y = d.parent.y + 50 + d.depth * 25 * 7
+				}
+			} else if(d.depth === 1 ) {
+				if(forUpward) {
+					d.y = d.parent.y - 100;
+				} else {
+					d.y = d.parent.y + 100 ;
+				}
+			} else {
+				d.y = config.centralHeight;
+			}			
+			
 			d.x = d.x - offsetX;
 			if (d.name == "origin") {
 				d.x = config.centralWidth;
-				d.y += downwardSign * 0; // 上下两树图根节点之间的距离
+				// d.y += downwardSign * 0; // 上下两树图根节点之间的距离
 			}
+			d.x0 = d.x;
+			d.y0 = d.y;
 		});
+		
 		// Update the node.
 		var node = g.selectAll('g.' + node_class)
-			.data(nodes, function(d) {
+			.data(nodes.filter(a => a.name !=='origin'), function(d) {
 				return d.id || (d.id = ++id);
 			})
+			
+		var nodeRoot =  g.selectAll('g.' + node_class)
+			.data(nodes.filter(a => a.name =='origin'), function(d) {
+			return d.id || (d.id = ++id);
+			})
+
 		var nodeEnter = node.enter().append('g')
 			.attr('class', node_class)
-			.attr('transform', function(d) {
-				return 'translate(' + source.x0 + ',' + source.y0 + ')';
+			.attr('transform', function(d) {	
+				return 'translate(' + (source.x0) + ',' + (source.y0) + ')';
 			})
 			.on('click', d => {
 				if (d.direction == 'upward' || d.direction == 'downward') {
@@ -278,13 +308,33 @@ treeChart.prototype.graphTree = function(config) {
 			})
 			// .on("mouseenter", nodeHover)
 			.on("mouseleave", nodeOut);
-		
+
+		var nodeRootEnter = nodeRoot.enter().append('g')
+			.attr('class', node_class)
+			.attr('transform', function(d) {
+				return 'translate(' + source.x0 + ',' + (source.y0 ) + ')';
+			})
+			.on('click', d => {
+				if (d.direction == 'upward' || d.direction == 'downward') {
+					// _this.$router.push({
+					//   path: '/search/detail',
+					//   name: 'search-detail',
+					//   query: {
+					//     companyId: d.direction == 'upward' ? d.beijingCrid : d.pbeijingCrid
+					//     }
+					//   })
+				}
+			})
+			// .on("mouseenter", nodeHover)
+			.on("mouseleave", nodeOut);
+
 		// 节点
-		const nodeG = nodeEnter.append('g')
-			.attr('class', 'node')
+		const nodeG = nodeRootEnter.append('g')
+					.attr('class', 'node');
 		
 		// 根节点  母公司/控股股东  块
 		nodeG.append("svg:rect")
+			.attr("class", "root")
 			.attr("x", function (d) {
 				return d.name == 'origin' ? -(rootRectWidth / 2) : -145;
 			})
@@ -317,18 +367,47 @@ treeChart.prototype.graphTree = function(config) {
 				} else {
 					return "#fff"
 				}
+			});
+		nodeG.append('text')
+			.attr("text-anchor", function (d) {
+				return d.name == 'origin' ? "middle" : "start"
 			})
+			.attr("dx", 0)
+			.attr("dy", 0)
+			.style({
+				"fill": "#fff",
+				'font-size': 14,
+				'cursor': "pointer",
+			})
+			.text(function(d) {
+				if (d.name == "origin") {
+					return rootName;
+				}
+				if (d.repeated) {
+					return "[Recurring] " + d.name;
+				}
+				return d.Title
+			});
 			// .on("mouseenter", nodeHover);
 
 		// title 块名称  第一行
+		// nodeEnter[0].unshift(nodeRootEnter[0][0]);
 		const nodeT = nodeEnter.append('g')
-			.attr('class', 'node-text')
-		
+			.attr('class', 'node-text')		
+			.attr('transform', function(d) {
+				return forUpward ? 'translate(0, 130)' : '';
+			})
 		// 背景
 		nodeT.append("rect")
 			.attr("x", -145)
 			.attr("y", function (d) {
-				return d.name != 'origin' && forUpward ? d.Collection.length > 1 ? -110 - 40 * (d.Collection.length - 1) : -110 : 0
+				// const length = d.Collection.length > 5 ? 5 : d.Collection.length ;		
+				// if(forUpward) {
+				// 	d.dy = d.Collection.length > 1 ? -110 - 60 * length;
+				// } else {
+				// 	d.dy = forUpward ?  : -110 : 0
+				// }
+				return forUpward ? -150 - 140 + 10 : 0;
 			})
 			.attr("width", function (d) {
 				return d.name != 'origin' ? 290 : 0;
@@ -347,8 +426,8 @@ treeChart.prototype.graphTree = function(config) {
 			.attr("dx", function (d) {
 				return d.name != 'origin' ? -135 : 0
 			})
-			.attr('dy', function (d) {
-				return d.name != 'origin' ? forUpward ? d.Collection.length > 1 ? -85 - 40 * (d.Collection.length - 1) : -85 : 25 : 0
+			.attr('dy', function (d) {				
+				return forUpward ? -125 - 140 + 10 : 25;
 			})
 			.text(function(d) {
 				if (d.name == "origin") {
@@ -368,23 +447,28 @@ treeChart.prototype.graphTree = function(config) {
 				'cursor': "pointer",
 			})
 			.attr("center-node", function (d) {
+				const node = d3.select(this.parentNode)
 				// 生成中间的所有子节点
-				init(d)
+				init(d, node)
 				return
 			})
 			.attr("id", function(d, i) {
 				return "mypath" + i;
 			});
 		
-			function init(data) {
+			function init(data, node) {
 				if (data.name == 'origin') return
+				
 				if (data.Collection && data.Collection.length) {
 					const Collection = data.Collection.length > 5 ? data.Collection.slice(0, 5) : data.Collection
+					const length =  6 ;//data.Collection.length > 5 ? 5 : data.Collection.length;
+					
 					Collection.forEach((item, index) => {
-						nodeT.append("rect")
+						node.append("rect")
 						.attr("x", -145)
 						.attr("y", function (d) {
-							return forUpward ? index > 0 ? -150 + 40 * (index) : -70 + 40 * (index) : 40 * (index + 1)
+							// return forUpward ? index >= 0 ? (d.dy + 40) + 40 * (index) : -70 + 40 * (index) : 40 * (index + 1)
+							return  forUpward ? (length - index) * - 40 :  (index + 1) * 40  
 						})
 						.attr("width", function (d) {
 							return d.id === data.id ? 290 : 0
@@ -395,10 +479,11 @@ treeChart.prototype.graphTree = function(config) {
 						.attr('stroke-width', 1)
 						.style('cursor', "pointer")
 						
-						nodeT.append("text")
+						node.append("text")
 						.attr("dx", -135)
 						.attr('dy', function (d) {
-							return forUpward ? index > 0 ? -125 + 40 * index :  -85 + 40 * (index + 1) : 25 + 40 * (index + 1) 
+							//return forUpward ? index >= 0 ? (d.dy + 65) + 40 * index :  -85 + 40 * (index + 1) : 25 + 40 * (index + 1) 
+							return  forUpward ? (length - index) * - 40 + 25 :  (index + 1) * 40  + 25
 						})
 						.text(function (d) {
 							return d.id === data.id ? item.name : ''
@@ -419,7 +504,8 @@ treeChart.prototype.graphTree = function(config) {
 				return d.name != 'origin' ? 135 : -(rootRectWidth / 2) + 5
 			})
 			.attr('dy', function (d) {
-				return d.name != 'origin' ? forUpward ? d.Collection.length > 1 ? -85 - 40 * (d.Collection.length - 1) : -85 : 25 : 0
+				//return d.name != 'origin' ? forUpward ? d.Collection.length > 1 ? -85 - 40 * (d.Collection.length - 1) : -85 : 25 : 0
+				return forUpward ? -125 - 140 + 10  : 25;
 			})
 			.text(function(d) {
 				return d.name == "origin" ? "" : d.Total
@@ -434,9 +520,12 @@ treeChart.prototype.graphTree = function(config) {
 		// 最后一行背景 查看全部×家企业/人员> 
 		nodeT.append("rect")
 			.attr("x", -145)
-			.attr("y", function (d) {
-				const length = d.Collection ? d.Collection.length > 5 ? 5 : d.Collection.length : 0
-				return d.name != 'origin' ? forUpward ? d.Total > 1 ? -110 + 40 * length : -110 + 40 * (length + 1) : 40 * (length + 1) : 0
+			.attr("y", function (d) {				
+				// const index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				// return forUpward ? index >= 0 ? (d.dy + 40) + 40 * (index) : -70 + 40 * (index) : 40 * (index + 1)
+				let index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				let length = 6;
+				return  forUpward ? (length - index) * - 40 :  (index + 1) * 40 ;
 			})
 			.attr("width", function (d) {
 				return d.name != 'origin' ? 290 : 0;
@@ -454,8 +543,11 @@ treeChart.prototype.graphTree = function(config) {
 				return d.name != 'origin' ? -135 : -(rootRectWidth / 2) + 5
 			})
 			.attr('dy', function (d) {
-				const length = d.Collection ? d.Collection.length > 5 ? 5 : d.Collection.length : 0
-				return d.name != 'origin' ? forUpward ? d.Total > 1 ? -85 + 40 * length :  -85 + 40 * (length + 1) : 25 + 40 * (length + 1) : 0
+				// const index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				// return forUpward ? index >= 0 ? (d.dy + 65) + 40 * index :  -85 + 40 * (index + 1) : 25 + 40 * (index + 1) 
+				let index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				let length = 6;
+				return  forUpward ? (length - index) * - 40 + 25 :  (index + 1) * 40 + 25
 			})
 			.text(function(d) {
 				if (d.name == "origin") {
@@ -478,7 +570,12 @@ treeChart.prototype.graphTree = function(config) {
 			.append("rect")
 			.attr("x", "-2")
 			.attr("y", function(d) {
-				return forUpward ? "31" : "-29";
+				let index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				let length = 6;
+				if(forUpward) {
+					return  (length - index) * - 40 + (d.Direction === 'IN' ? 45 : 65); 
+				} 
+				return  d.Direction === 'IN' ? -20 : -40
 			})
 			.attr("width", function (d) {
 				return d.Operation ? "4" : 0
@@ -490,7 +587,12 @@ treeChart.prototype.graphTree = function(config) {
 		nodeB.append("text")
 			.attr("x", "0")
 			.attr("dy", function(d) {
-				return d.name == "origin" ? ".35em" : forUpward ? "40" : "-20";
+				let index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				let length = 6;
+				if(forUpward) {
+					return  (length - index) * - 40 + (d.Direction === 'IN' ? 55 : 75); 
+				} 
+				return  d.Direction === 'IN' ? -10 : -30
 			})
 			.attr("text-anchor", "start")
 			.attr("class", "linkname")
@@ -508,10 +610,15 @@ treeChart.prototype.graphTree = function(config) {
 		nodeB.append("polygon")
 		.attr("class", 'trasingle')
 		.attr("points", function (d) {
-			if (d.name != 'origin' && forUpward) {
-				return d.Direction == 'IN' ? "0,55 -3,45 3,45" : "0,15 -3,25 3,25"
+			if (forUpward) {
+				let index = d.Collection.length > 5 ? 5 : d.Collection.length;
+				let length = 6;
+				let dy2 =  (length - index - 1) * -40 + 10;
+				let dy1 = dy2 + 20;
+				return d.Direction == 'IN' ? `0,${ dy1 } -3,${ dy1 -10} 3,${ dy1 -10}` : `0,${dy2} -3,${dy2+10} 3,${dy2+10}`;
 			} else if (d.name != 'origin') {
-				return d.Direction == 'IN' ? "0,-45 -3,-35 3,-35" : "0,-4 -3,-14 3,-14"
+				let dy1 = -40;
+				return d.Direction == 'IN' ? `0,${ dy1 } -3, ${dy1 + 10} 3,${dy1 + 10}` : "0,-4 -3,-14 3,-14"
 			}
 			return ""
 		})
@@ -555,42 +662,47 @@ treeChart.prototype.graphTree = function(config) {
 			.attr("stroke-width", "1px")
 			.attr("opacity", 0.5)
 			.attr("d", function(d) {
-				var o = {
-					x: source.x0,
-					y: source.y0,
-				};
 				return diagonal({
-					source: o,
-					target: o,
-					d,
+					d : {
+						source: {
+							x: d.source.x,
+							y: d.source.y + 200
+						},
+						target: d.target
+					},
 				});
 			})
 		link.transition()
 			.duration(duration)
 			.attr('d', function(d) {
+
+				if(forUpward) {
+					return diagonal({
+						d
+					});
+				}
+
 				return diagonal({
-					d
+					d : {
+						source: {
+							x: d.source.x,
+							y:  d.source.name == 'origin'  ? d.source.y : d.source.y + d.target.Collection.length * 25 -10 
+						},
+						target: d.target
+					},
 				});
 			});
 		link.exit().transition()
 			.duration(duration)
 			.attr('d', function(d) {
-				var o = {
-					x: source.x,
-					y: source.y
-				};
 				return diagonal({
-					source: o,
-					target: o,
 					d
 				});
 			})
 			.remove();
-		nodes.forEach(function(d) {
-			d.x0 = d.x;
-			d.y0 = d.y;
-		});
 
+		
+		//click()
 		//添加动态关系线
 		function nodeHover(d, i) {
 			if (d.name != "origin") {
@@ -709,7 +821,7 @@ treeChart.prototype.graphTree = function(config) {
 		}
 
 		function click(d) {
-			event.stopPropagation()
+			//event.stopPropagation()
 			if (forUpward) {} else {
 				if (d._children) {
 					console.log('对外投资--ok')

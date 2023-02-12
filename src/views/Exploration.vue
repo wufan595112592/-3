@@ -119,7 +119,7 @@ import { onMounted, ref, nextTick } from "vue";
 import * as d3 from "d3";
 import { Graph, GraphEdge, GraphVertex } from "ss-graph";
 import ToolBox from "./components/ToolBox/index.vue";
-import ExplorationJson from "@/api/ExplorationJson2.json";
+import ExplorationJson from "@/api/ExplorationJson.json";
 import D3Mixin from "@/hooks/D3Mixin";
 
 const jsonData = ExplorationJson.data;
