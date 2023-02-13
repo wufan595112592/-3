@@ -113,6 +113,7 @@ export default {
                     "id": uuid(),
                     "short_name": item.name,
                     "level": level,
+                    "up": level == 1 && item.stock_type.indexOf('法人')>=0,   // TODO 
                     "isKey":level == 1 && item.stock_type.indexOf('法人')>=0,
                     "amount": item.amount,
                     "has_problem": "0",
@@ -163,13 +164,15 @@ export default {
         // 其他
         result =  (state.status[0] && data.status == '存续') ||
           (state.status[1] && data.status !== '存续');
-       
-        // 持股
-        const percent = parseInt ((data.percent || data.percent != '-') ? data.percent : 0) ;       
-        result = result && (percent >= state.shareholding );
-        // 对外投资比例
+        
+        const percent = parseInt ((data.percent || data.percent != '-') ? data.percent : 0) ;    
+       // 持股
         // TODO 
-        return result && (state.investment == 0)
+        if(data.up) {
+          return result && (percent >= state.shareholding );
+        } 
+         // 对外投资比例
+        return result && (percent >= state.investment ); 
       })
     }
 
