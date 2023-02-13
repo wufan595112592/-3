@@ -14,10 +14,10 @@
   <RelationDetail ref="detail" @stateChange="filterStateChange" />
   <div style="width: 100%;height: 100%;">
     <div id="MainCy" style="width: 100%;height: 100%;"></div>
-    <!-- <div id="MainD3" scale="1" class="no-padding tp-container">
+    <div id="MainD3" scale="1" class="no-padding tp-container">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
-      </svg> -->
-    <!-- </div> -->
+			</svg> -->
+		</div>
   </div>
 </template>
 <script>

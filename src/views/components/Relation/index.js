@@ -79,10 +79,10 @@ function drawGraph(elements) {
     elements: elements,
     minZoom: 0.4,
     maxZoom: 5,
-    // zoomingEnabled: true, //是否可缩放，改为false图谱的位置会靠左不居中
-    // userZoomingEnabled: false, //是否允许用户事件(例如鼠标轮、按下缩放)缩放图形.缩放的编程更改不受此选项的影响  -- 这里改为false,然后通过自定义事件来控制图谱的缩放
+    zoomingEnabled: true, //是否可缩放，改为false图谱的位置会靠左不居中
+    userZoomingEnabled: false, //是否允许用户事件(例如鼠标轮、按下缩放)缩放图形.缩放的编程更改不受此选项的影响  -- 这里改为false,然后通过自定义事件来控制图谱的缩放
     layout: {
-      zoom: 1,
+      // zoom: 1,
       name: "preset",
       componentSpacing: 40,
       nestingFactor: 12,
@@ -647,9 +647,9 @@ function drawGraph(elements) {
   });
 
   cy.ready(function () {
-    // cy.zoom({
-    //   level: 1, // the zoom level
-    // });
+    cy.zoom({
+      level: 1, // the zoom level
+    });
 
     // 加载完成后，加载该类，修复线有锯齿的问题
     setTimeout(function () {
@@ -1028,7 +1028,7 @@ function domUpdate(graphData) {
 
   setTimeout(function () {
     drawGraph(transformData(graphData));
-  }, 150);
+  }, 500);
 
   // selPanelUpdateList(graphData.nodes, graphData.links, true);
 }
@@ -1176,8 +1176,9 @@ function getD3Position(graph) {
 
   initD3Data(graph);
 
-  var width = $("#" + domId).width();
-  var height = $("#" + domId).height();
+  var width = $("#MainD3 svg").width();
+  var height = $("#MainD3 svg").height();
+
 
   var strength = -600,
     distanceMax = 330,
