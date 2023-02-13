@@ -392,7 +392,6 @@ treeChart.prototype.graphTree = function(config) {
 				'cursor': "pointer"
 			})
 			.on('click', Change_modal)
-			.append('svg:title').text(d => d.name == 'origin' ? d.data.name : d.name)
 
 		// 公司名称文本第二行  全称
 		textG.append("text")
@@ -433,7 +432,6 @@ treeChart.prototype.graphTree = function(config) {
 				"font-size": 14,
 				'cursor': "pointer"
 			})
-			.append('svg:title').text(d => d.name)
 
 		// 公司名称文本第一行  简称
 		const shortTextG = rectG.append("g")
@@ -474,7 +472,6 @@ treeChart.prototype.graphTree = function(config) {
 				"font-size": 14,
 				'cursor': "pointer",
 			})
-			.append('svg:title').text(d => d.name == 'origin' ? d.data.name : d.name)
 		
 		// 最终受益人红色背景框 isKey
 		const personTopRect = rectG.append("svg:rect")

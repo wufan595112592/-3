@@ -1,48 +1,19 @@
 <template>
-	<div class="toolbox">
-		<ul class="mao-title breadcrumb">
-			<li @click="searchChange(true)">
-				<div class="icon"><span class="iconfont icon-sousuo"></span></div>
-				<div class="text">搜索</div>
-			</li>
-			<li @click="maoScale(1)">
-				<div class="icon"><span class="iconfont icon-fangda"></span></div>
-				<div class="text">放大</div>
-			</li>
-			<li @click="maoScale(2)">
-				<div class="icon"><span class="iconfont icon-suoxiao"></span></div>
-				<div class="text">缩小</div>
-			</li>
-			<li @click="refresh">
-				<div class="icon"><span class="iconfont icon-shuaxin"></span></div>
-				<div class="text">刷新</div>
-			</li>
-			<li v-if="!isFullscreen" @click="fullscreenClick(true)">
-				<div class="icon"><span class="iconfont icon-quanping"></span></div>
-				<div class="text">全屏</div>
-			</li>
-			<li v-if="isFullscreen" @click="fullscreenClick(true)">
-				<div class="icon"><span class="iconfont icon-tuichuquanping"></span></div>
-				<div class="text">退出</div>
-			</li>
-			<li @click="exportImg">
-				<div class="icon"><span class="iconfont icon-xiazai"></span></div>
-				<div class="text">保存</div>
-			</li>
-		</ul>
-	</div>
-	<div v-show="show" id="search-box" class="box-detail">
+	<div id="search-box" class="box-detail" :class="{ hide : !visiable }">
 		<div class="m_search-box animated fadeIn">
 			<div class="ma_top-bar e_close-bar">
-				<span class="ea_title">
+				<span v-if="currentNode && currentNode.Title" class="ea_title">
+					<span class="ma_bar-text">{{ currentNode.Title }}</span>
+					<span class="ma_bar-text">{{ currentNode.Total }}</span>
+				</span>
+				<span v-else class="ea_title">
 					<span v-for="(item,index) in tabList" :key="index" class="ma_bar-all" :class="currentTab === index ? 'current': ''" @click="tabClick(index)">{{ item }}</span>
 				</span>
 				<span class="ea_close" @click="close">×</span>
 			</div>
 			<div class="ma_search-group input-group">
 				<a class="clear-searchkey" style="display: none;"></a>
-				<input type="text" placeholder="请输入筛选名称" value="" autocomplete="off"
-					class="ma_search-input form-control headerKey">
+  			<a-input v-model:value="inputVal" placeholder="请输入筛选名称" class="ma_search-input form-control headerKey" />
 				<label :class="isOpen ? 'active' : ''">
 					<span class="label-span" @click="openAll">
 						<span>{{ isOpen ? '全部收起' : '全部展开' }}</span>
@@ -50,31 +21,26 @@
 					</span>
 				</label>
 			</div>
-			<div class="ma_items-container">
+			<div v-if="list" class="ma_items-container">
 				<div v-for="(item, index) in list" :key="item.Id" class="ma_item">
-					<div v-if="currentTab === 0" class="ma_item-top">
-						<img alt="company"
-							src="https://image.qcc.com/auto/1ea557c511d6c06423d0519a364ae0a5.jpg?x-oss-process=style/logo_120"
-							onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'">
+					<div v-if="currentTab === 0 || currentNode && currentNode.type === 'Company'" class="ma_item-top">
+						<span class="company-img">{{ item.name.slice(0,4) }}</span>
 						<a href="https://www.qcc.com/firm/1ea557c511d6c06423d0519a364ae0a5.html" target="_blank"
 							class="ma_name">
-							<span>{{index + 1}}. {{ item.Name }}</span>
+							<span>{{index + 1}}. {{ item.name }}</span>
 						</a>
 						<span>
-							<span v-if="item.stateType" class="ma_tag ntag text-success tooltip-br">存续</span>
-							<span v-else class="ma_tag ntag text-danger tooltip-br">注销</span>
+							<span class="ma_tag ntag tooltip-br" :class="item.Status === '注销' ? 'text-danger': 'text-success'">{{ item.Status}}</span>
 						</span>
 						<span class="ma_arrow pull-right text-muted" :class="item.isOpen ? 'active' : ''" @click="itemOpen(index)">
 							<span class="iconfont" :class="item.isOpen ? 'icon-top' : 'icon-bottom'"></span>
 						</span>
 					</div>
 					<div v-else class="ma_item-top">
-						<img alt="company"
-							src="https://image.qcc.com/auto/1ea557c511d6c06423d0519a364ae0a5.jpg?x-oss-process=style/logo_120"
-							onerror="this.src='//qcc-static.qcc.com/resources/web/omaterial/company.jpeg'">
+						<span class="name-img">{{ item.name[0] }}</span>
 						<a href="https://www.qcc.com/firm/1ea557c511d6c06423d0519a364ae0a5.html" target="_blank"
 							class="ma_name">
-							<span>{{index + 1}}. {{ item.Name }}</span>
+							<span>{{index + 1}}. {{ item.name }}</span>
 						</a>
 						<span class="ma_arrow pull-right text-muted" :class="item.isOpen ? 'active' : ''" @click="itemOpen(index)">
 							<span class="iconfont" :class="item.isOpen ? 'icon-top' : 'icon-bottom'"></span>
@@ -104,15 +70,15 @@
 								</div>
 								<div class="detail-cell">
 									<span>对外投资：</span>
-									<span>50</span>
+									<span>-</span>
 								</div>
 								<div class="detail-cell">
 									<span>在外任职：</span>
-									<span>50</span>
+									<span>-</span>
 								</div>
 								<div class="detail-cell">
 									<span>控股企业：</span>
-									<span>50</span>
+									<span>-</span>
 								</div>
 							</div>
 						</div>
@@ -120,14 +86,14 @@
 							<div class="e_path">
 								<div class="ea_path-title">
 									关联方认定详情
-									<span class="ntag text-primary">上交所</span>
-									<!-- <span class="ntag text-warning">深交所</span>
-									<span class="ntag text-pl">会计准则</span> -->
+									<span v-if="wrapTab === 0" class="ntag text-primary">上交所</span>
+									<span v-else-if="wrapTab === 1" class="ntag text-warning">深交所</span>
+									<span v-else-if="wrapTab === 2" class="ntag text-pl">会计准则</span>
 								</div>
 								<div v-for="(ele,idx) in item.Path" :key="idx" class="single-path">
 									<span v-for="(path,i) in ele" :key="i">
-										<span v-if="path.Name">
-											<a href="https://www.qcc.com/firm/fa902aeb2eab4ef9b9fcd1ef109ec54a.html" target="_blank">{{ path.Name }}</a>
+										<span v-if="path.name">
+											<a href="https://www.qcc.com/firm/fa902aeb2eab4ef9b9fcd1ef109ec54a.html" target="_blank">{{ path.name }}</a>
 										</span>
 										<span v-else>
 											<span>
@@ -153,133 +119,67 @@
 </template>
 
 <script setup>
-import { ref, defineExpose } from 'vue'
-const emit = defineEmits(['screenfullChange', 'maoScale', 'refresh', 'exportImg', 'searchChange',
-])
-// 列表数据
-let list = ref([])
-list.value = [
-	{
-		HasImage: true, Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", stateType: '0',
-		isOpen: false,
-		Path: [
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "100.00%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31",Name: "小米科技有限责任公司" },
-			],
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "77.80%" },
-				{ Id: "p1910534b4ae98fea35ddbeb1d61cd44", Name: "雷军" },
-				{ Direction: "IN", Operation: "控制", Reason: "77.80%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31", Name: "小米科技有限责任公司" },
-			]
-		]
-	},
-	{
-		HasImage: true, Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司1", stateType: '0',
-		isOpen: false,
-		Path: [
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "100.00%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31",Name: "小米科技有限责任公司" },
-			],
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "77.80%" },
-				{ Id: "p1910534b4ae98fea35ddbeb1d61cd44", Name: "雷军" },
-				{ Direction: "IN", Operation: "控制", Reason: "77.80%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31", Name: "小米科技有限责任公司" },
-			]
-		]
-	},
-	{
-		HasImage: true, Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司2", stateType: '0',
-		isOpen: false,
-		Path: [
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "100.00%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31",Name: "小米科技有限责任公司" },
-			],
-			[
-				{ Id: "fa902aeb2eab4ef9b9fcd1ef109ec54a", Name: "重庆小米创业投资有限公司", },
-				{ Direction: "OUT", Operation: "控制", Reason: "77.80%" },
-				{ Id: "p1910534b4ae98fea35ddbeb1d61cd44", Name: "雷军" },
-				{ Direction: "IN", Operation: "控制", Reason: "77.80%" },
-				{ Id: "9cce0780ab7644008b73bc2120479d31", Name: "小米科技有限责任公司" },
-			]
-		]
-	},
-]
+import store from "../../../store"
+import {
+  ref,
+  reactive,
+  defineProps,
+  defineEmits,
+  defineExpose,
+  toRaw,
+  computed
+} from "vue";
 
-// 搜索弹框显示状态
-let show = ref(false)
-// 全屏
-let isFullscreen = ref(false)
+const props = defineProps({
+	visiable: Boolean,
+	wrapTab: Number,
+	data: Array,
+	currentNode: Object
+});
+const emit = defineEmits(['update:visiable'])
+
 // 当前菜单
-let currentTab = ref(0)
 let tabList = ref([])
 tabList.value = ['所有关联企业', '所有关联自然人']
+const inputVal = ref('')
+const currentTab = 0
+const list = computed(() => {
+	return !inputVal.value ?
+	props.data : 
+	props.data.filter(a => a.name.indexOf(inputVal.value) >=0)
+})
 
 // 展开收起
 let isOpen = ref(false)
 
 function openAll() {
-	const bool = !isOpen.value
-	isOpen.value = bool
-	list.value.forEach(item => {
-		item.isOpen = bool
-		return item
-	})
+	if (list.value) {
+		const bool = !isOpen.value
+		isOpen.value = bool
+		list.value.forEach(item => {
+			item.isOpen = bool
+			return item
+		})
+	}
 }
 
 
 function itemOpen(i) {
 	list.value[i].isOpen = !list.value[i].isOpen
 }
-// 搜索功能按钮事件
-function searchChange(bool = false) {
-	if (bool && !show.value) {
-		show.value = true
-		emit('searchChange')
-	}
-}
 // 头部切换
 function tabClick(index) {
-	currentTab.value = index
+	props.currentTab.value = index
 }
 
 // 搜索弹框关闭
 function close() {
-	show.value = false
+	isOpen.value = false
+	list.value = null
+	props.currentNode.value = null
+	emit('update:visiable', false);
 }
 
-// 全屏事件
-function fullscreenClick() {
-	emit('screenfullChange')
-}
-
-// 缩放事件
-function maoScale(type) {
-	emit('maoScale', type)
-}
-
-// 刷新事件
-function refresh() {
-	emit('refresh')
-}
-
-// 保存事件
-function exportImg() {
-	emit('exportImg')
-}
-
-defineExpose({
-	searchChange,
-})
 </script>
 
 <style lang="scss" scoped>
@@ -370,6 +270,9 @@ label {
 	-webkit-box-shadow: 0 0 10px rgb(0 0 0 / 50%);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+	&.hide {
+		display: none;
+	}
 	.input-group {
 		position: relative;
 		display: table;
@@ -422,6 +325,16 @@ label {
     border-bottom: 2px solid #128bed;
 	}
 }
+
+	.ma_bar-text{
+    font-size: 16px;
+    position: relative;
+    height: 51px;
+    padding: 0px;
+    display: inline-block;
+    margin-right: 30px;
+    color: #128bed;
+	}
   .e_close-bar{
     .ea_title {
       color: #333;
@@ -498,7 +411,7 @@ label {
     padding: 14px 15px;
     height: 60px;
     position: relative;
-    img {
+    .name-img {
     width: 30px;
     height: 30px;
     display: block;
@@ -506,7 +419,25 @@ label {
     float: left;
     border: 1px solid #eee;
     object-fit: contain;
-}
+    text-align: center;
+    line-height: 30px;
+    background: #51a3d8;
+    color: #fff;
+	}
+	.company-img{
+		width: 35px;
+    height: 35px;
+    background: #70a7d1;
+    padding-top: 3px;
+    text-align: center;
+    color: #fff;
+    display: block;
+    border-radius: 3px;
+    float: left;
+    border: 1px solid #eee;
+    object-fit: contain;
+		line-height: 15px;
+	}
 .ma_name {
     font-size: 14px;
     color: #333333;

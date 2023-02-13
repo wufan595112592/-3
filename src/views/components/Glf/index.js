@@ -1,5 +1,4 @@
 import d3 from './d3.min.js'
-// import EquityJson from '@/api/EquityJson.json'
 import EquityJson from '@/api/glf.json'
 /* 如果需要将页面的整体高度拉伸
  *（折线的高度拉伸，公司长方体的块也的Y距也需要调整及所有标签Y轴都需要调整，
@@ -148,7 +147,7 @@ treeChart.prototype.graphTree = function(config) {
 	var diagonal = function(obj) {
 		var s = obj.d.source;
 		var t = obj.d.target;
-		console.log(s,t)
+		// console.log(s,t)
 		return (
 			("M" + s.x + "," + (s.y) 
 			+ "L" + s.x + "," + (s.y + (t.y - s.y) / 2) 
@@ -182,7 +181,6 @@ treeChart.prototype.graphTree = function(config) {
 		var data = self.treeData[direction];
 		data.x0 = config.centralWidth;
 		data.y0 = config.centralHeight;
-		data.children.forEach(expand);
 		update(data, data, treeG);
 	}
 
@@ -295,17 +293,6 @@ treeChart.prototype.graphTree = function(config) {
 			.attr('transform', function(d) {	
 				return 'translate(' + (source.x0) + ',' + (source.y0) + ')';
 			})
-			.on('click', d => {
-				if (d.direction == 'upward' || d.direction == 'downward') {
-					// _this.$router.push({
-					//   path: '/search/detail',
-					//   name: 'search-detail',
-					//   query: {
-					//     companyId: d.direction == 'upward' ? d.beijingCrid : d.pbeijingCrid
-					//     }
-					//   })
-				}
-			})
 			// .on("mouseenter", nodeHover)
 			.on("mouseleave", nodeOut);
 
@@ -313,17 +300,6 @@ treeChart.prototype.graphTree = function(config) {
 			.attr('class', node_class)
 			.attr('transform', function(d) {
 				return 'translate(' + source.x0 + ',' + (source.y0 ) + ')';
-			})
-			.on('click', d => {
-				if (d.direction == 'upward' || d.direction == 'downward') {
-					// _this.$router.push({
-					//   path: '/search/detail',
-					//   name: 'search-detail',
-					//   query: {
-					//     companyId: d.direction == 'upward' ? d.beijingCrid : d.pbeijingCrid
-					//     }
-					//   })
-				}
 			})
 			// .on("mouseenter", nodeHover)
 			.on("mouseleave", nodeOut);
@@ -367,7 +343,7 @@ treeChart.prototype.graphTree = function(config) {
 				} else {
 					return "#fff"
 				}
-			});
+			})
 		nodeG.append('text')
 			.attr("text-anchor", function (d) {
 				return d.name == 'origin' ? "middle" : "start"
@@ -387,8 +363,7 @@ treeChart.prototype.graphTree = function(config) {
 					return "[Recurring] " + d.name;
 				}
 				return d.Title
-			});
-			// .on("mouseenter", nodeHover);
+			})
 
 		// title 块名称  第一行
 		// nodeEnter[0].unshift(nodeRootEnter[0][0]);
@@ -420,6 +395,9 @@ treeChart.prototype.graphTree = function(config) {
 				'fill': function (d) {
 					return d.type == 'Person' ? '#FF6060' : '#128BED'
 				}
+			})
+			.on('click', function (evt) {
+				events.nodeClick.call(treeG, evt);
 			})
 		// Title
 		nodeT.append("text")
@@ -454,7 +432,10 @@ treeChart.prototype.graphTree = function(config) {
 			})
 			.attr("id", function(d, i) {
 				return "mypath" + i;
-			});
+			})
+			.on('click', function (evt) {
+				events.nodeClick.call(treeG, evt);
+			})
 		
 			function init(data, node) {
 				if (data.name == 'origin') return
@@ -494,6 +475,9 @@ treeChart.prototype.graphTree = function(config) {
 							'font-size': 14,
 							'cursor': "pointer",
 						})
+						.on('click', d => {
+							window.open("https://www.baidu.com");
+						})
 					})
 				}
 			}
@@ -515,6 +499,9 @@ treeChart.prototype.graphTree = function(config) {
 				"fill": "#fff",
 				'font-size': 14,
 				'cursor': "pointer",
+			})
+			.on('click', function (evt) {
+				events.nodeClick.call(treeG, evt);
 			})
 		
 		// 最后一行背景 查看全部×家企业/人员> 
@@ -560,6 +547,9 @@ treeChart.prototype.graphTree = function(config) {
 				"fill": "#999",
 				'font-size': 14,
 				'cursor': "pointer",
+			})
+			.on('click', function (evt) {
+        events.nodeClick.call(treeG, evt);
 			})
 		
 		// 控制 影响 + 小箭头 + 白块遮挡折线
@@ -702,7 +692,6 @@ treeChart.prototype.graphTree = function(config) {
 			.remove();
 
 		
-		//click()
 		//添加动态关系线
 		function nodeHover(d, i) {
 			if (d.name != "origin") {
@@ -757,7 +746,7 @@ treeChart.prototype.graphTree = function(config) {
 							if (d.children) {
 								d.children.forEach((citem) => {
 									if (item.__data__.target.id == citem.id) {
-										console.log(item)
+										// console.log(item)
 
 										d3.select(item).attr("class", "upwardLink upLine");
 									}
@@ -819,98 +808,7 @@ treeChart.prototype.graphTree = function(config) {
 		function Change_modal() {
 			_this.Modal = true
 		}
-
-		function click(d) {
-			//event.stopPropagation()
-			if (forUpward) {} else {
-				if (d._children) {
-					console.log('对外投资--ok')
-				} else {
-					console.log('对外投资--no')
-				}
-			}
-			if (d.name == 'origin') {
-				return;
-			}
-			if (d.children) {
-				d._children = d.children;
-				d.children = null;
-				d3.select(this).text('+')
-				update(d, originalData, g);
-			} else {
-				if (d._children && d._children.length > 0) {
-					d.children = d._children;
-					d._children = null;
-					if (d.name == 'origin') {
-						d.children.forEach(expand);
-					}
-					d3.select(this).text('-')
-					update(d, originalData, g);
-				} else {
-					// gqctt({
-					// 	beijingCrid: d.direction == 'upward' ? d.beijingCrid : d.pbeijingCrid,
-					// 	direction: d.direction
-					// }).then(res => {
-					// 	if (res.code === 0) {
-					// 		if (d.direction == 'upward') {
-					// 			d.children = res.result.investorList
-					// 			d.children.map(item => {
-					//   		item.amount = Number(item.subConAm).toFixed(2)
-					// 				item.isKey = true
-					// 				item.percent = item.subComBl.length > 6 ?
-					// 					calculation.accMul(item.subComBl, 100).toFixed(2) + '%' :
-					// 					calculation.accMul(item.subComBl, 100) + '%'
-					//     item.name = item.entName
-					// 				item.type = item.bz === '企业' ? 2 : 1
-					// 				item.isKey = item.subComBl >= 0.25 && item.type == 1
-					// 				item.direction = direction
-					// 				item.holderPercent = item.percent
-					// 			})
-					// 		} else {
-					// 			d.children = res.result.holderList
-					// 			d.children.map(item => {
-					// 				item.amount = Number(item.subConAm).toFixed(2)
-					// 				item.isKey = true
-					// 				item.percent = item.subComBl.length > 6 ?
-					// 					calculation.accMul(item.subComBl, 100).toFixed(2) + '%' :
-					// 					calculation.accMul(item.subComBl, 100) + '%'
-					// 				item.name = item.pentName
-					// 				item.type = item.bz === '企业' ? 2 : 1
-					// 				item.isKey = item.subComBl >= 0.25 && item.type == 1
-					// 				item.direction = direction
-					// 				item.holderPercent = item.percent
-					// 			})
-					// 		}
-					// 		d._children = null;
-					// 		if (d.name == 'origin') {
-					// 			d.children.forEach(expand);
-					// 		}
-					// 		d3.select(this).text('-')
-					// 		update(d, originalData, g)
-					// 	}
-					// })
-				}
-			}
-		}
 	}
-
-	function expand(d) {
-		if (d._children) {
-			d.children = d._children;
-			d.children.forEach(expand);
-			d._children = null;
-		}
-	}
-
-	function collapse(d) {
-		if (d.children && d.children.length != 0) {
-			d._children = d.children;
-			d._children.forEach(collapse);
-			d.children = null;
-			hasChildNodeArr.push(d);
-		}
-	}
-
 	function redraw() {
 		treeG.attr('transform', 'translate(' + zoom.translate() + ')' +
 			' scale(' + zoom.scale() + ')');
@@ -932,8 +830,14 @@ treeChart.prototype.graphTree = function(config) {
 			d3.ascending(a.id, b.id);
 	}
 };
-
+let events = {
+  nodeClick: null
+}
+function register(opts) {
+	Object.assign(events, opts);
+}
 export default {
+  register,
   drawing,
   zoomClick,
   refresh,

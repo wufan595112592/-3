@@ -2,7 +2,13 @@
 <template>
   <!-- <Header title="小米科技有限责任公司" :active="7" /> -->
   <div id="borrow" style="width: 100%;height: 100%;background-color: #fff;">
-	  <ToolBox @maoScale="maoScale" @searchChange="searchChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
+	  <!-- <ToolBox @maoScale="maoScale" @searchChange="searchChange" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" /> -->
+    <ToolBox v-model:isShowSearch ="isShowSearch"
+           :buttonGroup="buttons"
+           @maoScale="maoScale"
+           @refresh="refresh"
+           @exportImg="exportImg"/>
+    <GlfChartFilter ref="glfFilter" :data="list" :currentNode="currentNode" v-model:visiable="isShowSearch" v-model:wrapTab="currentTab" />
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
     <!-- 左侧按钮 -->
     <div class="wrap">
@@ -11,19 +17,28 @@
 	</div>
 </template>
 <script>
+import Buttons from '@/views/components/ToolBox/buttons';
 import Header from '../components/Header/index.vue'
-import ToolBox from './components/Glf/ToolBox.vue'
+import ToolBox from './components/ToolBox/index.vue'
+import GlfChartFilter from './components/Glf/GlfChartFilter.vue'
 import Painter from '@/views/components/Glf/index.js'; 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
 import D3Mixin from '@/hooks/D3Mixin'
+import store from "../store";
 let { toggleFullScreen, downloadImpByChart } = D3Mixin()
 
 export default {
   components: {
     Header,
-    ToolBox
+    ToolBox,
+    GlfChartFilter
   },
   setup() {
+    const list = ref([])
+    const currentNode = ref({})
+    const buttons = ref(Buttons.SEARCH | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE);
+    const isShowSearch = ref(false);
+    const eqFilter = ref();
     const wrapList = ref([])
     wrapList.value = ['上交所规则', '深交所规则', '企业会计准则']
     let currentTab = ref(0)
@@ -45,6 +60,7 @@ export default {
 		}
 		// 刷新
 		const refresh = () => {
+      eqFilter.value.resetState();
       Painter.refresh()
 		}
 		// 全屏退出
@@ -58,10 +74,32 @@ export default {
         svg.setAttribute('width', window.innerWidth)
         svg.setAttribute('height', window.innerHeight)
       })
+      Painter.register({
+        nodeClick: function (e) {      
+          isShowSearch.value = true
+          list.value = e.Collection
+          currentNode.value = e
+          // store.commit('setCurrentNode', e)
+        }
+    })
       Painter.drawing()
     }
     onMounted(init)
-    return { wrapList, currentTab, toolBoxRef, leftTab, searchChange, exportImg, refresh, screenfullChange, maoScale}
+    return {
+      currentNode,
+      isShowSearch,
+      buttons,
+      wrapList,
+      list,
+      currentTab,
+      toolBoxRef,
+      leftTab,
+      searchChange,
+      exportImg,
+      refresh,
+      screenfullChange,
+      maoScale
+    }
   },
 };
 </script>

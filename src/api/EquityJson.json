@@ -1,3145 +1,3145 @@
 {
-    "status": "200",
-    "message": "操作成功",
-    "sign": "cb3a304b956665620d807f38ec30c963",
-    "data": {
-      "enterprise": {
-        "name": "东软集团股份有限公司",
-        "reg_no": "210100402001491",
-        "credit_no": "91210100604608172K",
-        "oper_name": "刘积仁",
-        "org_no": "604608172",
-        "econ_kind": "股份有限公司(中外合资、上市)",
-        "start_date": "1991-06-17",
-        "regist_capi": "124229.0295万元人民币",
-        "status": "存续",
-        "address": "沈阳市浑南新区新秀街2号",
-        "business_term": "1991-06-17到-",
-        "scope": "计算机、软件、硬件、机电一体化产品开发、销售、安装，计算机软件技术开发、技术转让、技术咨询服务，场地租赁，计算机软、硬件租赁，CT机生产，物业管理，交通及通信、监控、电子工程安装，安防设施设计与施工，建筑智能化工程的施工，医用电子仪器设备批发、临床检验分析仪器批发，汽车零部件及配件、通讯系统设备的批发和零售，通讯终端设备的设计、技术开发、技术咨询、技术服务、测试及售后服务，多媒体智能支付终端设备、集成电路卡及集成电路卡读写机的研发、设计、生产、销售及售后服务，汽车尾气遥感监测系统、环境监测仪器研发、销售及技术服务，健康信息管理及咨询服务（以上经营项目不含诊疗），经营本企业自产产品及技术进出口业务和本企业所需的机械设备、零配件、原辅材料及技术的进口业务，但国家限定或禁止进出口的商品及技术除外。（依法须经批准的项目，经相关部门批准后方可开展经营活动。）",
-        "belong_org": "沈阳市市场监督管理局",
-        "check_date": "2022-05-23",
-        "id": "5017719d-806a-4db9-9596-b9724d649c35"
+  "status": "200",
+  "message": "操作成功",
+  "sign": "cb3a304b956665620d807f38ec30c963",
+  "data": {
+    "enterprise": {
+      "name": "东软集团股份有限公司",
+      "reg_no": "210100402001491",
+      "credit_no": "91210100604608172K",
+      "oper_name": "刘积仁",
+      "org_no": "604608172",
+      "econ_kind": "股份有限公司(中外合资、上市)",
+      "start_date": "1991-06-17",
+      "regist_capi": "124229.0295万元人民币",
+      "status": "存续",
+      "address": "沈阳市浑南新区新秀街2号",
+      "business_term": "1991-06-17到-",
+      "scope": "计算机、软件、硬件、机电一体化产品开发、销售、安装，计算机软件技术开发、技术转让、技术咨询服务，场地租赁，计算机软、硬件租赁，CT机生产，物业管理，交通及通信、监控、电子工程安装，安防设施设计与施工，建筑智能化工程的施工，医用电子仪器设备批发、临床检验分析仪器批发，汽车零部件及配件、通讯系统设备的批发和零售，通讯终端设备的设计、技术开发、技术咨询、技术服务、测试及售后服务，多媒体智能支付终端设备、集成电路卡及集成电路卡读写机的研发、设计、生产、销售及售后服务，汽车尾气遥感监测系统、环境监测仪器研发、销售及技术服务，健康信息管理及咨询服务（以上经营项目不含诊疗），经营本企业自产产品及技术进出口业务和本企业所需的机械设备、零配件、原辅材料及技术的进口业务，但国家限定或禁止进出口的商品及技术除外。（依法须经批准的项目，经相关部门批准后方可开展经营活动。）",
+      "belong_org": "沈阳市市场监督管理局",
+      "check_date": "2022-05-23",
+      "id": "5017719d-806a-4db9-9596-b9724d649c35"
+    },
+    "actual_invest_path": "东软集团股份有限公司",
+    "econ_kinds": [
+      {
+        "name": "有限责任公司",
+        "count": 10
       },
-      "actual_invest_path": "东软集团股份有限公司",
-      "econ_kinds": [
-        {
-          "name": "有限责任公司",
-          "count": 10
-        },
-        {
-          "name": "有限责任公司(国有独资)",
-          "count": 5
-        },
-        {
-          "name": "有限责任公司(自然人投资或控股)",
-          "count": 4
-        },
-        {
-          "name": "有限责任公司(国有控股)",
-          "count": 2
-        },
-        {
-          "name": "股份有限公司",
-          "count": 1
-        },
-        {
-          "name": "股份有限公司(上市)",
-          "count": 1
-        },
-        {
-          "name": "股份有限公司(上市、国有控股)",
-          "count": 1
-        },
-        {
-          "name": "股份有限公司(非上市)",
-          "count": 1
-        },
-        {
-          "name": "其他股份有限公司(非上市)",
-          "count": 3
-        },
-        {
-          "name": "全民所有制",
-          "count": 2
-        },
-        {
-          "name": "全民所有制分支机构(非法人)",
-          "count": 1
-        },
-        {
-          "name": "有限合伙企业",
-          "count": 6
-        },
-        {
-          "name": "有限责任公司(中外合资)",
-          "count": 1
-        },
-        {
-          "name": "有限责任公司(外国法人独资)",
-          "count": 2
-        },
-        {
-          "name": "其他",
-          "count": 10
-        },
-        {
-          "name": "股份有限公司(中外合资、未上市)",
-          "count": 1
-        },
-        {
-          "name": "股份有限公司(中外合资、上市)",
-          "count": 1
-        },
-        {
-          "name": "有限责任公司(港澳台法人独资)",
-          "count": 1
-        },
-        {
-          "name": "其他",
-          "count": 10
-        }
-      ],
-      "child_statics": [
-        {
-          "level_text": "第一级",
-          "count": 10
-        },
-        {
-          "level_text": "第二级",
-          "count": 9
-        },
-        {
-          "level_text": "第三级",
-          "count": 21
-        },
-        {
-          "level_text": "第四级",
-          "count": 160
-        },
-        {
-          "level_text": "第五级",
-          "count": 28
-        },
-        {
-          "level_text": "第六级",
-          "count": 54
-        },
-        {
-          "level_text": "第七级",
-          "count": 14
-        },
-        {
-          "level_text": "第八级",
-          "count": 17
-        },
-        {
-          "level_text": "第九级",
-          "count": 13
-        },
-        {
-          "level_text": "第十级",
-          "count": 2
-        },
-        {
-          "level_text": "合计（去除重复股东数量）",
-          "count": 277
-        }
-      ],
-      "stock_holder_one": [
-        {
-          "stock_holder": [
-            {
-              "name": "大连东软控股有限公司",
-              "stock_type": "-",
-              "amount": "17420.2414",
-              "invest_type": "-",
-              "percent": "14.02%"
-            },
-            {
-              "name": "东北大学科技产业集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "8690.8172",
-              "invest_type": "-",
-              "percent": "7.00%"
-            },
-            {
-              "name": "阿尔派电子（中国）有限公司",
-              "stock_type": "法人股东",
-              "amount": "7868.3547",
-              "invest_type": "-",
-              "percent": "6.33%"
-            },
-            {
-              "name": "杨光",
-              "stock_type": "-",
-              "amount": "3533.5565",
-              "invest_type": "-",
-              "percent": "2.84%"
-            },
-            {
-              "name": "阿尔派株式会社",
-              "stock_type": "其他投资者",
-              "amount": "2005.7144",
-              "invest_type": "-",
-              "percent": "1.61%"
-            },
-            {
-              "name": "SAP SE",
-              "stock_type": "-",
-              "amount": "1628.3768",
-              "invest_type": "-",
-              "percent": "1.31%"
-            },
-            {
-              "name": "中国银行股份有限公司-招商安华债券型证券投资基金",
-              "stock_type": "-",
-              "amount": "1610.6837",
-              "invest_type": "-",
-              "percent": "1.30%"
-            },
-            {
-              "name": "徐燕超",
-              "stock_type": "-",
-              "amount": "1270.0673",
-              "invest_type": "-",
-              "percent": "1.02%"
-            },
-            {
-              "name": "杭州亘曦资产管理有限公司-亘曦1号私募证券投资基金",
-              "stock_type": "-",
-              "amount": "920.0",
-              "invest_type": "-",
-              "percent": "0.74%"
-            },
-            {
-              "name": "中国光大银行股份有限公司-招商瑞阳股债配置混合型证券投资基金",
-              "stock_type": "-",
-              "amount": "830.8934",
-              "invest_type": "-",
-              "percent": "0.67%"
-            }
-          ],
-          "name": "东软集团股份有限公司",
-          "invest_path": "东软集团股份有限公司",
-          "ent_type": "股份有限公司(中外合资、上市)",
-          "summary_text": "该企业共有155条风险信息,工商变更29条,行政处罚1条,抽查检查5条,开庭公告113条,法院公告7条"
-        }
-      ],
-      "stock_holder_two": [
-        {
-          "stock_holder": [],
-          "name": "阿尔派电子（中国）有限公司",
-          "invest_path": "阿尔派电子（中国）有限公司(6.33%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(外国法人独资)",
-          "summary_text": "该企业共有20条风险信息,工商变更14条,行政处罚1条,开庭公告5条"
-        },
-        {
-          "stock_holder": [],
-          "name": "东北大学科技产业集团有限公司",
-          "invest_path": "东北大学科技产业集团有限公司(7.00%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有29条风险信息,工商变更10条,开庭公告18条,法院公告1条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "大连康睿道管理咨询中心（有限合伙）",
-              "stock_type": "企业法人",
-              "amount": "14999.9999",
-              "invest_type": "货币",
-              "percent": "29.65%"
-            },
-            {
-              "name": "亿达控股有限公司",
-              "stock_type": "企业法人",
-              "amount": "8859.0",
-              "invest_type": "货币",
-              "percent": "17.51%"
-            },
-            {
-              "name": "中国人民人寿保险股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "7085.0",
-              "invest_type": "货币",
-              "percent": "14.01%"
-            },
-            {
-              "name": "大连东软思维科技发展有限公司",
-              "stock_type": "企业法人",
-              "amount": "5473.0",
-              "invest_type": "股权",
-              "percent": "10.82%"
-            },
-            {
-              "name": "东北大学科技产业集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "5000.0",
-              "invest_type": "货币",
-              "percent": "9.88%"
-            },
-            {
-              "name": "中国人民健康保险股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "4085.0",
-              "invest_type": "-",
-              "percent": "8.08%"
-            },
-            {
-              "name": "阿尔派电子（中国）有限公司",
-              "stock_type": "外商投资企业",
-              "amount": "3830.0",
-              "invest_type": "货币",
-              "percent": "7.57%"
-            },
-            {
-              "name": "刘明",
-              "stock_type": "自然人股东",
-              "amount": "1250.0",
-              "invest_type": "货币",
-              "percent": "2.47%"
-            },
-            {
-              "name": "百度在线网络技术（北京）有限公司",
-              "stock_type": "企业法人",
-              "amount": "-",
-              "invest_type": "货币",
-              "percent": "0.00%"
-            }
-          ],
-          "name": "大连东软控股有限公司",
-          "invest_path": "大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(中外合资)",
-          "summary_text": "该企业共有45条风险信息,工商变更30条,股权出质13条,开庭公告2条"
-        }
-      ],
-      "stock_holder_three": [
-        {
-          "stock_holder": [
-            {
-              "name": "东北大学",
-              "stock_type": "其他投资者",
-              "amount": "21000.0",
-              "invest_type": "其他",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "东北大学科技产业集团有限公司",
-          "invest_path": "东北大学科技产业集团有限公司(9.88%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有29条风险信息,工商变更10条,开庭公告18条,法院公告1条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "大连康睿道管理咨询中心（有限合伙）",
-              "stock_type": "企业法人",
-              "amount": "990.0",
-              "invest_type": "货币",
-              "percent": "99.00%"
-            },
-            {
-              "name": "沈阳康睿道咨询有限公司",
-              "stock_type": "企业法人",
-              "amount": "10.0",
-              "invest_type": "货币",
-              "percent": "1.00%"
-            }
-          ],
-          "name": "大连东软思维科技发展有限公司",
-          "invest_path": "大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有16条风险信息,工商变更11条,股权出质2条,开庭公告3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "天津增道管理咨询中心（有限合伙）",
-              "stock_type": "-",
-              "amount": "11621.0",
-              "invest_type": "-",
-              "percent": "38.62%"
-            },
-            {
-              "name": "天津简睿管理咨询中心（有限合伙）",
-              "stock_type": "-",
-              "amount": "9343.0",
-              "invest_type": "-",
-              "percent": "31.05%"
-            },
-            {
-              "name": "天津智康管理咨询中心（有限合伙）",
-              "stock_type": "-",
-              "amount": "9086.0",
-              "invest_type": "-",
-              "percent": "30.20%"
-            },
-            {
-              "name": "沈阳康睿道咨询有限公司",
-              "stock_type": "企业法人",
-              "amount": "40.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            }
-          ],
-          "name": "大连康睿道管理咨询中心（有限合伙）",
-          "invest_path": "大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有5条风险信息,工商变更2条,股权出质3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "百度控股有限公司",
-              "stock_type": "企业法人",
-              "amount": "29741.6",
-              "invest_type": "货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "百度在线网络技术（北京）有限公司",
-          "invest_path": "百度在线网络技术（北京）有限公司(股比不详)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(外国法人独资)",
-          "summary_text": "该企业共有942条风险信息,工商变更8条,行政处罚2条,抽查检查1条,开庭公告891条,法院公告40条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "ALPINE 株式会社",
-              "stock_type": "外国（地区）企业",
-              "amount": "68234.6",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "阿尔派电子（中国）有限公司",
-          "invest_path": "阿尔派电子（中国）有限公司(7.57%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(外国法人独资)",
-          "summary_text": "该企业共有20条风险信息,工商变更14条,行政处罚1条,开庭公告5条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "大连众志投资有限公司",
-              "stock_type": "个人独资企业",
-              "amount": "60000.0",
-              "invest_type": "货币、货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "亿达控股有限公司",
-          "invest_path": "亿达控股有限公司(17.51%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有6条风险信息,工商变更3条,股权出质3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国人民保险集团股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "593995.5391",
-              "invest_type": "-",
-              "percent": "69.32%"
-            },
-            {
-              "name": "中国人民财产保险股份有限公司",
-              "stock_type": "-",
-              "amount": "211864.4067",
-              "invest_type": "-",
-              "percent": "24.73%"
-            },
-            {
-              "name": "首都机场集团有限公司",
-              "stock_type": "-",
-              "amount": "20000.0",
-              "invest_type": "-",
-              "percent": "2.33%"
-            },
-            {
-              "name": "德国健康保险股份有限公司",
-              "stock_type": "-",
-              "amount": "19000.0",
-              "invest_type": "-",
-              "percent": "2.22%"
-            },
-            {
-              "name": "人保投资控股有限公司",
-              "stock_type": "-",
-              "amount": "11981.5279",
-              "invest_type": "-",
-              "percent": "1.40%"
-            }
-          ],
-          "name": "中国人民健康保险股份有限公司",
-          "invest_path": "中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(中外合资、未上市)",
-          "summary_text": "该企业共有507条风险信息,工商变更7条,行政处罚2条,被执行人1条,开庭公告497条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国人民保险集团股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "1831020.4878",
-              "invest_type": "-",
-              "percent": "71.08%"
-            },
-            {
-              "name": "日本住友生命保险公司",
-              "stock_type": "外国（地区）企业",
-              "amount": "257611.0467",
-              "invest_type": "-",
-              "percent": "10.00%"
-            },
-            {
-              "name": "中国人民财产保险股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "221939.6603",
-              "invest_type": "-",
-              "percent": "8.62%"
-            },
-            {
-              "name": "泰国盘谷银行",
-              "stock_type": "-",
-              "amount": "128805.5234",
-              "invest_type": "-",
-              "percent": "5.00%"
-            },
-            {
-              "name": "亚洲金融集团（控股）有限公司",
-              "stock_type": "外国（地区）企业",
-              "amount": "128805.5234",
-              "invest_type": "-",
-              "percent": "5.00%"
-            },
-            {
-              "name": "中国人保资产管理有限公司",
-              "stock_type": "-",
-              "amount": "7928.2253",
-              "invest_type": "-",
-              "percent": "0.31%"
-            }
-          ],
-          "name": "中国人民人寿保险股份有限公司",
-          "invest_path": "中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他股份有限公司(非上市)",
-          "summary_text": "该企业共有522条风险信息,工商变更7条,行政处罚40条,开庭公告468条,法院公告7条"
-        }
-      ],
-      "stock_holder_four": [
-        {
-          "stock_holder": [
-            {
-              "name": "刘积仁",
-              "stock_type": "自然人股东",
-              "amount": "7464.0",
-              "invest_type": "-",
-              "percent": "64.23%"
-            },
-            {
-              "name": "荣新节",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "3.44%"
-            },
-            {
-              "name": "王自栋",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "3.44%"
-            },
-            {
-              "name": "温涛",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "3.44%"
-            },
-            {
-              "name": "江根苗",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "3.44%"
-            },
-            {
-              "name": "李印杲",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "3.44%"
-            },
-            {
-              "name": "张红",
-              "stock_type": "自然人股东",
-              "amount": "340.0",
-              "invest_type": "-",
-              "percent": "2.93%"
-            },
-            {
-              "name": "韩东龙",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "1.72%"
-            },
-            {
-              "name": "杨利",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "1.72%"
-            },
-            {
-              "name": "李双学",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "1.72%"
-            },
-            {
-              "name": "张应辉",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "1.72%"
-            },
-            {
-              "name": "赵宏",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.86%"
-            },
-            {
-              "name": "张燕庆",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.86%"
-            },
-            {
-              "name": "段成惠",
-              "stock_type": "自然人股东",
-              "amount": "60.0",
-              "invest_type": "-",
-              "percent": "0.52%"
-            },
-            {
-              "name": "李亚兴",
-              "stock_type": "自然人股东",
-              "amount": "56.0",
-              "invest_type": "-",
-              "percent": "0.48%"
-            },
-            {
-              "name": "宗文红",
-              "stock_type": "自然人股东",
-              "amount": "50.0",
-              "invest_type": "-",
-              "percent": "0.43%"
-            },
-            {
-              "name": "刘鹏",
-              "stock_type": "自然人股东",
-              "amount": "48.0",
-              "invest_type": "-",
-              "percent": "0.41%"
-            },
-            {
-              "name": "晁玉军",
-              "stock_type": "自然人股东",
-              "amount": "43.0",
-              "invest_type": "-",
-              "percent": "0.37%"
-            },
-            {
-              "name": "张陈",
-              "stock_type": "自然人股东",
-              "amount": "40.0",
-              "invest_type": "-",
-              "percent": "0.34%"
-            },
-            {
-              "name": "马超",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.31%"
-            },
-            {
-              "name": "邱少坤",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.31%"
-            },
-            {
-              "name": "许晓非",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.31%"
-            },
-            {
-              "name": "佟国义",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.31%"
-            },
-            {
-              "name": "王淑力",
-              "stock_type": "自然人股东",
-              "amount": "23.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "陈显莉",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "陈平平",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "赵斌",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "赵悦",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "赵岩",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "王飞",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "王妮",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "沈欣",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "李东",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "时培军",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "张龙",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "张泉",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "张丹",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "刘磊",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "刘向东",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "侯宁",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "丁明刚",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "沈阳康睿道咨询有限公司",
-              "stock_type": "-",
-              "amount": "13.0",
-              "invest_type": "-",
-              "percent": "0.11%"
-            }
-          ],
-          "name": "天津增道管理咨询中心（有限合伙）",
-          "invest_path": "天津增道管理咨询中心（有限合伙）(38.62%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有6条风险信息,工商变更6条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "王勇峰",
-              "stock_type": "自然人股东",
-              "amount": "2600.0",
-              "invest_type": "-",
-              "percent": "27.83%"
-            },
-            {
-              "name": "陈宏印",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "郭壮",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "贾彦生",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "简国栋",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "祖凌宇",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "王经锡",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "杨纪文",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "徐洪利",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "张晓鸥",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "刘岩",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.28%"
-            },
-            {
-              "name": "王宇",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "王凤冽",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "李弢",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "曹斌",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "姚勇",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "卢朝霞",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "何晓源",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.14%"
-            },
-            {
-              "name": "张红",
-              "stock_type": "自然人股东",
-              "amount": "90.0",
-              "invest_type": "-",
-              "percent": "0.96%"
-            },
-            {
-              "name": "盖龙佳",
-              "stock_type": "自然人股东",
-              "amount": "71.0",
-              "invest_type": "-",
-              "percent": "0.76%"
-            },
-            {
-              "name": "武少杰",
-              "stock_type": "自然人股东",
-              "amount": "70.0",
-              "invest_type": "-",
-              "percent": "0.75%"
-            },
-            {
-              "name": "王爱民",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.69%"
-            },
-            {
-              "name": "敬向东",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.69%"
-            },
-            {
-              "name": "张进",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.69%"
-            },
-            {
-              "name": "孟令军",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.69%"
-            },
-            {
-              "name": "叶丽艳",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.69%"
-            },
-            {
-              "name": "都本伟",
-              "stock_type": "自然人股东",
-              "amount": "60.0",
-              "invest_type": "-",
-              "percent": "0.64%"
-            },
-            {
-              "name": "罗铁",
-              "stock_type": "自然人股东",
-              "amount": "56.0",
-              "invest_type": "-",
-              "percent": "0.60%"
-            },
-            {
-              "name": "凌永志",
-              "stock_type": "自然人股东",
-              "amount": "52.0",
-              "invest_type": "-",
-              "percent": "0.56%"
-            },
-            {
-              "name": "高翠",
-              "stock_type": "自然人股东",
-              "amount": "50.0",
-              "invest_type": "-",
-              "percent": "0.54%"
-            },
-            {
-              "name": "蒋志晔",
-              "stock_type": "自然人股东",
-              "amount": "48.0",
-              "invest_type": "-",
-              "percent": "0.51%"
-            },
-            {
-              "name": "宋清君",
-              "stock_type": "自然人股东",
-              "amount": "48.0",
-              "invest_type": "-",
-              "percent": "0.51%"
-            },
-            {
-              "name": "郭昊",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "邵树力",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "毕冬鸣",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "才金正",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "孟莉",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "刘积仁",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "刘瑞学",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.39%"
-            },
-            {
-              "name": "武利捷",
-              "stock_type": "自然人股东",
-              "amount": "24.0",
-              "invest_type": "-",
-              "percent": "0.26%"
-            },
-            {
-              "name": "王妮",
-              "stock_type": "自然人股东",
-              "amount": "23.0",
-              "invest_type": "-",
-              "percent": "0.25%"
-            },
-            {
-              "name": "魏永新",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "韩冬梅",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "武裕新",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "徐庆荣",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "彭成宝",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "吴建宁",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "关征",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "于蕾",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.21%"
-            },
-            {
-              "name": "沈阳康睿道咨询有限公司",
-              "stock_type": "-",
-              "amount": "19.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            }
-          ],
-          "name": "天津简睿管理咨询中心（有限合伙）",
-          "invest_path": "天津简睿管理咨询中心（有限合伙）(31.05%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有10条风险信息,工商变更10条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "刘积仁",
-              "stock_type": "自然人股东",
-              "amount": "2900.0",
-              "invest_type": "-",
-              "percent": "31.92%"
-            },
-            {
-              "name": "陈锡民",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "郑雅敏",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "赵刚",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "王立民",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "王楠",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "李军",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "张霞",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "张秀邦",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "周宇弘",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "4.40%"
-            },
-            {
-              "name": "韩伟",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "邢波",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "赵大哲",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "袁淮",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "祁山",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "戴安英",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "2.20%"
-            },
-            {
-              "name": "蒋韬",
-              "stock_type": "自然人股东",
-              "amount": "120.0",
-              "invest_type": "-",
-              "percent": "1.32%"
-            },
-            {
-              "name": "王齐",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "1.10%"
-            },
-            {
-              "name": "郭海军",
-              "stock_type": "自然人股东",
-              "amount": "88.0",
-              "invest_type": "-",
-              "percent": "0.97%"
-            },
-            {
-              "name": "顾凯",
-              "stock_type": "自然人股东",
-              "amount": "80.0",
-              "invest_type": "-",
-              "percent": "0.88%"
-            },
-            {
-              "name": "钱树森",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "邢志刚",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "赵胜军",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "赵立军",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "葛圣六",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "胡旺阳",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "纪勇",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "徐岩",
-              "stock_type": "自然人股东",
-              "amount": "64.0",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "张兰刚",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.40%"
-            },
-            {
-              "name": "张东",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.40%"
-            },
-            {
-              "name": "姬中强",
-              "stock_type": "自然人股东",
-              "amount": "36.0",
-              "invest_type": "-",
-              "percent": "0.40%"
-            },
-            {
-              "name": "金辉",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "郭永哲",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "罗世毅",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "牟春芽",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "杨绪强",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "李锋",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "李祥",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "曹宁",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "成日明",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "张颖",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "庞宏岩",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "崔浩",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "孙卓巍",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "周兆明",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "刘锐",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "兰冬",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "何光宇",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "于洪勇",
-              "stock_type": "自然人股东",
-              "amount": "20.0",
-              "invest_type": "-",
-              "percent": "0.22%"
-            },
-            {
-              "name": "沈阳康睿道咨询有限公司",
-              "stock_type": "-",
-              "amount": "18.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            }
-          ],
-          "name": "天津智康管理咨询中心（有限合伙）",
-          "invest_path": "天津智康管理咨询中心（有限合伙）(30.20%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有9条风险信息,工商变更9条"
-        },
-        {
-          "stock_holder": [],
-          "name": "东北大学",
-          "invest_path": "东北大学(100.00%)——>东北大学科技产业集团有限公司(7.00%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制分支机构(非法人)",
-          "summary_text": "该企业共有57条风险信息,工商变更3条,开庭公告52条,法院公告2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "孙荫环",
-              "stock_type": "自然人股东",
-              "amount": "10400.0",
-              "invest_type": "货币",
-              "percent": "40.00%"
-            },
-            {
-              "name": "程慧艳",
-              "stock_type": "自然人股东",
-              "amount": "7800.0",
-              "invest_type": "货币",
-              "percent": "30.00%"
-            },
-            {
-              "name": "孙桐民",
-              "stock_type": "自然人股东",
-              "amount": "7800.0",
-              "invest_type": "货币",
-              "percent": "30.00%"
-            }
-          ],
-          "name": "大连众志投资有限公司",
-          "invest_path": "大连众志投资有限公司(100.00%)——>亿达控股有限公司(17.51%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有4条风险信息,工商变更2条,抽查检查1条,股权出质1条"
-        },
-        {
-          "stock_holder": [],
-          "name": "沈阳康睿道咨询有限公司",
-          "invest_path": "沈阳康睿道咨询有限公司(1.00%)——>大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "大连康睿道管理咨询中心（有限合伙）",
-          "invest_path": "大连康睿道管理咨询中心（有限合伙）(99.00%)——>大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有5条风险信息,工商变更2条,股权出质3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国人民保险集团股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "80000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "人保投资控股有限公司",
-          "invest_path": "人保投资控股有限公司(1.40%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有120条风险信息,工商变更9条,行政处罚9条,开庭公告91条,法院公告11条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国人民保险集团股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "129800.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "中国人保资产管理有限公司",
-          "invest_path": "中国人保资产管理有限公司(0.31%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有24条风险信息,工商变更18条,开庭公告6条"
-        },
-        {
-          "stock_holder": [],
-          "name": "亚洲金融集团（控股）有限公司",
-          "invest_path": "亚洲金融集团（控股）有限公司(5.00%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "暂无风险信息"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国民用航空局",
-              "stock_type": "机关法人",
-              "amount": "5370000.0",
-              "invest_type": "其他",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "首都机场集团有限公司",
-          "invest_path": "首都机场集团有限公司(2.33%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有133条风险信息,工商变更7条,开庭公告121条,法院公告5条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国人民财产保险股份有限公司",
-          "invest_path": "中国人民财产保险股份有限公司(24.73%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市)",
-          "summary_text": "该企业共有9448条风险信息,工商变更3条,行政处罚11条,开庭公告8820条,法院公告614条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国人民保险集团股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "1534347.147",
-              "invest_type": "-",
-              "percent": "68.98%"
-            },
-            {
-              "name": "H股股东",
-              "stock_type": "-",
-              "amount": "689929.3833",
-              "invest_type": "-",
-              "percent": "31.02%"
-            }
-          ],
-          "name": "中国人民财产保险股份有限公司",
-          "invest_path": "中国人民财产保险股份有限公司(8.62%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市)",
-          "summary_text": "该企业共有9448条风险信息,工商变更3条,行政处罚11条,开庭公告8820条,法院公告614条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国人民保险集团股份有限公司",
-          "invest_path": "中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市、国有控股)",
-          "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "沈阳康睿道咨询有限公司",
-          "invest_path": "沈阳康睿道咨询有限公司(0.13%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中华人民共和国财政部",
-              "stock_type": "-",
-              "amount": "2690657.0608",
-              "invest_type": "-",
-              "percent": "60.84%"
-            },
-            {
-              "name": "香港中央结算（代理人）有限公司",
-              "stock_type": "-",
-              "amount": "870231.3375",
-              "invest_type": "-",
-              "percent": "19.68%"
-            },
-            {
-              "name": "全国社会保障基金理事会",
-              "stock_type": "-",
-              "amount": "560558.2779",
-              "invest_type": "-",
-              "percent": "12.68%"
-            },
-            {
-              "name": "香港中央结算有限公司",
-              "stock_type": "-",
-              "amount": "25032.5015",
-              "invest_type": "-",
-              "percent": "0.57%"
-            },
-            {
-              "name": "国信证券股份有限公司-方正富邦中证保险主题指数型证券投资基金",
-              "stock_type": "-",
-              "amount": "4722.4776",
-              "invest_type": "-",
-              "percent": "0.11%"
-            },
-            {
-              "name": "中国建设银行股份有限公司-华夏兴和混合型证券投资基金",
-              "stock_type": "-",
-              "amount": "2536.61",
-              "invest_type": "-",
-              "percent": "0.06%"
-            },
-            {
-              "name": "东海证券股份有限公司",
-              "stock_type": "-",
-              "amount": "2129.04",
-              "invest_type": "-",
-              "percent": "0.05%"
-            },
-            {
-              "name": "北京恒兆伟业投资有限公司",
-              "stock_type": "-",
-              "amount": "2060.7653",
-              "invest_type": "-",
-              "percent": "0.05%"
-            },
-            {
-              "name": "中国农业银行股份有限公司-景顺长城沪深300指数增强型证券投资基金",
-              "stock_type": "-",
-              "amount": "1976.763",
-              "invest_type": "-",
-              "percent": "0.04%"
-            },
-            {
-              "name": "阿布达比投资局",
-              "stock_type": "-",
-              "amount": "1428.2057",
-              "invest_type": "-",
-              "percent": "0.03%"
-            }
-          ],
-          "name": "中国人民保险集团股份有限公司",
-          "invest_path": "中国人民保险集团股份有限公司(71.08%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市、国有控股)",
-          "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
-        }
-      ],
-      "stock_holder_five": [
-        {
-          "stock_holder": [],
-          "name": "沈阳康睿道咨询有限公司",
-          "invest_path": "沈阳康睿道咨询有限公司(0.20%)——>天津简睿管理咨询中心（有限合伙）(31.05%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "沈阳康睿道咨询有限公司",
-          "invest_path": "沈阳康睿道咨询有限公司(0.20%)——>天津智康管理咨询中心（有限合伙）(30.20%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中华人民共和国财政部",
-          "invest_path": "中华人民共和国财政部(60.84%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有204条风险信息,开庭公告202条,法院公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "香港中央结算（代理人）有限公司",
-          "invest_path": "香港中央结算（代理人）有限公司(19.68%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "私营股份有限公司",
-          "summary_text": "该企业共有4条风险信息,法院公告4条"
-        },
-        {
-          "stock_holder": [],
-          "name": "全国社会保障基金理事会",
-          "invest_path": "全国社会保障基金理事会(12.68%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "香港中央结算有限公司",
-          "invest_path": "香港中央结算有限公司(0.57%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "私营股份有限公司",
-          "summary_text": "暂无风险信息"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国人民保险集团股份有限公司",
-          "invest_path": "中国人民保险集团股份有限公司(100.00%)——>人保投资控股有限公司(1.40%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市、国有控股)",
-          "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国民用航空局",
-          "invest_path": "中国民用航空局(100.00%)——>首都机场集团有限公司(2.33%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有17条风险信息,开庭公告17条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "刘积仁",
-              "stock_type": "自然人股东",
-              "amount": "51.0",
-              "invest_type": "-",
-              "percent": "51.00%"
-            },
-            {
-              "name": "王勇峰",
-              "stock_type": "自然人股东",
-              "amount": "7.0",
-              "invest_type": "-",
-              "percent": "7.00%"
-            },
-            {
-              "name": "荣新节",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "王自栋",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "王经锡",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "徐洪利",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "张晓鸥",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "温涛",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "陈锡民",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "盖龙佳",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "货币",
-              "percent": "3.00%"
-            },
-            {
-              "name": "王楠",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "李军",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "张霞",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "张红",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            },
-            {
-              "name": "张秀邦",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "货币",
-              "percent": "3.00%"
-            },
-            {
-              "name": "卢朝霞",
-              "stock_type": "自然人股东",
-              "amount": "3.0",
-              "invest_type": "-",
-              "percent": "3.00%"
-            }
-          ],
-          "name": "沈阳康睿道咨询有限公司",
-          "invest_path": "沈阳康睿道咨询有限公司(0.11%)——>天津增道管理咨询中心（有限合伙）(38.62%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国人民保险集团股份有限公司",
-          "invest_path": "中国人民保险集团股份有限公司(100.00%)——>中国人保资产管理有限公司(0.31%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市、国有控股)",
-          "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "中国人民保险集团股份有限公司",
-          "invest_path": "中国人民保险集团股份有限公司(68.98%)——>中国人民财产保险股份有限公司(24.73%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(上市、国有控股)",
-          "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "刘文武",
-              "stock_type": "自然人股东",
-              "amount": "900.0",
-              "invest_type": "-",
-              "percent": "90.00%"
-            },
-            {
-              "name": "刘文祥",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "10.00%"
-            }
-          ],
-          "name": "北京恒兆伟业投资有限公司",
-          "invest_path": "北京恒兆伟业投资有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有30条风险信息,工商变更3条,抽查检查1条,股权出质1条,开庭公告25条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州投资集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "49503.2868",
-              "invest_type": "-",
-              "percent": "26.68%"
-            },
-            {
-              "name": "山金金控资本管理有限公司",
-              "stock_type": "-",
-              "amount": "28976.9166",
-              "invest_type": "-",
-              "percent": "15.62%"
-            },
-            {
-              "name": "首誉光控资管-浙商银行-首誉光控东海证券1号新三板专项资产管理计划",
-              "stock_type": "-",
-              "amount": "8300.0",
-              "invest_type": "-",
-              "percent": "4.47%"
-            },
-            {
-              "name": "银川聚信信德资产管理合伙企业（有限合伙）",
-              "stock_type": "-",
-              "amount": "8300.0",
-              "invest_type": "-",
-              "percent": "4.47%"
-            },
-            {
-              "name": "江阴新扬船企业管理中心（有限合伙）",
-              "stock_type": "-",
-              "amount": "8000.0",
-              "invest_type": "-",
-              "percent": "4.31%"
-            },
-            {
-              "name": "山东黄金创业投资有限公司",
-              "stock_type": "-",
-              "amount": "7844.2",
-              "invest_type": "-",
-              "percent": "4.23%"
-            },
-            {
-              "name": "常州交通建设投资开发有限公司",
-              "stock_type": "-",
-              "amount": "5847.71",
-              "invest_type": "-",
-              "percent": "3.15%"
-            },
-            {
-              "name": "常州市城市建设（集团）有限公司",
-              "stock_type": "-",
-              "amount": "5845.0",
-              "invest_type": "-",
-              "percent": "3.15%"
-            },
-            {
-              "name": "袁宗顺",
-              "stock_type": "-",
-              "amount": "5500.0",
-              "invest_type": "-",
-              "percent": "2.96%"
-            },
-            {
-              "name": "常州产业投资集团有限公司",
-              "stock_type": "-",
-              "amount": "4296.1734",
-              "invest_type": "-",
-              "percent": "2.32%"
-            }
-          ],
-          "name": "东海证券股份有限公司",
-          "invest_path": "东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司(非上市)",
-          "summary_text": "该企业共有58条风险信息,工商变更5条,股权出质11条,司法拍卖1条,开庭公告37条,法院公告4条"
-        }
-      ],
-      "stock_holder_six": [
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金矿业股份有限公司",
-              "stock_type": "企业法人",
-              "amount": "150000.0",
-              "invest_type": "货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山金金控资本管理有限公司",
-          "invest_path": "山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有38条风险信息,工商变更20条,开庭公告8条,法院公告10条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州市人民政府",
-              "stock_type": "其他投资者",
-              "amount": "100000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "常州市城市建设（集团）有限公司",
-          "invest_path": "常州市城市建设（集团）有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有10条风险信息,工商变更2条,开庭公告8条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州市交通产业集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "16230.734269",
-              "invest_type": "货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "常州交通建设投资开发有限公司",
-          "invest_path": "常州交通建设投资开发有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有13条风险信息,工商变更12条,股权出质1条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州市人民政府",
-              "stock_type": "其他投资者",
-              "amount": "90000.0",
-              "invest_type": "-",
-              "percent": "90.00%"
-            },
-            {
-              "name": "江苏省财政厅",
-              "stock_type": "其他投资者",
-              "amount": "10000.0",
-              "invest_type": "-",
-              "percent": "10.00%"
-            }
-          ],
-          "name": "常州产业投资集团有限公司",
-          "invest_path": "常州产业投资集团有限公司(2.32%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有29条风险信息,工商变更3条,开庭公告22条,法院公告4条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州市人民政府",
-              "stock_type": "其他投资者",
-              "amount": "108000.0",
-              "invest_type": "-",
-              "percent": "90.00%"
-            },
-            {
-              "name": "江苏省财政厅",
-              "stock_type": "其他投资者",
-              "amount": "12000.0",
-              "invest_type": "-",
-              "percent": "10.00%"
-            }
-          ],
-          "name": "常州投资集团有限公司",
-          "invest_path": "常州投资集团有限公司(26.68%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有7条风险信息,工商变更4条,开庭公告3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金集团有限公司",
-              "stock_type": "法人股东",
-              "amount": "50000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东黄金创业投资有限公司",
-          "invest_path": "山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有7条风险信息,工商变更7条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "上海曙盟投资管理有限公司",
-              "stock_type": "企业法人",
-              "amount": "90000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            },
-            {
-              "name": "众和锦绣资本管理有限责任公司",
-              "stock_type": "-",
-              "amount": "1.0",
-              "invest_type": "-",
-              "percent": "0.00%"
-            }
-          ],
-          "name": "银川聚信信德资产管理合伙企业（有限合伙）",
-          "invest_path": "银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有4条风险信息,工商变更3条,经营异常1条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "单小飞",
-              "stock_type": "自然人股东",
-              "amount": "99987.89",
-              "invest_type": "-",
-              "percent": "66.66%"
-            },
-            {
-              "name": "杜成忠",
-              "stock_type": "自然人股东",
-              "amount": "10000.0",
-              "invest_type": "-",
-              "percent": "6.67%"
-            },
-            {
-              "name": "张宏飞",
-              "stock_type": "自然人股东",
-              "amount": "10000.0",
-              "invest_type": "-",
-              "percent": "6.67%"
-            },
-            {
-              "name": "宋书明",
-              "stock_type": "自然人股东",
-              "amount": "10000.0",
-              "invest_type": "-",
-              "percent": "6.67%"
-            },
-            {
-              "name": "丁建文",
-              "stock_type": "自然人股东",
-              "amount": "10000.0",
-              "invest_type": "-",
-              "percent": "6.67%"
-            },
-            {
-              "name": "任乐天",
-              "stock_type": "自然人股东",
-              "amount": "1500.0",
-              "invest_type": "-",
-              "percent": "1.00%"
-            },
-            {
-              "name": "王建生",
-              "stock_type": "自然人股东",
-              "amount": "1000.0",
-              "invest_type": "-",
-              "percent": "0.67%"
-            },
-            {
-              "name": "周科伟",
-              "stock_type": "自然人股东",
-              "amount": "600.0",
-              "invest_type": "-",
-              "percent": "0.40%"
-            },
-            {
-              "name": "卜忠平",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "-",
-              "percent": "0.27%"
-            },
-            {
-              "name": "顾正方",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "陈兴",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "耿红卫",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "徐彬",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "唐松",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "倪荣",
-              "stock_type": "自然人股东",
-              "amount": "300.0",
-              "invest_type": "-",
-              "percent": "0.20%"
-            },
-            {
-              "name": "唐伟",
-              "stock_type": "自然人股东",
-              "amount": "260.0",
-              "invest_type": "-",
-              "percent": "0.17%"
-            },
-            {
-              "name": "陈国强",
-              "stock_type": "自然人股东",
-              "amount": "215.0",
-              "invest_type": "-",
-              "percent": "0.14%"
-            },
-            {
-              "name": "陈金炉",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "陆剑飞",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "蒋才平",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "茆宏兆",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "沈永新",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "江桂荣",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "徐登利",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "徐君浩",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "常月军",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "余忠传",
-              "stock_type": "自然人股东",
-              "amount": "200.0",
-              "invest_type": "-",
-              "percent": "0.13%"
-            },
-            {
-              "name": "付明文",
-              "stock_type": "自然人股东",
-              "amount": "180.0",
-              "invest_type": "-",
-              "percent": "0.12%"
-            },
-            {
-              "name": "陶欣",
-              "stock_type": "自然人股东",
-              "amount": "150.0",
-              "invest_type": "-",
-              "percent": "0.10%"
-            },
-            {
-              "name": "周文献",
-              "stock_type": "自然人股东",
-              "amount": "150.0",
-              "invest_type": "-",
-              "percent": "0.10%"
-            },
-            {
-              "name": "华军",
-              "stock_type": "自然人股东",
-              "amount": "150.0",
-              "invest_type": "-",
-              "percent": "0.10%"
-            },
-            {
-              "name": "董良广",
-              "stock_type": "自然人股东",
-              "amount": "149.2",
-              "invest_type": "-",
-              "percent": "0.10%"
-            },
-            {
-              "name": "陶龙强",
-              "stock_type": "自然人股东",
-              "amount": "143.0",
-              "invest_type": "-",
-              "percent": "0.10%"
-            },
-            {
-              "name": "龚建兵",
-              "stock_type": "自然人股东",
-              "amount": "140.0",
-              "invest_type": "-",
-              "percent": "0.09%"
-            },
-            {
-              "name": "余正启",
-              "stock_type": "自然人股东",
-              "amount": "137.5",
-              "invest_type": "-",
-              "percent": "0.09%"
-            },
-            {
-              "name": "黄刚",
-              "stock_type": "自然人股东",
-              "amount": "135.41",
-              "invest_type": "-",
-              "percent": "0.09%"
-            },
-            {
-              "name": "何剑鸣",
-              "stock_type": "自然人股东",
-              "amount": "132.0",
-              "invest_type": "-",
-              "percent": "0.09%"
-            },
-            {
-              "name": "艾永冲",
-              "stock_type": "自然人股东",
-              "amount": "130.0",
-              "invest_type": "-",
-              "percent": "0.09%"
-            },
-            {
-              "name": "周国伟",
-              "stock_type": "自然人股东",
-              "amount": "120.0",
-              "invest_type": "-",
-              "percent": "0.08%"
-            },
-            {
-              "name": "刘春健",
-              "stock_type": "自然人股东",
-              "amount": "120.0",
-              "invest_type": "-",
-              "percent": "0.08%"
-            },
-            {
-              "name": "蒋华锋",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.07%"
-            },
-            {
-              "name": "苏庆",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.07%"
-            },
-            {
-              "name": "曹建兵",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.07%"
-            },
-            {
-              "name": "冯乃强",
-              "stock_type": "自然人股东",
-              "amount": "100.0",
-              "invest_type": "-",
-              "percent": "0.07%"
-            }
-          ],
-          "name": "江阴新扬船企业管理中心（有限合伙）",
-          "invest_path": "江阴新扬船企业管理中心（有限合伙）(4.31%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限合伙企业",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        }
-      ],
-      "stock_holder_seven": [
-        {
-          "stock_holder": [],
-          "name": "山东黄金集团有限公司",
-          "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中信聚信（北京）资本管理有限公司",
-              "stock_type": "法人股东",
-              "amount": "5000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "众和锦绣资本管理有限责任公司",
-          "invest_path": "众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有30条风险信息,工商变更16条,被执行人1条,开庭公告6条,法院公告7条"
-        },
-        {
-          "stock_holder": [],
-          "name": "江苏省财政厅",
-          "invest_path": "江苏省财政厅(10.00%)——>常州投资集团有限公司(26.68%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有109条风险信息,开庭公告62条,裁判文书47条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "常州市人民政府",
-              "stock_type": "其他投资者",
-              "amount": "200000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "常州市交通产业集团有限公司",
-          "invest_path": "常州市交通产业集团有限公司(100.00%)——>常州交通建设投资开发有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有6条风险信息,工商变更4条,开庭公告2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "倪会有",
-              "stock_type": "自然人股东",
-              "amount": "600.0",
-              "invest_type": "货币",
-              "percent": "60.00%"
-            },
-            {
-              "name": "常进文",
-              "stock_type": "自然人股东",
-              "amount": "400.0",
-              "invest_type": "货币",
-              "percent": "40.00%"
-            }
-          ],
-          "name": "上海曙盟投资管理有限公司",
-          "invest_path": "上海曙盟投资管理有限公司(100.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(自然人投资或控股)",
-          "summary_text": "该企业共有3条风险信息,经营异常2条,行政处罚1条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "169406.9251",
-              "invest_type": "货币",
-              "percent": "37.87%"
-            },
-            {
-              "name": "香港中央结算有限公司",
-              "stock_type": "-",
-              "amount": "94537.5697",
-              "invest_type": "-",
-              "percent": "21.14%"
-            },
-            {
-              "name": "山东黄金资源开发有限公司",
-              "stock_type": "-",
-              "amount": "19487.2049",
-              "invest_type": "-",
-              "percent": "4.36%"
-            },
-            {
-              "name": "山东黄金有色矿业集团有限公司",
-              "stock_type": "-",
-              "amount": "11547.7482",
-              "invest_type": "-",
-              "percent": "2.58%"
-            },
-            {
-              "name": "中国证券金融股份有限公司",
-              "stock_type": "-",
-              "amount": "10883.4732",
-              "invest_type": "-",
-              "percent": "2.43%"
-            },
-            {
-              "name": "郭宏伟",
-              "stock_type": "-",
-              "amount": "3300.0",
-              "invest_type": "-",
-              "percent": "0.74%"
-            },
-            {
-              "name": "山东黄金集团青岛黄金有限公司",
-              "stock_type": "-",
-              "amount": "3146.7157",
-              "invest_type": "-",
-              "percent": "0.70%"
-            },
-            {
-              "name": "全国社保基金一一二组合",
-              "stock_type": "-",
-              "amount": "2628.3027",
-              "invest_type": "-",
-              "percent": "0.59%"
-            },
-            {
-              "name": "山东省国有资产投资控股有限公司",
-              "stock_type": "-",
-              "amount": "2502.8941",
-              "invest_type": "-",
-              "percent": "0.56%"
-            },
-            {
-              "name": "中国工商银行-广发稳健增长证券投资基金",
-              "stock_type": "-",
-              "amount": "2050.0",
-              "invest_type": "-",
-              "percent": "0.46%"
-            }
-          ],
-          "name": "山东黄金矿业股份有限公司",
-          "invest_path": "山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "股份有限公司",
-          "summary_text": "该企业共有39条风险信息,工商变更34条,抽查检查5条"
-        },
-        {
-          "stock_holder": [],
-          "name": "江苏省财政厅",
-          "invest_path": "江苏省财政厅(10.00%)——>常州产业投资集团有限公司(2.32%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有109条风险信息,开庭公告62条,裁判文书47条"
-        }
-      ],
-      "stock_holder_eight": [
-        {
-          "stock_holder": [
-            {
-              "name": "深圳证券交易所",
-              "stock_type": "法人股东",
-              "amount": "3075000.0",
-              "invest_type": "-",
-              "percent": "20.50%"
-            },
-            {
-              "name": "上海证券交易所（中国证券博物馆）",
-              "stock_type": "-",
-              "amount": "3075000.0",
-              "invest_type": "-",
-              "percent": "20.50%"
-            },
-            {
-              "name": "中国证券登记结算有限责任公司",
-              "stock_type": "法人股东",
-              "amount": "2812500.0",
-              "invest_type": "-",
-              "percent": "18.75%"
-            },
-            {
-              "name": "上海期货交易所",
-              "stock_type": "-",
-              "amount": "2187500.0",
-              "invest_type": "-",
-              "percent": "14.58%"
-            },
-            {
-              "name": "中国金融期货交易所股份有限公司",
-              "stock_type": "-",
-              "amount": "1750000.0",
-              "invest_type": "-",
-              "percent": "11.67%"
-            },
-            {
-              "name": "大连商品交易所",
-              "stock_type": "-",
-              "amount": "1350000.0",
-              "invest_type": "-",
-              "percent": "9.00%"
-            },
-            {
-              "name": "郑州商品交易所",
-              "stock_type": "-",
-              "amount": "750000.0",
-              "invest_type": "-",
-              "percent": "5.00%"
-            }
-          ],
-          "name": "中国证券金融股份有限公司",
-          "invest_path": "中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他股份有限公司(非上市)",
-          "summary_text": "该企业共有6条风险信息,工商变更6条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东省人民政府国有资产监督管理委员会",
-              "stock_type": "企业法人",
-              "amount": "315000.0",
-              "invest_type": "股权",
-              "percent": "70.00%"
-            },
-            {
-              "name": "山东国惠投资控股集团有限公司",
-              "stock_type": "-",
-              "amount": "90000.0",
-              "invest_type": "-",
-              "percent": "20.00%"
-            },
-            {
-              "name": "山东省社保基金理事会",
-              "stock_type": "事业法人",
-              "amount": "45000.0",
-              "invest_type": "-",
-              "percent": "10.00%"
-            }
-          ],
-          "name": "山东省国有资产投资控股有限公司",
-          "invest_path": "山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有29条风险信息,工商变更14条,开庭公告7条,法院公告8条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东省人民政府国有资产监督委员会",
-              "stock_type": "企业法人",
-              "amount": "92340.2",
-              "invest_type": "-",
-              "percent": "70.00%"
-            },
-            {
-              "name": "山东省财欣资产运营有限公司",
-              "stock_type": "企业法人",
-              "amount": "-",
-              "invest_type": "-",
-              "percent": "0.00%"
-            },
-            {
-              "name": "山东国惠投资控股集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "-",
-              "invest_type": "-",
-              "percent": "0.00%"
-            }
-          ],
-          "name": "山东黄金集团有限公司",
-          "invest_path": "山东黄金集团有限公司(37.87%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "香港中央结算有限公司",
-          "invest_path": "香港中央结算有限公司(21.14%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "私营股份有限公司",
-          "summary_text": "暂无风险信息"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "11649.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东黄金集团青岛黄金有限公司",
-          "invest_path": "山东黄金集团青岛黄金有限公司(0.70%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有21条风险信息,工商变更13条,抽查检查2条,开庭公告6条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "37500.0",
-              "invest_type": "货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东黄金资源开发有限公司",
-          "invest_path": "山东黄金资源开发有限公司(4.36%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有16条风险信息,工商变更16条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东黄金集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "110000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东黄金有色矿业集团有限公司",
-          "invest_path": "山东黄金有色矿业集团有限公司(2.58%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
-          "summary_text": "该企业共有34条风险信息,工商变更28条,股权出质1条,开庭公告5条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中信信托有限责任公司",
-              "stock_type": "企业法人",
-              "amount": "50000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "中信聚信（北京）资本管理有限公司",
-          "invest_path": "中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有12条风险信息,工商变更11条,抽查检查1条"
-        }
-      ],
-      "stock_holder_nine": [
-        {
-          "stock_holder": [
-            {
-              "name": "深圳市资本市场领导小组",
-              "stock_type": "主管单位",
-              "amount": "50000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "深圳证券交易所",
-          "invest_path": "深圳证券交易所(20.50%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制",
-          "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东黄金集团有限公司",
-          "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金集团青岛黄金有限公司(0.70%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "深圳证券交易所",
-              "stock_type": "企业法人",
-              "amount": "1000000.0",
-              "invest_type": "货币",
-              "percent": "50.00%"
-            },
-            {
-              "name": "上海证券交易所（中国证券博物馆）",
-              "stock_type": "-",
-              "amount": "1000000.0",
-              "invest_type": "-",
-              "percent": "50.00%"
-            }
-          ],
-          "name": "中国证券登记结算有限责任公司",
-          "invest_path": "中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有44条风险信息,工商变更10条,司法拍卖9条,开庭公告12条,法院公告13条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东省人民政府国有资产监督管理委员会",
-              "stock_type": "机关法人",
-              "amount": "3005000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东国惠投资控股集团有限公司",
-          "invest_path": "山东国惠投资控股集团有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有19条风险信息,工商变更17条,股权出质2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东省人民政府国有资产监督管理委员会",
-          "invest_path": "山东省人民政府国有资产监督管理委员会(70.00%)——>山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有2条风险信息,开庭公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东黄金集团有限公司",
-          "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金资源开发有限公司(4.36%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国中信有限公司",
-              "stock_type": "企业法人",
-              "amount": "927600.0",
-              "invest_type": "货币",
-              "percent": "82.26%"
-            },
-            {
-              "name": "中信兴业投资集团有限公司",
-              "stock_type": "企业法人",
-              "amount": "200000.0",
-              "invest_type": "-",
-              "percent": "17.74%"
-            }
-          ],
-          "name": "中信信托有限责任公司",
-          "invest_path": "中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司",
-          "summary_text": "该企业共有1010条风险信息,工商变更7条,行政处罚6条,抽查检查1条,股权出质71条,开庭公告677条,法院公告248条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国证监会",
-              "stock_type": "其他投资者",
-              "amount": "10350.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "上海期货交易所",
-          "invest_path": "上海期货交易所(14.58%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制",
-          "summary_text": "该企业共有8条风险信息,工商变更2条,抽查检查4条,开庭公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "郑州商品交易所",
-          "invest_path": "郑州商品交易所(5.00%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有20条风险信息,工商变更3条,开庭公告8条,法院公告9条"
-        },
-        {
-          "stock_holder": [],
-          "name": "上海证券交易所（中国证券博物馆）",
-          "invest_path": "上海证券交易所（中国证券博物馆）(20.50%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
-        },
-        {
-          "stock_holder": [],
-          "name": "大连商品交易所",
-          "invest_path": "大连商品交易所(9.00%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有25条风险信息,工商变更4条,开庭公告15条,法院公告6条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "郑州商品交易所",
-              "stock_type": "事业法人",
-              "amount": "300000.0",
-              "invest_type": "货币",
-              "percent": "20.00%"
-            },
-            {
-              "name": "深圳证券交易所",
-              "stock_type": "事业法人",
-              "amount": "300000.0",
-              "invest_type": "货币",
-              "percent": "20.00%"
-            },
-            {
-              "name": "大连商品交易所",
-              "stock_type": "事业法人",
-              "amount": "300000.0",
-              "invest_type": "货币",
-              "percent": "20.00%"
-            },
-            {
-              "name": "上海证券交易所（中国证券博物馆）",
-              "stock_type": "-",
-              "amount": "300000.0",
-              "invest_type": "-",
-              "percent": "20.00%"
-            },
-            {
-              "name": "上海期货交易所",
-              "stock_type": "事业法人",
-              "amount": "300000.0",
-              "invest_type": "货币",
-              "percent": "20.00%"
-            }
-          ],
-          "name": "中国金融期货交易所股份有限公司",
-          "invest_path": "中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他股份有限公司(非上市)",
-          "summary_text": "该企业共有38条风险信息,工商变更20条,抽查检查18条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东黄金集团有限公司",
-          "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金有色矿业集团有限公司(2.58%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有控股)",
-          "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东国惠投资控股集团有限公司",
-          "invest_path": "山东国惠投资控股集团有限公司(20.00%)——>山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有19条风险信息,工商变更17条,股权出质2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "山东省财政厅",
-              "stock_type": "机关法人",
-              "amount": "1000000.0",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "山东省财欣资产运营有限公司",
-          "invest_path": "山东省财欣资产运营有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(国有独资)",
-          "summary_text": "该企业共有3条风险信息,工商变更3条"
-        }
-      ],
-      "stock_holder_ten": [
-        {
-          "stock_holder": [],
-          "name": "上海期货交易所",
-          "invest_path": "上海期货交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制",
-          "summary_text": "该企业共有8条风险信息,工商变更2条,抽查检查4条,开庭公告2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国中信有限公司",
-              "stock_type": "企业法人",
-              "amount": "260000.0",
-              "invest_type": "货币",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "中信兴业投资集团有限公司",
-          "invest_path": "中信兴业投资集团有限公司(17.74%)——>中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(外商投资企业法人独资)",
-          "summary_text": "该企业共有19条风险信息,工商变更19条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东省财政厅",
-          "invest_path": "山东省财政厅(100.00%)——>山东省财欣资产运营有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有20条风险信息,开庭公告19条,法院公告1条"
-        },
-        {
-          "stock_holder": [],
-          "name": "上海证券交易所（中国证券博物馆）",
-          "invest_path": "上海证券交易所（中国证券博物馆）(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
-        },
-        {
-          "stock_holder": [],
-          "name": "山东省人民政府国有资产监督管理委员会",
-          "invest_path": "山东省人民政府国有资产监督管理委员会(100.00%)——>山东国惠投资控股集团有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有2条风险信息,开庭公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "大连商品交易所",
-          "invest_path": "大连商品交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有25条风险信息,工商变更4条,开庭公告15条,法院公告6条"
-        },
-        {
-          "stock_holder": [],
-          "name": "深圳证券交易所",
-          "invest_path": "深圳证券交易所(50.00%)——>中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制",
-          "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
-        },
-        {
-          "stock_holder": [],
-          "name": "上海证券交易所（中国证券博物馆）",
-          "invest_path": "上海证券交易所（中国证券博物馆）(50.00%)——>中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
-        },
-        {
-          "stock_holder": [],
-          "name": "郑州商品交易所",
-          "invest_path": "郑州商品交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "其他",
-          "summary_text": "该企业共有20条风险信息,工商变更3条,开庭公告8条,法院公告9条"
-        },
-        {
-          "stock_holder": [],
-          "name": "深圳证券交易所",
-          "invest_path": "深圳证券交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "全民所有制",
-          "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
-        },
-        {
-          "stock_holder": [
-            {
-              "name": "中国中信股份有限公司",
-              "stock_type": "外国（地区）企业",
-              "amount": "1.39E7",
-              "invest_type": "-",
-              "percent": "100.00%"
-            }
-          ],
-          "name": "中国中信有限公司",
-          "invest_path": "中国中信有限公司(82.26%)——>中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
-          "ent_type": "有限责任公司(港澳台法人独资)",
-          "summary_text": "该企业共有8条风险信息,工商变更7条,抽查检查1条"
-        }
-      ]
-    }
+      {
+        "name": "有限责任公司(国有独资)",
+        "count": 5
+      },
+      {
+        "name": "有限责任公司(自然人投资或控股)",
+        "count": 4
+      },
+      {
+        "name": "有限责任公司(国有控股)",
+        "count": 2
+      },
+      {
+        "name": "股份有限公司",
+        "count": 1
+      },
+      {
+        "name": "股份有限公司(上市)",
+        "count": 1
+      },
+      {
+        "name": "股份有限公司(上市、国有控股)",
+        "count": 1
+      },
+      {
+        "name": "股份有限公司(非上市)",
+        "count": 1
+      },
+      {
+        "name": "其他股份有限公司(非上市)",
+        "count": 3
+      },
+      {
+        "name": "全民所有制",
+        "count": 2
+      },
+      {
+        "name": "全民所有制分支机构(非法人)",
+        "count": 1
+      },
+      {
+        "name": "有限合伙企业",
+        "count": 6
+      },
+      {
+        "name": "有限责任公司(中外合资)",
+        "count": 1
+      },
+      {
+        "name": "有限责任公司(外国法人独资)",
+        "count": 2
+      },
+      {
+        "name": "其他",
+        "count": 10
+      },
+      {
+        "name": "股份有限公司(中外合资、未上市)",
+        "count": 1
+      },
+      {
+        "name": "股份有限公司(中外合资、上市)",
+        "count": 1
+      },
+      {
+        "name": "有限责任公司(港澳台法人独资)",
+        "count": 1
+      },
+      {
+        "name": "其他",
+        "count": 10
+      }
+    ],
+    "child_statics": [
+      {
+        "level_text": "第一级",
+        "count": 10
+      },
+      {
+        "level_text": "第二级",
+        "count": 9
+      },
+      {
+        "level_text": "第三级",
+        "count": 21
+      },
+      {
+        "level_text": "第四级",
+        "count": 160
+      },
+      {
+        "level_text": "第五级",
+        "count": 28
+      },
+      {
+        "level_text": "第六级",
+        "count": 54
+      },
+      {
+        "level_text": "第七级",
+        "count": 14
+      },
+      {
+        "level_text": "第八级",
+        "count": 17
+      },
+      {
+        "level_text": "第九级",
+        "count": 13
+      },
+      {
+        "level_text": "第十级",
+        "count": 2
+      },
+      {
+        "level_text": "合计（去除重复股东数量）",
+        "count": 277
+      }
+    ],
+    "stock_holder_one": [
+      {
+        "stock_holder": [
+          {
+            "name": "大连东软控股有限公司",
+            "stock_type": "-",
+            "amount": "17420.2414",
+            "invest_type": "-",
+            "percent": "14.02%"
+          },
+          {
+            "name": "东北大学科技产业集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "8690.8172",
+            "invest_type": "-",
+            "percent": "7.00%"
+          },
+          {
+            "name": "阿尔派电子（中国）有限公司",
+            "stock_type": "法人股东",
+            "amount": "7868.3547",
+            "invest_type": "-",
+            "percent": "6.33%"
+          },
+          {
+            "name": "杨光",
+            "stock_type": "-",
+            "amount": "3533.5565",
+            "invest_type": "-",
+            "percent": "2.84%"
+          },
+          {
+            "name": "阿尔派株式会社",
+            "stock_type": "其他投资者",
+            "amount": "2005.7144",
+            "invest_type": "-",
+            "percent": "1.61%"
+          },
+          {
+            "name": "SAP SE",
+            "stock_type": "-",
+            "amount": "1628.3768",
+            "invest_type": "-",
+            "percent": "1.31%"
+          },
+          {
+            "name": "中国银行股份有限公司-招商安华债券型证券投资基金",
+            "stock_type": "-",
+            "amount": "1610.6837",
+            "invest_type": "-",
+            "percent": "1.30%"
+          },
+          {
+            "name": "徐燕超",
+            "stock_type": "-",
+            "amount": "1270.0673",
+            "invest_type": "-",
+            "percent": "1.02%"
+          },
+          {
+            "name": "杭州亘曦资产管理有限公司-亘曦1号私募证券投资基金",
+            "stock_type": "-",
+            "amount": "920.0",
+            "invest_type": "-",
+            "percent": "0.74%"
+          },
+          {
+            "name": "中国光大银行股份有限公司-招商瑞阳股债配置混合型证券投资基金",
+            "stock_type": "-",
+            "amount": "830.8934",
+            "invest_type": "-",
+            "percent": "0.67%"
+          }
+        ],
+        "name": "东软集团股份有限公司",
+        "invest_path": "东软集团股份有限公司",
+        "ent_type": "股份有限公司(中外合资、上市)",
+        "summary_text": "该企业共有155条风险信息,工商变更29条,行政处罚1条,抽查检查5条,开庭公告113条,法院公告7条"
+      }
+    ],
+    "stock_holder_two": [
+      {
+        "stock_holder": [],
+        "name": "阿尔派电子（中国）有限公司",
+        "invest_path": "阿尔派电子（中国）有限公司(6.33%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(外国法人独资)",
+        "summary_text": "该企业共有20条风险信息,工商变更14条,行政处罚1条,开庭公告5条"
+      },
+      {
+        "stock_holder": [],
+        "name": "东北大学科技产业集团有限公司",
+        "invest_path": "东北大学科技产业集团有限公司(7.00%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有29条风险信息,工商变更10条,开庭公告18条,法院公告1条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "大连康睿道管理咨询中心（有限合伙）",
+            "stock_type": "企业法人",
+            "amount": "14999.9999",
+            "invest_type": "货币",
+            "percent": "29.65%"
+          },
+          {
+            "name": "亿达控股有限公司",
+            "stock_type": "企业法人",
+            "amount": "8859.0",
+            "invest_type": "货币",
+            "percent": "17.51%"
+          },
+          {
+            "name": "中国人民人寿保险股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "7085.0",
+            "invest_type": "货币",
+            "percent": "14.01%"
+          },
+          {
+            "name": "大连东软思维科技发展有限公司",
+            "stock_type": "企业法人",
+            "amount": "5473.0",
+            "invest_type": "股权",
+            "percent": "10.82%"
+          },
+          {
+            "name": "东北大学科技产业集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "5000.0",
+            "invest_type": "货币",
+            "percent": "9.88%"
+          },
+          {
+            "name": "中国人民健康保险股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "4085.0",
+            "invest_type": "-",
+            "percent": "8.08%"
+          },
+          {
+            "name": "阿尔派电子（中国）有限公司",
+            "stock_type": "外商投资企业",
+            "amount": "3830.0",
+            "invest_type": "货币",
+            "percent": "7.57%"
+          },
+          {
+            "name": "刘明",
+            "stock_type": "自然人股东",
+            "amount": "1250.0",
+            "invest_type": "货币",
+            "percent": "2.47%"
+          },
+          {
+            "name": "百度在线网络技术（北京）有限公司",
+            "stock_type": "企业法人",
+            "amount": "-",
+            "invest_type": "货币",
+            "percent": "0.00%"
+          }
+        ],
+        "name": "大连东软控股有限公司",
+        "invest_path": "大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(中外合资)",
+        "summary_text": "该企业共有45条风险信息,工商变更30条,股权出质13条,开庭公告2条"
+      }
+    ],
+    "stock_holder_three": [
+      {
+        "stock_holder": [
+          {
+            "name": "东北大学",
+            "stock_type": "其他投资者",
+            "amount": "21000.0",
+            "invest_type": "其他",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "东北大学科技产业集团有限公司",
+        "invest_path": "东北大学科技产业集团有限公司(9.88%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有29条风险信息,工商变更10条,开庭公告18条,法院公告1条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "大连康睿道管理咨询中心（有限合伙）",
+            "stock_type": "企业法人",
+            "amount": "990.0",
+            "invest_type": "货币",
+            "percent": "99.00%"
+          },
+          {
+            "name": "沈阳康睿道咨询有限公司",
+            "stock_type": "企业法人",
+            "amount": "10.0",
+            "invest_type": "货币",
+            "percent": "1.00%"
+          }
+        ],
+        "name": "大连东软思维科技发展有限公司",
+        "invest_path": "大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有16条风险信息,工商变更11条,股权出质2条,开庭公告3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "天津增道管理咨询中心（有限合伙）",
+            "stock_type": "-",
+            "amount": "11621.0",
+            "invest_type": "-",
+            "percent": "38.62%"
+          },
+          {
+            "name": "天津简睿管理咨询中心（有限合伙）",
+            "stock_type": "-",
+            "amount": "9343.0",
+            "invest_type": "-",
+            "percent": "31.05%"
+          },
+          {
+            "name": "天津智康管理咨询中心（有限合伙）",
+            "stock_type": "-",
+            "amount": "9086.0",
+            "invest_type": "-",
+            "percent": "30.20%"
+          },
+          {
+            "name": "沈阳康睿道咨询有限公司",
+            "stock_type": "企业法人",
+            "amount": "40.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          }
+        ],
+        "name": "大连康睿道管理咨询中心（有限合伙）",
+        "invest_path": "大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有5条风险信息,工商变更2条,股权出质3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "百度控股有限公司",
+            "stock_type": "企业法人",
+            "amount": "29741.6",
+            "invest_type": "货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "百度在线网络技术（北京）有限公司",
+        "invest_path": "百度在线网络技术（北京）有限公司(股比不详)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(外国法人独资)",
+        "summary_text": "该企业共有942条风险信息,工商变更8条,行政处罚2条,抽查检查1条,开庭公告891条,法院公告40条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "ALPINE 株式会社",
+            "stock_type": "外国（地区）企业",
+            "amount": "68234.6",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "阿尔派电子（中国）有限公司",
+        "invest_path": "阿尔派电子（中国）有限公司(7.57%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(外国法人独资)",
+        "summary_text": "该企业共有20条风险信息,工商变更14条,行政处罚1条,开庭公告5条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "大连众志投资有限公司",
+            "stock_type": "个人独资企业",
+            "amount": "60000.0",
+            "invest_type": "货币、货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "亿达控股有限公司",
+        "invest_path": "亿达控股有限公司(17.51%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有6条风险信息,工商变更3条,股权出质3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国人民保险集团股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "593995.5391",
+            "invest_type": "-",
+            "percent": "69.32%"
+          },
+          {
+            "name": "中国人民财产保险股份有限公司",
+            "stock_type": "-",
+            "amount": "211864.4067",
+            "invest_type": "-",
+            "percent": "24.73%"
+          },
+          {
+            "name": "首都机场集团有限公司",
+            "stock_type": "-",
+            "amount": "20000.0",
+            "invest_type": "-",
+            "percent": "2.33%"
+          },
+          {
+            "name": "德国健康保险股份有限公司",
+            "stock_type": "-",
+            "amount": "19000.0",
+            "invest_type": "-",
+            "percent": "2.22%"
+          },
+          {
+            "name": "人保投资控股有限公司",
+            "stock_type": "-",
+            "amount": "11981.5279",
+            "invest_type": "-",
+            "percent": "1.40%"
+          }
+        ],
+        "name": "中国人民健康保险股份有限公司",
+        "invest_path": "中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(中外合资、未上市)",
+        "summary_text": "该企业共有507条风险信息,工商变更7条,行政处罚2条,被执行人1条,开庭公告497条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国人民保险集团股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "1831020.4878",
+            "invest_type": "-",
+            "percent": "71.08%"
+          },
+          {
+            "name": "日本住友生命保险公司",
+            "stock_type": "外国（地区）企业",
+            "amount": "257611.0467",
+            "invest_type": "-",
+            "percent": "10.00%"
+          },
+          {
+            "name": "中国人民财产保险股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "221939.6603",
+            "invest_type": "-",
+            "percent": "8.62%"
+          },
+          {
+            "name": "泰国盘谷银行",
+            "stock_type": "-",
+            "amount": "128805.5234",
+            "invest_type": "-",
+            "percent": "5.00%"
+          },
+          {
+            "name": "亚洲金融集团（控股）有限公司",
+            "stock_type": "外国（地区）企业",
+            "amount": "128805.5234",
+            "invest_type": "-",
+            "percent": "5.00%"
+          },
+          {
+            "name": "中国人保资产管理有限公司",
+            "stock_type": "-",
+            "amount": "7928.2253",
+            "invest_type": "-",
+            "percent": "0.31%"
+          }
+        ],
+        "name": "中国人民人寿保险股份有限公司",
+        "invest_path": "中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他股份有限公司(非上市)",
+        "summary_text": "该企业共有522条风险信息,工商变更7条,行政处罚40条,开庭公告468条,法院公告7条"
+      }
+    ],
+    "stock_holder_four": [
+      {
+        "stock_holder": [
+          {
+            "name": "刘积仁",
+            "stock_type": "自然人股东",
+            "amount": "7464.0",
+            "invest_type": "-",
+            "percent": "64.23%"
+          },
+          {
+            "name": "荣新节",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "3.44%"
+          },
+          {
+            "name": "王自栋",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "3.44%"
+          },
+          {
+            "name": "温涛",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "3.44%"
+          },
+          {
+            "name": "江根苗",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "3.44%"
+          },
+          {
+            "name": "李印杲",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "3.44%"
+          },
+          {
+            "name": "张红",
+            "stock_type": "自然人股东",
+            "amount": "340.0",
+            "invest_type": "-",
+            "percent": "2.93%"
+          },
+          {
+            "name": "韩东龙",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "1.72%"
+          },
+          {
+            "name": "杨利",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "1.72%"
+          },
+          {
+            "name": "李双学",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "1.72%"
+          },
+          {
+            "name": "张应辉",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "1.72%"
+          },
+          {
+            "name": "赵宏",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.86%"
+          },
+          {
+            "name": "张燕庆",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.86%"
+          },
+          {
+            "name": "段成惠",
+            "stock_type": "自然人股东",
+            "amount": "60.0",
+            "invest_type": "-",
+            "percent": "0.52%"
+          },
+          {
+            "name": "李亚兴",
+            "stock_type": "自然人股东",
+            "amount": "56.0",
+            "invest_type": "-",
+            "percent": "0.48%"
+          },
+          {
+            "name": "宗文红",
+            "stock_type": "自然人股东",
+            "amount": "50.0",
+            "invest_type": "-",
+            "percent": "0.43%"
+          },
+          {
+            "name": "刘鹏",
+            "stock_type": "自然人股东",
+            "amount": "48.0",
+            "invest_type": "-",
+            "percent": "0.41%"
+          },
+          {
+            "name": "晁玉军",
+            "stock_type": "自然人股东",
+            "amount": "43.0",
+            "invest_type": "-",
+            "percent": "0.37%"
+          },
+          {
+            "name": "张陈",
+            "stock_type": "自然人股东",
+            "amount": "40.0",
+            "invest_type": "-",
+            "percent": "0.34%"
+          },
+          {
+            "name": "马超",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.31%"
+          },
+          {
+            "name": "邱少坤",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.31%"
+          },
+          {
+            "name": "许晓非",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.31%"
+          },
+          {
+            "name": "佟国义",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.31%"
+          },
+          {
+            "name": "王淑力",
+            "stock_type": "自然人股东",
+            "amount": "23.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "陈显莉",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "陈平平",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "赵斌",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "赵悦",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "赵岩",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "王飞",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "王妮",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "沈欣",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "李东",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "时培军",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "张龙",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "张泉",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "张丹",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "刘磊",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "刘向东",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "侯宁",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "丁明刚",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "沈阳康睿道咨询有限公司",
+            "stock_type": "-",
+            "amount": "13.0",
+            "invest_type": "-",
+            "percent": "0.11%"
+          }
+        ],
+        "name": "天津增道管理咨询中心（有限合伙）",
+        "invest_path": "天津增道管理咨询中心（有限合伙）(38.62%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有6条风险信息,工商变更6条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "王勇峰",
+            "stock_type": "自然人股东",
+            "amount": "2600.0",
+            "invest_type": "-",
+            "percent": "27.83%"
+          },
+          {
+            "name": "陈宏印",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "郭壮",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "贾彦生",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "简国栋",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "祖凌宇",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "王经锡",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "杨纪文",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "徐洪利",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "张晓鸥",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "刘岩",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.28%"
+          },
+          {
+            "name": "王宇",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "王凤冽",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "李弢",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "曹斌",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "姚勇",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "卢朝霞",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "何晓源",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.14%"
+          },
+          {
+            "name": "张红",
+            "stock_type": "自然人股东",
+            "amount": "90.0",
+            "invest_type": "-",
+            "percent": "0.96%"
+          },
+          {
+            "name": "盖龙佳",
+            "stock_type": "自然人股东",
+            "amount": "71.0",
+            "invest_type": "-",
+            "percent": "0.76%"
+          },
+          {
+            "name": "武少杰",
+            "stock_type": "自然人股东",
+            "amount": "70.0",
+            "invest_type": "-",
+            "percent": "0.75%"
+          },
+          {
+            "name": "王爱民",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.69%"
+          },
+          {
+            "name": "敬向东",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.69%"
+          },
+          {
+            "name": "张进",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.69%"
+          },
+          {
+            "name": "孟令军",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.69%"
+          },
+          {
+            "name": "叶丽艳",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.69%"
+          },
+          {
+            "name": "都本伟",
+            "stock_type": "自然人股东",
+            "amount": "60.0",
+            "invest_type": "-",
+            "percent": "0.64%"
+          },
+          {
+            "name": "罗铁",
+            "stock_type": "自然人股东",
+            "amount": "56.0",
+            "invest_type": "-",
+            "percent": "0.60%"
+          },
+          {
+            "name": "凌永志",
+            "stock_type": "自然人股东",
+            "amount": "52.0",
+            "invest_type": "-",
+            "percent": "0.56%"
+          },
+          {
+            "name": "高翠",
+            "stock_type": "自然人股东",
+            "amount": "50.0",
+            "invest_type": "-",
+            "percent": "0.54%"
+          },
+          {
+            "name": "蒋志晔",
+            "stock_type": "自然人股东",
+            "amount": "48.0",
+            "invest_type": "-",
+            "percent": "0.51%"
+          },
+          {
+            "name": "宋清君",
+            "stock_type": "自然人股东",
+            "amount": "48.0",
+            "invest_type": "-",
+            "percent": "0.51%"
+          },
+          {
+            "name": "郭昊",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "邵树力",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "毕冬鸣",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "才金正",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "孟莉",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "刘积仁",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "刘瑞学",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.39%"
+          },
+          {
+            "name": "武利捷",
+            "stock_type": "自然人股东",
+            "amount": "24.0",
+            "invest_type": "-",
+            "percent": "0.26%"
+          },
+          {
+            "name": "王妮",
+            "stock_type": "自然人股东",
+            "amount": "23.0",
+            "invest_type": "-",
+            "percent": "0.25%"
+          },
+          {
+            "name": "魏永新",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "韩冬梅",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "武裕新",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "徐庆荣",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "彭成宝",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "吴建宁",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "关征",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "于蕾",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.21%"
+          },
+          {
+            "name": "沈阳康睿道咨询有限公司",
+            "stock_type": "-",
+            "amount": "19.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          }
+        ],
+        "name": "天津简睿管理咨询中心（有限合伙）",
+        "invest_path": "天津简睿管理咨询中心（有限合伙）(31.05%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有10条风险信息,工商变更10条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "刘积仁",
+            "stock_type": "自然人股东",
+            "amount": "2900.0",
+            "invest_type": "-",
+            "percent": "31.92%"
+          },
+          {
+            "name": "陈锡民",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "郑雅敏",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "赵刚",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "王立民",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "王楠",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "李军",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "张霞",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "张秀邦",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "周宇弘",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "4.40%"
+          },
+          {
+            "name": "韩伟",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "邢波",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "赵大哲",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "袁淮",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "祁山",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "戴安英",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "2.20%"
+          },
+          {
+            "name": "蒋韬",
+            "stock_type": "自然人股东",
+            "amount": "120.0",
+            "invest_type": "-",
+            "percent": "1.32%"
+          },
+          {
+            "name": "王齐",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "1.10%"
+          },
+          {
+            "name": "郭海军",
+            "stock_type": "自然人股东",
+            "amount": "88.0",
+            "invest_type": "-",
+            "percent": "0.97%"
+          },
+          {
+            "name": "顾凯",
+            "stock_type": "自然人股东",
+            "amount": "80.0",
+            "invest_type": "-",
+            "percent": "0.88%"
+          },
+          {
+            "name": "钱树森",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "邢志刚",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "赵胜军",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "赵立军",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "葛圣六",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "胡旺阳",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "纪勇",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "徐岩",
+            "stock_type": "自然人股东",
+            "amount": "64.0",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "张兰刚",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.40%"
+          },
+          {
+            "name": "张东",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.40%"
+          },
+          {
+            "name": "姬中强",
+            "stock_type": "自然人股东",
+            "amount": "36.0",
+            "invest_type": "-",
+            "percent": "0.40%"
+          },
+          {
+            "name": "金辉",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "郭永哲",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "罗世毅",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "牟春芽",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "杨绪强",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "李锋",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "李祥",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "曹宁",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "成日明",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "张颖",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "庞宏岩",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "崔浩",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "孙卓巍",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "周兆明",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "刘锐",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "兰冬",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "何光宇",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "于洪勇",
+            "stock_type": "自然人股东",
+            "amount": "20.0",
+            "invest_type": "-",
+            "percent": "0.22%"
+          },
+          {
+            "name": "沈阳康睿道咨询有限公司",
+            "stock_type": "-",
+            "amount": "18.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          }
+        ],
+        "name": "天津智康管理咨询中心（有限合伙）",
+        "invest_path": "天津智康管理咨询中心（有限合伙）(30.20%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有9条风险信息,工商变更9条"
+      },
+      {
+        "stock_holder": [],
+        "name": "东北大学",
+        "invest_path": "东北大学(100.00%)——>东北大学科技产业集团有限公司(7.00%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制分支机构(非法人)",
+        "summary_text": "该企业共有57条风险信息,工商变更3条,开庭公告52条,法院公告2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "孙荫环",
+            "stock_type": "自然人股东",
+            "amount": "10400.0",
+            "invest_type": "货币",
+            "percent": "40.00%"
+          },
+          {
+            "name": "程慧艳",
+            "stock_type": "自然人股东",
+            "amount": "7800.0",
+            "invest_type": "货币",
+            "percent": "30.00%"
+          },
+          {
+            "name": "孙桐民",
+            "stock_type": "自然人股东",
+            "amount": "7800.0",
+            "invest_type": "货币",
+            "percent": "30.00%"
+          }
+        ],
+        "name": "大连众志投资有限公司",
+        "invest_path": "大连众志投资有限公司(100.00%)——>亿达控股有限公司(17.51%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有4条风险信息,工商变更2条,抽查检查1条,股权出质1条"
+      },
+      {
+        "stock_holder": [],
+        "name": "沈阳康睿道咨询有限公司",
+        "invest_path": "沈阳康睿道咨询有限公司(1.00%)——>大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "大连康睿道管理咨询中心（有限合伙）",
+        "invest_path": "大连康睿道管理咨询中心（有限合伙）(99.00%)——>大连东软思维科技发展有限公司(10.82%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有5条风险信息,工商变更2条,股权出质3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国人民保险集团股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "80000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "人保投资控股有限公司",
+        "invest_path": "人保投资控股有限公司(1.40%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有120条风险信息,工商变更9条,行政处罚9条,开庭公告91条,法院公告11条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国人民保险集团股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "129800.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "中国人保资产管理有限公司",
+        "invest_path": "中国人保资产管理有限公司(0.31%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有24条风险信息,工商变更18条,开庭公告6条"
+      },
+      {
+        "stock_holder": [],
+        "name": "亚洲金融集团（控股）有限公司",
+        "invest_path": "亚洲金融集团（控股）有限公司(5.00%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "暂无风险信息"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国民用航空局",
+            "stock_type": "机关法人",
+            "amount": "5370000.0",
+            "invest_type": "其他",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "首都机场集团有限公司",
+        "invest_path": "首都机场集团有限公司(2.33%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有133条风险信息,工商变更7条,开庭公告121条,法院公告5条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国人民财产保险股份有限公司",
+        "invest_path": "中国人民财产保险股份有限公司(24.73%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市)",
+        "summary_text": "该企业共有9448条风险信息,工商变更3条,行政处罚11条,开庭公告8820条,法院公告614条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国人民保险集团股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "1534347.147",
+            "invest_type": "-",
+            "percent": "68.98%"
+          },
+          {
+            "name": "H股股东",
+            "stock_type": "-",
+            "amount": "689929.3833",
+            "invest_type": "-",
+            "percent": "31.02%"
+          }
+        ],
+        "name": "中国人民财产保险股份有限公司",
+        "invest_path": "中国人民财产保险股份有限公司(8.62%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市)",
+        "summary_text": "该企业共有9448条风险信息,工商变更3条,行政处罚11条,开庭公告8820条,法院公告614条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国人民保险集团股份有限公司",
+        "invest_path": "中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市、国有控股)",
+        "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "沈阳康睿道咨询有限公司",
+        "invest_path": "沈阳康睿道咨询有限公司(0.13%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中华人民共和国财政部",
+            "stock_type": "-",
+            "amount": "2690657.0608",
+            "invest_type": "-",
+            "percent": "60.84%"
+          },
+          {
+            "name": "香港中央结算（代理人）有限公司",
+            "stock_type": "-",
+            "amount": "870231.3375",
+            "invest_type": "-",
+            "percent": "19.68%"
+          },
+          {
+            "name": "全国社会保障基金理事会",
+            "stock_type": "-",
+            "amount": "560558.2779",
+            "invest_type": "-",
+            "percent": "12.68%"
+          },
+          {
+            "name": "香港中央结算有限公司",
+            "stock_type": "-",
+            "amount": "25032.5015",
+            "invest_type": "-",
+            "percent": "0.57%"
+          },
+          {
+            "name": "国信证券股份有限公司-方正富邦中证保险主题指数型证券投资基金",
+            "stock_type": "-",
+            "amount": "4722.4776",
+            "invest_type": "-",
+            "percent": "0.11%"
+          },
+          {
+            "name": "中国建设银行股份有限公司-华夏兴和混合型证券投资基金",
+            "stock_type": "-",
+            "amount": "2536.61",
+            "invest_type": "-",
+            "percent": "0.06%"
+          },
+          {
+            "name": "东海证券股份有限公司",
+            "stock_type": "-",
+            "amount": "2129.04",
+            "invest_type": "-",
+            "percent": "0.05%"
+          },
+          {
+            "name": "北京恒兆伟业投资有限公司",
+            "stock_type": "-",
+            "amount": "2060.7653",
+            "invest_type": "-",
+            "percent": "0.05%"
+          },
+          {
+            "name": "中国农业银行股份有限公司-景顺长城沪深300指数增强型证券投资基金",
+            "stock_type": "-",
+            "amount": "1976.763",
+            "invest_type": "-",
+            "percent": "0.04%"
+          },
+          {
+            "name": "阿布达比投资局",
+            "stock_type": "-",
+            "amount": "1428.2057",
+            "invest_type": "-",
+            "percent": "0.03%"
+          }
+        ],
+        "name": "中国人民保险集团股份有限公司",
+        "invest_path": "中国人民保险集团股份有限公司(71.08%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市、国有控股)",
+        "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
+      }
+    ],
+    "stock_holder_five": [
+      {
+        "stock_holder": [],
+        "name": "沈阳康睿道咨询有限公司",
+        "invest_path": "沈阳康睿道咨询有限公司(0.20%)——>天津简睿管理咨询中心（有限合伙）(31.05%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "沈阳康睿道咨询有限公司",
+        "invest_path": "沈阳康睿道咨询有限公司(0.20%)——>天津智康管理咨询中心（有限合伙）(30.20%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中华人民共和国财政部",
+        "invest_path": "中华人民共和国财政部(60.84%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有204条风险信息,开庭公告202条,法院公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "香港中央结算（代理人）有限公司",
+        "invest_path": "香港中央结算（代理人）有限公司(19.68%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "私营股份有限公司",
+        "summary_text": "该企业共有4条风险信息,法院公告4条"
+      },
+      {
+        "stock_holder": [],
+        "name": "全国社会保障基金理事会",
+        "invest_path": "全国社会保障基金理事会(12.68%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "香港中央结算有限公司",
+        "invest_path": "香港中央结算有限公司(0.57%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "私营股份有限公司",
+        "summary_text": "暂无风险信息"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国人民保险集团股份有限公司",
+        "invest_path": "中国人民保险集团股份有限公司(100.00%)——>人保投资控股有限公司(1.40%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市、国有控股)",
+        "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国民用航空局",
+        "invest_path": "中国民用航空局(100.00%)——>首都机场集团有限公司(2.33%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有17条风险信息,开庭公告17条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "刘积仁",
+            "stock_type": "自然人股东",
+            "amount": "51.0",
+            "invest_type": "-",
+            "percent": "51.00%"
+          },
+          {
+            "name": "王勇峰",
+            "stock_type": "自然人股东",
+            "amount": "7.0",
+            "invest_type": "-",
+            "percent": "7.00%"
+          },
+          {
+            "name": "荣新节",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "王自栋",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "王经锡",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "徐洪利",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "张晓鸥",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "温涛",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "陈锡民",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "盖龙佳",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "货币",
+            "percent": "3.00%"
+          },
+          {
+            "name": "王楠",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "李军",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "张霞",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "张红",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          },
+          {
+            "name": "张秀邦",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "货币",
+            "percent": "3.00%"
+          },
+          {
+            "name": "卢朝霞",
+            "stock_type": "自然人股东",
+            "amount": "3.0",
+            "invest_type": "-",
+            "percent": "3.00%"
+          }
+        ],
+        "name": "沈阳康睿道咨询有限公司",
+        "invest_path": "沈阳康睿道咨询有限公司(0.11%)——>天津增道管理咨询中心（有限合伙）(38.62%)——>大连康睿道管理咨询中心（有限合伙）(29.65%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国人民保险集团股份有限公司",
+        "invest_path": "中国人民保险集团股份有限公司(100.00%)——>中国人保资产管理有限公司(0.31%)——>中国人民人寿保险股份有限公司(14.01%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市、国有控股)",
+        "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "中国人民保险集团股份有限公司",
+        "invest_path": "中国人民保险集团股份有限公司(68.98%)——>中国人民财产保险股份有限公司(24.73%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(上市、国有控股)",
+        "summary_text": "该企业共有114条风险信息,工商变更10条,行政处罚1条,开庭公告101条,法院公告2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "刘文武",
+            "stock_type": "自然人股东",
+            "amount": "900.0",
+            "invest_type": "-",
+            "percent": "90.00%"
+          },
+          {
+            "name": "刘文祥",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "10.00%"
+          }
+        ],
+        "name": "北京恒兆伟业投资有限公司",
+        "invest_path": "北京恒兆伟业投资有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有30条风险信息,工商变更3条,抽查检查1条,股权出质1条,开庭公告25条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州投资集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "49503.2868",
+            "invest_type": "-",
+            "percent": "26.68%"
+          },
+          {
+            "name": "山金金控资本管理有限公司",
+            "stock_type": "-",
+            "amount": "28976.9166",
+            "invest_type": "-",
+            "percent": "15.62%"
+          },
+          {
+            "name": "首誉光控资管-浙商银行-首誉光控东海证券1号新三板专项资产管理计划",
+            "stock_type": "-",
+            "amount": "8300.0",
+            "invest_type": "-",
+            "percent": "4.47%"
+          },
+          {
+            "name": "银川聚信信德资产管理合伙企业（有限合伙）",
+            "stock_type": "-",
+            "amount": "8300.0",
+            "invest_type": "-",
+            "percent": "4.47%"
+          },
+          {
+            "name": "江阴新扬船企业管理中心（有限合伙）",
+            "stock_type": "-",
+            "amount": "8000.0",
+            "invest_type": "-",
+            "percent": "4.31%"
+          },
+          {
+            "name": "山东黄金创业投资有限公司",
+            "stock_type": "-",
+            "amount": "7844.2",
+            "invest_type": "-",
+            "percent": "4.23%"
+          },
+          {
+            "name": "常州交通建设投资开发有限公司",
+            "stock_type": "-",
+            "amount": "5847.71",
+            "invest_type": "-",
+            "percent": "3.15%"
+          },
+          {
+            "name": "常州市城市建设（集团）有限公司",
+            "stock_type": "-",
+            "amount": "5845.0",
+            "invest_type": "-",
+            "percent": "3.15%"
+          },
+          {
+            "name": "袁宗顺",
+            "stock_type": "-",
+            "amount": "5500.0",
+            "invest_type": "-",
+            "percent": "2.96%"
+          },
+          {
+            "name": "常州产业投资集团有限公司",
+            "stock_type": "-",
+            "amount": "4296.1734",
+            "invest_type": "-",
+            "percent": "2.32%"
+          }
+        ],
+        "name": "东海证券股份有限公司",
+        "invest_path": "东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司(非上市)",
+        "summary_text": "该企业共有58条风险信息,工商变更5条,股权出质11条,司法拍卖1条,开庭公告37条,法院公告4条"
+      }
+    ],
+    "stock_holder_six": [
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金矿业股份有限公司",
+            "stock_type": "企业法人",
+            "amount": "150000.0",
+            "invest_type": "货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山金金控资本管理有限公司",
+        "invest_path": "山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有38条风险信息,工商变更20条,开庭公告8条,法院公告10条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州市人民政府",
+            "stock_type": "其他投资者",
+            "amount": "100000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "常州市城市建设（集团）有限公司",
+        "invest_path": "常州市城市建设（集团）有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有10条风险信息,工商变更2条,开庭公告8条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州市交通产业集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "16230.734269",
+            "invest_type": "货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "常州交通建设投资开发有限公司",
+        "invest_path": "常州交通建设投资开发有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有13条风险信息,工商变更12条,股权出质1条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州市人民政府",
+            "stock_type": "其他投资者",
+            "amount": "90000.0",
+            "invest_type": "-",
+            "percent": "90.00%"
+          },
+          {
+            "name": "江苏省财政厅",
+            "stock_type": "其他投资者",
+            "amount": "10000.0",
+            "invest_type": "-",
+            "percent": "10.00%"
+          }
+        ],
+        "name": "常州产业投资集团有限公司",
+        "invest_path": "常州产业投资集团有限公司(2.32%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有29条风险信息,工商变更3条,开庭公告22条,法院公告4条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州市人民政府",
+            "stock_type": "其他投资者",
+            "amount": "108000.0",
+            "invest_type": "-",
+            "percent": "90.00%"
+          },
+          {
+            "name": "江苏省财政厅",
+            "stock_type": "其他投资者",
+            "amount": "12000.0",
+            "invest_type": "-",
+            "percent": "10.00%"
+          }
+        ],
+        "name": "常州投资集团有限公司",
+        "invest_path": "常州投资集团有限公司(26.68%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有7条风险信息,工商变更4条,开庭公告3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金集团有限公司",
+            "stock_type": "法人股东",
+            "amount": "50000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东黄金创业投资有限公司",
+        "invest_path": "山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有7条风险信息,工商变更7条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "上海曙盟投资管理有限公司",
+            "stock_type": "企业法人",
+            "amount": "90000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          },
+          {
+            "name": "众和锦绣资本管理有限责任公司",
+            "stock_type": "-",
+            "amount": "1.0",
+            "invest_type": "-",
+            "percent": "0.00%"
+          }
+        ],
+        "name": "银川聚信信德资产管理合伙企业（有限合伙）",
+        "invest_path": "银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有4条风险信息,工商变更3条,经营异常1条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "单小飞",
+            "stock_type": "自然人股东",
+            "amount": "99987.89",
+            "invest_type": "-",
+            "percent": "66.66%"
+          },
+          {
+            "name": "杜成忠",
+            "stock_type": "自然人股东",
+            "amount": "10000.0",
+            "invest_type": "-",
+            "percent": "6.67%"
+          },
+          {
+            "name": "张宏飞",
+            "stock_type": "自然人股东",
+            "amount": "10000.0",
+            "invest_type": "-",
+            "percent": "6.67%"
+          },
+          {
+            "name": "宋书明",
+            "stock_type": "自然人股东",
+            "amount": "10000.0",
+            "invest_type": "-",
+            "percent": "6.67%"
+          },
+          {
+            "name": "丁建文",
+            "stock_type": "自然人股东",
+            "amount": "10000.0",
+            "invest_type": "-",
+            "percent": "6.67%"
+          },
+          {
+            "name": "任乐天",
+            "stock_type": "自然人股东",
+            "amount": "1500.0",
+            "invest_type": "-",
+            "percent": "1.00%"
+          },
+          {
+            "name": "王建生",
+            "stock_type": "自然人股东",
+            "amount": "1000.0",
+            "invest_type": "-",
+            "percent": "0.67%"
+          },
+          {
+            "name": "周科伟",
+            "stock_type": "自然人股东",
+            "amount": "600.0",
+            "invest_type": "-",
+            "percent": "0.40%"
+          },
+          {
+            "name": "卜忠平",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "-",
+            "percent": "0.27%"
+          },
+          {
+            "name": "顾正方",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "陈兴",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "耿红卫",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "徐彬",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "唐松",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "倪荣",
+            "stock_type": "自然人股东",
+            "amount": "300.0",
+            "invest_type": "-",
+            "percent": "0.20%"
+          },
+          {
+            "name": "唐伟",
+            "stock_type": "自然人股东",
+            "amount": "260.0",
+            "invest_type": "-",
+            "percent": "0.17%"
+          },
+          {
+            "name": "陈国强",
+            "stock_type": "自然人股东",
+            "amount": "215.0",
+            "invest_type": "-",
+            "percent": "0.14%"
+          },
+          {
+            "name": "陈金炉",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "陆剑飞",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "蒋才平",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "茆宏兆",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "沈永新",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "江桂荣",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "徐登利",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "徐君浩",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "常月军",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "余忠传",
+            "stock_type": "自然人股东",
+            "amount": "200.0",
+            "invest_type": "-",
+            "percent": "0.13%"
+          },
+          {
+            "name": "付明文",
+            "stock_type": "自然人股东",
+            "amount": "180.0",
+            "invest_type": "-",
+            "percent": "0.12%"
+          },
+          {
+            "name": "陶欣",
+            "stock_type": "自然人股东",
+            "amount": "150.0",
+            "invest_type": "-",
+            "percent": "0.10%"
+          },
+          {
+            "name": "周文献",
+            "stock_type": "自然人股东",
+            "amount": "150.0",
+            "invest_type": "-",
+            "percent": "0.10%"
+          },
+          {
+            "name": "华军",
+            "stock_type": "自然人股东",
+            "amount": "150.0",
+            "invest_type": "-",
+            "percent": "0.10%"
+          },
+          {
+            "name": "董良广",
+            "stock_type": "自然人股东",
+            "amount": "149.2",
+            "invest_type": "-",
+            "percent": "0.10%"
+          },
+          {
+            "name": "陶龙强",
+            "stock_type": "自然人股东",
+            "amount": "143.0",
+            "invest_type": "-",
+            "percent": "0.10%"
+          },
+          {
+            "name": "龚建兵",
+            "stock_type": "自然人股东",
+            "amount": "140.0",
+            "invest_type": "-",
+            "percent": "0.09%"
+          },
+          {
+            "name": "余正启",
+            "stock_type": "自然人股东",
+            "amount": "137.5",
+            "invest_type": "-",
+            "percent": "0.09%"
+          },
+          {
+            "name": "黄刚",
+            "stock_type": "自然人股东",
+            "amount": "135.41",
+            "invest_type": "-",
+            "percent": "0.09%"
+          },
+          {
+            "name": "何剑鸣",
+            "stock_type": "自然人股东",
+            "amount": "132.0",
+            "invest_type": "-",
+            "percent": "0.09%"
+          },
+          {
+            "name": "艾永冲",
+            "stock_type": "自然人股东",
+            "amount": "130.0",
+            "invest_type": "-",
+            "percent": "0.09%"
+          },
+          {
+            "name": "周国伟",
+            "stock_type": "自然人股东",
+            "amount": "120.0",
+            "invest_type": "-",
+            "percent": "0.08%"
+          },
+          {
+            "name": "刘春健",
+            "stock_type": "自然人股东",
+            "amount": "120.0",
+            "invest_type": "-",
+            "percent": "0.08%"
+          },
+          {
+            "name": "蒋华锋",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.07%"
+          },
+          {
+            "name": "苏庆",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.07%"
+          },
+          {
+            "name": "曹建兵",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.07%"
+          },
+          {
+            "name": "冯乃强",
+            "stock_type": "自然人股东",
+            "amount": "100.0",
+            "invest_type": "-",
+            "percent": "0.07%"
+          }
+        ],
+        "name": "江阴新扬船企业管理中心（有限合伙）",
+        "invest_path": "江阴新扬船企业管理中心（有限合伙）(4.31%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限合伙企业",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      }
+    ],
+    "stock_holder_seven": [
+      {
+        "stock_holder": [],
+        "name": "山东黄金集团有限公司",
+        "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中信聚信（北京）资本管理有限公司",
+            "stock_type": "法人股东",
+            "amount": "5000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "众和锦绣资本管理有限责任公司",
+        "invest_path": "众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有30条风险信息,工商变更16条,被执行人1条,开庭公告6条,法院公告7条"
+      },
+      {
+        "stock_holder": [],
+        "name": "江苏省财政厅",
+        "invest_path": "江苏省财政厅(10.00%)——>常州投资集团有限公司(26.68%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有109条风险信息,开庭公告62条,裁判文书47条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "常州市人民政府",
+            "stock_type": "其他投资者",
+            "amount": "200000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "常州市交通产业集团有限公司",
+        "invest_path": "常州市交通产业集团有限公司(100.00%)——>常州交通建设投资开发有限公司(3.15%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有6条风险信息,工商变更4条,开庭公告2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "倪会有",
+            "stock_type": "自然人股东",
+            "amount": "600.0",
+            "invest_type": "货币",
+            "percent": "60.00%"
+          },
+          {
+            "name": "常进文",
+            "stock_type": "自然人股东",
+            "amount": "400.0",
+            "invest_type": "货币",
+            "percent": "40.00%"
+          }
+        ],
+        "name": "上海曙盟投资管理有限公司",
+        "invest_path": "上海曙盟投资管理有限公司(100.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(自然人投资或控股)",
+        "summary_text": "该企业共有3条风险信息,经营异常2条,行政处罚1条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "169406.9251",
+            "invest_type": "货币",
+            "percent": "37.87%"
+          },
+          {
+            "name": "香港中央结算有限公司",
+            "stock_type": "-",
+            "amount": "94537.5697",
+            "invest_type": "-",
+            "percent": "21.14%"
+          },
+          {
+            "name": "山东黄金资源开发有限公司",
+            "stock_type": "-",
+            "amount": "19487.2049",
+            "invest_type": "-",
+            "percent": "4.36%"
+          },
+          {
+            "name": "山东黄金有色矿业集团有限公司",
+            "stock_type": "-",
+            "amount": "11547.7482",
+            "invest_type": "-",
+            "percent": "2.58%"
+          },
+          {
+            "name": "中国证券金融股份有限公司",
+            "stock_type": "-",
+            "amount": "10883.4732",
+            "invest_type": "-",
+            "percent": "2.43%"
+          },
+          {
+            "name": "郭宏伟",
+            "stock_type": "-",
+            "amount": "3300.0",
+            "invest_type": "-",
+            "percent": "0.74%"
+          },
+          {
+            "name": "山东黄金集团青岛黄金有限公司",
+            "stock_type": "-",
+            "amount": "3146.7157",
+            "invest_type": "-",
+            "percent": "0.70%"
+          },
+          {
+            "name": "全国社保基金一一二组合",
+            "stock_type": "-",
+            "amount": "2628.3027",
+            "invest_type": "-",
+            "percent": "0.59%"
+          },
+          {
+            "name": "山东省国有资产投资控股有限公司",
+            "stock_type": "-",
+            "amount": "2502.8941",
+            "invest_type": "-",
+            "percent": "0.56%"
+          },
+          {
+            "name": "中国工商银行-广发稳健增长证券投资基金",
+            "stock_type": "-",
+            "amount": "2050.0",
+            "invest_type": "-",
+            "percent": "0.46%"
+          }
+        ],
+        "name": "山东黄金矿业股份有限公司",
+        "invest_path": "山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "股份有限公司",
+        "summary_text": "该企业共有39条风险信息,工商变更34条,抽查检查5条"
+      },
+      {
+        "stock_holder": [],
+        "name": "江苏省财政厅",
+        "invest_path": "江苏省财政厅(10.00%)——>常州产业投资集团有限公司(2.32%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有109条风险信息,开庭公告62条,裁判文书47条"
+      }
+    ],
+    "stock_holder_eight": [
+      {
+        "stock_holder": [
+          {
+            "name": "深圳证券交易所",
+            "stock_type": "法人股东",
+            "amount": "3075000.0",
+            "invest_type": "-",
+            "percent": "20.50%"
+          },
+          {
+            "name": "上海证券交易所（中国证券博物馆）",
+            "stock_type": "-",
+            "amount": "3075000.0",
+            "invest_type": "-",
+            "percent": "20.50%"
+          },
+          {
+            "name": "中国证券登记结算有限责任公司",
+            "stock_type": "法人股东",
+            "amount": "2812500.0",
+            "invest_type": "-",
+            "percent": "18.75%"
+          },
+          {
+            "name": "上海期货交易所",
+            "stock_type": "-",
+            "amount": "2187500.0",
+            "invest_type": "-",
+            "percent": "14.58%"
+          },
+          {
+            "name": "中国金融期货交易所股份有限公司",
+            "stock_type": "-",
+            "amount": "1750000.0",
+            "invest_type": "-",
+            "percent": "11.67%"
+          },
+          {
+            "name": "大连商品交易所",
+            "stock_type": "-",
+            "amount": "1350000.0",
+            "invest_type": "-",
+            "percent": "9.00%"
+          },
+          {
+            "name": "郑州商品交易所",
+            "stock_type": "-",
+            "amount": "750000.0",
+            "invest_type": "-",
+            "percent": "5.00%"
+          }
+        ],
+        "name": "中国证券金融股份有限公司",
+        "invest_path": "中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他股份有限公司(非上市)",
+        "summary_text": "该企业共有6条风险信息,工商变更6条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东省人民政府国有资产监督管理委员会",
+            "stock_type": "企业法人",
+            "amount": "315000.0",
+            "invest_type": "股权",
+            "percent": "70.00%"
+          },
+          {
+            "name": "山东国惠投资控股集团有限公司",
+            "stock_type": "-",
+            "amount": "90000.0",
+            "invest_type": "-",
+            "percent": "20.00%"
+          },
+          {
+            "name": "山东省社保基金理事会",
+            "stock_type": "事业法人",
+            "amount": "45000.0",
+            "invest_type": "-",
+            "percent": "10.00%"
+          }
+        ],
+        "name": "山东省国有资产投资控股有限公司",
+        "invest_path": "山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有29条风险信息,工商变更14条,开庭公告7条,法院公告8条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东省人民政府国有资产监督委员会",
+            "stock_type": "企业法人",
+            "amount": "92340.2",
+            "invest_type": "-",
+            "percent": "70.00%"
+          },
+          {
+            "name": "山东省财欣资产运营有限公司",
+            "stock_type": "企业法人",
+            "amount": "-",
+            "invest_type": "-",
+            "percent": "0.00%"
+          },
+          {
+            "name": "山东国惠投资控股集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "-",
+            "invest_type": "-",
+            "percent": "0.00%"
+          }
+        ],
+        "name": "山东黄金集团有限公司",
+        "invest_path": "山东黄金集团有限公司(37.87%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "香港中央结算有限公司",
+        "invest_path": "香港中央结算有限公司(21.14%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "私营股份有限公司",
+        "summary_text": "暂无风险信息"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "11649.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东黄金集团青岛黄金有限公司",
+        "invest_path": "山东黄金集团青岛黄金有限公司(0.70%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有21条风险信息,工商变更13条,抽查检查2条,开庭公告6条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "37500.0",
+            "invest_type": "货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东黄金资源开发有限公司",
+        "invest_path": "山东黄金资源开发有限公司(4.36%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有16条风险信息,工商变更16条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东黄金集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "110000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东黄金有色矿业集团有限公司",
+        "invest_path": "山东黄金有色矿业集团有限公司(2.58%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(非自然人投资或控股的法人独资)",
+        "summary_text": "该企业共有34条风险信息,工商变更28条,股权出质1条,开庭公告5条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中信信托有限责任公司",
+            "stock_type": "企业法人",
+            "amount": "50000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "中信聚信（北京）资本管理有限公司",
+        "invest_path": "中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有12条风险信息,工商变更11条,抽查检查1条"
+      }
+    ],
+    "stock_holder_nine": [
+      {
+        "stock_holder": [
+          {
+            "name": "深圳市资本市场领导小组",
+            "stock_type": "主管单位",
+            "amount": "50000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "深圳证券交易所",
+        "invest_path": "深圳证券交易所(20.50%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制",
+        "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东黄金集团有限公司",
+        "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金集团青岛黄金有限公司(0.70%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "深圳证券交易所",
+            "stock_type": "企业法人",
+            "amount": "1000000.0",
+            "invest_type": "货币",
+            "percent": "50.00%"
+          },
+          {
+            "name": "上海证券交易所（中国证券博物馆）",
+            "stock_type": "-",
+            "amount": "1000000.0",
+            "invest_type": "-",
+            "percent": "50.00%"
+          }
+        ],
+        "name": "中国证券登记结算有限责任公司",
+        "invest_path": "中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有44条风险信息,工商变更10条,司法拍卖9条,开庭公告12条,法院公告13条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东省人民政府国有资产监督管理委员会",
+            "stock_type": "机关法人",
+            "amount": "3005000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东国惠投资控股集团有限公司",
+        "invest_path": "山东国惠投资控股集团有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有19条风险信息,工商变更17条,股权出质2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东省人民政府国有资产监督管理委员会",
+        "invest_path": "山东省人民政府国有资产监督管理委员会(70.00%)——>山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有2条风险信息,开庭公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东黄金集团有限公司",
+        "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金资源开发有限公司(4.36%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国中信有限公司",
+            "stock_type": "企业法人",
+            "amount": "927600.0",
+            "invest_type": "货币",
+            "percent": "82.26%"
+          },
+          {
+            "name": "中信兴业投资集团有限公司",
+            "stock_type": "企业法人",
+            "amount": "200000.0",
+            "invest_type": "-",
+            "percent": "17.74%"
+          }
+        ],
+        "name": "中信信托有限责任公司",
+        "invest_path": "中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司",
+        "summary_text": "该企业共有1010条风险信息,工商变更7条,行政处罚6条,抽查检查1条,股权出质71条,开庭公告677条,法院公告248条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国证监会",
+            "stock_type": "其他投资者",
+            "amount": "10350.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "上海期货交易所",
+        "invest_path": "上海期货交易所(14.58%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制",
+        "summary_text": "该企业共有8条风险信息,工商变更2条,抽查检查4条,开庭公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "郑州商品交易所",
+        "invest_path": "郑州商品交易所(5.00%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有20条风险信息,工商变更3条,开庭公告8条,法院公告9条"
+      },
+      {
+        "stock_holder": [],
+        "name": "上海证券交易所（中国证券博物馆）",
+        "invest_path": "上海证券交易所（中国证券博物馆）(20.50%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
+      },
+      {
+        "stock_holder": [],
+        "name": "大连商品交易所",
+        "invest_path": "大连商品交易所(9.00%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有25条风险信息,工商变更4条,开庭公告15条,法院公告6条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "郑州商品交易所",
+            "stock_type": "事业法人",
+            "amount": "300000.0",
+            "invest_type": "货币",
+            "percent": "20.00%"
+          },
+          {
+            "name": "深圳证券交易所",
+            "stock_type": "事业法人",
+            "amount": "300000.0",
+            "invest_type": "货币",
+            "percent": "20.00%"
+          },
+          {
+            "name": "大连商品交易所",
+            "stock_type": "事业法人",
+            "amount": "300000.0",
+            "invest_type": "货币",
+            "percent": "20.00%"
+          },
+          {
+            "name": "上海证券交易所（中国证券博物馆）",
+            "stock_type": "-",
+            "amount": "300000.0",
+            "invest_type": "-",
+            "percent": "20.00%"
+          },
+          {
+            "name": "上海期货交易所",
+            "stock_type": "事业法人",
+            "amount": "300000.0",
+            "invest_type": "货币",
+            "percent": "20.00%"
+          }
+        ],
+        "name": "中国金融期货交易所股份有限公司",
+        "invest_path": "中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他股份有限公司(非上市)",
+        "summary_text": "该企业共有38条风险信息,工商变更20条,抽查检查18条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东黄金集团有限公司",
+        "invest_path": "山东黄金集团有限公司(100.00%)——>山东黄金有色矿业集团有限公司(2.58%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有控股)",
+        "summary_text": "该企业共有39条风险信息,工商变更22条,股权出质1条,开庭公告13条,法院公告3条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东国惠投资控股集团有限公司",
+        "invest_path": "山东国惠投资控股集团有限公司(20.00%)——>山东省国有资产投资控股有限公司(0.56%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有19条风险信息,工商变更17条,股权出质2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "山东省财政厅",
+            "stock_type": "机关法人",
+            "amount": "1000000.0",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "山东省财欣资产运营有限公司",
+        "invest_path": "山东省财欣资产运营有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(国有独资)",
+        "summary_text": "该企业共有3条风险信息,工商变更3条"
+      }
+    ],
+    "stock_holder_ten": [
+      {
+        "stock_holder": [],
+        "name": "上海期货交易所",
+        "invest_path": "上海期货交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制",
+        "summary_text": "该企业共有8条风险信息,工商变更2条,抽查检查4条,开庭公告2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国中信有限公司",
+            "stock_type": "企业法人",
+            "amount": "260000.0",
+            "invest_type": "货币",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "中信兴业投资集团有限公司",
+        "invest_path": "中信兴业投资集团有限公司(17.74%)——>中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(外商投资企业法人独资)",
+        "summary_text": "该企业共有19条风险信息,工商变更19条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东省财政厅",
+        "invest_path": "山东省财政厅(100.00%)——>山东省财欣资产运营有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有20条风险信息,开庭公告19条,法院公告1条"
+      },
+      {
+        "stock_holder": [],
+        "name": "上海证券交易所（中国证券博物馆）",
+        "invest_path": "上海证券交易所（中国证券博物馆）(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
+      },
+      {
+        "stock_holder": [],
+        "name": "山东省人民政府国有资产监督管理委员会",
+        "invest_path": "山东省人民政府国有资产监督管理委员会(100.00%)——>山东国惠投资控股集团有限公司(股比不详)——>山东黄金集团有限公司(100.00%)——>山东黄金创业投资有限公司(4.23%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有2条风险信息,开庭公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "大连商品交易所",
+        "invest_path": "大连商品交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有25条风险信息,工商变更4条,开庭公告15条,法院公告6条"
+      },
+      {
+        "stock_holder": [],
+        "name": "深圳证券交易所",
+        "invest_path": "深圳证券交易所(50.00%)——>中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制",
+        "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
+      },
+      {
+        "stock_holder": [],
+        "name": "上海证券交易所（中国证券博物馆）",
+        "invest_path": "上海证券交易所（中国证券博物馆）(50.00%)——>中国证券登记结算有限责任公司(18.75%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有9条风险信息,工商变更1条,开庭公告8条"
+      },
+      {
+        "stock_holder": [],
+        "name": "郑州商品交易所",
+        "invest_path": "郑州商品交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "其他",
+        "summary_text": "该企业共有20条风险信息,工商变更3条,开庭公告8条,法院公告9条"
+      },
+      {
+        "stock_holder": [],
+        "name": "深圳证券交易所",
+        "invest_path": "深圳证券交易所(20.00%)——>中国金融期货交易所股份有限公司(11.67%)——>中国证券金融股份有限公司(2.43%)——>山东黄金矿业股份有限公司(100.00%)——>山金金控资本管理有限公司(15.62%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "全民所有制",
+        "summary_text": "该企业共有4条风险信息,司法拍卖2条,开庭公告2条"
+      },
+      {
+        "stock_holder": [
+          {
+            "name": "中国中信股份有限公司",
+            "stock_type": "外国（地区）企业",
+            "amount": "1.39E7",
+            "invest_type": "-",
+            "percent": "100.00%"
+          }
+        ],
+        "name": "中国中信有限公司",
+        "invest_path": "中国中信有限公司(82.26%)——>中信信托有限责任公司(100.00%)——>中信聚信（北京）资本管理有限公司(100.00%)——>众和锦绣资本管理有限责任公司(0.00%)——>银川聚信信德资产管理合伙企业（有限合伙）(4.47%)——>东海证券股份有限公司(0.05%)——>中国人民保险集团股份有限公司(69.32%)——>中国人民健康保险股份有限公司(8.08%)——>大连东软控股有限公司(14.02%)——>东软集团股份有限公司",
+        "ent_type": "有限责任公司(港澳台法人独资)",
+        "summary_text": "该企业共有8条风险信息,工商变更7条,抽查检查1条"
+      }
+    ]
   }
+}

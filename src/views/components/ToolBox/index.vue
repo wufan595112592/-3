@@ -15,6 +15,12 @@
         <div class="icon"><span class="iconfont icon-liebiao"></span></div>
         <div class="text">模板</div>
       </li>
+
+      <!-- 关联方认定图 -->
+      <li v-if="hasButon(Buttons.SEARCH)" :class="isShowSearch ? 'active': ''" @click="showSearch">
+        <div class="icon"><span class="iconfont icon-sousuo"></span></div>
+        <div class="text">搜索</div>
+      </li>
       
       <li v-if="hasButon(Buttons.WRITTENWORDS)" :class="isShowWords ? 'active': ''" @click="wordsFilter">
         <div class="icon"><span class="iconfont icon-zitiyanse"></span></div>
@@ -68,6 +74,7 @@ const props = defineProps({
     isShowFilter: Boolean,
     isShowTemplate: Boolean,
     isShowWords: Boolean,
+    isShowSearch: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -99,6 +106,10 @@ function hasButon(type) {
 function showFilter() {
     emit('update:isShowFilter', !props.isShowFilter)
 }
+function showSearch() {
+  emit('update:isShowSearch', true)
+}
+
 function wordsFilter() {
     emit('update:isShowWords', !props.isShowWords)
 }

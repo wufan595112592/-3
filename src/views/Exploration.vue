@@ -789,6 +789,7 @@ onMounted(() => {
     width: 100%;
     height: calc(100% - 30px);
     border: 1px solid #eee;
+    overflow-y: auto;
   }
 
   table {

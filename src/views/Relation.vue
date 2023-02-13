@@ -8,15 +8,15 @@
            @exportImg="exportImg"/>
   <RelationFilter ref="filter" :data="list" v-model:visiable="isShowFilter" @resetState="resetFilterState" @focusSelected="focusSelected" @stateChange="filterStateChange"/>
   <Legend/>
-  <transition name="v">
+  <!-- <transition name="v">
     <ChartDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></ChartDetail>
-  </transition>
+  </transition> -->
   <RelationDetail ref="detail" @stateChange="filterStateChange" />
   <div style="width: 100%;height: 100%;">
     <div id="MainCy" style="width: 100%;height: 100%;"></div>
     <div id="MainD3" scale="1" class="no-padding tp-container">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
-			</svg> -->
+			</svg>
 		</div>
   </div>
 </template>

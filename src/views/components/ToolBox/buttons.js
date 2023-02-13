@@ -10,7 +10,8 @@
         REFRESH: 64,  // 刷新
         FULLSCREEN: 128,  //全屏幕
         SAVE: 256, // 全屏
-        WRITTENWORDS: 512 // 文字
+        WRITTENWORDS: 512, // 文字
+        SEARCH: 1024, // 搜索
        
 });
 // buttons.ALl = buttons.FILTER | 
