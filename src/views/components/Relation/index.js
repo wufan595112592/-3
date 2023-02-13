@@ -1414,7 +1414,10 @@ function filter(state) {
         const relation = getRelation(layer, state,sourceNode,targetNode );
         if (relation && validateShareholding(state, relation)) {
           activeNodeById(targetNode.id);
-          activeEdgeById(relation.linkId);
+          // 列表勾选的
+          if (state.checked.has(sourceNode.id) || state.checked.has(targetNode.id)) {
+            activeEdgeById(relation.linkId);
+          }
           temp.push(targetNode);
         }
       }
@@ -1516,6 +1519,9 @@ export function allLinkHighLight(include) {
       var data = edge._private.data;
       if (include.has(data.data.targetId) || include.has(data.data.sourceId)) {
         edge.addClass("edgeActive");
+      } else {
+        edge.removeClass("edgeActive");
+        edge.addClass('dull');
       }
     });
   }  
