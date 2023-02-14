@@ -5,14 +5,16 @@
     <div id="mountNode" style="width: 100%;height: 100%;"></div>
     <ToolBox
         v-model:isShowFilter="isShowFilter"
+        v-model:isShowSimple="isShowSimple"
+        v-model:isShowEdit="isShowEdit"
         :buttonGroup="buttons"
+        @simpleChange="simpleChange"
         @editChange="editChange"
         @maoScale="maoScale"
         @refresh="refresh"
         @exportImg="exportImg"/>
 
     <!-- <DetailContent /> -->
-    <!-- <RelationDetail v-if="Detailshow" @close="close" /> -->
         <transition name="v">
           <ChartDetail v-if="isShowDetail" :data="detailData" :position="detailPosition"></ChartDetail>
         </transition>
@@ -31,7 +33,7 @@ import D3Mixin from '@/hooks/D3Mixin'
 import { ref, onMounted } from 'vue'
 import EquityJson from '@/api/EquityJson.json'
 import Buttons from './components/ToolBox/buttons.js'
-let { toggleFullScreen, downloadImpByChart } = D3Mixin()
+let { downloadImpByChart } = D3Mixin()
 export default {
   components: {
     Header,
@@ -43,7 +45,9 @@ export default {
   },
   setup() {
     const isShowFilter = ref(false);
-    const buttons = ref(Buttons.FILTER | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE);
+    const isShowSimple = ref(false);
+    const isShowEdit = ref(false);
+    const buttons = ref(Buttons.FILTER | Buttons.ABBREVIATE | Buttons.EDIT | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE);
     const isShowDetail = ref(false)
     const detailData = ref({});
     const detailPosition = ref({
@@ -54,104 +58,103 @@ export default {
     const exportImg = () => {
       downloadImpByChart('股权穿透图谱', EquityJson.data.enterprise.name)
     }
-    const close = () => {
-      // Detailshow.value = false
-    }
     const simpleChange = (val) => {
-      simpleChange1(val.value)
+      isShowSimple.value = val
+      simpleChange1(val)
     }
     const maoScale = (val) => {
       zoomClick(val)
     }
     const editChange = (val) => {
-      editChange1(val.value)
+      isShowEdit.value = val
+      editChange1(val)
     }
     const refresh = () => {     
       eqFilter.value.resetState();
+      isShowEdit.value = false;
+      isShowFilter.value = false;
+      isShowSimple.value = false;
       drawing(jsonData)
     }
-    const screenfullChange = () => {
-      toggleFullScreen()
-    }
 
-    const x = ['' ,'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-    const convertToHierarchy = (data) => {
-      function uuid() {
-      function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-      }
+    // const x = ['' ,'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+    // const convertToHierarchy = (data) => {
+    //   function uuid() {
+    //   function s4() {
+    //     return Math.floor((1 + Math.random()) * 0x10000)
+    //         .toString(16)
+    //         .substring(1);
+    //   }
 
-      return (
-          s4() +
-          s4() +
-          "-" +
-          s4() +
-          "-" +
-          s4() +
-          "-" +
-          s4() +
-          "-" +
-          s4() +
-          s4() +
-          s4()
-      );
-      }
-         // 获取子元素
-        function getChildren(level, name) {
-            if(level > 10) {
-              return [];
-            }
-            const current = s[level].get(name);    
-            if(!current) {
-              return []
-            }
-            const children = [];
-            current.stock_holder.forEach(item => {
-                  children.push({
-                    "id": uuid(),
-                    "short_name": item.name,
-                    "level": level,
-                    "isKey":level == 1 && item.stock_type.indexOf('法人')>=0,
-                    "amount": item.amount,
-                    "has_problem": "0",
-                    "percent": item.percent,
-                   // "pid": "77bd1a4a4459cafe587269a271c2261a",
-                    "sh_type": item.invest_type,
-                    "children": getChildren(level+1, item.name),
-                  //  "eid": "",
-                   // "identifier": "2",
-                    "name": item.name,
-                    "type": item.stock_type.indexOf('法人')>=0 ? "P" : "E"
-                  });
-            })
+    //   return (
+    //       s4() +
+    //       s4() +
+    //       "-" +
+    //       s4() +
+    //       "-" +
+    //       s4() +
+    //       "-" +
+    //       s4() +
+    //       "-" +
+    //       s4() +
+    //       s4() +
+    //       s4()
+    //   );
+    //   }
+    //      // 获取子元素
+    //     function getChildren(level, name) {
+    //         if(level > 10) {
+    //           return [];
+    //         }
+    //         const current = s[level].get(name);    
+    //         if(!current) {
+    //           return []
+    //         }
+    //         const children = [];
+    //         current.stock_holder.forEach(item => {
+    //               children.push({
+    //                 "id": uuid(),
+    //                 "short_name": item.name,
+    //                 "level": level,
+    //                 "isKey":level == 1 && item.stock_type.indexOf('法人')>=0,
+    //                 "amount": item.amount,
+    //                 "has_problem": "0",
+    //                 "percent": item.percent,
+    //                // "pid": "77bd1a4a4459cafe587269a271c2261a",
+    //                 "sh_type": item.invest_type,
+    //                 "children": getChildren(level+1, item.name),
+    //               //  "eid": "",
+    //                // "identifier": "2",
+    //                 "name": item.name,
+    //                 "type": item.stock_type.indexOf('法人')>=0 ? "P" : "E"
+    //               });
+    //         })
 
-            return children;
-        }
+    //         return children;
+    //     }
 
-        let c_trees = [], p_trees = [];
-        let s = [null];
-        for(let i = 1 ;i < 11;i ++) {
-          s.push(new Map());
-          data['stock_holder_' + x[i]].forEach(item => {
-            s[i].set(item.name, item);
-          });
-        }
-        getChildren(1, data.enterprise.name).forEach(item => {
-            if(item.isKey) p_trees .push(item)
-            else c_trees.push(item)
-        });
-        return {
-          root: data.enterprise,
-          c_trees,
-          p_trees,
-          // rawMap: s 
-        }
-    }
+    //     let c_trees = [], p_trees = [];
+    //     let s = [null];
+    //     for(let i = 1 ;i < 11;i ++) {
+    //       s.push(new Map());
+    //       data['stock_holder_' + x[i]].forEach(item => {
+    //         s[i].set(item.name, item);
+    //       });
+    //     }
+    //     getChildren(1, data.enterprise.name).forEach(item => {
+    //         if(item.isKey) p_trees .push(item)
+    //         else c_trees.push(item)
+    //     });
+    //     return {
+    //       root: data.enterprise,
+    //       c_trees,
+    //       p_trees,
+    //       // rawMap: s 
+    //     }
+    // }
 
-    let jsonData = convertToHierarchy(EquityJson.data);
-
+    let jsonData = EquityJson.data
+    // let jsonData = convertToHierarchy(EquityJson.data);
     /**
      * 筛选
      * @param {   } state 
@@ -229,6 +232,8 @@ export default {
 
     return {
       isShowFilter,
+      isShowSimple,
+      isShowEdit,
       isShowDetail,
       close,
       eqFilter,
@@ -237,7 +242,6 @@ export default {
       editChange,
       refresh,
       exportImg,
-      screenfullChange,
       filterStateChange,
       detailData,
       detailPosition,

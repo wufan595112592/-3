@@ -6,7 +6,7 @@
         <div class="icon"><span class="iconfont icon-liebiao"></span></div>
         <div class="text">筛选</div>
       </li>
-      <li v-if="hasButon(Buttons.ABBREVIATE)" :class="simple ? 'active': ''" @click="simpleChange(true)">
+      <li v-if="hasButon(Buttons.ABBREVIATE)" :class="isShowSimple ? 'active': ''" @click="showSimple">
         <div class="icon"><span class="iconfont icon-zitiyanse"></span></div>
         <div class="text">简称</div>
       </li>
@@ -27,7 +27,7 @@
         <div class="text">文字</div>
       </li>
 
-      <li v-if="hasButon(Buttons.EDIT)" :class="edit ? 'active': ''" @click="editChange(true)">
+      <li v-if="hasButon(Buttons.EDIT)" :class="isShowEdit ? 'active': ''" @click="showEdit">
         <div class="icon"><span class="iconfont icon-sousuo"></span></div>
         <div class="text">编辑</div>
       </li>
@@ -69,12 +69,14 @@ import Buttons from './buttons';
 import store from "../../../store";
 
 const emit = defineEmits(['maoScale', 'refresh', 'exportImg',
-  'update:isShowFilter','update:isShowTemplate','update:isShowWords', 'editChange', 'simpleChange', 'wordsChange', 'openTemplate'])
+  'update:isShowFilter','update:isShowTemplate','update:isShowWords', 'simpleChange', 'editChange', 'wordsChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
     isShowTemplate: Boolean,
     isShowWords: Boolean,
     isShowSearch: Boolean,
+    isShowSimple: Boolean,
+    isShowEdit: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -87,9 +89,6 @@ const props = defineProps({
     }
 })
 
-
-let simple = ref(false)
-let edit = ref(false)
 let isFullscreen = computed(() => store.state.isFullScreen)
 let shareholding = ref(0)
 const state = ref([])
@@ -114,23 +113,12 @@ function wordsFilter() {
     emit('update:isShowWords', !props.isShowWords)
 }
 
-
-function simpleChange(bool = false) {
-  if (bool) {
-    simple.value = !simple.value
-    emit('simpleChange', simple)
-  } else {
-    simple.value = bool
-  }
+function showSimple() {
+  emit('simpleChange', !props.isShowSimple)
 }
 
-function editChange(bool = false) {
-  if (bool) {
-    edit.value = !edit.value
-    emit('editChange', edit)
-  } else {
-    edit.value = bool
-  }
+function showEdit() {
+  emit('editChange', !props.isShowEdit)
 }
 
 function toggleFullScreen(value) {
@@ -151,7 +139,6 @@ function openTemplate() {
    emit('update:isShowTemplate', !props.isShowTemplate)
 }
 
-// defineExpose({ simpleChange, editChange })
 </script>
 
 <style lang="scss" scoped>

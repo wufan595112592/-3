@@ -1,5 +1,6 @@
 import d3 from './d3.min.js'
 import deepcopy from 'deepcopy'
+import SKRJson from '@/api/suspectedSKRJson.json'
 
 // 是否全称
 let shortNameShow = false
@@ -39,23 +40,49 @@ function resizeData(data) {
 	// 重新获取json数据
 	init(data);
 }
+// 递归把key为items修改为children
+function changeId(objAry, key, newkey) {
+	if (objAry != null) {
+		objAry.forEach((item) => {
+			Object.assign(item, {
+				[newkey]: item[key],
+			});
+			delete item[key];
+			changeId(item.children, key, newkey);
+		});
+	}
+}
 // 初始化
 export function init(data) {
+	const upward = deepcopy(data.p_trees)
+	const downward = deepcopy(data.c_trees)
+	changeId(upward, "items", "children"); 
+	changeId(downward, "items", "children");
+	// 添加最终受益人标记
+	upward.forEach(item => {
+		SKRJson.data.nodes.forEach(ele => {
+			if (item.name === ele.name && ele.isKey) {
+				item.isKey = true
+			}
+		})
+		return item
+	})
+	
 	 rootData = {
 		downward: {
 			"direction": "downward",
 			"name": "origin",
-			"data": data.root,
-			"children": deepcopy(data.c_trees)
+			"data": data,
+			"children": downward
 		},
 		upward: {
 			"direction": "upward",
 			"name": "origin",
-			"data": data.root,
-			"children": deepcopy(data.p_trees)
+			"data": data,
+			"children": upward
 		}
 	}
-	 rootName = data.root.name;
+	rootName = data.name;
 }
 
 export function drawing(data) {
@@ -562,7 +589,7 @@ treeChart.prototype.graphTree = function(config) {
 		// 持资占比文字
 		rectG
 			.append("text")
-			.attr("x", "18")
+			.attr("x", "28")
 			.attr("dy", function(d) {
 				return d.name == "origin" ? ".35em" : forUpward ? "50" : "-48";
 			})
@@ -572,8 +599,8 @@ treeChart.prototype.graphTree = function(config) {
 			.style("font-size", 10)
 			.text(function(d) {
 				if (d.percent != "0" && d.percent != "") {
-					return d.name == "origin" ? "" : d.percent;
-					//return d.name == "origin" ? "" : parseInt(parseFloat(d.percent) * 100) + '%';
+					// return d.name == "origin" ? "" : d.percent;
+					return d.name == "origin" ? "" : (parseFloat(d.percent) * 100).toFixed(4) + '%';
 				}
 			})
 			.on("mouseenter", nodeOut)
