@@ -69,7 +69,7 @@ import Buttons from './buttons';
 import store from "../../../store";
 
 const emit = defineEmits(['maoScale', 'refresh', 'exportImg',
-  'update:isShowFilter','update:isShowTemplate','update:isShowWords', 'simpleChange', 'editChange', 'wordsChange', 'openTemplate'])
+  'update:isShowFilter','update:isShowTemplate','update:isShowWords','showSearch', 'simpleChange', 'editChange', 'wordsChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
     isShowTemplate: Boolean,
@@ -106,7 +106,7 @@ function showFilter() {
     emit('update:isShowFilter', !props.isShowFilter)
 }
 function showSearch() {
-  emit('update:isShowSearch', true)
+  emit('showSearch', true)
 }
 
 function wordsFilter() {

@@ -95,8 +95,7 @@ function redraw() {
  * 刷新
  */
 function refresh() {
-	d3.select('svg').remove();   //删除整个SVG
-	d3.select('svg').selectAll('*').remove();
+	d3.select('#svg').remove();   //删除整个SVG
 	drawing()
 }
 

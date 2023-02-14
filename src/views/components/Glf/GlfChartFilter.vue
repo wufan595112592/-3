@@ -2,28 +2,31 @@
 	<div id="search-box" class="box-detail" :class="{ hide : !visiable }">
 		<div class="m_search-box animated fadeIn">
 			<div class="ma_top-bar e_close-bar">
-				<span v-if="currentNode && currentNode.Title" class="ea_title">
-					<span class="ma_bar-text">{{ currentNode.Title }}</span>
-					<span class="ma_bar-text">{{ currentNode.Total }}</span>
+				<span v-if="nodetype === 'ALL-C' || nodetype === 'ALL-P'" class="ea_title">
+					<span v-for="(item,index) in tabList" :key="index" class="ma_bar-all" :class="currentTab === index ? 'current': ''" @click="tabClick(index)">{{ item }}</span>
 				</span>
 				<span v-else class="ea_title">
-					<span v-for="(item,index) in tabList" :key="index" class="ma_bar-all" :class="currentTab === index ? 'current': ''" @click="tabClick(index)">{{ item }}</span>
+					<span class="ma_bar-text">{{ currentNode.Title }}</span>
+					<span class="ma_bar-text">{{ currentNode.Total }}</span>
 				</span>
 				<span class="ea_close" @click="close">×</span>
 			</div>
 			<div class="ma_search-group input-group">
-				<a class="clear-searchkey" style="display: none;"></a>
-  			<a-input v-model:value="inputVal" placeholder="请输入筛选名称" class="ma_search-input form-control headerKey" />
+  			<a-input v-model:value="currentSearchText" placeholder="请输入筛选名称" class="ma_search-input form-control headerKey">
+					<template #suffix>
+            <span v-if="currentSearchText" class="close-btn"  @click="clearSearchText">×</span>
+          </template>
+				</a-input>
 				<label :class="isOpen ? 'active' : ''">
 					<span class="label-span" @click="openAll">
-						<span>{{ isOpen ? '全部收起' : '全部展开' }}</span>
+						<span style="margin:0 5px 0 -10px">{{ isOpen ? '全部收起' : '全部展开' }}</span>
 						<span class="iconfont" :class="isOpen ? 'icon-top' : 'icon-bottom'"></span>
 					</span>
 				</label>
 			</div>
-			<div v-if="list" class="ma_items-container">
+			<div v-if="list && list.length" class="ma_items-container">
 				<div v-for="(item, index) in list" :key="item.Id" class="ma_item">
-					<div v-if="currentTab === 0 || currentNode && currentNode.type === 'Company'" class="ma_item-top">
+					<div v-if="currentNode && currentNode.type === 'Company'" class="ma_item-top">
 						<span class="company-img">{{ item.name.slice(0,4) }}</span>
 						<a href="https://www.qcc.com/firm/1ea557c511d6c06423d0519a364ae0a5.html" target="_blank"
 							class="ma_name">
@@ -108,23 +111,25 @@
 										</span>
 									</span>
 								</div>
-								
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div v-else style="margin-top:80px">
+  			<a-empty description="没有找到相关数据" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import store from "../../../store"
 import {
   ref,
   reactive,
   defineProps,
-  defineEmits,
+	defineEmits,
+	watch,
   defineExpose,
   toRaw,
   computed
@@ -134,24 +139,41 @@ const props = defineProps({
 	visiable: Boolean,
 	wrapTab: Number,
 	data: Array,
+	nodetype: String,
 	currentNode: Object
 });
 const emit = defineEmits(['update:visiable'])
-
 // 当前菜单
 let tabList = ref([])
 tabList.value = ['所有关联企业', '所有关联自然人']
-const inputVal = ref('')
-const currentTab = 0
+
+const currentSearchText = ref('')
+
+const currentTab = ref(0)
+
+// 调用接口获取搜索所有list
+
 const list = computed(() => {
-	return !inputVal.value ?
+	return !currentSearchText.value ?
 	props.data : 
-	props.data.filter(a => a.name.indexOf(inputVal.value) >=0)
+	props.data.filter(a => a.name.indexOf(currentSearchText.value) >=0)
 })
+
+
+function clearSearchText() {
+  currentSearchText.value = ''
+}
+
+watch(
+  () => props.nodetype,
+  (newVal, oldVal) => {
+		isOpen.value = false
+		clearSearchText()
+  }
+)
 
 // 展开收起
 let isOpen = ref(false)
-
 function openAll() {
 	if (list.value) {
 		const bool = !isOpen.value
@@ -167,16 +189,17 @@ function openAll() {
 function itemOpen(i) {
 	list.value[i].isOpen = !list.value[i].isOpen
 }
+
 // 头部切换
 function tabClick(index) {
-	props.currentTab.value = index
+	currentTab.value = index
+	clearSearchText()
 }
 
 // 搜索弹框关闭
 function close() {
 	isOpen.value = false
-	list.value = null
-	props.currentNode.value = null
+	clearSearchText()
 	emit('update:visiable', false);
 }
 
@@ -245,8 +268,6 @@ label {
 }
 
 .form-control {
-	display: block;
-	width: 100%;
 	height: 34px;
 	padding: 6px 12px;
 	font-size: 14px;
@@ -273,15 +294,19 @@ label {
 	&.hide {
 		display: none;
 	}
+	.close-btn {
+		cursor: pointer;
+		// color: #bbb;
+	}
 	.input-group {
 		position: relative;
 		display: table;
 		border-collapse: separate;
 		.form-control {
+			width: 340px;
 			position: relative;
 			z-index: 2;
 			float: left;
-			width: 100%;
 			margin-bottom: 0;
 		}
 	}
@@ -353,18 +378,23 @@ label {
   }
   .ma_search-group {
     border-bottom: 1px solid #EEEEEE;
-    padding: 0px 15px;
     position: relative;
     height: 66px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+
+    .input {
+      width: 300px;
+    }
 		span.label-span {
 			position: relative;
 			display: inline-block;
 			color: #666666;
 			font-size: 14px;
-			top: 18px;
+			top: 6px;
 			font-weight: normal !important;
-			left: 55px;
 			&:hover{
 				cursor: pointer;
 			}
@@ -381,14 +411,9 @@ label {
       left: 290px;
       z-index: 5;
     }
-    input.ma_search-input {
-      width: 300px;
-      top: 15px;
-    }
     label {
       cursor: pointer;
       position: relative;
-      right: -26px;
     }
     .fa {
       display: inline-block;
