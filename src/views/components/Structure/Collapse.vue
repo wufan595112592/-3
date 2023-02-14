@@ -2,42 +2,101 @@
 <div class="collapse-main">
   <div class="left">
     <div class="left">
-      <div v-for="(item, index) in menuList" :key="item.name">
-        <div class="rule-btn rule-btn-radius" :class="[!index ?'rule-btn-radius' : '', activeIndex == index ? 'active' : '',]" @click="clickTab(index)">{{ item.title }}</div>
+      <!-- 股东信息 -->
+      <div>
+        <div class="rule-btn rule-btn-radius" :class="[activeIndex == 0 ? 'active' : '',]" @click="clickTab(0)">股东信息</div>
         <div class="filter-panel gd-filter">
-          <div v-if="activeIndex == index" translate="">
-            <div class="single-filter" v-for="(ele, idx) in item.subItems" :key="ele.name">
-              <div class="value rule-btn" @click="selectChange(idx)">
-                {{ ele.name }}
-                <span class="caret"></span>
-              </div>
-              <div v-if="showOpt[idx]" class="option">
-                <div v-for="(opt, i) in ele.children" :key="i" :class="opt.name == ele.name ? 'active': ''" @click="optChange(index, idx, opt.name)">{{ opt.name }}<span v-if="opt.tips" class="tips">{{ opt.tips }}</span></div>
-              </div>
+          <div v-if="activeIndex == 0" translate="">
+            <div class="single-filter">
+              <a-space>
+                <a-select
+                  ref="select"
+                  v-model:value="obj.gdtype"
+                  style="width: 130px"
+                  @change="handleChange"
+                >
+                  <a-select-option v-for="item in menuList[0].subItems[0].children" :key="item.name" :value="item.name">{{ item.name + item.tips }}</a-select-option>
+                </a-select>
+              </a-space>
+            </div>
+            <div class="single-filter">
+              <a-space>
+                <a-select
+                  ref="select"
+                  v-model:value="obj.gdratio"
+                  style="width: 130px"
+                  @change="handleChange"
+                >
+                  <a-select-option v-for="item in menuList[0].subItems[1].children" :key="item.name" :value="item.name">{{ item.name + item.tips }}</a-select-option>
+                </a-select>
+              </a-space>
             </div>
           </div>
         </div>
       </div>
+      <!-- 对外投资 -->
+      <div>
+        <div class="rule-btn rule-btn-radius" :class="[activeIndex == 1 ? 'active' : '',]" @click="clickTab(1)">对外投资</div>
+        <div class="filter-panel gd-filter">
+          <div v-if="activeIndex == 1" translate="">
+            <div class="single-filter">
+              <a-space>
+                <a-select
+                  ref="select"
+                  v-model:value="obj.tztype"
+                  style="width: 130px"
+                  @change="handleChange"
+                >
+                  <a-select-option v-for="item in menuList[1].subItems[0].children" :key="item.name" :value="item.name">{{ item.name + item.tips }}</a-select-option>
+                </a-select>
+              </a-space>
+            </div>
+            <div class="single-filter">
+              <a-space>
+                <a-select
+                  ref="select"
+                  v-model:value="obj.tzratio"
+                  style="width: 130px"
+                  @change="handleChange"
+                >
+                  <a-select-option v-for="item in menuList[1].subItems[1].children" :key="item.name" :value="item.name">{{ item.name + item.tips }}</a-select-option>
+                </a-select>
+              </a-space>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 历史股东信息 -->
+      <div>
+        <div class="rule-btn rule-btn-radius" :class="[activeIndex == 2 ? 'active' : '',]" @click="clickTab(2)">历史股东信息</div>
+      </div>
+      
     </div>
   </div>
 </div>
+
 </template>
 <script setup>
-import { ref } from 'vue';
-const emit = defineEmits(['clickTab'])
+import { reactive, ref } from 'vue';
+const emit = defineEmits(['clickTab', 'searchData'])
 const activeIndex = ref(0);
-const showOpt = ref([]);
-showOpt.value = [false, false]
+const obj = reactive({
+  gdtype: '全部类型',
+  gdratio: '持股比例不限',
+  tztype: '全部类型',
+  tzratio: '持股比例不限',
+  current: 0
+})
 const menuList = ref([])
 menuList.value = [
   {
     title: '股东信息', subItems:
     [
       {
-        name: '全部类型', children: [{ name: '全部类型', tips: '' }, { name: '自然人股东', tips: '' }, { name: '企业法人', tips: '' }, { name: '法人股东', tips: '' }, { name: '外国(地区)企业', tips: '' }]
+        name: '全部类型', type: 'type', children: [{ name: '全部类型', tips: '' }, { name: '自然人股东', tips: '' }, { name: '企业法人', tips: '' }, { name: '法人股东', tips: '' }, { name: '外国(地区)企业', tips: '' }]
       },
       {
-        name: '持股比例不限', children: [{ name: '持股比例不限', tips: '' }, { name: '5%以上', tips: '' }, { name: '25%以上', tips: '(超过25%的为最终受益人)' }, { name: '50%以上', tips: '' }, { name: '90%以上', tips: '' }]
+        name: '持股比例不限', type: 'ratio', children: [{ name: '持股比例不限', tips: '' }, { name: '5%以上', tips: '' }, { name: '25%以上', tips: '(超过25%的为最终受益人)' }, { name: '50%以上', tips: '' }, { name: '90%以上', tips: '' }]
       }
     ]
   },
@@ -45,10 +104,10 @@ menuList.value = [
     title: '对外投资', subItems:
     [
       {
-        name: '控股类型不限', children: [{ name: '控股类型不限', tips: '' }, { name: '控股', tips: '' }, { name: '非控股', tips: '' }]
+        name: '控股类型不限', type: 'type', children: [{ name: '控股类型不限', tips: '' }, { name: '控股', tips: '' }, { name: '非控股', tips: '' }]
       },
       {
-        name: '持股比例不限', children: [{ name: '持股比例不限', tips: '' }, { name: '100%', tips: '' }, { name: '66.66%以上', tips: '' }, { name: '50%以上', tips: '' }, { name: '20%以上', tips: '' }, { name: '5%以上', tips: '' }, { name: '不到5%', tips: '' }]
+        name: '持股比例不限', type: 'ratio', children: [{ name: '持股比例不限', tips: '' }, { name: '100%', tips: '' }, { name: '66.66%以上', tips: '' }, { name: '50%以上', tips: '' }, { name: '20%以上', tips: '' }, { name: '5%以上', tips: '' }, { name: '不到5%', tips: '' }]
       }
     ]
   },
@@ -57,80 +116,18 @@ menuList.value = [
   }
 ]
 
-
 const clickTab = (active) => {
   activeIndex.value = active
   emit('clickTab')
 }
-const selectChange = (idx) => {
-  showOpt.value.forEach((item, i) => {
-    if (i == idx) {
-      showOpt.value[idx] = !showOpt.value[idx]
-    } else {
-      showOpt.value[i] = false
-    }
-  })
-}
-const optChange = (index, idx, name) => {
-  menuList.value[index].subItems[idx].name = name
-  showOpt.value[idx] = false
+
+const handleChange = () => {
+  obj.current = activeIndex.value
+  emit('searchData', obj)
 }
 
 </script>
-<!-- <script>
-import { ref, defineEmits } from 'vue';
 
-export default {
-  setup() {
-    const emit = defineEmits(['clickTab'])
-    const activeIndex = ref(0);
-    const showOpt = ref([]);
-    showOpt.value = [false, false]
-    const menuList = ref([])
-    menuList.value = [
-      {
-        title: '股东信息', subItems:
-        [
-          {
-            name: '全部类型', children: [{ name: '全部类型', tips: '' }, { name: '自然人股东', tips: '' }, { name: '企业法人', tips: '' }, { name: '法人股东', tips: '' }, { name: '外国(地区)企业', tips: '' }]
-          },
-          {
-            name: '持股比例不限', children: [{ name: '持股比例不限', tips: '' }, { name: '5%以上', tips: '' }, { name: '25%以上', tips: '(超过25%的为最终受益人)' }, { name: '50%以上', tips: '' }, { name: '90%以上', tips: '' }]
-          }
-        ]
-      },
-      {
-        title: '对外投资', subItems:
-        [
-          {
-            name: '控股类型不限', children: [{ name: '控股类型不限', tips: '' }, { name: '控股', tips: '' }, { name: '非控股', tips: '' }]
-          },
-          {
-            name: '持股比例不限', children: [{ name: '持股比例不限', tips: '' }, { name: '100%', tips: '' }, { name: '66.66%以上', tips: '' }, { name: '50%以上', tips: '' }, { name: '20%以上', tips: '' }, { name: '5%以上', tips: '' }, { name: '不到5%', tips: '' }]
-          }
-        ]
-      },
-      {
-        title: '历史股东信息', subItems:null
-      }
-    ]
-
-
-    const clickTab = (active) => {
-      activeIndex.value = active
-      emit('clickTab')
-    }
-    const selectChange = (idx) => {
-      showOpt.value[idx] = !showOpt.value[idx]
-    }
-    const optChange = (index, idx, name) => {
-      menuList.value[index].subItems[idx].name = name
-      showOpt.value[idx] = false
-    }
-    return { activeIndex, showOpt, menuList, clickTab, selectChange, optChange };
-  },
-};
-</script> -->
 <style lang="scss" scoped>
 .collapse-main{
   position: fixed;
@@ -234,5 +231,11 @@ export default {
   border-top: 4px dashed;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
+}
+::v-deep .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+  border: none;
+  border-bottom: 1px solid #eee;
+  padding: 0 11px 0 0;
+  text-align: center;
 }
 </style>

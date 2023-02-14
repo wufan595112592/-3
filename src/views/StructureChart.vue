@@ -5,20 +5,26 @@
 		<div class="box" style="width: 100%;height: 100%;">
 			<div id="MainCy" style="width: 100%;height: 100vh;overflow: hidden;"></div>
 		</div>
-		<ToolBox ref="toolBoxRef" @maoScale="maoScale" @openAll="openAll" @refresh="refresh" @exportImg="exportImg" @screenfullChange="screenfullChange" />
-		<Collapse @clickTab="clickTab" />
+		 <ToolBox
+        v-model:isShowOpen="isShowOpen"
+        :buttonGroup="buttons"
+				@toggleOpenAll="toggleOpenAll"
+        @maoScale="maoScale"
+        @refresh="refresh"
+        @exportImg="exportImg"/>
+		<Collapse @clickTab="clickTab" @searchData="searchData" />
 	</div>
 </template>
 
 <script>
-// import d3 from './components/Equity/d3.min.js'
 import Header from '../components/Header/index.vue'
-import ToolBox from './components/Structure/ToolBox.vue'
+import ToolBox from './components/ToolBox/index.vue'
 import Collapse from './components/Structure/Collapse.vue'
+import Buttons from './components/ToolBox/buttons.js'
 import Painter from './components/Structure/index.js'
 import { ref, onMounted } from 'vue'
 import D3Mixin from '@/hooks/D3Mixin'
-let { toggleFullScreen, downloadImpByChart } = D3Mixin()
+let { downloadImpByChart } = D3Mixin()
 
 export default {
 	components: {
@@ -27,16 +33,16 @@ export default {
 		Collapse
 	},
 	setup() {
-		const isOpen = ref(false)
-		const toolBoxRef = ref(null)
+    const buttons = ref(Buttons.OPENNODE | Buttons.ZOOMIN | Buttons.ZOOMOUT | Buttons.REFRESH | Buttons.FULLSCREEN | Buttons.SAVE);
+		const isShowOpen = ref(false)
 		// 缩放
 		const maoScale = (type) => {
 			Painter.zoomClick(type)
 		}
 		// 展开收起
-		const openAll = () => {
-      Painter.drawing(isOpen.value)
-			isOpen.value = !isOpen.value
+		const toggleOpenAll = (val) => {
+      Painter.drawing(val)
+			isShowOpen.value = !val
 		}
 		// 图片导出
 		const exportImg = () => {
@@ -44,18 +50,22 @@ export default {
 		}
 		// 刷新
 		const refresh = () => {
-			toolBoxRef.value.openAll()
-			isOpen.value = false
+			isShowOpen.value = false
       Painter.drawing()
-		}
-		// 全屏退出
-    const screenfullChange = () => {
-      toggleFullScreen()
 		}
 		// 左侧菜单
 		const clickTab = () => {
-			isOpen.value = false
+			isShowOpen.value = false
 		}
+		/**
+     * 筛选
+     * @param {   } state 
+     */
+		const searchData = (state) => {
+			console.log(state)
+    }
+
+		
 		// 初始化
     const init = () => {
       window.addEventListener('resize', function () {
@@ -66,7 +76,7 @@ export default {
       Painter.drawing()
     }
 		onMounted(init)
-		return { isOpen, toolBoxRef, exportImg, refresh, screenfullChange, maoScale, openAll, clickTab }
+		return { buttons, isShowOpen, exportImg, refresh, maoScale, toggleOpenAll, clickTab, searchData }
 	}
 }
 </script>

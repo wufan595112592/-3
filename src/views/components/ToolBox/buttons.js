@@ -12,6 +12,7 @@
         SAVE: 256, // 全屏
         WRITTENWORDS: 512, // 文字
         SEARCH: 1024, // 搜索
+        OPENNODE: 2048, // 展开收起节点
        
 });
 // buttons.ALl = buttons.FILTER | 

@@ -31,6 +31,19 @@
         <div class="icon"><span class="iconfont icon-sousuo"></span></div>
         <div class="text">编辑</div>
       </li>
+
+      <!-- 股权结构图谱 -->
+      <template v-if="hasButon(Buttons.OPENNODE)">
+        <li v-if="!isShowOpen" @click="toggleOpenAll">
+        <div class="icon"><span class="iconfont icon-plus-square"></span></div>
+        <div class="text">展开</div>
+      </li>
+      <li v-if="isShowOpen" @click="toggleOpenAll">
+        <div class="icon"><span class="iconfont icon-minus-square"></span></div>
+        <div class="text">收起</div>
+      </li>
+      </template>
+
       <li v-if="hasButon(Buttons.ZOOMIN)" @click="maoScale(1)">
         <div class="icon"><span class="iconfont icon-fangda"></span></div>
         <div class="text">放大</div>
@@ -69,7 +82,7 @@ import Buttons from './buttons';
 import store from "../../../store";
 
 const emit = defineEmits(['maoScale', 'refresh', 'exportImg',
-  'update:isShowFilter','update:isShowTemplate','update:isShowWords','showSearch', 'simpleChange', 'editChange', 'wordsChange', 'openTemplate'])
+  'update:isShowFilter','update:isShowTemplate','update:isShowWords','toggleOpenAll', 'showSearch', 'simpleChange', 'editChange', 'wordsChange', 'openTemplate'])
 const props = defineProps({
     isShowFilter: Boolean,
     isShowTemplate: Boolean,
@@ -77,6 +90,7 @@ const props = defineProps({
     isShowSearch: Boolean,
     isShowSimple: Boolean,
     isShowEdit: Boolean,
+    isShowOpen: Boolean,
     buttonGroup: {
         type: Number,
         default() {
@@ -123,6 +137,10 @@ function showEdit() {
 
 function toggleFullScreen(value) {
   store.commit('toggleFullScreen', value)
+}
+
+function toggleOpenAll() { 
+  emit('toggleOpenAll', props.isShowOpen)
 }
 
 function maoScale(type) {
